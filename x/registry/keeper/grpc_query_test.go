@@ -161,8 +161,7 @@ func (suite *KeeperTestSuite) TestGrpcGetRecordLists() {
 					sr.NoError(err)
 					payloadType, err := cli.GetPayloadFromFile(fmt.Sprint(dir, example))
 					sr.NoError(err)
-					payload, err := payloadType.ToPayload()
-					sr.NoError(err)
+					payload := payloadType.ToPayload()
 					record, err := suite.app.RegistryKeeper.ProcessSetRecord(ctx, registrytypes.MsgSetRecord{
 						BondId:  suite.bond.GetId(),
 						Signer:  suite.accounts[0].String(),
@@ -184,9 +183,7 @@ func (suite *KeeperTestSuite) TestGrpcGetRecordLists() {
 					sr.Equal(resp.GetRecords()[0].GetBondId(), suite.bond.GetId())
 
 					for _, record := range resp.GetRecords() {
-						bz, err := registrytypes.GetJSONBytesFromAny(*record.Attributes)
-						sr.NoError(err)
-						recAttr := helpers.UnMarshalMapFromJSONBytes(bz)
+						recAttr := helpers.UnMarshalMapFromJSONBytes(record.Attributes)
 						for _, attr := range test.req.GetAttributes() {
 							av := keeper.GetAttributeValue(attr.Value)
 							if nil != av && nil != recAttr[attr.Key] &&
@@ -328,8 +325,7 @@ func (suite *KeeperTestSuite) TestGrpcQueryRegistryModuleBalance() {
 				for _, example := range examples {
 					payloadType, err := cli.GetPayloadFromFile(fmt.Sprint(dir, example))
 					sr.NoError(err)
-					payload, err := payloadType.ToPayload()
-					sr.NoError(err)
+					payload := payloadType.ToPayload()
 					record, err := suite.app.RegistryKeeper.ProcessSetRecord(ctx, registrytypes.MsgSetRecord{
 						BondId:  suite.bond.GetId(),
 						Signer:  suite.accounts[0].String(),

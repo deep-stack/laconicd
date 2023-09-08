@@ -2,14 +2,9 @@ package types
 
 import (
 	"crypto/sha256"
-	"encoding/json"
-	"fmt"
-	"strings"
 
 	"github.com/cerc-io/laconicd/x/registry/helpers"
-	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	canonicalJson "github.com/gibson042/canonicaljson-go"
-	"github.com/gogo/protobuf/proto"
 )
 
 const (
@@ -18,19 +13,21 @@ const (
 	AuthorityUnderAuction = "auction"
 )
 
-// PayloadType represents a signed record payload that can be serialized from/to YAML.
-type PayloadType struct {
+// TODO if schema records are to be more permissive than allowing a map of fields, this type will
+// become specific to content records. schema records will either occupy a new message or have new
+// more general purpose helper types.
+
+// PayloadEncodable represents a signed record payload that can be serialized from/to YAML.
+type PayloadEncodable struct {
 	Record     map[string]interface{} `json:"record"`
 	Signatures []Signature            `json:"signatures"`
 }
 
-// ToPayload converts PayloadType to Payload object.
+// ToPayload converts PayloadEncodable to Payload object.
 // Why? Because go-amino can't handle maps: https://github.com/tendermint/go-amino/issues/4.
-func (payloadObj *PayloadType) ToPayload() (Payload, error) {
-	attributes, err := payLoadAttributes(payloadObj.Record)
-	if err != nil {
-		return Payload{}, err
-	}
+func (payloadObj *PayloadEncodable) ToPayload() Payload {
+	// Note: record directly contains the attributes here
+	attributes := helpers.MarshalMapToJSONBytes(payloadObj.Record)
 	payload := Payload{
 		Record: &Record{
 			Deleted:    false,
@@ -39,131 +36,23 @@ func (payloadObj *PayloadType) ToPayload() (Payload, error) {
 		},
 		Signatures: payloadObj.Signatures,
 	}
-	return payload, nil
+	// TODO rm error
+	return payload
 }
 
-func payLoadAttributes(recordPayLoad map[string]interface{}) (*codectypes.Any, error) {
-	recordType, ok := recordPayLoad["type"]
-	if !ok {
-		return &codectypes.Any{}, fmt.Errorf("cannot get type from payload")
-	}
-	bz := helpers.MarshalMapToJSONBytes(recordPayLoad)
+// ToReadablePayload converts Payload to a serializable object
+func (payload Payload) ToReadablePayload() PayloadEncodable {
+	var encodable PayloadEncodable
 
-	switch recordType.(string) {
-	case "ServiceProviderRegistration":
-		{
-			var attributes ServiceProviderRegistration
-			err := json.Unmarshal(bz, &attributes)
-			if err != nil {
-				return &codectypes.Any{}, err
-			}
-			return codectypes.NewAnyWithValue(&attributes)
-		}
-	case "WebsiteRegistrationRecord":
-		{
-			var attributes WebsiteRegistrationRecord
-			err := json.Unmarshal(bz, &attributes)
-			if err != nil {
-				return &codectypes.Any{}, err
-			}
-			return codectypes.NewAnyWithValue(&attributes)
-		}
-	case "ApplicationRecord":
-		{
-			var attributes ApplicationRecord
-			err := json.Unmarshal(bz, &attributes)
-			if err != nil {
-				return &codectypes.Any{}, err
-			}
-			return codectypes.NewAnyWithValue(&attributes)
-		}
-	case "ApplicationDeploymentRequest":
-		{
-			var attributes ApplicationDeploymentRequest
-			err := json.Unmarshal(bz, &attributes)
-			if err != nil {
-				return &codectypes.Any{}, err
-			}
-			return codectypes.NewAnyWithValue(&attributes)
-		}
-	case "ApplicationDeploymentRecord":
-		{
-			var attributes ApplicationDeploymentRecord
-			err := json.Unmarshal(bz, &attributes)
-			if err != nil {
-				return &codectypes.Any{}, err
-			}
-			return codectypes.NewAnyWithValue(&attributes)
-		}
-	case "ApplicationDeploymentRemovalRequest":
-		{
-			var attributes ApplicationDeploymentRemovalRequest
-			err := json.Unmarshal(bz, &attributes)
-			if err != nil {
-				return &codectypes.Any{}, err
-			}
-			return codectypes.NewAnyWithValue(&attributes)
-		}
-	case "ApplicationDeploymentRemovalRecord":
-		{
-			var attributes ApplicationDeploymentRemovalRecord
-			err := json.Unmarshal(bz, &attributes)
-			if err != nil {
-				return &codectypes.Any{}, err
-			}
-			return codectypes.NewAnyWithValue(&attributes)
-		}
-	case "ApplicationArtifact":
-		{
-			var attributes ApplicationArtifact
-			err := json.Unmarshal(bz, &attributes)
-			if err != nil {
-				return &codectypes.Any{}, err
-			}
-			return codectypes.NewAnyWithValue(&attributes)
-		}
-	case "DnsRecord":
-		{
-			var attributes DnsRecord
-			err := json.Unmarshal(bz, &attributes)
-			if err != nil {
-				return &codectypes.Any{}, err
-			}
-			return codectypes.NewAnyWithValue(&attributes)
-		}
-	case "GeneralRecord":
-		{
-			var attributes GeneralRecord
-			err := json.Unmarshal(bz, &attributes)
-			if err != nil {
-				return &codectypes.Any{}, err
-			}
-			return codectypes.NewAnyWithValue(&attributes)
-		}
-	default:
-		return &codectypes.Any{}, fmt.Errorf("unsupported record type %s", recordType.(string))
-	}
+	encodable.Record = helpers.UnMarshalMapFromJSONBytes(payload.Record.Attributes)
+	encodable.Signatures = payload.Signatures
+
+	return encodable
 }
 
-// ToReadablePayload converts Payload to PayloadType
-// It will unmarshal with record attributes
-func (payload Payload) ToReadablePayload() PayloadType {
-	var payloadType PayloadType
-	bz, err := GetJSONBytesFromAny(*payload.Record.Attributes)
-	if err != nil {
-		panic(err)
-	}
-
-	payloadType.Record = helpers.UnMarshalMapFromJSONBytes(bz)
-	payloadType.Signatures = payload.Signatures
-
-	return payloadType
-}
-
-// Record to Record Type for human-readable attributes
-
-func (r *Record) ToRecordType() RecordType {
-	var resourceObj RecordType
+// ToReadableRecord converts Record to a serializable object
+func (r *Record) ToReadableRecord() RecordEncodable {
+	var resourceObj RecordEncodable
 
 	resourceObj.ID = r.Id
 	resourceObj.BondID = r.BondId
@@ -172,159 +61,13 @@ func (r *Record) ToRecordType() RecordType {
 	resourceObj.Deleted = r.Deleted
 	resourceObj.Owners = r.Owners
 	resourceObj.Names = r.Names
-
-	bz, err := GetJSONBytesFromAny(*r.Attributes)
-	if err != nil {
-		panic(err)
-	}
-	resourceObj.Attributes = helpers.UnMarshalMapFromJSONBytes(bz)
+	resourceObj.Attributes = helpers.UnMarshalMapFromJSONBytes(r.Attributes)
 
 	return resourceObj
 }
 
-func GetJSONBytesFromAny(any codectypes.Any) ([]byte, error) {
-	var bz []byte
-	s := strings.Split(any.TypeUrl, ".")
-	switch s[len(s)-1] {
-	case "ServiceProviderRegistration":
-		{
-			var attributes ServiceProviderRegistration
-			err := proto.Unmarshal(any.Value, &attributes)
-			if err != nil {
-				panic("Proto unmarshal error")
-			}
-
-			bz, err = json.Marshal(attributes)
-			if err != nil {
-				panic("JSON marshal error")
-			}
-		}
-	case "WebsiteRegistrationRecord":
-		{
-			var attributes WebsiteRegistrationRecord
-			err := proto.Unmarshal(any.Value, &attributes)
-			if err != nil {
-				panic("Proto unmarshal error")
-			}
-
-			bz, err = json.Marshal(attributes)
-			if err != nil {
-				panic("JSON marshal error")
-			}
-		}
-	case "ApplicationRecord":
-		{
-			var attributes ApplicationRecord
-			err := proto.Unmarshal(any.Value, &attributes)
-			if err != nil {
-				panic("Proto unmarshal error")
-			}
-
-			bz, err = json.Marshal(attributes)
-			if err != nil {
-				panic("JSON marshal error")
-			}
-		}
-	case "ApplicationDeploymentRequest":
-		{
-			var attributes ApplicationDeploymentRequest
-			err := proto.Unmarshal(any.Value, &attributes)
-			if err != nil {
-				panic("Proto unmarshal error")
-			}
-
-			bz, err = json.Marshal(attributes)
-			if err != nil {
-				panic("JSON marshal error")
-			}
-		}
-	case "ApplicationDeploymentRecord":
-		{
-			var attributes ApplicationDeploymentRecord
-			err := proto.Unmarshal(any.Value, &attributes)
-			if err != nil {
-				panic("Proto unmarshal error")
-			}
-
-			bz, err = json.Marshal(attributes)
-			if err != nil {
-				panic("JSON marshal error")
-			}
-		}
-	case "ApplicationDeploymentRemovalRequest":
-		{
-			var attributes ApplicationDeploymentRemovalRequest
-			err := proto.Unmarshal(any.Value, &attributes)
-			if err != nil {
-				panic("Proto unmarshal error")
-			}
-
-			bz, err = json.Marshal(attributes)
-			if err != nil {
-				panic("JSON marshal error")
-			}
-		}
-	case "ApplicationDeploymentRemovalRecord":
-		{
-			var attributes ApplicationDeploymentRemovalRecord
-			err := proto.Unmarshal(any.Value, &attributes)
-			if err != nil {
-				panic("Proto unmarshal error")
-			}
-
-			bz, err = json.Marshal(attributes)
-			if err != nil {
-				panic("JSON marshal error")
-			}
-		}
-	case "ApplicationArtifact":
-		{
-			var attributes ApplicationArtifact
-			err := proto.Unmarshal(any.Value, &attributes)
-			if err != nil {
-				panic("Proto unmarshal error")
-			}
-
-			bz, err = json.Marshal(attributes)
-			if err != nil {
-				panic("JSON marshal error")
-			}
-		}
-	case "DnsRecord":
-		{
-			var attributes DnsRecord
-			err := proto.Unmarshal(any.Value, &attributes)
-			if err != nil {
-				panic("Proto unmarshal error")
-			}
-
-			bz, err = json.Marshal(attributes)
-			if err != nil {
-				panic("JSON marshal error")
-			}
-		}
-	case "GeneralRecord":
-		{
-			var attributes GeneralRecord
-			err := proto.Unmarshal(any.Value, &attributes)
-			if err != nil {
-				panic("Proto unmarshal error")
-			}
-
-			bz, err = json.Marshal(attributes)
-			if err != nil {
-				panic("JSON marshal error")
-			}
-		}
-	default:
-		return nil, fmt.Errorf("unsupported type %s", s[len(s)-1])
-	}
-
-	return bz, nil
-}
-
-// RecordType represents a WNS record.
-type RecordType struct {
+// RecordEncodable represents a WNS record.
+type RecordEncodable struct {
 	ID         string                 `json:"id,omitempty"`
 	Names      []string               `json:"names,omitempty"`
 	BondID     string                 `json:"bondId,omitempty"`
@@ -337,11 +80,8 @@ type RecordType struct {
 
 // ToRecordObj converts Record to RecordObj.
 // Why? Because go-amino can't handle maps: https://github.com/tendermint/go-amino/issues/4.
-func (r *RecordType) ToRecordObj() (Record, error) {
-	attributes, err := payLoadAttributes(r.Attributes)
-	if err != nil {
-		return Record{}, err
-	}
+func (r *RecordEncodable) ToRecordObj() (Record, error) {
+	attributes := helpers.MarshalMapToJSONBytes(r.Attributes)
 
 	var resourceObj Record
 
@@ -357,7 +97,7 @@ func (r *RecordType) ToRecordObj() (Record, error) {
 }
 
 // CanonicalJSON returns the canonical JSON representation of the record.
-func (r *RecordType) CanonicalJSON() []byte {
+func (r *RecordEncodable) CanonicalJSON() []byte {
 	bytes, err := canonicalJson.Marshal(r.Attributes)
 	if err != nil {
 		panic("Record marshal error.")
@@ -367,7 +107,7 @@ func (r *RecordType) CanonicalJSON() []byte {
 }
 
 // GetSignBytes generates a record hash to be signed.
-func (r *RecordType) GetSignBytes() ([]byte, []byte) {
+func (r *RecordEncodable) GetSignBytes() ([]byte, []byte) {
 	// Double SHA256 hash.
 
 	// Input to the first round of hashing.
@@ -387,7 +127,7 @@ func (r *RecordType) GetSignBytes() ([]byte, []byte) {
 }
 
 // GetCID gets the record CID.
-func (r *RecordType) GetCID() (string, error) {
+func (r *RecordEncodable) GetCID() (string, error) {
 	id, err := helpers.GetCid(r.CanonicalJSON())
 	if err != nil {
 		return "", err
