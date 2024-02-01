@@ -1,29 +1,30 @@
 #!/usr/bin/env bash
 
-# TODO: Update paths following laconicd
-
 set -e
 
-echo "Generating gogo proto code"
+# Enter the proto files dir
 cd proto
+
+echo "Generating gogo proto code"
 proto_dirs=$(find . -path -prune -o -name '*.proto' -print0 | xargs -0 -n1 dirname | sort | uniq)
 for dir in $proto_dirs; do
   for file in $(find "${dir}" -maxdepth 1 -name '*.proto'); do
-    # this regex checks if a proto file has its go_package set to github.com/alice/checkers/api/...
-    # gogo proto files SHOULD ONLY be generated if this is false
-    # we don't want gogo proto to run for proto files which are natively built for google.golang.org/protobuf
-    if grep -q "option go_package" "$file" && grep -H -o -c 'option go_package.*github.com/alice/checkers/api' "$file" | grep -q ':0$'; then
-      buf generate --template buf.gen.gogo.yaml $file
+    # Check if the go_package in the file is pointing to laconic2d
+    if grep -q "option go_package.*laconic2d" "$file"; then
+      buf generate --template buf.gen.gogo.yaml "$file"
     fi
   done
 done
 
+# TODO: Check if required
 echo "Generating pulsar proto code"
 buf generate --template buf.gen.pulsar.yaml
 
+# Go back to root dir
 cd ..
 
-cp -r github.com/alice/checkers/* ./
-rm -rf api && mkdir api
-mv alice/checkers/* ./api
-rm -rf github.com alice
+# Copy over the generated files and cleanup
+cp -r git.vdb.to/cerc-io/laconic2d/* ./
+rm -rf git.vdb.to
+
+go mod tidy

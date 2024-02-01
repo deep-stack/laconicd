@@ -1,5 +1,10 @@
 package bond
 
-const ModuleName = "bond"
+const (
+	ModuleName = "bond"
 
-// TODO: Add required keys
+	// StoreKey is the string store representation
+	StoreKey = ModuleName
+
+	// TODO: Add required keys
+)

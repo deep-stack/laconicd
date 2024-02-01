@@ -13,6 +13,7 @@ import (
 	"cosmossdk.io/log"
 	storetypes "cosmossdk.io/store/types"
 
+	bondkeeper "git.vdb.to/cerc-io/laconic2d/x/bond/keeper"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -32,6 +33,7 @@ import (
 	stakingkeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
 
 	_ "cosmossdk.io/api/cosmos/tx/config/v1"          // import for side-effects
+	_ "git.vdb.to/cerc-io/laconic2d/x/bond/module"    // import for side-effects
 	_ "github.com/cosmos/cosmos-sdk/x/auth"           // import for side-effects
 	_ "github.com/cosmos/cosmos-sdk/x/auth/tx/config" // import for side-effects
 	_ "github.com/cosmos/cosmos-sdk/x/bank"           // import for side-effects
@@ -68,6 +70,12 @@ type LaconicApp struct {
 	StakingKeeper         *stakingkeeper.Keeper
 	DistrKeeper           distrkeeper.Keeper
 	ConsensusParamsKeeper consensuskeeper.Keeper
+
+	// laconic keepers
+	// AuctionKeeper        auctionkeeper.Keeper
+	BondKeeper bondkeeper.Keeper
+	// RegistryKeeper       registrykeeper.Keeper
+	// RegistryRecordKeeper registrykeeper.RecordKeeper
 
 	// simulation manager
 	sm *module.SimulationManager
@@ -127,6 +135,7 @@ func NewLaconicApp(
 		&app.StakingKeeper,
 		&app.DistrKeeper,
 		&app.ConsensusParamsKeeper,
+		&app.BondKeeper,
 	); err != nil {
 		return nil, err
 	}
@@ -140,6 +149,7 @@ func NewLaconicApp(
 
 	/****  Module Options ****/
 
+	// TOOD: Required?
 	// create the simulation manager and define the order of the modules for deterministic simulations
 	// NOTE: this is not required apps that don't use the simulator for fuzz testing transactions
 	app.sm = module.NewSimulationManagerFromAppModules(app.ModuleManager.Modules, make(map[string]module.AppModuleSimulation, 0))

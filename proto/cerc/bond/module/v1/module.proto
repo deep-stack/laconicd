@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package cerc.bond.module.v1;
+
+import "cosmos/app/v1alpha1/module.proto";
+
+// Module is the app config object of the module.
+// Learn more: https://docs.cosmos.network/main/building-modules/depinject
+message Module {
+  option (cosmos.app.v1alpha1.module) = {
+    go_import : "git.vdb.to/cerc-io/laconic2d/x/bond"
+  };
+
+  // TODO: Setup any config required
+}
