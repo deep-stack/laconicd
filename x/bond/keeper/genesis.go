@@ -9,8 +9,11 @@ import (
 func (k *Keeper) InitGenesis(ctx sdk.Context, data *bond.GenesisState) error {
 	k.SetParams(ctx, data.Params)
 
+	// Save bonds in store.
 	for _, bond := range data.Bonds {
-		k.SaveBond(ctx, bond)
+		if err := k.Bonds.Set(ctx, bond.Id, *bond); err != nil {
+			return err
+		}
 	}
 
 	return nil
@@ -19,7 +22,11 @@ func (k *Keeper) InitGenesis(ctx sdk.Context, data *bond.GenesisState) error {
 // ExportGenesis exports the module state to a genesis state.
 func (k *Keeper) ExportGenesis(ctx sdk.Context) (*bond.GenesisState, error) {
 	params := k.GetParams(ctx)
-	bonds := k.ListBonds(ctx)
+
+	bonds, err := k.ListBonds(ctx)
+	if err != nil {
+		return nil, err
+	}
 
 	return &bond.GenesisState{Params: params, Bonds: bonds}, nil
 }

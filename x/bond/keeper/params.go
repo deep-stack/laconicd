@@ -8,7 +8,7 @@ import (
 // GetMaxBondAmount max bond amount
 func (k Keeper) GetMaxBondAmount(ctx sdk.Context) (res sdk.Coin) {
 	// TODO: Implement
-	return sdk.Coin{}
+	return sdk.NewCoin(sdk.DefaultBondDenom, bond.DefaultMaxBondAmountTokens)
 }
 
 // GetParams - Get all parameter as types.Params.

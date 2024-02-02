@@ -2,10 +2,12 @@ package module
 
 import (
 	"cosmossdk.io/core/appmodule"
+	"cosmossdk.io/core/store"
 	"cosmossdk.io/depinject"
-	storetypes "cosmossdk.io/store/types"
 
 	"github.com/cosmos/cosmos-sdk/codec"
+	auth "github.com/cosmos/cosmos-sdk/x/auth/keeper"
+	bank "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 
 	modulev1 "git.vdb.to/cerc-io/laconic2d/api/cerc/bond/module/v1"
 	"git.vdb.to/cerc-io/laconic2d/x/bond/keeper"
@@ -29,8 +31,11 @@ func init() {
 type ModuleInputs struct {
 	depinject.In
 
-	Key *storetypes.KVStoreKey
-	Cdc codec.Codec
+	Cdc          codec.Codec
+	StoreService store.KVStoreService
+
+	AccountKeeper auth.AccountKeeper
+	BankKeeper    bank.Keeper
 }
 
 type ModuleOutputs struct {
@@ -41,7 +46,7 @@ type ModuleOutputs struct {
 }
 
 func ProvideModule(in ModuleInputs) ModuleOutputs {
-	k := keeper.NewKeeper(in.Cdc, in.Key)
+	k := keeper.NewKeeper(in.Cdc, in.StoreService, in.AccountKeeper, in.BankKeeper)
 	m := NewAppModule(in.Cdc, k)
 
 	return ModuleOutputs{Module: m, Keeper: k}

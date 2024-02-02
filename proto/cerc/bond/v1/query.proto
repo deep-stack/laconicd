@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package cerc.bond.v1;
+
+option go_package = "git.vdb.to/cerc-io/laconic2d/x/bond";
+
+import "gogoproto/gogo.proto";
+import "cerc/bond/v1/bond.proto";
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+// import "cosmos/query/v1/query.proto";
+
+// Query defines the gRPC querier service for bond module
+service Query {
+  // Bonds queries bonds list.
+  rpc Bonds(QueryGetBondsRequest) returns (QueryGetBondsResponse) {
+    // option (cosmos.query.v1.module_query_safe) = true; // Add?
+    option (google.api.http).get = "/cerc/bond/v1/bonds";
+  }
+}
+
+// QueryGetBondById queries a bonds.
+message QueryGetBondsRequest {
+  // pagination defines an optional pagination for the request.
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+// QueryGetBondsResponse is response type for get the bonds by bond-id
+message QueryGetBondsResponse {
+  repeated Bond bonds = 1 [(gogoproto.moretags) = "json:\"bonds\" yaml:\"bonds\""];
+
+  // pagination defines the pagination in the response.
+  cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+

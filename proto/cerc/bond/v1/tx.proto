@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package cerc.bond.v1;
+
+option go_package = "git.vdb.to/cerc-io/laconic2d/x/bond";
+
+import "cosmos/msg/v1/msg.proto";
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "cosmos/base/v1beta1/coin.proto";
+
+// TODO: Add remaining messages
+
+// Msg defines the bond Msg service.
+service Msg {
+  option (cosmos.msg.v1.service) = true;
+
+  // CreateBond defines a method for creating a new bond.
+  rpc CreateBond(MsgCreateBond) returns (MsgCreateBondResponse) {
+    option (google.api.http).post = "/cerc/bond/v1/create_bond";
+  };
+
+}
+
+// MsgCreateBond defines a SDK message for creating a new bond.
+message MsgCreateBond {
+  option (cosmos.msg.v1.signer) = "signer";
+
+  string   signer                         = 1;
+  repeated cosmos.base.v1beta1.Coin coins = 2 [
+    (gogoproto.nullable)     = false,
+    (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins",
+    (gogoproto.moretags)     = "json:\"coins\" yaml:\"coins\""
+  ];
+}
+
+// MsgCreateBondResponse defines the Msg/CreateBond response type.
+message MsgCreateBondResponse {
+  string id = 1;
+}

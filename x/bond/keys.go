@@ -1,5 +1,7 @@
 package bond
 
+import "cosmossdk.io/collections"
+
 const (
 	ModuleName = "bond"
 
@@ -7,4 +9,9 @@ const (
 	StoreKey = ModuleName
 
 	// TODO: Add required keys
+)
+
+// Store prefixes
+var (
+	BondsKey = collections.NewPrefix(0)
 )

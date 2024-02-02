@@ -1,6 +1,7 @@
 package module
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 
@@ -20,10 +21,11 @@ import (
 // TODO: Port remaining AppModule methods
 
 var (
-	_ module.AppModuleBasic = AppModule{}
-	_ appmodule.AppModule   = AppModule{}
-	_ module.HasGenesis     = AppModule{}
-	_ module.HasServices    = AppModule{}
+	_ module.AppModuleBasic      = AppModule{}
+	_ appmodule.AppModule        = AppModule{}
+	_ module.HasGenesis          = AppModule{}
+	_ module.HasServices         = AppModule{}
+	_ module.HasConsensusVersion = AppModule{}
 )
 
 // ConsensusVersion defines the current module consensus version
@@ -53,21 +55,22 @@ func (AppModule) Name() string { return bond.ModuleName }
 
 // RegisterLegacyAminoCodec registers the bond module's types on the LegacyAmino codec.
 // New modules do not need to support Amino.
-func (AppModule) RegisterLegacyAminoCodec(cdc *codec.LegacyAmino) {
-	bond.RegisterLegacyAminoCodec(cdc)
-}
+func (AppModule) RegisterLegacyAminoCodec(cdc *codec.LegacyAmino) {}
 
 // RegisterGRPCGatewayRoutes registers the gRPC Gateway routes for the bond module.
 func (AppModule) RegisterGRPCGatewayRoutes(clientCtx client.Context, mux *gwruntime.ServeMux) {
-	// if err := bond.RegisterQueryHandlerClient(context.Background(), mux, bond.NewQueryClient(clientCtx)); err != nil {
-	// 	panic(err)
-	// }
+	if err := bond.RegisterQueryHandlerClient(context.Background(), mux, bond.NewQueryClient(clientCtx)); err != nil {
+		panic(err)
+	}
 }
 
 // RegisterInterfaces registers interfaces and implementations of the bond module.
 func (AppModule) RegisterInterfaces(registry codectypes.InterfaceRegistry) {
 	bond.RegisterInterfaces(registry)
 }
+
+// ConsensusVersion implements AppModule/ConsensusVersion.
+func (AppModule) ConsensusVersion() uint64 { return ConsensusVersion }
 
 // module.HasGenesis
 
@@ -112,6 +115,6 @@ func (am AppModule) ExportGenesis(ctx sdk.Context, cdc codec.JSONCodec) json.Raw
 
 func (am AppModule) RegisterServices(cfg module.Configurator) {
 	// Register servers
-	// bond.RegisterMsgServer(cfg.MsgServer(), keeper.NewMsgServerImpl(am.keeper))
-	// bond.RegisterQueryServer(cfg.QueryServer(), keeper.NewQueryServerImpl(am.keeper))
+	bond.RegisterMsgServer(cfg.MsgServer(), keeper.NewMsgServerImpl(am.keeper))
+	bond.RegisterQueryServer(cfg.QueryServer(), keeper.NewQueryServerImpl(am.keeper))
 }
