@@ -3,9 +3,11 @@ package keeper
 import (
 	"crypto/sha256"
 	"encoding/hex"
+	"errors"
 	"fmt"
 
 	"cosmossdk.io/collections"
+	"cosmossdk.io/collections/indexes"
 	"cosmossdk.io/core/store"
 	errorsmod "cosmossdk.io/errors"
 
@@ -18,6 +20,26 @@ import (
 	bondtypes "git.vdb.to/cerc-io/laconic2d/x/bond"
 )
 
+type BondsIndexes struct {
+	Owner *indexes.Multi[string, string, bondtypes.Bond]
+}
+
+func (b BondsIndexes) IndexesList() []collections.Index[string, bondtypes.Bond] {
+	return []collections.Index[string, bondtypes.Bond]{b.Owner}
+}
+
+func newBondIndexes(sb *collections.SchemaBuilder) BondsIndexes {
+	return BondsIndexes{
+		Owner: indexes.NewMulti(
+			sb, bondtypes.BondOwnerIndexPrefix, "bonds_by_owner",
+			collections.StringKey, collections.StringKey,
+			func(_ string, v bondtypes.Bond) (string, error) {
+				return v.Owner, nil
+			},
+		),
+	}
+}
+
 type Keeper struct {
 	// Codecs
 	cdc codec.BinaryCodec
@@ -29,11 +51,10 @@ type Keeper struct {
 	// Track bond usage in other cosmos-sdk modules (more like a usage tracker).
 	// usageKeepers []types.BondUsageKeeper
 
-	// paramSubspace paramtypes.Subspace
-
 	// State management
 	Schema collections.Schema
-	Bonds  collections.Map[string, bondtypes.Bond]
+	Params collections.Item[bondtypes.Params]
+	Bonds  *collections.IndexedMap[string, bondtypes.Bond, BondsIndexes]
 }
 
 // NewKeeper creates new instances of the bond Keeper
@@ -43,21 +64,15 @@ func NewKeeper(
 	accountKeeper auth.AccountKeeper,
 	bankKeeper bank.Keeper,
 	// usageKeepers []types.BondUsageKeeper,
-	// ps paramtypes.Subspace,
 ) Keeper {
-	// set KeyTable if it has not already been set
-	// if !ps.HasKeyTable() {
-	// 	ps = ps.WithKeyTable(types.ParamKeyTable())
-	// }
-
 	sb := collections.NewSchemaBuilder(storeService)
 	k := Keeper{
 		cdc:           cdc,
 		accountKeeper: accountKeeper,
 		bankKeeper:    bankKeeper,
-		Bonds:         collections.NewMap(sb, bondtypes.BondsKey, "bonds", collections.StringKey, codec.CollValue[bondtypes.Bond](cdc)),
+		Params:        collections.NewItem(sb, bondtypes.ParamsKeyPrefix, "params", codec.CollValue[bondtypes.Params](cdc)),
+		Bonds:         collections.NewIndexedMap(sb, bondtypes.BondsKeyPrefix, "bonds", collections.StringKey, codec.CollValue[bondtypes.Bond](cdc), newBondIndexes(sb)),
 		// usageKeepers:  usageKeepers,
-		// paramSubspace: ps,
 	}
 
 	schema, err := sb.Build()
@@ -70,58 +85,39 @@ func NewKeeper(
 	return k
 }
 
-// BondID simplifies generation of bond IDs.
-type BondID struct {
+// BondId simplifies generation of bond Ids.
+type BondId struct {
 	Address  sdk.Address
 	AccNum   uint64
 	Sequence uint64
 }
 
-// Generate creates the bond ID.
-func (bondID BondID) Generate() string {
+// Generate creates the bond Id.
+func (bondId BondId) Generate() string {
 	hasher := sha256.New()
-	str := fmt.Sprintf("%s:%d:%d", bondID.Address.String(), bondID.AccNum, bondID.Sequence)
+	str := fmt.Sprintf("%s:%d:%d", bondId.Address.String(), bondId.AccNum, bondId.Sequence)
 	hasher.Write([]byte(str))
 	return hex.EncodeToString(hasher.Sum(nil))
 }
 
-// CreateBond creates a new bond.
-func (k Keeper) CreateBond(ctx sdk.Context, ownerAddress sdk.AccAddress, coins sdk.Coins) (*bondtypes.Bond, error) {
-	// Check if account has funds.
-	for _, coin := range coins {
-		balance := k.bankKeeper.HasBalance(ctx, ownerAddress, coin)
-		if !balance {
-			return nil, errorsmod.Wrap(sdkerrors.ErrInsufficientFunds, "failed to create bond; Insufficient funds")
-		}
-	}
-
-	// Generate bond ID.
-	account := k.accountKeeper.GetAccount(ctx, ownerAddress)
-	bondID := BondID{
-		Address:  ownerAddress,
-		AccNum:   account.GetAccountNumber(),
-		Sequence: account.GetSequence(),
-	}.Generate()
-
-	maxBondAmount := k.getMaxBondAmount(ctx)
-
-	bond := bondtypes.Bond{Id: bondID, Owner: ownerAddress.String(), Balance: coins}
-	if bond.Balance.IsAnyGT(maxBondAmount) {
-		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Max bond amount exceeded.")
-	}
-
-	// Move funds into the bond account module.
-	err := k.bankKeeper.SendCoinsFromAccountToModule(ctx, ownerAddress, bondtypes.ModuleName, bond.Balance)
+// HasBond - checks if a bond by the given Id exists.
+func (k Keeper) HasBond(ctx sdk.Context, id string) (bool, error) {
+	has, err := k.Bonds.Has(ctx, id)
 	if err != nil {
-		return nil, err
+		return false, err
 	}
 
-	// Save bond in store.
-	if err := k.Bonds.Set(ctx, bond.Id, bond); err != nil {
-		return nil, err
-	}
+	return has, nil
+}
 
-	return &bond, nil
+// SaveBond - saves a bond to the store.
+func (k Keeper) SaveBond(ctx sdk.Context, bond *bondtypes.Bond) error {
+	return k.Bonds.Set(ctx, bond.Id, *bond)
+}
+
+// DeleteBond - deletes the bond.
+func (k Keeper) DeleteBond(ctx sdk.Context, bond bondtypes.Bond) error {
+	return k.Bonds.Remove(ctx, bond.Id)
 }
 
 // ListBonds - get all bonds.
@@ -145,8 +141,222 @@ func (k Keeper) ListBonds(ctx sdk.Context) ([]*bondtypes.Bond, error) {
 	return bonds, nil
 }
 
-func (k Keeper) getMaxBondAmount(ctx sdk.Context) sdk.Coins {
-	params := k.GetParams(ctx)
+func (k Keeper) GetBondById(ctx sdk.Context, id string) (bondtypes.Bond, error) {
+	bond, err := k.Bonds.Get(ctx, id)
+	if err != nil {
+		if errors.Is(err, collections.ErrNotFound) {
+			return bondtypes.Bond{}, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Bond not found.")
+		}
+		return bondtypes.Bond{}, err
+	}
+
+	return bond, nil
+}
+
+func (k Keeper) GetBondsByOwner(ctx sdk.Context, owner string) ([]bondtypes.Bond, error) {
+	iter, err := k.Bonds.Indexes.Owner.MatchExact(ctx, owner)
+	if err != nil {
+		return []bondtypes.Bond{}, err
+	}
+
+	return indexes.CollectValues(ctx, k.Bonds, iter)
+}
+
+// GetBondModuleBalances gets the bond module account(s) balances.
+func (k Keeper) GetBondModuleBalances(ctx sdk.Context) sdk.Coins {
+	moduleAddress := k.accountKeeper.GetModuleAddress(bondtypes.ModuleName)
+	balances := k.bankKeeper.GetAllBalances(ctx, moduleAddress)
+
+	return balances
+}
+
+// CreateBond creates a new bond.
+func (k Keeper) CreateBond(ctx sdk.Context, ownerAddress sdk.AccAddress, coins sdk.Coins) (*bondtypes.Bond, error) {
+	// Check if account has funds.
+	for _, coin := range coins {
+		balance := k.bankKeeper.HasBalance(ctx, ownerAddress, coin)
+		if !balance {
+			return nil, errorsmod.Wrap(sdkerrors.ErrInsufficientFunds, "failed to create bond; Insufficient funds")
+		}
+	}
+
+	// Generate bond Id.
+	account := k.accountKeeper.GetAccount(ctx, ownerAddress)
+	bondId := BondId{
+		Address:  ownerAddress,
+		AccNum:   account.GetAccountNumber(),
+		Sequence: account.GetSequence(),
+	}.Generate()
+
+	maxBondAmount, err := k.getMaxBondAmount(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	bond := bondtypes.Bond{Id: bondId, Owner: ownerAddress.String(), Balance: coins}
+	if bond.Balance.IsAnyGT(maxBondAmount) {
+		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Max bond amount exceeded.")
+	}
+
+	// Move funds into the bond account module.
+	err = k.bankKeeper.SendCoinsFromAccountToModule(ctx, ownerAddress, bondtypes.ModuleName, bond.Balance)
+	if err != nil {
+		return nil, err
+	}
+
+	// Save bond in store.
+	err = k.SaveBond(ctx, &bond)
+	if err != nil {
+		return nil, err
+	}
+
+	return &bond, nil
+}
+
+func (k Keeper) RefillBond(ctx sdk.Context, id string, ownerAddress sdk.AccAddress, coins sdk.Coins) (*bondtypes.Bond, error) {
+	if has, err := k.HasBond(ctx, id); !has {
+		if err != nil {
+			return nil, err
+		}
+		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Bond not found.")
+	}
+
+	bond, err := k.GetBondById(ctx, id)
+	if err != nil {
+		return nil, err
+	}
+
+	if bond.Owner != ownerAddress.String() {
+		return nil, errorsmod.Wrap(sdkerrors.ErrUnauthorized, "Bond owner mismatch.")
+	}
+
+	// Check if account has funds.
+	for _, coin := range coins {
+		if !k.bankKeeper.HasBalance(ctx, ownerAddress, coin) {
+			return nil, errorsmod.Wrap(sdkerrors.ErrInsufficientFunds, "Insufficient funds.")
+		}
+	}
+
+	maxBondAmount, err := k.getMaxBondAmount(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	updatedBalance := bond.Balance.Add(coins...)
+	if updatedBalance.IsAnyGT(maxBondAmount) {
+		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Max bond amount exceeded.")
+	}
+
+	// Move funds into the bond account module.
+	err = k.bankKeeper.SendCoinsFromAccountToModule(ctx, ownerAddress, bondtypes.ModuleName, coins)
+	if err != nil {
+		return nil, err
+	}
+
+	// Update bond balance and save.
+	bond.Balance = updatedBalance
+	err = k.SaveBond(ctx, &bond)
+	if err != nil {
+		return nil, err
+	}
+
+	return &bond, nil
+}
+
+func (k Keeper) WithdrawBond(ctx sdk.Context, id string, ownerAddress sdk.AccAddress, coins sdk.Coins) (*bondtypes.Bond, error) {
+	if has, err := k.HasBond(ctx, id); !has {
+		if err != nil {
+			return nil, err
+		}
+		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Bond not found.")
+	}
+
+	bond, err := k.GetBondById(ctx, id)
+	if err != nil {
+		return nil, err
+	}
+
+	if bond.Owner != ownerAddress.String() {
+		return nil, errorsmod.Wrap(sdkerrors.ErrUnauthorized, "Bond owner mismatch.")
+	}
+
+	updatedBalance, isNeg := bond.Balance.SafeSub(coins...)
+	if isNeg {
+		return nil, errorsmod.Wrap(sdkerrors.ErrInsufficientFunds, "Insufficient bond balance.")
+	}
+
+	// Move funds from the bond into the account.
+	err = k.bankKeeper.SendCoinsFromModuleToAccount(ctx, bondtypes.ModuleName, ownerAddress, coins)
+	if err != nil {
+		return nil, err
+	}
+
+	// Update bond balance and save.
+	bond.Balance = updatedBalance
+	err = k.SaveBond(ctx, &bond)
+	if err != nil {
+		return nil, err
+	}
+
+	return &bond, nil
+}
+
+func (k Keeper) CancelBond(ctx sdk.Context, id string, ownerAddress sdk.AccAddress) (*bondtypes.Bond, error) {
+	if has, err := k.HasBond(ctx, id); !has {
+		if err != nil {
+			return nil, err
+		}
+		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Bond not found.")
+	}
+
+	bond, err := k.GetBondById(ctx, id)
+	if err != nil {
+		return nil, err
+	}
+
+	if bond.Owner != ownerAddress.String() {
+		return nil, errorsmod.Wrap(sdkerrors.ErrUnauthorized, "Bond owner mismatch.")
+	}
+
+	// TODO
+	// Check if bond is used in other modules.
+	// for _, usageKeeper := range k.usageKeepers {
+	// 	if usageKeeper.UsesBond(ctx, id) {
+	// 		return nil, errorsmod.Wrap(sdkerrors.ErrUnauthorized, fmt.Sprintf("Bond in use by the '%s' module.", usageKeeper.ModuleName()))
+	// 	}
+	// }
+
+	// Move funds from the bond into the account.
+	err = k.bankKeeper.SendCoinsFromModuleToAccount(ctx, bondtypes.ModuleName, ownerAddress, bond.Balance)
+	if err != nil {
+		return nil, err
+	}
+
+	// Remove bond from store.
+	err = k.DeleteBond(ctx, bond)
+	if err != nil {
+		return nil, err
+	}
+
+	return &bond, nil
+}
+
+// GetParams gets the bond module's parameters.
+func (k Keeper) GetParams(ctx sdk.Context) (*bondtypes.Params, error) {
+	params, err := k.Params.Get(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	return &params, nil
+}
+
+func (k Keeper) getMaxBondAmount(ctx sdk.Context) (sdk.Coins, error) {
+	params, err := k.GetParams(ctx)
+	if err != nil {
+		return nil, err
+	}
+
 	maxBondAmount := params.MaxBondAmount
-	return sdk.NewCoins(maxBondAmount)
+	return sdk.NewCoins(maxBondAmount), nil
 }

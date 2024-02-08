@@ -19,7 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Msg_CreateBond_FullMethodName = "/cerc.bond.v1.Msg/CreateBond"
+	Msg_CreateBond_FullMethodName   = "/cerc.bond.v1.Msg/CreateBond"
+	Msg_RefillBond_FullMethodName   = "/cerc.bond.v1.Msg/RefillBond"
+	Msg_WithdrawBond_FullMethodName = "/cerc.bond.v1.Msg/WithdrawBond"
+	Msg_CancelBond_FullMethodName   = "/cerc.bond.v1.Msg/CancelBond"
 )
 
 // MsgClient is the client API for Msg service.
@@ -28,6 +31,12 @@ const (
 type MsgClient interface {
 	// CreateBond defines a method for creating a new bond.
 	CreateBond(ctx context.Context, in *MsgCreateBond, opts ...grpc.CallOption) (*MsgCreateBondResponse, error)
+	// RefillBond defines a method for refilling amount for bond.
+	RefillBond(ctx context.Context, in *MsgRefillBond, opts ...grpc.CallOption) (*MsgRefillBondResponse, error)
+	// WithdrawBond defines a method for withdrawing amount from bond.
+	WithdrawBond(ctx context.Context, in *MsgWithdrawBond, opts ...grpc.CallOption) (*MsgWithdrawBondResponse, error)
+	// CancelBond defines a method for cancelling a bond.
+	CancelBond(ctx context.Context, in *MsgCancelBond, opts ...grpc.CallOption) (*MsgCancelBondResponse, error)
 }
 
 type msgClient struct {
@@ -47,12 +56,45 @@ func (c *msgClient) CreateBond(ctx context.Context, in *MsgCreateBond, opts ...g
 	return out, nil
 }
 
+func (c *msgClient) RefillBond(ctx context.Context, in *MsgRefillBond, opts ...grpc.CallOption) (*MsgRefillBondResponse, error) {
+	out := new(MsgRefillBondResponse)
+	err := c.cc.Invoke(ctx, Msg_RefillBond_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) WithdrawBond(ctx context.Context, in *MsgWithdrawBond, opts ...grpc.CallOption) (*MsgWithdrawBondResponse, error) {
+	out := new(MsgWithdrawBondResponse)
+	err := c.cc.Invoke(ctx, Msg_WithdrawBond_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) CancelBond(ctx context.Context, in *MsgCancelBond, opts ...grpc.CallOption) (*MsgCancelBondResponse, error) {
+	out := new(MsgCancelBondResponse)
+	err := c.cc.Invoke(ctx, Msg_CancelBond_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 // All implementations must embed UnimplementedMsgServer
 // for forward compatibility
 type MsgServer interface {
 	// CreateBond defines a method for creating a new bond.
 	CreateBond(context.Context, *MsgCreateBond) (*MsgCreateBondResponse, error)
+	// RefillBond defines a method for refilling amount for bond.
+	RefillBond(context.Context, *MsgRefillBond) (*MsgRefillBondResponse, error)
+	// WithdrawBond defines a method for withdrawing amount from bond.
+	WithdrawBond(context.Context, *MsgWithdrawBond) (*MsgWithdrawBondResponse, error)
+	// CancelBond defines a method for cancelling a bond.
+	CancelBond(context.Context, *MsgCancelBond) (*MsgCancelBondResponse, error)
 	mustEmbedUnimplementedMsgServer()
 }
 
@@ -62,6 +104,15 @@ type UnimplementedMsgServer struct {
 
 func (UnimplementedMsgServer) CreateBond(context.Context, *MsgCreateBond) (*MsgCreateBondResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateBond not implemented")
+}
+func (UnimplementedMsgServer) RefillBond(context.Context, *MsgRefillBond) (*MsgRefillBondResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RefillBond not implemented")
+}
+func (UnimplementedMsgServer) WithdrawBond(context.Context, *MsgWithdrawBond) (*MsgWithdrawBondResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method WithdrawBond not implemented")
+}
+func (UnimplementedMsgServer) CancelBond(context.Context, *MsgCancelBond) (*MsgCancelBondResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CancelBond not implemented")
 }
 func (UnimplementedMsgServer) mustEmbedUnimplementedMsgServer() {}
 
@@ -94,6 +145,60 @@ func _Msg_CreateBond_Handler(srv interface{}, ctx context.Context, dec func(inte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_RefillBond_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgRefillBond)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).RefillBond(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_RefillBond_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).RefillBond(ctx, req.(*MsgRefillBond))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_WithdrawBond_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgWithdrawBond)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).WithdrawBond(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_WithdrawBond_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).WithdrawBond(ctx, req.(*MsgWithdrawBond))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_CancelBond_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCancelBond)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).CancelBond(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_CancelBond_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).CancelBond(ctx, req.(*MsgCancelBond))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Msg_ServiceDesc is the grpc.ServiceDesc for Msg service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -104,6 +209,18 @@ var Msg_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateBond",
 			Handler:    _Msg_CreateBond_Handler,
+		},
+		{
+			MethodName: "RefillBond",
+			Handler:    _Msg_RefillBond_Handler,
+		},
+		{
+			MethodName: "WithdrawBond",
+			Handler:    _Msg_WithdrawBond_Handler,
+		},
+		{
+			MethodName: "CancelBond",
+			Handler:    _Msg_CancelBond_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

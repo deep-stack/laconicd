@@ -16,9 +16,37 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 			Service: bondv1.Query_ServiceDesc.ServiceName,
 			RpcCommandOptions: []*autocliv1.RpcCommandOptions{
 				{
+					RpcMethod:      "Params",
+					Use:            "params",
+					Short:          "Get the current bond parameters",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{},
+				},
+				{
 					RpcMethod:      "Bonds",
 					Use:            "list",
 					Short:          "List bonds",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{},
+				},
+				{
+					RpcMethod: "GetBondById",
+					Use:       "get [bond-id]",
+					Short:     "Get bond info by bond id",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "id"},
+					},
+				},
+				{
+					RpcMethod: "GetBondsByOwner",
+					Use:       "by-owner [owner-address]",
+					Short:     "Get bonds list by owner address",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "owner"},
+					},
+				},
+				{
+					RpcMethod:      "GetBondsModuleBalance",
+					Use:            "balance",
+					Short:          "Get bond module account balances",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{},
 				},
 			},
@@ -32,6 +60,32 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					Short:     "Create bond",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
 						{ProtoField: "coins"},
+					},
+				},
+				{
+					RpcMethod: "RefillBond",
+					Use:       "refill [bond-id] [amount]",
+					Short:     "Refill bond",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "id"},
+						{ProtoField: "coins"},
+					},
+				},
+				{
+					RpcMethod: "WithdrawBond",
+					Use:       "withdraw [bond-id] [amount]",
+					Short:     "Withdraw amount from bond",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "id"},
+						{ProtoField: "coins"},
+					},
+				},
+				{
+					RpcMethod: "CancelBond",
+					Use:       "cancel [bond-id]",
+					Short:     "Cancel bond",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "id"},
 					},
 				},
 			},

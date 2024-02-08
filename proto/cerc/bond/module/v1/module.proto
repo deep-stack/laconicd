@@ -10,6 +10,4 @@ message Module {
   option (cosmos.app.v1alpha1.module) = {
     go_import : "git.vdb.to/cerc-io/laconic2d/x/bond"
   };
-
-  // TODO: Setup any config required
 }

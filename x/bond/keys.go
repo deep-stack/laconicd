@@ -7,11 +7,13 @@ const (
 
 	// StoreKey is the string store representation
 	StoreKey = ModuleName
-
-	// TODO: Add required keys
 )
 
 // Store prefixes
 var (
-	BondsKey = collections.NewPrefix(0)
+	// ParamsKey is the prefix for params key
+	ParamsKeyPrefix = collections.NewPrefix(0)
+
+	BondsKeyPrefix       = collections.NewPrefix(1)
+	BondOwnerIndexPrefix = collections.NewPrefix(2)
 )

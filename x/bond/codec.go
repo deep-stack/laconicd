@@ -10,9 +10,9 @@ import (
 func RegisterInterfaces(registry types.InterfaceRegistry) {
 	registry.RegisterImplementations((*sdk.Msg)(nil),
 		&MsgCreateBond{},
-	// 	&MsgRefillBond{},
-	// 	&MsgCancelBond{},
-	// 	&MsgWithdrawBond{},
+		&MsgRefillBond{},
+		&MsgCancelBond{},
+		&MsgWithdrawBond{},
 	)
 	msgservice.RegisterMsgServiceDesc(registry, &_Msg_serviceDesc)
 }

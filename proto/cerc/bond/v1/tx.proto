@@ -9,8 +9,6 @@ import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/v1beta1/coin.proto";
 
-// TODO: Add remaining messages
-
 // Msg defines the bond Msg service.
 service Msg {
   option (cosmos.msg.v1.service) = true;
@@ -20,6 +18,20 @@ service Msg {
     option (google.api.http).post = "/cerc/bond/v1/create_bond";
   };
 
+  // RefillBond defines a method for refilling amount for bond.
+  rpc RefillBond(MsgRefillBond) returns (MsgRefillBondResponse) {
+    option (google.api.http).post = "/cerc/bond/v1/refill_bond";
+  };
+
+  // WithdrawBond defines a method for withdrawing amount from bond.
+  rpc WithdrawBond(MsgWithdrawBond) returns (MsgWithdrawBondResponse) {
+    option (google.api.http).post = "/cerc/bond/v1/withdraw_bond";
+  };
+
+  // CancelBond defines a method for cancelling a bond.
+  rpc CancelBond(MsgCancelBond) returns (MsgCancelBondResponse) {
+    option (google.api.http).post = "/cerc/bond/v1/cancel_bond";
+  };
 }
 
 // MsgCreateBond defines a SDK message for creating a new bond.
@@ -38,3 +50,46 @@ message MsgCreateBond {
 message MsgCreateBondResponse {
   string id = 1;
 }
+
+// MsgRefillBond defines a SDK message for refill the amount for bond.
+message MsgRefillBond {
+  option (cosmos.msg.v1.signer) = "signer";
+
+  string   id                             = 1;
+  string   signer                         = 2;
+  repeated cosmos.base.v1beta1.Coin coins = 3 [
+    (gogoproto.nullable)     = false,
+    (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins",
+    (gogoproto.moretags)     = "json:\"coins\" yaml:\"coins\""
+  ];
+}
+
+// MsgRefillBondResponse defines the Msg/RefillBond response type.
+message MsgRefillBondResponse {}
+
+// MsgWithdrawBond defines a SDK message for withdrawing amount from bond.
+message MsgWithdrawBond {
+  option (cosmos.msg.v1.signer) = "signer";
+
+  string   id                             = 1;
+  string   signer                         = 2;
+  repeated cosmos.base.v1beta1.Coin coins = 3 [
+    (gogoproto.nullable)     = false,
+    (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins",
+    (gogoproto.moretags)     = "json:\"coins\" yaml:\"coins\""
+  ];
+}
+
+// MsgWithdrawBondResponse defines the Msg/WithdrawBond response type.
+message MsgWithdrawBondResponse {}
+
+// MsgCancelBond defines a SDK message for the cancel the bond.
+message MsgCancelBond {
+  option (cosmos.msg.v1.signer) = "signer";
+
+  string id     = 1;
+  string signer = 2;
+}
+
+// MsgCancelBondResponse defines the Msg/CancelBond response type.
+message MsgCancelBondResponse {}
