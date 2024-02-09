@@ -5,10 +5,10 @@ package cerc.bond.v1;
 option go_package = "git.vdb.to/cerc-io/laconic2d/x/bond";
 
 import "gogoproto/gogo.proto";
-import "cerc/bond/v1/bond.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "cosmos/base/v1beta1/coin.proto";
+import "cerc/bond/v1/bond.proto";
 // import "cosmos/query/v1/query.proto";
 
 // Query defines the gRPC querier service for bond module
@@ -93,7 +93,7 @@ message QueryGetBondModuleBalanceRequest {}
 
 // QueryGetBondModuleBalanceResponse is the response type for bond module balance rpc method
 message QueryGetBondModuleBalanceResponse {
-  repeated cosmos.base.v1beta1.Coin balance = 2 [
+  repeated cosmos.base.v1beta1.Coin balance = 1 [
     (gogoproto.nullable)     = false,
     (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins",
     (gogoproto.moretags)     = "json:\"coins\" yaml:\"coins\""

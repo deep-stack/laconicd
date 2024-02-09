@@ -13,6 +13,7 @@ import (
 	"cosmossdk.io/log"
 	storetypes "cosmossdk.io/store/types"
 
+	auctionkeeper "git.vdb.to/cerc-io/laconic2d/x/auction/keeper"
 	bondkeeper "git.vdb.to/cerc-io/laconic2d/x/bond/keeper"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
@@ -33,6 +34,7 @@ import (
 	stakingkeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
 
 	_ "cosmossdk.io/api/cosmos/tx/config/v1"          // import for side-effects
+	_ "git.vdb.to/cerc-io/laconic2d/x/auction/module" // import for side-effects
 	_ "git.vdb.to/cerc-io/laconic2d/x/bond/module"    // import for side-effects
 	_ "github.com/cosmos/cosmos-sdk/x/auth"           // import for side-effects
 	_ "github.com/cosmos/cosmos-sdk/x/auth/tx/config" // import for side-effects
@@ -72,8 +74,8 @@ type LaconicApp struct {
 	ConsensusParamsKeeper consensuskeeper.Keeper
 
 	// laconic keepers
-	// AuctionKeeper        auctionkeeper.Keeper
-	BondKeeper bondkeeper.Keeper
+	AuctionKeeper auctionkeeper.Keeper
+	BondKeeper    bondkeeper.Keeper
 	// RegistryKeeper       registrykeeper.Keeper
 	// RegistryRecordKeeper registrykeeper.RecordKeeper
 
@@ -135,6 +137,7 @@ func NewLaconicApp(
 		&app.StakingKeeper,
 		&app.DistrKeeper,
 		&app.ConsensusParamsKeeper,
+		&app.AuctionKeeper,
 		&app.BondKeeper,
 	); err != nil {
 		return nil, err

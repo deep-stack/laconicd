@@ -1,23 +1,22 @@
-package bond
+package auction
 
 func DefaultGenesisState() *GenesisState {
 	return &GenesisState{
-		Params: DefaultParams(),
-		Bonds:  []*Bond{},
+		Params:   DefaultParams(),
+		Auctions: []*Auction{},
 	}
 }
 
-func NewGenesisState(params Params, bonds []*Bond) *GenesisState {
+func NewGenesisState(params Params, auctions []*Auction) *GenesisState {
 	return &GenesisState{
-		Params: params,
-		Bonds:  bonds,
+		Params:   params,
+		Auctions: auctions,
 	}
 }
 
 // Validate performs basic genesis state validation returning an error upon any
 func (gs *GenesisState) Validate() error {
-	err := gs.Params.Validate()
-	if err != nil {
+	if err := gs.Params.Validate(); err != nil {
 		return err
 	}
 
