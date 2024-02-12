@@ -8,11 +8,11 @@ import (
 	"git.vdb.to/cerc-io/laconic2d/x/bond"
 )
 
+var _ bond.MsgServer = msgServer{}
+
 type msgServer struct {
 	k Keeper
 }
-
-var _ bond.MsgServer = msgServer{}
 
 // NewMsgServerImpl returns an implementation of the module MsgServer interface.
 func NewMsgServerImpl(keeper Keeper) bond.MsgServer {

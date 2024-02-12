@@ -1,14 +1,100 @@
 package keeper
 
+import (
+	"context"
+
+	errorsmod "cosmossdk.io/errors"
+	sdk "github.com/cosmos/cosmos-sdk/types"
+	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
+
+	auctiontypes "git.vdb.to/cerc-io/laconic2d/x/auction"
+)
+
 // TODO: Add required read methods
 
-// var _ auctiontypes.QueryServer = queryServer{}
+var _ auctiontypes.QueryServer = queryServer{}
 
 type queryServer struct {
 	k Keeper
 }
 
 // NewQueryServerImpl returns an implementation of the module QueryServer.
-// func NewQueryServerImpl(k Keeper) auctiontypes.QueryServer {
-// 	return queryServer{k}
-// }
+func NewQueryServerImpl(k Keeper) auctiontypes.QueryServer {
+	return queryServer{k}
+}
+
+// Params implements the params query command
+func (qs queryServer) Params(c context.Context, req *auctiontypes.QueryParamsRequest) (*auctiontypes.QueryParamsResponse, error) {
+	ctx := sdk.UnwrapSDKContext(c)
+
+	params, err := qs.k.GetParams(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	return &auctiontypes.QueryParamsResponse{Params: params}, nil
+}
+
+// Auctions queries all auctions
+func (qs queryServer) Auctions(c context.Context, req *auctiontypes.QueryAuctionsRequest) (*auctiontypes.QueryAuctionsResponse, error) {
+	ctx := sdk.UnwrapSDKContext(c)
+
+	resp, err := qs.k.ListAuctions(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	return &auctiontypes.QueryAuctionsResponse{Auctions: &auctiontypes.Auctions{Auctions: resp}}, nil
+}
+
+// GetAuction queries an auction by id
+func (qs queryServer) GetAuction(c context.Context, req *auctiontypes.QueryAuctionRequest) (*auctiontypes.QueryAuctionResponse, error) {
+	ctx := sdk.UnwrapSDKContext(c)
+
+	if req.Id == "" {
+		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "auction id is required")
+	}
+
+	auction, err := qs.k.GetAuctionById(ctx, req.Id)
+	if err != nil {
+		return nil, err
+	}
+
+	return &auctiontypes.QueryAuctionResponse{Auction: &auction}, nil
+}
+
+// GetBid queries and auction bid
+func (qs queryServer) GetBid(c context.Context, req *auctiontypes.QueryBidRequest) (*auctiontypes.QueryBidResponse, error) {
+	panic("unimplemented")
+}
+
+// GetBids queries all auction bids
+func (qs queryServer) GetBids(c context.Context, req *auctiontypes.QueryBidsRequest) (*auctiontypes.QueryBidsResponse, error) {
+	panic("unimplemented")
+}
+
+// AuctionsByBidder queries auctions by bidder
+func (qs queryServer) AuctionsByBidder(c context.Context, req *auctiontypes.QueryAuctionsByBidderRequest) (*auctiontypes.QueryAuctionsByBidderResponse, error) {
+	panic("unimplemented")
+}
+
+// AuctionsByOwner queries auctions by owner
+func (qs queryServer) AuctionsByOwner(c context.Context, req *auctiontypes.QueryAuctionsByOwnerRequest) (*auctiontypes.QueryAuctionsByOwnerResponse, error) {
+	ctx := sdk.UnwrapSDKContext(c)
+
+	if req.OwnerAddress == "" {
+		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "owner address is required")
+	}
+
+	auctions, err := qs.k.GetAuctionsByOwner(ctx, req.OwnerAddress)
+	if err != nil {
+		return nil, err
+	}
+
+	return &auctiontypes.QueryAuctionsByOwnerResponse{Auctions: &auctiontypes.Auctions{Auctions: auctions}}, nil
+}
+
+// GetAuctionModuleBalance queries the auction module account balance
+func (qs queryServer) GetAuctionModuleBalance(c context.Context, req *auctiontypes.QueryGetAuctionModuleBalanceRequest) (*auctiontypes.QueryGetAuctionModuleBalanceResponse, error) {
+	panic("unimplemented")
+}

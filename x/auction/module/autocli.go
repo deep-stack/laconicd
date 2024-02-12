@@ -3,6 +3,8 @@ package module
 import (
 	autocliv1 "cosmossdk.io/api/cosmos/autocli/v1"
 	"cosmossdk.io/client/v2/autocli"
+
+	auctionv1 "git.vdb.to/cerc-io/laconic2d/api/cerc/auction/v1"
 )
 
 var _ autocli.HasAutoCLIConfig = AppModule{}
@@ -10,7 +12,55 @@ var _ autocli.HasAutoCLIConfig = AppModule{}
 // AutoCLIOptions implements the autocli.HasAutoCLIConfig interface.
 func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 	return &autocliv1.ModuleOptions{
-		Query: nil,
-		Tx:    nil,
+		Query: &autocliv1.ServiceCommandDescriptor{
+			Service: auctionv1.Query_ServiceDesc.ServiceName,
+			RpcCommandOptions: []*autocliv1.RpcCommandOptions{
+				{
+					RpcMethod:      "Params",
+					Use:            "params",
+					Short:          "Get the current auction parameters",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{},
+				},
+				{
+					RpcMethod:      "Auctions",
+					Use:            "list",
+					Short:          "List auctions",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{},
+				},
+				{
+					RpcMethod: "GetAuction",
+					Use:       "get [auction-id]",
+					Short:     "Get auction info by auction id",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "id"},
+					},
+				},
+				{
+					RpcMethod: "AuctionsByOwner",
+					Use:       "by-owner [owner-address]",
+					Short:     "Get auctions list by owner / creator address",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "owner_address"},
+					},
+				},
+			},
+		},
+		Tx: &autocliv1.ServiceCommandDescriptor{
+			Service: auctionv1.Msg_ServiceDesc.ServiceName,
+			RpcCommandOptions: []*autocliv1.RpcCommandOptions{
+				{
+					RpcMethod: "CreateAuction",
+					Use:       "create [commits-duration] [reveals-duration] [commit-fee] [reveal-fee] [minimum-bid]",
+					Short:     "Create an auction",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "commits_duration"},
+						{ProtoField: "reveals_duration"},
+						{ProtoField: "commit_fee"},
+						{ProtoField: "reveal_fee"},
+						{ProtoField: "minimum_bid"},
+					},
+				},
+			},
+		},
 	}
 }

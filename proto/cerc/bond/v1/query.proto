@@ -82,7 +82,10 @@ message QueryGetBondsByOwnerRequest {
 
 // QueryGetBondsByOwnerResponse is response type for Query/GetBondsByOwner RPC Method
 message QueryGetBondsByOwnerResponse {
-  repeated Bond bonds = 1 [(gogoproto.nullable) = false, (gogoproto.moretags) = "json:\"bonds\" yaml:\"bonds\""];
+  repeated Bond bonds = 1 [
+    (gogoproto.nullable) = false,
+    (gogoproto.moretags) = "json:\"bonds\" yaml:\"bonds\""
+  ];
 
   // pagination defines the pagination in the response.
   cosmos.base.query.v1beta1.PageResponse pagination = 2;

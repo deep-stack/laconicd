@@ -3,14 +3,14 @@ package auction
 func DefaultGenesisState() *GenesisState {
 	return &GenesisState{
 		Params:   DefaultParams(),
-		Auctions: []*Auction{},
+		Auctions: &Auctions{Auctions: []Auction{}},
 	}
 }
 
-func NewGenesisState(params Params, auctions []*Auction) *GenesisState {
+func NewGenesisState(params Params, auctions []Auction) *GenesisState {
 	return &GenesisState{
 		Params:   params,
-		Auctions: auctions,
+		Auctions: &Auctions{Auctions: auctions},
 	}
 }
 
