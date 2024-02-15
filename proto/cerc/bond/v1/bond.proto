@@ -2,10 +2,10 @@ syntax = "proto3";
 
 package cerc.bond.v1;
 
-option go_package = "git.vdb.to/cerc-io/laconic2d/x/bond";
-
 import "gogoproto/gogo.proto";
 import "cosmos/base/v1beta1/coin.proto";
+
+option go_package = "git.vdb.to/cerc-io/laconic2d/x/bond";
 
 // Params defines the parameters of the bond module.
 message Params {

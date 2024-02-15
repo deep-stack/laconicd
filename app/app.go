@@ -15,6 +15,7 @@ import (
 
 	auctionkeeper "git.vdb.to/cerc-io/laconic2d/x/auction/keeper"
 	bondkeeper "git.vdb.to/cerc-io/laconic2d/x/bond/keeper"
+	registrykeeper "git.vdb.to/cerc-io/laconic2d/x/registry/keeper"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -33,16 +34,17 @@ import (
 	genutiltypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
 	stakingkeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
 
-	_ "cosmossdk.io/api/cosmos/tx/config/v1"          // import for side-effects
-	_ "git.vdb.to/cerc-io/laconic2d/x/auction/module" // import for side-effects
-	_ "git.vdb.to/cerc-io/laconic2d/x/bond/module"    // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/auth"           // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/auth/tx/config" // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/bank"           // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/consensus"      // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/distribution"   // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/mint"           // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/staking"        // import for side-effects
+	_ "cosmossdk.io/api/cosmos/tx/config/v1"           // import for side-effects
+	_ "git.vdb.to/cerc-io/laconic2d/x/auction/module"  // import for side-effects
+	_ "git.vdb.to/cerc-io/laconic2d/x/bond/module"     // import for side-effects
+	_ "git.vdb.to/cerc-io/laconic2d/x/registry/module" // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/auth"            // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/auth/tx/config"  // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/bank"            // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/consensus"       // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/distribution"    // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/mint"            // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/staking"         // import for side-effects
 )
 
 // DefaultNodeHome default home directories for the application daemon
@@ -74,9 +76,9 @@ type LaconicApp struct {
 	ConsensusParamsKeeper consensuskeeper.Keeper
 
 	// laconic keepers
-	AuctionKeeper auctionkeeper.Keeper
-	BondKeeper    bondkeeper.Keeper
-	// RegistryKeeper       registrykeeper.Keeper
+	AuctionKeeper  auctionkeeper.Keeper
+	BondKeeper     bondkeeper.Keeper
+	RegistryKeeper registrykeeper.Keeper
 	// RegistryRecordKeeper registrykeeper.RecordKeeper
 
 	// simulation manager
@@ -139,6 +141,8 @@ func NewLaconicApp(
 		&app.ConsensusParamsKeeper,
 		&app.AuctionKeeper,
 		&app.BondKeeper,
+		// &app.RegistryRecordKeeper,
+		&app.RegistryKeeper,
 	); err != nil {
 		return nil, err
 	}

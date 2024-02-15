@@ -7,10 +7,10 @@ modules:
       # there is nothing left over in the validator fee pool, so as to keep the CanWithdrawInvariant invariant.
       # NOTE: staking module is required if HistoricalEntries param > 0
       begin_blockers: [distribution, staking]
-      end_blockers: [staking, auction]
+      end_blockers: [staking, auction, registry]
       # NOTE: The genutils module must occur after staking so that pools are properly initialized with tokens from genesis accounts.
       # NOTE: The genutils module must also occur after auth so that it can access the params from auth.
-      init_genesis: [auth, bank, distribution, staking, genutil, auction, bond]
+      init_genesis: [auth, bank, distribution, staking, genutil, auction, bond, registry]
       override_store_keys:
         - module_name: auth
           kv_store_key: acc
@@ -28,6 +28,9 @@ modules:
         - account: auction
         - account: auction_burn
         - account: bond
+        - account: registry
+        - account: record_rent
+        - account: authority_rent
   - name: bank
     config:
       "@type": cosmos.bank.module.v1.Module
@@ -54,3 +57,6 @@ modules:
   - name: auction
     config:
       "@type": cerc.auction.module.v1.Module
+  - name: registry
+    config:
+      "@type": cerc.registry.module.v1.Module
