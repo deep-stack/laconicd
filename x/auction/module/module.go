@@ -7,6 +7,7 @@ import (
 
 	"cosmossdk.io/core/appmodule"
 	gwruntime "github.com/grpc-ecosystem/grpc-gateway/runtime"
+	"github.com/spf13/cobra"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -15,6 +16,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 
 	"git.vdb.to/cerc-io/laconic2d/x/auction"
+	"git.vdb.to/cerc-io/laconic2d/x/auction/client/cli"
 	"git.vdb.to/cerc-io/laconic2d/x/auction/keeper"
 )
 
@@ -124,4 +126,9 @@ func (am AppModule) RegisterServices(cfg module.Configurator) {
 
 func (am AppModule) EndBlock(ctx context.Context) error {
 	return EndBlocker(ctx, am.keeper)
+}
+
+// Get the root tx command of this module
+func (AppModule) GetTxCmd() *cobra.Command {
+	return cli.GetTxCmd()
 }

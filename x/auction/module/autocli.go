@@ -43,6 +43,37 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 						{ProtoField: "owner_address"},
 					},
 				},
+				{
+					RpcMethod: "GetBid",
+					Use:       "get-bid [auction-id] [bidder]",
+					Short:     "Get auction bid by auction id and bidder",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "auction_id"},
+						{ProtoField: "bidder"},
+					},
+				},
+				{
+					RpcMethod: "GetBids",
+					Use:       "get-bids [auction-id]",
+					Short:     "Get all auction bids",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "auction_id"},
+					},
+				},
+				{
+					RpcMethod: "AuctionsByBidder",
+					Use:       "by-bidder [bidder]",
+					Short:     "Get auctions list by bidder",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "bidder_address"},
+					},
+				},
+				{
+					RpcMethod:      "GetAuctionModuleBalance",
+					Use:            "balance",
+					Short:          "Get auction module account balances",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{},
+				},
 			},
 		},
 		Tx: &autocliv1.ServiceCommandDescriptor{
@@ -61,6 +92,7 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					},
 				},
 			},
+			EnhanceCustomCommand: true, // Allow additional manual commands
 		},
 	}
 }

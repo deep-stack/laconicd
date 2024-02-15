@@ -70,8 +70,8 @@ func NewKeeper(
 		cdc:           cdc,
 		accountKeeper: accountKeeper,
 		bankKeeper:    bankKeeper,
-		Params:        collections.NewItem(sb, bondtypes.ParamsKeyPrefix, "params", codec.CollValue[bondtypes.Params](cdc)),
-		Bonds:         collections.NewIndexedMap(sb, bondtypes.BondsKeyPrefix, "bonds", collections.StringKey, codec.CollValue[bondtypes.Bond](cdc), newBondIndexes(sb)),
+		Params:        collections.NewItem(sb, bondtypes.ParamsPrefix, "params", codec.CollValue[bondtypes.Params](cdc)),
+		Bonds:         collections.NewIndexedMap(sb, bondtypes.BondsPrefix, "bonds", collections.StringKey, codec.CollValue[bondtypes.Bond](cdc), newBondIndexes(sb)),
 		// usageKeepers:  usageKeepers,
 	}
 

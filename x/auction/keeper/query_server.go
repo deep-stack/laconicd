@@ -10,8 +10,6 @@ import (
 	auctiontypes "git.vdb.to/cerc-io/laconic2d/x/auction"
 )
 
-// TODO: Add required read methods
-
 var _ auctiontypes.QueryServer = queryServer{}
 
 type queryServer struct {
@@ -39,12 +37,12 @@ func (qs queryServer) Params(c context.Context, req *auctiontypes.QueryParamsReq
 func (qs queryServer) Auctions(c context.Context, req *auctiontypes.QueryAuctionsRequest) (*auctiontypes.QueryAuctionsResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 
-	resp, err := qs.k.ListAuctions(ctx)
+	auctions, err := qs.k.ListAuctions(ctx)
 	if err != nil {
 		return nil, err
 	}
 
-	return &auctiontypes.QueryAuctionsResponse{Auctions: &auctiontypes.Auctions{Auctions: resp}}, nil
+	return &auctiontypes.QueryAuctionsResponse{Auctions: &auctiontypes.Auctions{Auctions: auctions}}, nil
 }
 
 // GetAuction queries an auction by id
@@ -63,19 +61,56 @@ func (qs queryServer) GetAuction(c context.Context, req *auctiontypes.QueryAucti
 	return &auctiontypes.QueryAuctionResponse{Auction: &auction}, nil
 }
 
-// GetBid queries and auction bid
+// GetBid queries an auction bid by auction-id and bidder
 func (qs queryServer) GetBid(c context.Context, req *auctiontypes.QueryBidRequest) (*auctiontypes.QueryBidResponse, error) {
-	panic("unimplemented")
+	ctx := sdk.UnwrapSDKContext(c)
+
+	if req.AuctionId == "" {
+		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "auction id is required")
+	}
+
+	if req.Bidder == "" {
+		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "bidder address is required")
+	}
+
+	bid, err := qs.k.GetBid(ctx, req.AuctionId, req.Bidder)
+	if err != nil {
+		return nil, err
+	}
+
+	return &auctiontypes.QueryBidResponse{Bid: &bid}, nil
 }
 
 // GetBids queries all auction bids
 func (qs queryServer) GetBids(c context.Context, req *auctiontypes.QueryBidsRequest) (*auctiontypes.QueryBidsResponse, error) {
-	panic("unimplemented")
+	ctx := sdk.UnwrapSDKContext(c)
+
+	if req.AuctionId == "" {
+		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "auction id is required")
+	}
+
+	bids, err := qs.k.GetBids(ctx, req.AuctionId)
+	if err != nil {
+		return nil, err
+	}
+
+	return &auctiontypes.QueryBidsResponse{Bids: bids}, nil
 }
 
 // AuctionsByBidder queries auctions by bidder
 func (qs queryServer) AuctionsByBidder(c context.Context, req *auctiontypes.QueryAuctionsByBidderRequest) (*auctiontypes.QueryAuctionsByBidderResponse, error) {
-	panic("unimplemented")
+	ctx := sdk.UnwrapSDKContext(c)
+
+	if req.BidderAddress == "" {
+		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "bidder address is required")
+	}
+
+	auctions, err := qs.k.QueryAuctionsByBidder(ctx, req.BidderAddress)
+	if err != nil {
+		return nil, err
+	}
+
+	return &auctiontypes.QueryAuctionsByBidderResponse{Auctions: &auctiontypes.Auctions{Auctions: auctions}}, nil
 }
 
 // AuctionsByOwner queries auctions by owner
@@ -96,5 +131,8 @@ func (qs queryServer) AuctionsByOwner(c context.Context, req *auctiontypes.Query
 
 // GetAuctionModuleBalance queries the auction module account balance
 func (qs queryServer) GetAuctionModuleBalance(c context.Context, req *auctiontypes.QueryGetAuctionModuleBalanceRequest) (*auctiontypes.QueryGetAuctionModuleBalanceResponse, error) {
-	panic("unimplemented")
+	ctx := sdk.UnwrapSDKContext(c)
+	balances := qs.k.GetAuctionModuleBalances(ctx)
+
+	return &auctiontypes.QueryGetAuctionModuleBalanceResponse{Balance: balances}, nil
 }
