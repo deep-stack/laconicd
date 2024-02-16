@@ -17,4 +17,7 @@ const (
 var (
 	// ParamsKey is the prefix for params key
 	ParamsPrefix = collections.NewPrefix(0)
+
+	RecordsPrefix     = collections.NewPrefix(1)
+	BondIdIndexPrefix = collections.NewPrefix(2)
 )

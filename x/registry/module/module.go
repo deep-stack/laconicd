@@ -7,6 +7,7 @@ import (
 
 	"cosmossdk.io/core/appmodule"
 	gwruntime "github.com/grpc-ecosystem/grpc-gateway/runtime"
+	"github.com/spf13/cobra"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -15,6 +16,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 
 	registrytypes "git.vdb.to/cerc-io/laconic2d/x/registry"
+	"git.vdb.to/cerc-io/laconic2d/x/registry/client/cli"
 	"git.vdb.to/cerc-io/laconic2d/x/registry/keeper"
 )
 
@@ -115,12 +117,17 @@ func (am AppModule) ExportGenesis(ctx sdk.Context, cdc codec.JSONCodec) json.Raw
 // RegisterServices registers a gRPC query service to respond to the module-specific gRPC queries.
 func (am AppModule) RegisterServices(cfg module.Configurator) {
 	// Register servers
-	// registrytypes.RegisterMsgServer(cfg.MsgServer(), keeper.NewMsgServerImpl(am.keeper))
-	// registrytypes.RegisterQueryServer(cfg.QueryServer(), keeper.NewQueryServerImpl(am.keeper))
+	registrytypes.RegisterMsgServer(cfg.MsgServer(), keeper.NewMsgServerImpl(am.keeper))
+	registrytypes.RegisterQueryServer(cfg.QueryServer(), keeper.NewQueryServerImpl(am.keeper))
 }
 
 // appmodule.HasEndBlocker
 
 func (am AppModule) EndBlock(ctx context.Context) error {
 	return EndBlocker(ctx, am.keeper)
+}
+
+// Get the root tx command of this module
+func (AppModule) GetTxCmd() *cobra.Command {
+	return cli.GetTxCmd()
 }

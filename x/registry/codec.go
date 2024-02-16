@@ -7,17 +7,19 @@ import (
 )
 
 func RegisterInterfaces(registry types.InterfaceRegistry) {
-	registry.RegisterImplementations((*sdk.Msg)(nil)) // &MsgSetName{},
-	// &MsgReserveAuthority{},
-	// &MsgDeleteNameAuthority{},
-	// &MsgSetAuthorityBond{},
+	registry.RegisterImplementations((*sdk.Msg)(nil),
+		&MsgSetName{},
+		&MsgReserveAuthority{},
+		&MsgDeleteNameAuthority{},
+		&MsgSetAuthorityBond{},
 
-	// &MsgSetRecord{},
-	// &MsgRenewRecord{},
-	// &MsgAssociateBond{},
-	// &MsgDissociateBond{},
-	// &MsgDissociateRecords{},
-	// &MsgReAssociateRecords{},
+		&MsgSetRecord{},
+		&MsgRenewRecord{},
+		&MsgAssociateBond{},
+		&MsgDissociateBond{},
+		&MsgDissociateRecords{},
+		&MsgReAssociateRecords{},
+	)
 
 	msgservice.RegisterMsgServiceDesc(registry, &_Msg_serviceDesc)
 }

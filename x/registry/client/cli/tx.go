@@ -1,0 +1,91 @@
+package cli
+
+import (
+	"os"
+
+	"github.com/cosmos/cosmos-sdk/client"
+	"github.com/cosmos/cosmos-sdk/client/flags"
+	"github.com/cosmos/cosmos-sdk/client/tx"
+	"gopkg.in/yaml.v3"
+
+	"github.com/spf13/cobra"
+
+	registrytypes "git.vdb.to/cerc-io/laconic2d/x/registry"
+)
+
+// GetTxCmd returns transaction commands for this module.
+func GetTxCmd() *cobra.Command {
+	registryTxCmd := &cobra.Command{
+		Use:                        registrytypes.ModuleName,
+		Short:                      "registry transaction subcommands",
+		DisableFlagParsing:         true,
+		SuggestionsMinimumDistance: 2,
+		RunE:                       client.ValidateCmd,
+	}
+
+	registryTxCmd.AddCommand(
+		GetCmdSetRecord(),
+		// GetCmdRenewRecord(),
+		// GetCmdAssociateBond(),
+		// GetCmdDissociateBond(),
+		// GetCmdDissociateRecords(),
+		// GetCmdReAssociateRecords(),
+		// GetCmdSetName(),
+		// GetCmdReserveName(),
+		// GetCmdSetAuthorityBond(),
+		// GetCmdDeleteName(),
+	)
+
+	return registryTxCmd
+}
+
+// GetCmdSetRecord is the CLI command for creating/updating a record.
+func GetCmdSetRecord() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "set [payload-file-path] [bond-id]",
+		Short: "Set record",
+		Args:  cobra.ExactArgs(2),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			clientCtx, err := client.GetClientTxContext(cmd)
+			if err != nil {
+				return err
+			}
+
+			payloadType, err := GetPayloadFromFile(args[0])
+			if err != nil {
+				return err
+			}
+
+			payload := payloadType.ToPayload()
+
+			msg := registrytypes.NewMsgSetRecord(payload, args[1], clientCtx.GetFromAddress())
+			err = msg.ValidateBasic()
+			if err != nil {
+				return err
+			}
+
+			return tx.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), msg)
+		},
+	}
+
+	flags.AddTxFlagsToCmd(cmd)
+
+	return cmd
+}
+
+// GetPayloadFromFile loads payload object from YAML file.
+func GetPayloadFromFile(filePath string) (*registrytypes.ReadablePayload, error) {
+	var payload registrytypes.ReadablePayload
+
+	data, err := os.ReadFile(filePath) // #nosec G304
+	if err != nil {
+		return nil, err
+	}
+
+	err = yaml.Unmarshal(data, &payload)
+	if err != nil {
+		return nil, err
+	}
+
+	return &payload, nil
+}

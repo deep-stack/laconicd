@@ -10,11 +10,11 @@ import (
 	bondtypes "git.vdb.to/cerc-io/laconic2d/x/bond"
 )
 
+var _ bondtypes.QueryServer = queryServer{}
+
 type queryServer struct {
 	k Keeper
 }
-
-var _ bondtypes.QueryServer = queryServer{}
 
 // NewQueryServerImpl returns an implementation of the module QueryServer.
 func NewQueryServerImpl(k Keeper) bondtypes.QueryServer {

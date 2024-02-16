@@ -360,3 +360,38 @@ func (k Keeper) getMaxBondAmount(ctx sdk.Context) (sdk.Coins, error) {
 	maxBondAmount := params.MaxBondAmount
 	return sdk.NewCoins(maxBondAmount), nil
 }
+
+// TransferCoinsToModuleAccount moves funds from the bonds module account to another module account.
+func (k Keeper) TransferCoinsToModuleAccount(ctx sdk.Context, id, moduleAccount string, coins sdk.Coins) error {
+	if has, err := k.HasBond(ctx, id); !has {
+		if err != nil {
+			return err
+		}
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Bond not found.")
+	}
+
+	bond, err := k.GetBondById(ctx, id)
+	if err != nil {
+		return err
+	}
+
+	// Deduct rent from bond.
+	updatedBalance, isNeg := bond.Balance.SafeSub(coins...)
+
+	if isNeg {
+		// Check if bond has sufficient funds.
+		return errorsmod.Wrap(sdkerrors.ErrInsufficientFunds, "Insufficient funds.")
+	}
+
+	// Move funds from bond module to record rent module.
+	err = k.bankKeeper.SendCoinsFromModuleToModule(ctx, bondtypes.ModuleName, moduleAccount, coins)
+	if err != nil {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Error transferring funds.")
+	}
+
+	// Update bond balance.
+	bond.Balance = updatedBalance
+	err = k.SaveBond(ctx, &bond)
+
+	return err
+}
