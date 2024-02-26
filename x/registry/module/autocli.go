@@ -85,6 +85,14 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 			Service: registryv1.Msg_ServiceDesc.ServiceName,
 			RpcCommandOptions: []*autocliv1.RpcCommandOptions{
 				{
+					RpcMethod: "RenewRecord",
+					Use:       "renew-record [record-id]",
+					Short:     "Renew (expired) record",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "record_id"},
+					},
+				},
+				{
 					RpcMethod: "ReserveName",
 					Use:       "reserve-name [name] [owner]",
 					Short:     "Reserve name",

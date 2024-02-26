@@ -159,17 +159,3 @@ func (qs queryServer) ResolveCrn(c context.Context, req *registrytypes.QueryReso
 
 	return &registrytypes.QueryResolveCrnResponse{Record: record}, nil
 }
-
-func (qs queryServer) GetRecordExpiryQueue(c context.Context, _ *registrytypes.QueryGetRecordExpiryQueueRequest) (*registrytypes.QueryGetRecordExpiryQueueResponse, error) {
-	ctx := sdk.UnwrapSDKContext(c)
-	records := qs.k.GetRecordExpiryQueue(ctx)
-	return &registrytypes.QueryGetRecordExpiryQueueResponse{Records: records}, nil
-}
-
-func (qs queryServer) GetAuthorityExpiryQueue(c context.Context,
-	_ *registrytypes.QueryGetAuthorityExpiryQueueRequest,
-) (*registrytypes.QueryGetAuthorityExpiryQueueResponse, error) {
-	ctx := sdk.UnwrapSDKContext(c)
-	authorities := qs.k.GetAuthorityExpiryQueue(ctx)
-	return &registrytypes.QueryGetAuthorityExpiryQueueResponse{Authorities: authorities}, nil
-}

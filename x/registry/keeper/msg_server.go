@@ -169,14 +169,17 @@ func (ms msgServer) DeleteName(c context.Context, msg *registrytypes.MsgDeleteNa
 
 func (ms msgServer) RenewRecord(c context.Context, msg *registrytypes.MsgRenewRecord) (*registrytypes.MsgRenewRecordResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
+
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
 		return nil, err
 	}
-	err = ms.k.ProcessRenewRecord(ctx, *msg)
+
+	err = ms.k.RenewRecord(ctx, *msg)
 	if err != nil {
 		return nil, err
 	}
+
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
 			registrytypes.EventTypeRenewRecord,

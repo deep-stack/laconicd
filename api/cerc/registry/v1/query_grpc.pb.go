@@ -27,8 +27,6 @@ const (
 	Query_Whois_FullMethodName                    = "/cerc.registry.v1.Query/Whois"
 	Query_LookupCrn_FullMethodName                = "/cerc.registry.v1.Query/LookupCrn"
 	Query_ResolveCrn_FullMethodName               = "/cerc.registry.v1.Query/ResolveCrn"
-	Query_GetRecordExpiryQueue_FullMethodName     = "/cerc.registry.v1.Query/GetRecordExpiryQueue"
-	Query_GetAuthorityExpiryQueue_FullMethodName  = "/cerc.registry.v1.Query/GetAuthorityExpiryQueue"
 	Query_GetRegistryModuleBalance_FullMethodName = "/cerc.registry.v1.Query/GetRegistryModuleBalance"
 )
 
@@ -52,10 +50,6 @@ type QueryClient interface {
 	LookupCrn(ctx context.Context, in *QueryLookupCrnRequest, opts ...grpc.CallOption) (*QueryLookupCrnResponse, error)
 	// ResolveCrn
 	ResolveCrn(ctx context.Context, in *QueryResolveCrnRequest, opts ...grpc.CallOption) (*QueryResolveCrnResponse, error)
-	// GetRecordExpiryQueue
-	GetRecordExpiryQueue(ctx context.Context, in *QueryGetRecordExpiryQueueRequest, opts ...grpc.CallOption) (*QueryGetRecordExpiryQueueResponse, error)
-	// GetAuthorityExpiryQueue
-	GetAuthorityExpiryQueue(ctx context.Context, in *QueryGetAuthorityExpiryQueueRequest, opts ...grpc.CallOption) (*QueryGetAuthorityExpiryQueueResponse, error)
 	// Get registry module balance
 	GetRegistryModuleBalance(ctx context.Context, in *QueryGetRegistryModuleBalanceRequest, opts ...grpc.CallOption) (*QueryGetRegistryModuleBalanceResponse, error)
 }
@@ -140,24 +134,6 @@ func (c *queryClient) ResolveCrn(ctx context.Context, in *QueryResolveCrnRequest
 	return out, nil
 }
 
-func (c *queryClient) GetRecordExpiryQueue(ctx context.Context, in *QueryGetRecordExpiryQueueRequest, opts ...grpc.CallOption) (*QueryGetRecordExpiryQueueResponse, error) {
-	out := new(QueryGetRecordExpiryQueueResponse)
-	err := c.cc.Invoke(ctx, Query_GetRecordExpiryQueue_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *queryClient) GetAuthorityExpiryQueue(ctx context.Context, in *QueryGetAuthorityExpiryQueueRequest, opts ...grpc.CallOption) (*QueryGetAuthorityExpiryQueueResponse, error) {
-	out := new(QueryGetAuthorityExpiryQueueResponse)
-	err := c.cc.Invoke(ctx, Query_GetAuthorityExpiryQueue_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *queryClient) GetRegistryModuleBalance(ctx context.Context, in *QueryGetRegistryModuleBalanceRequest, opts ...grpc.CallOption) (*QueryGetRegistryModuleBalanceResponse, error) {
 	out := new(QueryGetRegistryModuleBalanceResponse)
 	err := c.cc.Invoke(ctx, Query_GetRegistryModuleBalance_FullMethodName, in, out, opts...)
@@ -187,10 +163,6 @@ type QueryServer interface {
 	LookupCrn(context.Context, *QueryLookupCrnRequest) (*QueryLookupCrnResponse, error)
 	// ResolveCrn
 	ResolveCrn(context.Context, *QueryResolveCrnRequest) (*QueryResolveCrnResponse, error)
-	// GetRecordExpiryQueue
-	GetRecordExpiryQueue(context.Context, *QueryGetRecordExpiryQueueRequest) (*QueryGetRecordExpiryQueueResponse, error)
-	// GetAuthorityExpiryQueue
-	GetAuthorityExpiryQueue(context.Context, *QueryGetAuthorityExpiryQueueRequest) (*QueryGetAuthorityExpiryQueueResponse, error)
 	// Get registry module balance
 	GetRegistryModuleBalance(context.Context, *QueryGetRegistryModuleBalanceRequest) (*QueryGetRegistryModuleBalanceResponse, error)
 	mustEmbedUnimplementedQueryServer()
@@ -223,12 +195,6 @@ func (UnimplementedQueryServer) LookupCrn(context.Context, *QueryLookupCrnReques
 }
 func (UnimplementedQueryServer) ResolveCrn(context.Context, *QueryResolveCrnRequest) (*QueryResolveCrnResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResolveCrn not implemented")
-}
-func (UnimplementedQueryServer) GetRecordExpiryQueue(context.Context, *QueryGetRecordExpiryQueueRequest) (*QueryGetRecordExpiryQueueResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetRecordExpiryQueue not implemented")
-}
-func (UnimplementedQueryServer) GetAuthorityExpiryQueue(context.Context, *QueryGetAuthorityExpiryQueueRequest) (*QueryGetAuthorityExpiryQueueResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAuthorityExpiryQueue not implemented")
 }
 func (UnimplementedQueryServer) GetRegistryModuleBalance(context.Context, *QueryGetRegistryModuleBalanceRequest) (*QueryGetRegistryModuleBalanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRegistryModuleBalance not implemented")
@@ -390,42 +356,6 @@ func _Query_ResolveCrn_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_GetRecordExpiryQueue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryGetRecordExpiryQueueRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(QueryServer).GetRecordExpiryQueue(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Query_GetRecordExpiryQueue_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).GetRecordExpiryQueue(ctx, req.(*QueryGetRecordExpiryQueueRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Query_GetAuthorityExpiryQueue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryGetAuthorityExpiryQueueRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(QueryServer).GetAuthorityExpiryQueue(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Query_GetAuthorityExpiryQueue_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).GetAuthorityExpiryQueue(ctx, req.(*QueryGetAuthorityExpiryQueueRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Query_GetRegistryModuleBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(QueryGetRegistryModuleBalanceRequest)
 	if err := dec(in); err != nil {
@@ -482,14 +412,6 @@ var Query_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ResolveCrn",
 			Handler:    _Query_ResolveCrn_Handler,
-		},
-		{
-			MethodName: "GetRecordExpiryQueue",
-			Handler:    _Query_GetRecordExpiryQueue_Handler,
-		},
-		{
-			MethodName: "GetAuthorityExpiryQueue",
-			Handler:    _Query_GetAuthorityExpiryQueue_Handler,
 		},
 		{
 			MethodName: "GetRegistryModuleBalance",

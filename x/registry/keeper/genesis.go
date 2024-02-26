@@ -22,12 +22,13 @@ func (k *Keeper) InitGenesis(ctx sdk.Context, data *registry.GenesisState) error
 		// Add to record expiry queue if expiry time is in the future.
 		expiryTime, err := time.Parse(time.RFC3339, record.ExpiryTime)
 		if err != nil {
-			panic(err)
+			return err
 		}
 
 		if expiryTime.After(ctx.BlockTime()) {
-			// TODO
-			// k.InsertRecordExpiryQueue(ctx, record)
+			if err := k.insertRecordExpiryQueue(ctx, record); err != nil {
+				return err
+			}
 		}
 	}
 
@@ -38,9 +39,10 @@ func (k *Keeper) InitGenesis(ctx sdk.Context, data *registry.GenesisState) error
 				return err
 			}
 
-			// TODO
 			// Add authority name to expiry queue.
-			// k.InsertAuthorityExpiryQueue(ctx, authority.Name, authority.Entry.ExpiryTime)
+			if err := k.insertAuthorityExpiryQueue(ctx, authority.Name, authority.Entry.ExpiryTime); err != nil {
+				return err
+			}
 
 			// TODO
 			// Note: Bond genesis runs first, so bonds will already be present.

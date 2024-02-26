@@ -2,6 +2,7 @@ package keeper
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"sort"
 	"time"
@@ -91,11 +92,13 @@ type Keeper struct {
 	auctionKeeper auctionkeeper.Keeper
 
 	// state management
-	Schema      collections.Schema
-	Params      collections.Item[registrytypes.Params]
-	Records     *collections.IndexedMap[string, registrytypes.Record, RecordsIndexes]
-	Authorities *collections.IndexedMap[string, registrytypes.NameAuthority, AuthoritiesIndexes]
-	NameRecords *collections.IndexedMap[string, registrytypes.NameRecord, NameRecordsIndexes]
+	Schema               collections.Schema
+	Params               collections.Item[registrytypes.Params]
+	Records              *collections.IndexedMap[string, registrytypes.Record, RecordsIndexes]
+	Authorities          *collections.IndexedMap[string, registrytypes.NameAuthority, AuthoritiesIndexes]
+	NameRecords          *collections.IndexedMap[string, registrytypes.NameRecord, NameRecordsIndexes]
+	RecordExpiryQueue    collections.Map[time.Time, registrytypes.ExpiryQueue]
+	AuthorityExpiryQueue collections.Map[time.Time, registrytypes.ExpiryQueue]
 }
 
 // NewKeeper creates a new Keeper instance
@@ -131,6 +134,14 @@ func NewKeeper(
 			sb, registrytypes.NameRecordsPrefix, "name_records",
 			collections.StringKey, codec.CollValue[registrytypes.NameRecord](cdc),
 			newNameRecordIndexes(sb),
+		),
+		RecordExpiryQueue: collections.NewMap(
+			sb, registrytypes.RecordExpiryQueuePrefix, "record_expiry_queue",
+			sdk.TimeKey, codec.CollValue[registrytypes.ExpiryQueue](cdc),
+		),
+		AuthorityExpiryQueue: collections.NewMap(
+			sb, registrytypes.AuthorityExpiryQueuePrefix, "authority_expiry_queue",
+			sdk.TimeKey, codec.CollValue[registrytypes.ExpiryQueue](cdc),
 		),
 	}
 
@@ -213,10 +224,6 @@ func (k Keeper) GetRecordsByBondId(ctx sdk.Context, bondId string) ([]registryty
 
 // RecordsFromAttributes gets a list of records whose attributes match all provided values
 func (k Keeper) RecordsFromAttributes(ctx sdk.Context, attributes []*registrytypes.QueryRecordsRequest_KeyValueInput, all bool) ([]registrytypes.Record, error) {
-	panic("unimplemented")
-}
-
-func (k Keeper) GetRecordExpiryQueue(ctx sdk.Context) []*registrytypes.ExpiryQueueRecord {
 	panic("unimplemented")
 }
 
@@ -314,9 +321,7 @@ func (k Keeper) processRecord(ctx sdk.Context, record *registrytypes.ReadableRec
 	// 	return err
 	// }
 
-	// k.InsertRecordExpiryQueue(ctx, recordObj)
-
-	return nil
+	return k.insertRecordExpiryQueue(ctx, recordObj)
 }
 
 func (k Keeper) processAttributes(ctx sdk.Context, attrs registrytypes.AttributeMap, id string, prefix string) error {
@@ -411,4 +416,149 @@ func (k Keeper) GetModuleBalances(ctx sdk.Context) []*registrytypes.AccountBalan
 	}
 
 	return balances
+}
+
+// ProcessRecordExpiryQueue tries to renew expiring records (by collecting rent) else marks them as deleted.
+func (k Keeper) ProcessRecordExpiryQueue(ctx sdk.Context) error {
+	// TODO: process expired records
+	cids, err := k.getAllExpiredRecords(ctx, ctx.BlockHeader().Time)
+	if err != nil {
+		return err
+	}
+
+	for _, cid := range cids {
+		record, err := k.GetRecordById(ctx, cid)
+		if err != nil {
+			return err
+		}
+
+		bondExists := false
+		if record.BondId != "" {
+			bondExists, err = k.bondKeeper.HasBond(ctx, record.BondId)
+			if err != nil {
+				return err
+			}
+		}
+
+		// If record doesn't have an associated bond or if bond no longer exists, mark it deleted.
+		if !bondExists {
+			record.Deleted = true
+			if err := k.SaveRecord(ctx, record); err != nil {
+				return err
+			}
+
+			if err := k.deleteRecordExpiryQueue(ctx, record); err != nil {
+				return err
+			}
+		}
+
+		// Try to renew the record by taking rent.
+		if err := k.tryTakeRecordRent(ctx, record); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+// getAllExpiredRecords returns a concatenated list of all the timeslices before currTime.
+func (k Keeper) getAllExpiredRecords(ctx sdk.Context, currTime time.Time) ([]string, error) {
+	var expiredRecordCIDs []string
+
+	// Get all the records with expiry time until currTime
+	rng := new(collections.Range[time.Time]).EndInclusive(currTime)
+	err := k.RecordExpiryQueue.Walk(ctx, rng, func(key time.Time, value registrytypes.ExpiryQueue) (stop bool, err error) {
+		expiredRecordCIDs = append(expiredRecordCIDs, value.Value...)
+		return false, nil
+	})
+	if err != nil {
+		return []string{}, err
+	}
+
+	return expiredRecordCIDs, nil
+}
+
+// insertRecordExpiryQueue inserts a record CID to the appropriate timeslice in the record expiry queue.
+func (k Keeper) insertRecordExpiryQueue(ctx sdk.Context, record registrytypes.Record) error {
+	expiryTime, err := time.Parse(time.RFC3339, record.ExpiryTime)
+	if err != nil {
+		return err
+	}
+
+	existingRecordsList, err := k.RecordExpiryQueue.Get(ctx, expiryTime)
+	if err != nil {
+		if errors.Is(err, collections.ErrNotFound) {
+			existingRecordsList = registrytypes.ExpiryQueue{
+				Id:    expiryTime.String(),
+				Value: []string{},
+			}
+		} else {
+			return err
+		}
+	}
+
+	existingRecordsList.Value = append(existingRecordsList.Value, record.Id)
+
+	return k.RecordExpiryQueue.Set(ctx, expiryTime, existingRecordsList)
+}
+
+// deleteRecordExpiryQueue deletes a record CID from the record expiry queue.
+func (k Keeper) deleteRecordExpiryQueue(ctx sdk.Context, record registrytypes.Record) error {
+	expiryTime, err := time.Parse(time.RFC3339, record.ExpiryTime)
+	if err != nil {
+		return err
+	}
+
+	existingRecordsList, err := k.RecordExpiryQueue.Get(ctx, expiryTime)
+	if err != nil {
+		return err
+	}
+
+	newRecordsSlice := []string{}
+	for _, id := range existingRecordsList.Value {
+		if id != record.Id {
+			newRecordsSlice = append(newRecordsSlice, id)
+		}
+	}
+
+	if len(existingRecordsList.Value) == 0 {
+		return k.RecordExpiryQueue.Remove(ctx, expiryTime)
+	} else {
+		existingRecordsList.Value = newRecordsSlice
+		return k.RecordExpiryQueue.Set(ctx, expiryTime, existingRecordsList)
+	}
+}
+
+// tryTakeRecordRent tries to take rent from the record bond.
+func (k Keeper) tryTakeRecordRent(ctx sdk.Context, record registrytypes.Record) error {
+	params, err := k.GetParams(ctx)
+	if err != nil {
+		return err
+	}
+
+	rent := params.RecordRent
+	sdkErr := k.bondKeeper.TransferCoinsToModuleAccount(ctx, record.BondId, registrytypes.RecordRentModuleAccountName, sdk.NewCoins(rent))
+	if sdkErr != nil {
+		// Insufficient funds, mark record as deleted.
+		record.Deleted = true
+		if err := k.SaveRecord(ctx, record); err != nil {
+			return err
+		}
+
+		return k.deleteRecordExpiryQueue(ctx, record)
+	}
+
+	// Delete old expiry queue entry, create new one.
+	if err := k.deleteRecordExpiryQueue(ctx, record); err != nil {
+		return err
+	}
+
+	record.ExpiryTime = ctx.BlockHeader().Time.Add(params.RecordRentDuration).Format(time.RFC3339)
+	if err := k.insertRecordExpiryQueue(ctx, record); err != nil {
+		return err
+	}
+
+	// Save record.
+	record.Deleted = false
+	return k.SaveRecord(ctx, record)
 }

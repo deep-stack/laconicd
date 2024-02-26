@@ -146,3 +146,11 @@ message AuctionBidInfo {
   string auction_id     = 1 [(gogoproto.moretags) = "json:\"auction_id\" yaml:\"auction_id\""];
   string bidder_address = 2 [(gogoproto.moretags) = "json:\"bidder_address\" yaml:\"bidder_address\""];
 }
+
+// ExpiryQueue: record / authority expiry queue type
+// id:    expiry time
+// value: array of ids (record cids / authority names)
+message ExpiryQueue {
+  string          id    = 1;
+  repeated string value = 2;
+}

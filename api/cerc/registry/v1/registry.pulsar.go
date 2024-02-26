@@ -7108,6 +7108,550 @@ func (x *fastReflection_AuctionBidInfo) ProtoMethods() *protoiface.Methods {
 	}
 }
 
+var _ protoreflect.List = (*_ExpiryQueue_2_list)(nil)
+
+type _ExpiryQueue_2_list struct {
+	list *[]string
+}
+
+func (x *_ExpiryQueue_2_list) Len() int {
+	if x.list == nil {
+		return 0
+	}
+	return len(*x.list)
+}
+
+func (x *_ExpiryQueue_2_list) Get(i int) protoreflect.Value {
+	return protoreflect.ValueOfString((*x.list)[i])
+}
+
+func (x *_ExpiryQueue_2_list) Set(i int, value protoreflect.Value) {
+	valueUnwrapped := value.String()
+	concreteValue := valueUnwrapped
+	(*x.list)[i] = concreteValue
+}
+
+func (x *_ExpiryQueue_2_list) Append(value protoreflect.Value) {
+	valueUnwrapped := value.String()
+	concreteValue := valueUnwrapped
+	*x.list = append(*x.list, concreteValue)
+}
+
+func (x *_ExpiryQueue_2_list) AppendMutable() protoreflect.Value {
+	panic(fmt.Errorf("AppendMutable can not be called on message ExpiryQueue at list field Value as it is not of Message kind"))
+}
+
+func (x *_ExpiryQueue_2_list) Truncate(n int) {
+	*x.list = (*x.list)[:n]
+}
+
+func (x *_ExpiryQueue_2_list) NewElement() protoreflect.Value {
+	v := ""
+	return protoreflect.ValueOfString(v)
+}
+
+func (x *_ExpiryQueue_2_list) IsValid() bool {
+	return x.list != nil
+}
+
+var (
+	md_ExpiryQueue       protoreflect.MessageDescriptor
+	fd_ExpiryQueue_id    protoreflect.FieldDescriptor
+	fd_ExpiryQueue_value protoreflect.FieldDescriptor
+)
+
+func init() {
+	file_cerc_registry_v1_registry_proto_init()
+	md_ExpiryQueue = File_cerc_registry_v1_registry_proto.Messages().ByName("ExpiryQueue")
+	fd_ExpiryQueue_id = md_ExpiryQueue.Fields().ByName("id")
+	fd_ExpiryQueue_value = md_ExpiryQueue.Fields().ByName("value")
+}
+
+var _ protoreflect.Message = (*fastReflection_ExpiryQueue)(nil)
+
+type fastReflection_ExpiryQueue ExpiryQueue
+
+func (x *ExpiryQueue) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_ExpiryQueue)(x)
+}
+
+func (x *ExpiryQueue) slowProtoReflect() protoreflect.Message {
+	mi := &file_cerc_registry_v1_registry_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+var _fastReflection_ExpiryQueue_messageType fastReflection_ExpiryQueue_messageType
+var _ protoreflect.MessageType = fastReflection_ExpiryQueue_messageType{}
+
+type fastReflection_ExpiryQueue_messageType struct{}
+
+func (x fastReflection_ExpiryQueue_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_ExpiryQueue)(nil)
+}
+func (x fastReflection_ExpiryQueue_messageType) New() protoreflect.Message {
+	return new(fastReflection_ExpiryQueue)
+}
+func (x fastReflection_ExpiryQueue_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_ExpiryQueue
+}
+
+// Descriptor returns message descriptor, which contains only the protobuf
+// type information for the message.
+func (x *fastReflection_ExpiryQueue) Descriptor() protoreflect.MessageDescriptor {
+	return md_ExpiryQueue
+}
+
+// Type returns the message type, which encapsulates both Go and protobuf
+// type information. If the Go type information is not needed,
+// it is recommended that the message descriptor be used instead.
+func (x *fastReflection_ExpiryQueue) Type() protoreflect.MessageType {
+	return _fastReflection_ExpiryQueue_messageType
+}
+
+// New returns a newly allocated and mutable empty message.
+func (x *fastReflection_ExpiryQueue) New() protoreflect.Message {
+	return new(fastReflection_ExpiryQueue)
+}
+
+// Interface unwraps the message reflection interface and
+// returns the underlying ProtoMessage interface.
+func (x *fastReflection_ExpiryQueue) Interface() protoreflect.ProtoMessage {
+	return (*ExpiryQueue)(x)
+}
+
+// Range iterates over every populated field in an undefined order,
+// calling f for each field descriptor and value encountered.
+// Range returns immediately if f returns false.
+// While iterating, mutating operations may only be performed
+// on the current field descriptor.
+func (x *fastReflection_ExpiryQueue) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.Id != "" {
+		value := protoreflect.ValueOfString(x.Id)
+		if !f(fd_ExpiryQueue_id, value) {
+			return
+		}
+	}
+	if len(x.Value) != 0 {
+		value := protoreflect.ValueOfList(&_ExpiryQueue_2_list{list: &x.Value})
+		if !f(fd_ExpiryQueue_value, value) {
+			return
+		}
+	}
+}
+
+// Has reports whether a field is populated.
+//
+// Some fields have the property of nullability where it is possible to
+// distinguish between the default value of a field and whether the field
+// was explicitly populated with the default value. Singular message fields,
+// member fields of a oneof, and proto2 scalar fields are nullable. Such
+// fields are populated only if explicitly set.
+//
+// In other cases (aside from the nullable cases above),
+// a proto3 scalar field is populated if it contains a non-zero value, and
+// a repeated field is populated if it is non-empty.
+func (x *fastReflection_ExpiryQueue) Has(fd protoreflect.FieldDescriptor) bool {
+	switch fd.FullName() {
+	case "cerc.registry.v1.ExpiryQueue.id":
+		return x.Id != ""
+	case "cerc.registry.v1.ExpiryQueue.value":
+		return len(x.Value) != 0
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.ExpiryQueue"))
+		}
+		panic(fmt.Errorf("message cerc.registry.v1.ExpiryQueue does not contain field %s", fd.FullName()))
+	}
+}
+
+// Clear clears the field such that a subsequent Has call reports false.
+//
+// Clearing an extension field clears both the extension type and value
+// associated with the given field number.
+//
+// Clear is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_ExpiryQueue) Clear(fd protoreflect.FieldDescriptor) {
+	switch fd.FullName() {
+	case "cerc.registry.v1.ExpiryQueue.id":
+		x.Id = ""
+	case "cerc.registry.v1.ExpiryQueue.value":
+		x.Value = nil
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.ExpiryQueue"))
+		}
+		panic(fmt.Errorf("message cerc.registry.v1.ExpiryQueue does not contain field %s", fd.FullName()))
+	}
+}
+
+// Get retrieves the value for a field.
+//
+// For unpopulated scalars, it returns the default value, where
+// the default value of a bytes scalar is guaranteed to be a copy.
+// For unpopulated composite types, it returns an empty, read-only view
+// of the value; to obtain a mutable reference, use Mutable.
+func (x *fastReflection_ExpiryQueue) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+	switch descriptor.FullName() {
+	case "cerc.registry.v1.ExpiryQueue.id":
+		value := x.Id
+		return protoreflect.ValueOfString(value)
+	case "cerc.registry.v1.ExpiryQueue.value":
+		if len(x.Value) == 0 {
+			return protoreflect.ValueOfList(&_ExpiryQueue_2_list{})
+		}
+		listValue := &_ExpiryQueue_2_list{list: &x.Value}
+		return protoreflect.ValueOfList(listValue)
+	default:
+		if descriptor.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.ExpiryQueue"))
+		}
+		panic(fmt.Errorf("message cerc.registry.v1.ExpiryQueue does not contain field %s", descriptor.FullName()))
+	}
+}
+
+// Set stores the value for a field.
+//
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType.
+// When setting a composite type, it is unspecified whether the stored value
+// aliases the source's memory in any way. If the composite value is an
+// empty, read-only value, then it panics.
+//
+// Set is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_ExpiryQueue) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+	switch fd.FullName() {
+	case "cerc.registry.v1.ExpiryQueue.id":
+		x.Id = value.Interface().(string)
+	case "cerc.registry.v1.ExpiryQueue.value":
+		lv := value.List()
+		clv := lv.(*_ExpiryQueue_2_list)
+		x.Value = *clv.list
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.ExpiryQueue"))
+		}
+		panic(fmt.Errorf("message cerc.registry.v1.ExpiryQueue does not contain field %s", fd.FullName()))
+	}
+}
+
+// Mutable returns a mutable reference to a composite type.
+//
+// If the field is unpopulated, it may allocate a composite value.
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType
+// if not already stored.
+// It panics if the field does not contain a composite type.
+//
+// Mutable is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_ExpiryQueue) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "cerc.registry.v1.ExpiryQueue.value":
+		if x.Value == nil {
+			x.Value = []string{}
+		}
+		value := &_ExpiryQueue_2_list{list: &x.Value}
+		return protoreflect.ValueOfList(value)
+	case "cerc.registry.v1.ExpiryQueue.id":
+		panic(fmt.Errorf("field id of message cerc.registry.v1.ExpiryQueue is not mutable"))
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.ExpiryQueue"))
+		}
+		panic(fmt.Errorf("message cerc.registry.v1.ExpiryQueue does not contain field %s", fd.FullName()))
+	}
+}
+
+// NewField returns a new value that is assignable to the field
+// for the given descriptor. For scalars, this returns the default value.
+// For lists, maps, and messages, this returns a new, empty, mutable value.
+func (x *fastReflection_ExpiryQueue) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "cerc.registry.v1.ExpiryQueue.id":
+		return protoreflect.ValueOfString("")
+	case "cerc.registry.v1.ExpiryQueue.value":
+		list := []string{}
+		return protoreflect.ValueOfList(&_ExpiryQueue_2_list{list: &list})
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.ExpiryQueue"))
+		}
+		panic(fmt.Errorf("message cerc.registry.v1.ExpiryQueue does not contain field %s", fd.FullName()))
+	}
+}
+
+// WhichOneof reports which field within the oneof is populated,
+// returning nil if none are populated.
+// It panics if the oneof descriptor does not belong to this message.
+func (x *fastReflection_ExpiryQueue) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+	switch d.FullName() {
+	default:
+		panic(fmt.Errorf("%s is not a oneof field in cerc.registry.v1.ExpiryQueue", d.FullName()))
+	}
+	panic("unreachable")
+}
+
+// GetUnknown retrieves the entire list of unknown fields.
+// The caller may only mutate the contents of the RawFields
+// if the mutated bytes are stored back into the message with SetUnknown.
+func (x *fastReflection_ExpiryQueue) GetUnknown() protoreflect.RawFields {
+	return x.unknownFields
+}
+
+// SetUnknown stores an entire list of unknown fields.
+// The raw fields must be syntactically valid according to the wire format.
+// An implementation may panic if this is not the case.
+// Once stored, the caller must not mutate the content of the RawFields.
+// An empty RawFields may be passed to clear the fields.
+//
+// SetUnknown is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_ExpiryQueue) SetUnknown(fields protoreflect.RawFields) {
+	x.unknownFields = fields
+}
+
+// IsValid reports whether the message is valid.
+//
+// An invalid message is an empty, read-only value.
+//
+// An invalid message often corresponds to a nil pointer of the concrete
+// message type, but the details are implementation dependent.
+// Validity is not part of the protobuf data model, and may not
+// be preserved in marshaling or other operations.
+func (x *fastReflection_ExpiryQueue) IsValid() bool {
+	return x != nil
+}
+
+// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
+// This method may return nil.
+//
+// The returned methods type is identical to
+// "google.golang.org/protobuf/runtime/protoiface".Methods.
+// Consult the protoiface package documentation for details.
+func (x *fastReflection_ExpiryQueue) ProtoMethods() *protoiface.Methods {
+	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
+		x := input.Message.Interface().(*ExpiryQueue)
+		if x == nil {
+			return protoiface.SizeOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Size:              0,
+			}
+		}
+		options := runtime.SizeInputToOptions(input)
+		_ = options
+		var n int
+		var l int
+		_ = l
+		l = len(x.Id)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		if len(x.Value) > 0 {
+			for _, s := range x.Value {
+				l = len(s)
+				n += 1 + l + runtime.Sov(uint64(l))
+			}
+		}
+		if x.unknownFields != nil {
+			n += len(x.unknownFields)
+		}
+		return protoiface.SizeOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Size:              n,
+		}
+	}
+
+	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
+		x := input.Message.Interface().(*ExpiryQueue)
+		if x == nil {
+			return protoiface.MarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Buf:               input.Buf,
+			}, nil
+		}
+		options := runtime.MarshalInputToOptions(input)
+		_ = options
+		size := options.Size(x)
+		dAtA := make([]byte, size)
+		i := len(dAtA)
+		_ = i
+		var l int
+		_ = l
+		if x.unknownFields != nil {
+			i -= len(x.unknownFields)
+			copy(dAtA[i:], x.unknownFields)
+		}
+		if len(x.Value) > 0 {
+			for iNdEx := len(x.Value) - 1; iNdEx >= 0; iNdEx-- {
+				i -= len(x.Value[iNdEx])
+				copy(dAtA[i:], x.Value[iNdEx])
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Value[iNdEx])))
+				i--
+				dAtA[i] = 0x12
+			}
+		}
+		if len(x.Id) > 0 {
+			i -= len(x.Id)
+			copy(dAtA[i:], x.Id)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Id)))
+			i--
+			dAtA[i] = 0xa
+		}
+		if input.Buf != nil {
+			input.Buf = append(input.Buf, dAtA...)
+		} else {
+			input.Buf = dAtA
+		}
+		return protoiface.MarshalOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Buf:               input.Buf,
+		}, nil
+	}
+	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
+		x := input.Message.Interface().(*ExpiryQueue)
+		if x == nil {
+			return protoiface.UnmarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Flags:             input.Flags,
+			}, nil
+		}
+		options := runtime.UnmarshalInputToOptions(input)
+		_ = options
+		dAtA := input.Buf
+		l := len(dAtA)
+		iNdEx := 0
+		for iNdEx < l {
+			preIndex := iNdEx
+			var wire uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+				}
+				if iNdEx >= l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				wire |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			fieldNum := int32(wire >> 3)
+			wireType := int(wire & 0x7)
+			if wireType == 4 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: ExpiryQueue: wiretype end group for non-group")
+			}
+			if fieldNum <= 0 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: ExpiryQueue: illegal tag %d (wire type %d)", fieldNum, wire)
+			}
+			switch fieldNum {
+			case 1:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Id", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Id = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 2:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Value", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Value = append(x.Value, string(dAtA[iNdEx:postIndex]))
+				iNdEx = postIndex
+			default:
+				iNdEx = preIndex
+				skippy, err := runtime.Skip(dAtA[iNdEx:])
+				if err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				if (skippy < 0) || (iNdEx+skippy) < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if (iNdEx + skippy) > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if !options.DiscardUnknown {
+					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
+				}
+				iNdEx += skippy
+			}
+		}
+
+		if iNdEx > l {
+			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+		}
+		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
+	}
+	return &protoiface.Methods{
+		NoUnkeyedLiterals: struct{}{},
+		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
+		Size:              size,
+		Marshal:           marshal,
+		Unmarshal:         unmarshal,
+		Merge:             nil,
+		CheckInitialized:  nil,
+	}
+}
+
 // Code generated by protoc-gen-go. DO NOT EDIT.
 // versions:
 // 	protoc-gen-go v1.27.0
@@ -7764,6 +8308,52 @@ func (x *AuctionBidInfo) GetBidderAddress() string {
 	return ""
 }
 
+// ExpiryQueue: record / authority expiry queue type
+// id:    expiry time
+// value: array of ids (record cids / authority names)
+type ExpiryQueue struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id    string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Value []string `protobuf:"bytes,2,rep,name=value,proto3" json:"value,omitempty"`
+}
+
+func (x *ExpiryQueue) Reset() {
+	*x = ExpiryQueue{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cerc_registry_v1_registry_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ExpiryQueue) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExpiryQueue) ProtoMessage() {}
+
+// Deprecated: Use ExpiryQueue.ProtoReflect.Descriptor instead.
+func (*ExpiryQueue) Descriptor() ([]byte, []int) {
+	return file_cerc_registry_v1_registry_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ExpiryQueue) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *ExpiryQueue) GetValue() []string {
+	if x != nil {
+		return x.Value
+	}
+	return nil
+}
+
 var File_cerc_registry_v1_registry_proto protoreflect.FileDescriptor
 
 var file_cerc_registry_v1_registry_proto_rawDesc = []byte{
@@ -8009,20 +8599,23 @@ var file_cerc_registry_v1_registry_proto_rawDesc = []byte{
 	0x6e, 0x3a, 0x22, 0x62, 0x69, 0x64, 0x64, 0x65, 0x72, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73,
 	0x73, 0x22, 0x20, 0x79, 0x61, 0x6d, 0x6c, 0x3a, 0x22, 0x62, 0x69, 0x64, 0x64, 0x65, 0x72, 0x5f,
 	0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x22, 0x52, 0x0d, 0x62, 0x69, 0x64, 0x64, 0x65, 0x72,
-	0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x42, 0xc5, 0x01, 0x0a, 0x14, 0x63, 0x6f, 0x6d, 0x2e,
-	0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31,
-	0x42, 0x0d, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50,
-	0x01, 0x5a, 0x3c, 0x67, 0x69, 0x74, 0x2e, 0x76, 0x64, 0x62, 0x2e, 0x74, 0x6f, 0x2f, 0x63, 0x65,
-	0x72, 0x63, 0x2d, 0x69, 0x6f, 0x2f, 0x6c, 0x61, 0x63, 0x6f, 0x6e, 0x69, 0x63, 0x32, 0x64, 0x2f,
-	0x61, 0x70, 0x69, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72,
-	0x79, 0x2f, 0x76, 0x31, 0x3b, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x76, 0x31, 0xa2,
-	0x02, 0x03, 0x43, 0x52, 0x58, 0xaa, 0x02, 0x10, 0x43, 0x65, 0x72, 0x63, 0x2e, 0x52, 0x65, 0x67,
-	0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x10, 0x43, 0x65, 0x72, 0x63, 0x5c,
-	0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x5c, 0x56, 0x31, 0xe2, 0x02, 0x1c, 0x43, 0x65,
-	0x72, 0x63, 0x5c, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x5c, 0x56, 0x31, 0x5c, 0x47,
-	0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x12, 0x43, 0x65, 0x72,
-	0x63, 0x3a, 0x3a, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x3a, 0x3a, 0x56, 0x31, 0x62,
-	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x22, 0x33, 0x0a, 0x0b, 0x45, 0x78, 0x70, 0x69, 0x72,
+	0x79, 0x51, 0x75, 0x65, 0x75, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18,
+	0x02, 0x20, 0x03, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x42, 0xc5, 0x01, 0x0a,
+	0x14, 0x63, 0x6f, 0x6d, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74,
+	0x72, 0x79, 0x2e, 0x76, 0x31, 0x42, 0x0d, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x50,
+	0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x3c, 0x67, 0x69, 0x74, 0x2e, 0x76, 0x64, 0x62, 0x2e,
+	0x74, 0x6f, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2d, 0x69, 0x6f, 0x2f, 0x6c, 0x61, 0x63, 0x6f, 0x6e,
+	0x69, 0x63, 0x32, 0x64, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x72, 0x65,
+	0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2f, 0x76, 0x31, 0x3b, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74,
+	0x72, 0x79, 0x76, 0x31, 0xa2, 0x02, 0x03, 0x43, 0x52, 0x58, 0xaa, 0x02, 0x10, 0x43, 0x65, 0x72,
+	0x63, 0x2e, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x10,
+	0x43, 0x65, 0x72, 0x63, 0x5c, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x5c, 0x56, 0x31,
+	0xe2, 0x02, 0x1c, 0x43, 0x65, 0x72, 0x63, 0x5c, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79,
+	0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea,
+	0x02, 0x12, 0x43, 0x65, 0x72, 0x63, 0x3a, 0x3a, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79,
+	0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -8037,7 +8630,7 @@ func file_cerc_registry_v1_registry_proto_rawDescGZIP() []byte {
 	return file_cerc_registry_v1_registry_proto_rawDescData
 }
 
-var file_cerc_registry_v1_registry_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_cerc_registry_v1_registry_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_cerc_registry_v1_registry_proto_goTypes = []interface{}{
 	(*Params)(nil),                // 0: cerc.registry.v1.Params
 	(*Record)(nil),                // 1: cerc.registry.v1.Record
@@ -8049,23 +8642,24 @@ var file_cerc_registry_v1_registry_proto_goTypes = []interface{}{
 	(*Signature)(nil),             // 7: cerc.registry.v1.Signature
 	(*BlockChangeSet)(nil),        // 8: cerc.registry.v1.BlockChangeSet
 	(*AuctionBidInfo)(nil),        // 9: cerc.registry.v1.AuctionBidInfo
-	(*v1beta1.Coin)(nil),          // 10: cosmos.base.v1beta1.Coin
-	(*durationpb.Duration)(nil),   // 11: google.protobuf.Duration
-	(*timestamppb.Timestamp)(nil), // 12: google.protobuf.Timestamp
+	(*ExpiryQueue)(nil),           // 10: cerc.registry.v1.ExpiryQueue
+	(*v1beta1.Coin)(nil),          // 11: cosmos.base.v1beta1.Coin
+	(*durationpb.Duration)(nil),   // 12: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil), // 13: google.protobuf.Timestamp
 }
 var file_cerc_registry_v1_registry_proto_depIdxs = []int32{
-	10, // 0: cerc.registry.v1.Params.record_rent:type_name -> cosmos.base.v1beta1.Coin
-	11, // 1: cerc.registry.v1.Params.record_rent_duration:type_name -> google.protobuf.Duration
-	10, // 2: cerc.registry.v1.Params.authority_rent:type_name -> cosmos.base.v1beta1.Coin
-	11, // 3: cerc.registry.v1.Params.authority_rent_duration:type_name -> google.protobuf.Duration
-	11, // 4: cerc.registry.v1.Params.authority_grace_period:type_name -> google.protobuf.Duration
-	11, // 5: cerc.registry.v1.Params.authority_auction_commits_duration:type_name -> google.protobuf.Duration
-	11, // 6: cerc.registry.v1.Params.authority_auction_reveals_duration:type_name -> google.protobuf.Duration
-	10, // 7: cerc.registry.v1.Params.authority_auction_commit_fee:type_name -> cosmos.base.v1beta1.Coin
-	10, // 8: cerc.registry.v1.Params.authority_auction_reveal_fee:type_name -> cosmos.base.v1beta1.Coin
-	10, // 9: cerc.registry.v1.Params.authority_auction_minimum_bid:type_name -> cosmos.base.v1beta1.Coin
+	11, // 0: cerc.registry.v1.Params.record_rent:type_name -> cosmos.base.v1beta1.Coin
+	12, // 1: cerc.registry.v1.Params.record_rent_duration:type_name -> google.protobuf.Duration
+	11, // 2: cerc.registry.v1.Params.authority_rent:type_name -> cosmos.base.v1beta1.Coin
+	12, // 3: cerc.registry.v1.Params.authority_rent_duration:type_name -> google.protobuf.Duration
+	12, // 4: cerc.registry.v1.Params.authority_grace_period:type_name -> google.protobuf.Duration
+	12, // 5: cerc.registry.v1.Params.authority_auction_commits_duration:type_name -> google.protobuf.Duration
+	12, // 6: cerc.registry.v1.Params.authority_auction_reveals_duration:type_name -> google.protobuf.Duration
+	11, // 7: cerc.registry.v1.Params.authority_auction_commit_fee:type_name -> cosmos.base.v1beta1.Coin
+	11, // 8: cerc.registry.v1.Params.authority_auction_reveal_fee:type_name -> cosmos.base.v1beta1.Coin
+	11, // 9: cerc.registry.v1.Params.authority_auction_minimum_bid:type_name -> cosmos.base.v1beta1.Coin
 	3,  // 10: cerc.registry.v1.AuthorityEntry.entry:type_name -> cerc.registry.v1.NameAuthority
-	12, // 11: cerc.registry.v1.NameAuthority.expiry_time:type_name -> google.protobuf.Timestamp
+	13, // 11: cerc.registry.v1.NameAuthority.expiry_time:type_name -> google.protobuf.Timestamp
 	5,  // 12: cerc.registry.v1.NameEntry.entry:type_name -> cerc.registry.v1.NameRecord
 	6,  // 13: cerc.registry.v1.NameRecord.latest:type_name -> cerc.registry.v1.NameRecordEntry
 	6,  // 14: cerc.registry.v1.NameRecord.history:type_name -> cerc.registry.v1.NameRecordEntry
@@ -8203,6 +8797,18 @@ func file_cerc_registry_v1_registry_proto_init() {
 				return nil
 			}
 		}
+		file_cerc_registry_v1_registry_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ExpiryQueue); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -8210,7 +8816,7 @@ func file_cerc_registry_v1_registry_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_cerc_registry_v1_registry_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

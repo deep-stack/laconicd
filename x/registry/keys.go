@@ -27,4 +27,7 @@ var (
 
 	NameRecordsPrefix           = collections.NewPrefix(6)
 	NameRecordsByCidIndexPrefix = collections.NewPrefix(7)
+
+	RecordExpiryQueuePrefix    = collections.NewPrefix(8)
+	AuthorityExpiryQueuePrefix = collections.NewPrefix(9)
 )

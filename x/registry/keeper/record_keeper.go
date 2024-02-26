@@ -1,8 +1,12 @@
 package keeper
 
 import (
+	"time"
+
+	errorsmod "cosmossdk.io/errors"
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
 	auctionkeeper "git.vdb.to/cerc-io/laconic2d/x/auction/keeper"
 	registrytypes "git.vdb.to/cerc-io/laconic2d/x/registry"
@@ -17,9 +21,32 @@ type RecordKeeper struct {
 	// storeKey      storetypes.StoreKey // Unexposed key to access store from sdk.Context
 }
 
-// ProcessRenewRecord renews a record.
-func (k Keeper) ProcessRenewRecord(ctx sdk.Context, msg registrytypes.MsgRenewRecord) error {
-	panic("unimplemented")
+// RenewRecord renews a record.
+func (k Keeper) RenewRecord(ctx sdk.Context, msg registrytypes.MsgRenewRecord) error {
+	if has, err := k.HasRecord(ctx, msg.RecordId); !has {
+		if err != nil {
+			return err
+		}
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Record not found.")
+	}
+
+	// Check if renewal is required (i.e. expired record marked as deleted).
+	record, err := k.GetRecordById(ctx, msg.RecordId)
+	if err != nil {
+		return err
+	}
+
+	expiryTime, err := time.Parse(time.RFC3339, record.ExpiryTime)
+	if err != nil {
+		return err
+	}
+
+	if !record.Deleted || expiryTime.After(ctx.BlockTime()) {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Renewal not required.")
+	}
+
+	readableRecord := record.ToReadableRecord()
+	return k.processRecord(ctx, &readableRecord, true)
 }
 
 // ProcessAssociateBond associates a record with a bond.
