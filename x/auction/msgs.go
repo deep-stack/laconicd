@@ -6,7 +6,23 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 )
 
-var _ sdk.Msg = &MsgCommitBid{}
+var (
+	_ sdk.Msg = &MsgCreateAuction{}
+	_ sdk.Msg = &MsgCommitBid{}
+	_ sdk.Msg = &MsgRevealBid{}
+)
+
+// NewMsgCreateAuction is the constructor function for MsgCreateAuction.
+func NewMsgCreateAuction(params Params, signer sdk.AccAddress) MsgCreateAuction {
+	return MsgCreateAuction{
+		CommitsDuration: params.CommitsDuration,
+		RevealsDuration: params.RevealsDuration,
+		CommitFee:       params.CommitFee,
+		RevealFee:       params.RevealFee,
+		MinimumBid:      params.MinimumBid,
+		Signer:          signer.String(),
+	}
+}
 
 // NewMsgCommitBid is the constructor function for MsgCommitBid.
 func NewMsgCommitBid(auctionID string, commitHash string, signer sdk.AccAddress) MsgCommitBid {

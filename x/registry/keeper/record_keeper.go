@@ -17,11 +17,6 @@ type RecordKeeper struct {
 	// storeKey      storetypes.StoreKey // Unexposed key to access store from sdk.Context
 }
 
-// QueryRecordsByBond - get all records for the given bond.
-func (k RecordKeeper) QueryRecordsByBond(ctx sdk.Context, bondID string) []registrytypes.Record {
-	panic("unimplemented")
-}
-
 // ProcessRenewRecord renews a record.
 func (k Keeper) ProcessRenewRecord(ctx sdk.Context, msg registrytypes.MsgRenewRecord) error {
 	panic("unimplemented")

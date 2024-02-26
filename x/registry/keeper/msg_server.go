@@ -21,6 +21,7 @@ func NewMsgServerImpl(keeper Keeper) registrytypes.MsgServer {
 
 func (ms msgServer) SetRecord(c context.Context, msg *registrytypes.MsgSetRecord) (*registrytypes.MsgSetRecordResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
+
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
 		return nil, err
@@ -51,14 +52,17 @@ func (ms msgServer) SetRecord(c context.Context, msg *registrytypes.MsgSetRecord
 // nolint: all
 func (ms msgServer) SetName(c context.Context, msg *registrytypes.MsgSetName) (*registrytypes.MsgSetNameResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
+
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
 		return nil, err
 	}
-	err = ms.k.ProcessSetName(ctx, *msg)
+
+	err = ms.k.SetName(ctx, *msg)
 	if err != nil {
 		return nil, err
 	}
+
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
 			registrytypes.EventTypeSetRecord,
@@ -77,6 +81,7 @@ func (ms msgServer) SetName(c context.Context, msg *registrytypes.MsgSetName) (*
 
 func (ms msgServer) ReserveName(c context.Context, msg *registrytypes.MsgReserveAuthority) (*registrytypes.MsgReserveAuthorityResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
+
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
 		return nil, err
@@ -85,10 +90,12 @@ func (ms msgServer) ReserveName(c context.Context, msg *registrytypes.MsgReserve
 	if err != nil {
 		return nil, err
 	}
-	err = ms.k.ProcessReserveAuthority(ctx, *msg)
+
+	err = ms.k.ReserveAuthority(ctx, *msg)
 	if err != nil {
 		return nil, err
 	}
+
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
 			registrytypes.EventTypeReserveNameAuthority,
@@ -108,11 +115,12 @@ func (ms msgServer) ReserveName(c context.Context, msg *registrytypes.MsgReserve
 // nolint: all
 func (ms msgServer) SetAuthorityBond(c context.Context, msg *registrytypes.MsgSetAuthorityBond) (*registrytypes.MsgSetAuthorityBondResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
+
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
 		return nil, err
 	}
-	err = ms.k.ProcessSetAuthorityBond(ctx, *msg)
+	err = ms.k.SetAuthorityBond(ctx, *msg)
 	if err != nil {
 		return nil, err
 	}
@@ -134,14 +142,16 @@ func (ms msgServer) SetAuthorityBond(c context.Context, msg *registrytypes.MsgSe
 
 func (ms msgServer) DeleteName(c context.Context, msg *registrytypes.MsgDeleteNameAuthority) (*registrytypes.MsgDeleteNameAuthorityResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
+
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
 		return nil, err
 	}
-	err = ms.k.ProcessDeleteName(ctx, *msg)
+	err = ms.k.DeleteName(ctx, *msg)
 	if err != nil {
 		return nil, err
 	}
+
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
 			registrytypes.EventTypeDeleteName,

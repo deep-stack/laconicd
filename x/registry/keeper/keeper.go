@@ -40,10 +40,42 @@ func (b RecordsIndexes) IndexesList() []collections.Index[string, registrytypes.
 func newRecordIndexes(sb *collections.SchemaBuilder) RecordsIndexes {
 	return RecordsIndexes{
 		BondId: indexes.NewMulti(
-			sb, registrytypes.BondIdIndexPrefix, "records_by_bond_id",
+			sb, registrytypes.RecordsByBondIdIndexPrefix, "records_by_bond_id",
 			collections.StringKey, collections.StringKey,
 			func(_ string, v registrytypes.Record) (string, error) {
 				return v.BondId, nil
+			},
+		),
+	}
+}
+
+// TODO
+type AuthoritiesIndexes struct {
+}
+
+func (b AuthoritiesIndexes) IndexesList() []collections.Index[string, registrytypes.NameAuthority] {
+	return []collections.Index[string, registrytypes.NameAuthority]{}
+}
+
+func newAuthorityIndexes(sb *collections.SchemaBuilder) AuthoritiesIndexes {
+	return AuthoritiesIndexes{}
+}
+
+type NameRecordsIndexes struct {
+	Cid *indexes.Multi[string, string, registrytypes.NameRecord]
+}
+
+func (b NameRecordsIndexes) IndexesList() []collections.Index[string, registrytypes.NameRecord] {
+	return []collections.Index[string, registrytypes.NameRecord]{b.Cid}
+}
+
+func newNameRecordIndexes(sb *collections.SchemaBuilder) NameRecordsIndexes {
+	return NameRecordsIndexes{
+		Cid: indexes.NewMulti(
+			sb, registrytypes.NameRecordsByCidIndexPrefix, "name_records_by_cid",
+			collections.StringKey, collections.StringKey,
+			func(_ string, v registrytypes.NameRecord) (string, error) {
+				return v.Latest.Id, nil
 			},
 		),
 	}
@@ -59,9 +91,11 @@ type Keeper struct {
 	auctionKeeper auctionkeeper.Keeper
 
 	// state management
-	Schema  collections.Schema
-	Params  collections.Item[registrytypes.Params]
-	Records *collections.IndexedMap[string, registrytypes.Record, RecordsIndexes]
+	Schema      collections.Schema
+	Params      collections.Item[registrytypes.Params]
+	Records     *collections.IndexedMap[string, registrytypes.Record, RecordsIndexes]
+	Authorities *collections.IndexedMap[string, registrytypes.NameAuthority, AuthoritiesIndexes]
+	NameRecords *collections.IndexedMap[string, registrytypes.NameRecord, NameRecordsIndexes]
 }
 
 // NewKeeper creates a new Keeper instance
@@ -83,7 +117,21 @@ func NewKeeper(
 		bondKeeper:    bondKeeper,
 		auctionKeeper: auctionKeeper,
 		Params:        collections.NewItem(sb, registrytypes.ParamsPrefix, "params", codec.CollValue[registrytypes.Params](cdc)),
-		Records:       collections.NewIndexedMap(sb, registrytypes.RecordsPrefix, "records", collections.StringKey, codec.CollValue[registrytypes.Record](cdc), newRecordIndexes(sb)),
+		Records: collections.NewIndexedMap(
+			sb, registrytypes.RecordsPrefix, "records",
+			collections.StringKey, codec.CollValue[registrytypes.Record](cdc),
+			newRecordIndexes(sb),
+		),
+		Authorities: collections.NewIndexedMap(
+			sb, registrytypes.AuthoritiesPrefix, "authorities",
+			collections.StringKey, codec.CollValue[registrytypes.NameAuthority](cdc),
+			newAuthorityIndexes(sb),
+		),
+		NameRecords: collections.NewIndexedMap(
+			sb, registrytypes.NameRecordsPrefix, "name_records",
+			collections.StringKey, codec.CollValue[registrytypes.NameRecord](cdc),
+			newNameRecordIndexes(sb),
+		),
 	}
 
 	schema, err := sb.Build()
@@ -106,27 +154,61 @@ func (k Keeper) HasRecord(ctx sdk.Context, id string) (bool, error) {
 	return has, nil
 }
 
-// GetRecord - gets a record from the store.
-func (k Keeper) GetRecord(ctx sdk.Context, id string) (registrytypes.Record, error) {
+// ListRecords - get all records.
+func (k Keeper) ListRecords(ctx sdk.Context) ([]registrytypes.Record, error) {
+	var records []registrytypes.Record
+
+	err := k.Records.Walk(ctx, nil, func(key string, value registrytypes.Record) (bool, error) {
+		if err := k.populateRecordNames(ctx, &value); err != nil {
+			return true, err
+		}
+		records = append(records, value)
+
+		return false, nil
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	return records, nil
+}
+
+// GetRecordById - gets a record from the store.
+func (k Keeper) GetRecordById(ctx sdk.Context, id string) (registrytypes.Record, error) {
 	record, err := k.Records.Get(ctx, id)
 	if err != nil {
+		return registrytypes.Record{}, err
+	}
+
+	if err := k.populateRecordNames(ctx, &record); err != nil {
 		return registrytypes.Record{}, err
 	}
 
 	return record, nil
 }
 
-// ListRecords - get all records.
-func (k Keeper) ListRecords(ctx sdk.Context) ([]registrytypes.Record, error) {
-	iter, err := k.Records.Iterate(ctx, nil)
+// GetRecordsByBondId - gets a record from the store.
+func (k Keeper) GetRecordsByBondId(ctx sdk.Context, bondId string) ([]registrytypes.Record, error) {
+	var records []registrytypes.Record
+
+	err := k.Records.Indexes.BondId.Walk(ctx, collections.NewPrefixedPairRange[string, string](bondId), func(bondId string, id string) (bool, error) {
+		record, err := k.Records.Get(ctx, id)
+		if err != nil {
+			return true, err
+		}
+
+		if err := k.populateRecordNames(ctx, &record); err != nil {
+			return true, err
+		}
+		records = append(records, record)
+
+		return false, nil
+	})
 	if err != nil {
-		return nil, err
+		return []registrytypes.Record{}, err
 	}
 
-	// TODO: Check if required
-	// decodeRecordNames(store, &record)
-
-	return iter.Values()
+	return records, nil
 }
 
 // RecordsFromAttributes gets a list of records whose attributes match all provided values
@@ -292,7 +374,41 @@ func (k Keeper) processAttributeMap(ctx sdk.Context, n ipld.Node, id string, pre
 	return nil
 }
 
+func (k Keeper) populateRecordNames(ctx sdk.Context, record *registrytypes.Record) error {
+	iter, err := k.NameRecords.Indexes.Cid.MatchExact(ctx, record.Id)
+	if err != nil {
+		return err
+	}
+
+	names, err := iter.PrimaryKeys()
+	if err != nil {
+		return err
+	}
+	record.Names = names
+
+	return nil
+}
+
 // GetModuleBalances gets the registry module account(s) balances.
 func (k Keeper) GetModuleBalances(ctx sdk.Context) []*registrytypes.AccountBalance {
-	panic("unimplemented")
+	var balances []*registrytypes.AccountBalance
+	accountNames := []string{
+		registrytypes.RecordRentModuleAccountName,
+		registrytypes.AuthorityRentModuleAccountName,
+	}
+
+	for _, accountName := range accountNames {
+		moduleAddress := k.accountKeeper.GetModuleAddress(accountName)
+
+		moduleAccount := k.accountKeeper.GetAccount(ctx, moduleAddress)
+		if moduleAccount != nil {
+			accountBalance := k.bankKeeper.GetAllBalances(ctx, moduleAddress)
+			balances = append(balances, &registrytypes.AccountBalance{
+				AccountName: accountName,
+				Balance:     accountBalance,
+			})
+		}
+	}
+
+	return balances
 }

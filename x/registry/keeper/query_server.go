@@ -67,7 +67,7 @@ func (qs queryServer) GetRecord(c context.Context, req *registrytypes.QueryRecor
 		return nil, errorsmod.Wrap(sdkerrors.ErrUnknownRequest, "Record not found.")
 	}
 
-	record, err := qs.k.GetRecord(ctx, id)
+	record, err := qs.k.GetRecordById(ctx, id)
 	if err != nil {
 		return nil, err
 	}
@@ -77,7 +77,12 @@ func (qs queryServer) GetRecord(c context.Context, req *registrytypes.QueryRecor
 
 func (qs queryServer) GetRecordsByBondId(c context.Context, req *registrytypes.QueryRecordsByBondIdRequest) (*registrytypes.QueryRecordsByBondIdResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
-	records := qs.k.recordKeeper.QueryRecordsByBond(ctx, req.GetId())
+
+	records, err := qs.k.GetRecordsByBondId(ctx, req.GetId())
+	if err != nil {
+		return nil, err
+	}
+
 	return &registrytypes.QueryRecordsByBondIdResponse{Records: records}, nil
 }
 
@@ -85,7 +90,9 @@ func (qs queryServer) GetRegistryModuleBalance(c context.Context,
 	_ *registrytypes.QueryGetRegistryModuleBalanceRequest,
 ) (*registrytypes.QueryGetRegistryModuleBalanceResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
+
 	balances := qs.k.GetModuleBalances(ctx)
+
 	return &registrytypes.QueryGetRegistryModuleBalanceResponse{
 		Balances: balances,
 	}, nil
@@ -93,36 +100,63 @@ func (qs queryServer) GetRegistryModuleBalance(c context.Context,
 
 func (qs queryServer) NameRecords(c context.Context, _ *registrytypes.QueryNameRecordsRequest) (*registrytypes.QueryNameRecordsResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
-	nameRecords := qs.k.ListNameRecords(ctx)
+
+	nameRecords, err := qs.k.ListNameRecords(ctx)
+	if err != nil {
+		return nil, err
+	}
+
 	return &registrytypes.QueryNameRecordsResponse{Names: nameRecords}, nil
 }
 
 func (qs queryServer) Whois(c context.Context, request *registrytypes.QueryWhoisRequest) (*registrytypes.QueryWhoisResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
-	nameAuthority := qs.k.GetNameAuthority(ctx, request.GetName())
+
+	nameAuthority, err := qs.k.GetNameAuthority(ctx, request.GetName())
+	if err != nil {
+		return nil, err
+	}
+
 	return &registrytypes.QueryWhoisResponse{NameAuthority: nameAuthority}, nil
 }
 
 func (qs queryServer) LookupCrn(c context.Context, req *registrytypes.QueryLookupCrnRequest) (*registrytypes.QueryLookupCrnResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 	crn := req.GetCrn()
-	if !qs.k.HasNameRecord(ctx, crn) {
+
+	crnExists, err := qs.k.HasNameRecord(ctx, crn)
+	if err != nil {
+		return nil, err
+	}
+	if !crnExists {
 		return nil, errorsmod.Wrap(sdkerrors.ErrUnknownRequest, "CRN not found.")
 	}
-	nameRecord := qs.k.GetNameRecord(ctx, crn)
+
+	nameRecord, err := qs.k.LookupNameRecord(ctx, crn)
 	if nameRecord == nil {
+		if err != nil {
+			return nil, err
+		}
+
 		return nil, errorsmod.Wrap(sdkerrors.ErrUnknownRequest, "name record not found.")
 	}
+
 	return &registrytypes.QueryLookupCrnResponse{Name: nameRecord}, nil
 }
 
 func (qs queryServer) ResolveCrn(c context.Context, req *registrytypes.QueryResolveCrnRequest) (*registrytypes.QueryResolveCrnResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
+
 	crn := req.GetCrn()
-	record := qs.k.ResolveCRN(ctx, crn)
+	record, err := qs.k.ResolveCRN(ctx, crn)
 	if record == nil {
+		if err != nil {
+			return nil, err
+		}
+
 		return nil, errorsmod.Wrap(sdkerrors.ErrUnknownRequest, "record not found.")
 	}
+
 	return &registrytypes.QueryResolveCrnResponse{Record: record}, nil
 }
 

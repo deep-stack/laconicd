@@ -217,17 +217,17 @@ func (k Keeper) ListAuctions(ctx sdk.Context) ([]auctiontypes.Auction, error) {
 func (k Keeper) MatchAuctions(ctx sdk.Context, matchFn func(*auctiontypes.Auction) (bool, error)) ([]*auctiontypes.Auction, error) {
 	var auctions []*auctiontypes.Auction
 
-	err := k.Auctions.Walk(ctx, nil, func(key string, value auctiontypes.Auction) (stop bool, err error) {
+	err := k.Auctions.Walk(ctx, nil, func(key string, value auctiontypes.Auction) (bool, error) {
 		auctionMatched, err := matchFn(&value)
 		if err != nil {
-			return false, err
+			return true, err
 		}
 
 		if auctionMatched {
 			auctions = append(auctions, &value)
 		}
 
-		return true, nil
+		return false, nil
 	})
 	if err != nil {
 		return nil, err
@@ -532,10 +532,8 @@ func (k Keeper) GetAuctionModuleBalances(ctx sdk.Context) sdk.Coins {
 }
 
 func (k Keeper) EndBlockerProcessAuctions(ctx sdk.Context) error {
-	var err error
-
 	// Transition auction state (commit, reveal, expired, completed).
-	if err = k.processAuctionPhases(ctx); err != nil {
+	if err := k.processAuctionPhases(ctx); err != nil {
 		return err
 	}
 

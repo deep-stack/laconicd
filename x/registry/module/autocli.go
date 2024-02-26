@@ -35,11 +35,91 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 						{ProtoField: "id"},
 					},
 				},
+				{
+					RpcMethod: "GetRecordsByBondId",
+					Use:       "get-records-by-bond-id [bond-id]",
+					Short:     "Get records by bond id",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "id"},
+					},
+				},
+				{
+					RpcMethod: "Whois",
+					Use:       "whois [name]",
+					Short:     "Get name authority info",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "name"},
+					},
+				},
+				{
+					RpcMethod:      "NameRecords",
+					Use:            "names",
+					Short:          "List name records",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{},
+				},
+				{
+					RpcMethod: "LookupCrn",
+					Use:       "lookup [crn]",
+					Short:     "Get naming info for CRN",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "crn"},
+					},
+				},
+				{
+					RpcMethod: "ResolveCrn",
+					Use:       "resolve [crn]",
+					Short:     "Resolve CRN to record",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "crn"},
+					},
+				},
+				{
+					RpcMethod:      "GetRegistryModuleBalance",
+					Use:            "balance",
+					Short:          "Get registry module account balances",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{},
+				},
 			},
 		},
 		Tx: &autocliv1.ServiceCommandDescriptor{
-			Service:              registryv1.Msg_ServiceDesc.ServiceName,
-			RpcCommandOptions:    []*autocliv1.RpcCommandOptions{},
+			Service: registryv1.Msg_ServiceDesc.ServiceName,
+			RpcCommandOptions: []*autocliv1.RpcCommandOptions{
+				{
+					RpcMethod: "ReserveName",
+					Use:       "reserve-name [name] [owner]",
+					Short:     "Reserve name",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "name"},
+						{ProtoField: "owner"},
+					},
+				},
+				{
+					RpcMethod: "SetAuthorityBond",
+					Use:       "authority-bond [name] [bond-id]",
+					Short:     "Associate authority with bond",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "name"},
+						{ProtoField: "bond_id"},
+					},
+				},
+				{
+					RpcMethod: "SetName",
+					Use:       "set-name [crn] [cid]",
+					Short:     "Set CRN to CID mapping",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "crn"},
+						{ProtoField: "cid"},
+					},
+				},
+				{
+					RpcMethod: "DeleteName",
+					Use:       "delete-name [crn]",
+					Short:     "Delete CRN",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "crn"},
+					},
+				},
+			},
 			EnhanceCustomCommand: true, // Allow additional manual commands
 		},
 	}
