@@ -127,6 +127,40 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 						{ProtoField: "crn"},
 					},
 				},
+				{
+					RpcMethod: "AssociateBond",
+					Use:       "associate-bond [record-id] [bond-id]",
+					Short:     "Associate record with a bond",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "record_id"},
+						{ProtoField: "bond_id"},
+					},
+				},
+				{
+					RpcMethod: "DissociateBond",
+					Use:       "dissociate-bond [record-id]",
+					Short:     "Dissociate record from (existing) bond",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "record_id"},
+					},
+				},
+				{
+					RpcMethod: "DissociateRecords",
+					Use:       "dissociate-records [bond-id]",
+					Short:     "Dissociate all records from a bond",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "bond_id"},
+					},
+				},
+				{
+					RpcMethod: "ReassociateRecords",
+					Use:       "reassociate-records [old-bond-id] [new-bond-id]",
+					Short:     "Re-associate all records from an old to a new bond",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "old_bond_id"},
+						{ProtoField: "new_bond_id"},
+					},
+				},
 			},
 			EnhanceCustomCommand: true, // Allow additional manual commands
 		},

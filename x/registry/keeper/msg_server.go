@@ -120,10 +120,12 @@ func (ms msgServer) SetAuthorityBond(c context.Context, msg *registrytypes.MsgSe
 	if err != nil {
 		return nil, err
 	}
+
 	err = ms.k.SetAuthorityBond(ctx, *msg)
 	if err != nil {
 		return nil, err
 	}
+
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
 			registrytypes.EventTypeAuthorityBond,
@@ -137,6 +139,7 @@ func (ms msgServer) SetAuthorityBond(c context.Context, msg *registrytypes.MsgSe
 			sdk.NewAttribute(registrytypes.AttributeKeySigner, msg.Signer),
 		),
 	})
+
 	return &registrytypes.MsgSetAuthorityBondResponse{}, nil
 }
 
@@ -147,6 +150,7 @@ func (ms msgServer) DeleteName(c context.Context, msg *registrytypes.MsgDeleteNa
 	if err != nil {
 		return nil, err
 	}
+
 	err = ms.k.DeleteName(ctx, *msg)
 	if err != nil {
 		return nil, err
@@ -198,15 +202,17 @@ func (ms msgServer) RenewRecord(c context.Context, msg *registrytypes.MsgRenewRe
 // nolint: all
 func (ms msgServer) AssociateBond(c context.Context, msg *registrytypes.MsgAssociateBond) (*registrytypes.MsgAssociateBondResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
+
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
 		return nil, err
 	}
 
-	err = ms.k.ProcessAssociateBond(ctx, *msg)
+	err = ms.k.AssociateBond(ctx, *msg)
 	if err != nil {
 		return nil, err
 	}
+
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
 			registrytypes.EventTypeAssociateBond,
@@ -220,19 +226,23 @@ func (ms msgServer) AssociateBond(c context.Context, msg *registrytypes.MsgAssoc
 			sdk.NewAttribute(registrytypes.AttributeKeySigner, msg.Signer),
 		),
 	})
+
 	return &registrytypes.MsgAssociateBondResponse{}, nil
 }
 
 func (ms msgServer) DissociateBond(c context.Context, msg *registrytypes.MsgDissociateBond) (*registrytypes.MsgDissociateBondResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
+
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
 		return nil, err
 	}
-	err = ms.k.ProcessDissociateBond(ctx, *msg)
+
+	err = ms.k.DissociateBond(ctx, *msg)
 	if err != nil {
 		return nil, err
 	}
+
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
 			registrytypes.EventTypeDissociateBond,
@@ -245,19 +255,23 @@ func (ms msgServer) DissociateBond(c context.Context, msg *registrytypes.MsgDiss
 			sdk.NewAttribute(registrytypes.AttributeKeySigner, msg.Signer),
 		),
 	})
+
 	return &registrytypes.MsgDissociateBondResponse{}, nil
 }
 
 func (ms msgServer) DissociateRecords(c context.Context, msg *registrytypes.MsgDissociateRecords) (*registrytypes.MsgDissociateRecordsResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
+
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
 		return nil, err
 	}
-	err = ms.k.ProcessDissociateRecords(ctx, *msg)
+
+	err = ms.k.DissociateRecords(ctx, *msg)
 	if err != nil {
 		return nil, err
 	}
+
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
 			registrytypes.EventTypeDissociateRecords,
@@ -270,22 +284,26 @@ func (ms msgServer) DissociateRecords(c context.Context, msg *registrytypes.MsgD
 			sdk.NewAttribute(registrytypes.AttributeKeySigner, msg.Signer),
 		),
 	})
+
 	return &registrytypes.MsgDissociateRecordsResponse{}, nil
 }
 
-func (ms msgServer) ReAssociateRecords(c context.Context, msg *registrytypes.MsgReAssociateRecords) (*registrytypes.MsgReAssociateRecordsResponse, error) { //nolint: all
+func (ms msgServer) ReassociateRecords(c context.Context, msg *registrytypes.MsgReassociateRecords) (*registrytypes.MsgReassociateRecordsResponse, error) { //nolint: all
 	ctx := sdk.UnwrapSDKContext(c)
+
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
 		return nil, err
 	}
-	err = ms.k.ProcessReAssociateRecords(ctx, *msg)
+
+	err = ms.k.ReassociateRecords(ctx, *msg)
 	if err != nil {
 		return nil, err
 	}
+
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
-			registrytypes.EventTypeReAssociateRecords,
+			registrytypes.EventTypeReassociateRecords,
 			sdk.NewAttribute(registrytypes.AttributeKeySigner, msg.Signer),
 			sdk.NewAttribute(registrytypes.AttributeKeyOldBondId, msg.OldBondId),
 			sdk.NewAttribute(registrytypes.AttributeKeyNewBondId, msg.NewBondId),
@@ -296,5 +314,6 @@ func (ms msgServer) ReAssociateRecords(c context.Context, msg *registrytypes.Msg
 			sdk.NewAttribute(registrytypes.AttributeKeySigner, msg.Signer),
 		),
 	})
-	return &registrytypes.MsgReAssociateRecordsResponse{}, nil
+
+	return &registrytypes.MsgReassociateRecordsResponse{}, nil
 }

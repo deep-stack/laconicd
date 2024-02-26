@@ -25,15 +25,6 @@ func GetTxCmd() *cobra.Command {
 
 	registryTxCmd.AddCommand(
 		GetCmdSetRecord(),
-		// GetCmdRenewRecord(),
-		// GetCmdAssociateBond(),
-		// GetCmdDissociateBond(),
-		// GetCmdDissociateRecords(),
-		// GetCmdReAssociateRecords(),
-		// GetCmdSetName(),
-		// GetCmdReserveName(),
-		// GetCmdSetAuthorityBond(),
-		// GetCmdDeleteName(),
 	)
 
 	return registryTxCmd

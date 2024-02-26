@@ -24,7 +24,7 @@ const (
 	Msg_AssociateBond_FullMethodName      = "/cerc.registry.v1.Msg/AssociateBond"
 	Msg_DissociateBond_FullMethodName     = "/cerc.registry.v1.Msg/DissociateBond"
 	Msg_DissociateRecords_FullMethodName  = "/cerc.registry.v1.Msg/DissociateRecords"
-	Msg_ReAssociateRecords_FullMethodName = "/cerc.registry.v1.Msg/ReAssociateRecords"
+	Msg_ReassociateRecords_FullMethodName = "/cerc.registry.v1.Msg/ReassociateRecords"
 	Msg_SetName_FullMethodName            = "/cerc.registry.v1.Msg/SetName"
 	Msg_ReserveName_FullMethodName        = "/cerc.registry.v1.Msg/ReserveName"
 	Msg_DeleteName_FullMethodName         = "/cerc.registry.v1.Msg/DeleteName"
@@ -45,8 +45,8 @@ type MsgClient interface {
 	DissociateBond(ctx context.Context, in *MsgDissociateBond, opts ...grpc.CallOption) (*MsgDissociateBondResponse, error)
 	// DissociateRecords
 	DissociateRecords(ctx context.Context, in *MsgDissociateRecords, opts ...grpc.CallOption) (*MsgDissociateRecordsResponse, error)
-	// ReAssociateRecords
-	ReAssociateRecords(ctx context.Context, in *MsgReAssociateRecords, opts ...grpc.CallOption) (*MsgReAssociateRecordsResponse, error)
+	// ReassociateRecords
+	ReassociateRecords(ctx context.Context, in *MsgReassociateRecords, opts ...grpc.CallOption) (*MsgReassociateRecordsResponse, error)
 	// SetName will store the name with given crn and name
 	SetName(ctx context.Context, in *MsgSetName, opts ...grpc.CallOption) (*MsgSetNameResponse, error)
 	// Reserve name
@@ -110,9 +110,9 @@ func (c *msgClient) DissociateRecords(ctx context.Context, in *MsgDissociateReco
 	return out, nil
 }
 
-func (c *msgClient) ReAssociateRecords(ctx context.Context, in *MsgReAssociateRecords, opts ...grpc.CallOption) (*MsgReAssociateRecordsResponse, error) {
-	out := new(MsgReAssociateRecordsResponse)
-	err := c.cc.Invoke(ctx, Msg_ReAssociateRecords_FullMethodName, in, out, opts...)
+func (c *msgClient) ReassociateRecords(ctx context.Context, in *MsgReassociateRecords, opts ...grpc.CallOption) (*MsgReassociateRecordsResponse, error) {
+	out := new(MsgReassociateRecordsResponse)
+	err := c.cc.Invoke(ctx, Msg_ReassociateRecords_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -169,8 +169,8 @@ type MsgServer interface {
 	DissociateBond(context.Context, *MsgDissociateBond) (*MsgDissociateBondResponse, error)
 	// DissociateRecords
 	DissociateRecords(context.Context, *MsgDissociateRecords) (*MsgDissociateRecordsResponse, error)
-	// ReAssociateRecords
-	ReAssociateRecords(context.Context, *MsgReAssociateRecords) (*MsgReAssociateRecordsResponse, error)
+	// ReassociateRecords
+	ReassociateRecords(context.Context, *MsgReassociateRecords) (*MsgReassociateRecordsResponse, error)
 	// SetName will store the name with given crn and name
 	SetName(context.Context, *MsgSetName) (*MsgSetNameResponse, error)
 	// Reserve name
@@ -201,8 +201,8 @@ func (UnimplementedMsgServer) DissociateBond(context.Context, *MsgDissociateBond
 func (UnimplementedMsgServer) DissociateRecords(context.Context, *MsgDissociateRecords) (*MsgDissociateRecordsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DissociateRecords not implemented")
 }
-func (UnimplementedMsgServer) ReAssociateRecords(context.Context, *MsgReAssociateRecords) (*MsgReAssociateRecordsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReAssociateRecords not implemented")
+func (UnimplementedMsgServer) ReassociateRecords(context.Context, *MsgReassociateRecords) (*MsgReassociateRecordsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReassociateRecords not implemented")
 }
 func (UnimplementedMsgServer) SetName(context.Context, *MsgSetName) (*MsgSetNameResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetName not implemented")
@@ -319,20 +319,20 @@ func _Msg_DissociateRecords_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Msg_ReAssociateRecords_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgReAssociateRecords)
+func _Msg_ReassociateRecords_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgReassociateRecords)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MsgServer).ReAssociateRecords(ctx, in)
+		return srv.(MsgServer).ReassociateRecords(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Msg_ReAssociateRecords_FullMethodName,
+		FullMethod: Msg_ReassociateRecords_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).ReAssociateRecords(ctx, req.(*MsgReAssociateRecords))
+		return srv.(MsgServer).ReassociateRecords(ctx, req.(*MsgReassociateRecords))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -437,8 +437,8 @@ var Msg_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Msg_DissociateRecords_Handler,
 		},
 		{
-			MethodName: "ReAssociateRecords",
-			Handler:    _Msg_ReAssociateRecords_Handler,
+			MethodName: "ReassociateRecords",
+			Handler:    _Msg_ReassociateRecords_Handler,
 		},
 		{
 			MethodName: "SetName",

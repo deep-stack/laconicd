@@ -9,7 +9,7 @@ const (
 	EventTypeAssociateBond        = "associate-bond"
 	EventTypeDissociateBond       = "dissociate-bond"
 	EventTypeDissociateRecords    = "dissociate-record"
-	EventTypeReAssociateRecords   = "re-associate-records"
+	EventTypeReassociateRecords   = "re-associate-records"
 
 	AttributeKeySigner     = "signer"
 	AttributeKeyOwner      = "owner"

@@ -8548,29 +8548,29 @@ func (x *fastReflection_MsgDissociateRecordsResponse) ProtoMethods() *protoiface
 }
 
 var (
-	md_MsgReAssociateRecords             protoreflect.MessageDescriptor
-	fd_MsgReAssociateRecords_new_bond_id protoreflect.FieldDescriptor
-	fd_MsgReAssociateRecords_old_bond_id protoreflect.FieldDescriptor
-	fd_MsgReAssociateRecords_signer      protoreflect.FieldDescriptor
+	md_MsgReassociateRecords             protoreflect.MessageDescriptor
+	fd_MsgReassociateRecords_new_bond_id protoreflect.FieldDescriptor
+	fd_MsgReassociateRecords_old_bond_id protoreflect.FieldDescriptor
+	fd_MsgReassociateRecords_signer      protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_cerc_registry_v1_tx_proto_init()
-	md_MsgReAssociateRecords = File_cerc_registry_v1_tx_proto.Messages().ByName("MsgReAssociateRecords")
-	fd_MsgReAssociateRecords_new_bond_id = md_MsgReAssociateRecords.Fields().ByName("new_bond_id")
-	fd_MsgReAssociateRecords_old_bond_id = md_MsgReAssociateRecords.Fields().ByName("old_bond_id")
-	fd_MsgReAssociateRecords_signer = md_MsgReAssociateRecords.Fields().ByName("signer")
+	md_MsgReassociateRecords = File_cerc_registry_v1_tx_proto.Messages().ByName("MsgReassociateRecords")
+	fd_MsgReassociateRecords_new_bond_id = md_MsgReassociateRecords.Fields().ByName("new_bond_id")
+	fd_MsgReassociateRecords_old_bond_id = md_MsgReassociateRecords.Fields().ByName("old_bond_id")
+	fd_MsgReassociateRecords_signer = md_MsgReassociateRecords.Fields().ByName("signer")
 }
 
-var _ protoreflect.Message = (*fastReflection_MsgReAssociateRecords)(nil)
+var _ protoreflect.Message = (*fastReflection_MsgReassociateRecords)(nil)
 
-type fastReflection_MsgReAssociateRecords MsgReAssociateRecords
+type fastReflection_MsgReassociateRecords MsgReassociateRecords
 
-func (x *MsgReAssociateRecords) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_MsgReAssociateRecords)(x)
+func (x *MsgReassociateRecords) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_MsgReassociateRecords)(x)
 }
 
-func (x *MsgReAssociateRecords) slowProtoReflect() protoreflect.Message {
+func (x *MsgReassociateRecords) slowProtoReflect() protoreflect.Message {
 	mi := &file_cerc_registry_v1_tx_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -8582,43 +8582,43 @@ func (x *MsgReAssociateRecords) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_MsgReAssociateRecords_messageType fastReflection_MsgReAssociateRecords_messageType
-var _ protoreflect.MessageType = fastReflection_MsgReAssociateRecords_messageType{}
+var _fastReflection_MsgReassociateRecords_messageType fastReflection_MsgReassociateRecords_messageType
+var _ protoreflect.MessageType = fastReflection_MsgReassociateRecords_messageType{}
 
-type fastReflection_MsgReAssociateRecords_messageType struct{}
+type fastReflection_MsgReassociateRecords_messageType struct{}
 
-func (x fastReflection_MsgReAssociateRecords_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_MsgReAssociateRecords)(nil)
+func (x fastReflection_MsgReassociateRecords_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_MsgReassociateRecords)(nil)
 }
-func (x fastReflection_MsgReAssociateRecords_messageType) New() protoreflect.Message {
-	return new(fastReflection_MsgReAssociateRecords)
+func (x fastReflection_MsgReassociateRecords_messageType) New() protoreflect.Message {
+	return new(fastReflection_MsgReassociateRecords)
 }
-func (x fastReflection_MsgReAssociateRecords_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgReAssociateRecords
+func (x fastReflection_MsgReassociateRecords_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgReassociateRecords
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_MsgReAssociateRecords) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgReAssociateRecords
+func (x *fastReflection_MsgReassociateRecords) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgReassociateRecords
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_MsgReAssociateRecords) Type() protoreflect.MessageType {
-	return _fastReflection_MsgReAssociateRecords_messageType
+func (x *fastReflection_MsgReassociateRecords) Type() protoreflect.MessageType {
+	return _fastReflection_MsgReassociateRecords_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_MsgReAssociateRecords) New() protoreflect.Message {
-	return new(fastReflection_MsgReAssociateRecords)
+func (x *fastReflection_MsgReassociateRecords) New() protoreflect.Message {
+	return new(fastReflection_MsgReassociateRecords)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_MsgReAssociateRecords) Interface() protoreflect.ProtoMessage {
-	return (*MsgReAssociateRecords)(x)
+func (x *fastReflection_MsgReassociateRecords) Interface() protoreflect.ProtoMessage {
+	return (*MsgReassociateRecords)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -8626,22 +8626,22 @@ func (x *fastReflection_MsgReAssociateRecords) Interface() protoreflect.ProtoMes
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_MsgReAssociateRecords) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_MsgReassociateRecords) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
 	if x.NewBondId != "" {
 		value := protoreflect.ValueOfString(x.NewBondId)
-		if !f(fd_MsgReAssociateRecords_new_bond_id, value) {
+		if !f(fd_MsgReassociateRecords_new_bond_id, value) {
 			return
 		}
 	}
 	if x.OldBondId != "" {
 		value := protoreflect.ValueOfString(x.OldBondId)
-		if !f(fd_MsgReAssociateRecords_old_bond_id, value) {
+		if !f(fd_MsgReassociateRecords_old_bond_id, value) {
 			return
 		}
 	}
 	if x.Signer != "" {
 		value := protoreflect.ValueOfString(x.Signer)
-		if !f(fd_MsgReAssociateRecords_signer, value) {
+		if !f(fd_MsgReassociateRecords_signer, value) {
 			return
 		}
 	}
@@ -8658,19 +8658,19 @@ func (x *fastReflection_MsgReAssociateRecords) Range(f func(protoreflect.FieldDe
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_MsgReAssociateRecords) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_MsgReassociateRecords) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "cerc.registry.v1.MsgReAssociateRecords.new_bond_id":
+	case "cerc.registry.v1.MsgReassociateRecords.new_bond_id":
 		return x.NewBondId != ""
-	case "cerc.registry.v1.MsgReAssociateRecords.old_bond_id":
+	case "cerc.registry.v1.MsgReassociateRecords.old_bond_id":
 		return x.OldBondId != ""
-	case "cerc.registry.v1.MsgReAssociateRecords.signer":
+	case "cerc.registry.v1.MsgReassociateRecords.signer":
 		return x.Signer != ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReAssociateRecords"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReassociateRecords"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.MsgReAssociateRecords does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.MsgReassociateRecords does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -8680,19 +8680,19 @@ func (x *fastReflection_MsgReAssociateRecords) Has(fd protoreflect.FieldDescript
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgReAssociateRecords) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_MsgReassociateRecords) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "cerc.registry.v1.MsgReAssociateRecords.new_bond_id":
+	case "cerc.registry.v1.MsgReassociateRecords.new_bond_id":
 		x.NewBondId = ""
-	case "cerc.registry.v1.MsgReAssociateRecords.old_bond_id":
+	case "cerc.registry.v1.MsgReassociateRecords.old_bond_id":
 		x.OldBondId = ""
-	case "cerc.registry.v1.MsgReAssociateRecords.signer":
+	case "cerc.registry.v1.MsgReassociateRecords.signer":
 		x.Signer = ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReAssociateRecords"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReassociateRecords"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.MsgReAssociateRecords does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.MsgReassociateRecords does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -8702,22 +8702,22 @@ func (x *fastReflection_MsgReAssociateRecords) Clear(fd protoreflect.FieldDescri
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_MsgReAssociateRecords) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgReassociateRecords) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "cerc.registry.v1.MsgReAssociateRecords.new_bond_id":
+	case "cerc.registry.v1.MsgReassociateRecords.new_bond_id":
 		value := x.NewBondId
 		return protoreflect.ValueOfString(value)
-	case "cerc.registry.v1.MsgReAssociateRecords.old_bond_id":
+	case "cerc.registry.v1.MsgReassociateRecords.old_bond_id":
 		value := x.OldBondId
 		return protoreflect.ValueOfString(value)
-	case "cerc.registry.v1.MsgReAssociateRecords.signer":
+	case "cerc.registry.v1.MsgReassociateRecords.signer":
 		value := x.Signer
 		return protoreflect.ValueOfString(value)
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReAssociateRecords"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReassociateRecords"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.MsgReAssociateRecords does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.MsgReassociateRecords does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -8731,19 +8731,19 @@ func (x *fastReflection_MsgReAssociateRecords) Get(descriptor protoreflect.Field
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgReAssociateRecords) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_MsgReassociateRecords) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "cerc.registry.v1.MsgReAssociateRecords.new_bond_id":
+	case "cerc.registry.v1.MsgReassociateRecords.new_bond_id":
 		x.NewBondId = value.Interface().(string)
-	case "cerc.registry.v1.MsgReAssociateRecords.old_bond_id":
+	case "cerc.registry.v1.MsgReassociateRecords.old_bond_id":
 		x.OldBondId = value.Interface().(string)
-	case "cerc.registry.v1.MsgReAssociateRecords.signer":
+	case "cerc.registry.v1.MsgReassociateRecords.signer":
 		x.Signer = value.Interface().(string)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReAssociateRecords"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReassociateRecords"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.MsgReAssociateRecords does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.MsgReassociateRecords does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -8757,48 +8757,48 @@ func (x *fastReflection_MsgReAssociateRecords) Set(fd protoreflect.FieldDescript
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgReAssociateRecords) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgReassociateRecords) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.registry.v1.MsgReAssociateRecords.new_bond_id":
-		panic(fmt.Errorf("field new_bond_id of message cerc.registry.v1.MsgReAssociateRecords is not mutable"))
-	case "cerc.registry.v1.MsgReAssociateRecords.old_bond_id":
-		panic(fmt.Errorf("field old_bond_id of message cerc.registry.v1.MsgReAssociateRecords is not mutable"))
-	case "cerc.registry.v1.MsgReAssociateRecords.signer":
-		panic(fmt.Errorf("field signer of message cerc.registry.v1.MsgReAssociateRecords is not mutable"))
+	case "cerc.registry.v1.MsgReassociateRecords.new_bond_id":
+		panic(fmt.Errorf("field new_bond_id of message cerc.registry.v1.MsgReassociateRecords is not mutable"))
+	case "cerc.registry.v1.MsgReassociateRecords.old_bond_id":
+		panic(fmt.Errorf("field old_bond_id of message cerc.registry.v1.MsgReassociateRecords is not mutable"))
+	case "cerc.registry.v1.MsgReassociateRecords.signer":
+		panic(fmt.Errorf("field signer of message cerc.registry.v1.MsgReassociateRecords is not mutable"))
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReAssociateRecords"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReassociateRecords"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.MsgReAssociateRecords does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.MsgReassociateRecords does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_MsgReAssociateRecords) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgReassociateRecords) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.registry.v1.MsgReAssociateRecords.new_bond_id":
+	case "cerc.registry.v1.MsgReassociateRecords.new_bond_id":
 		return protoreflect.ValueOfString("")
-	case "cerc.registry.v1.MsgReAssociateRecords.old_bond_id":
+	case "cerc.registry.v1.MsgReassociateRecords.old_bond_id":
 		return protoreflect.ValueOfString("")
-	case "cerc.registry.v1.MsgReAssociateRecords.signer":
+	case "cerc.registry.v1.MsgReassociateRecords.signer":
 		return protoreflect.ValueOfString("")
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReAssociateRecords"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReassociateRecords"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.MsgReAssociateRecords does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.MsgReassociateRecords does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_MsgReAssociateRecords) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_MsgReassociateRecords) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in cerc.registry.v1.MsgReAssociateRecords", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in cerc.registry.v1.MsgReassociateRecords", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -8806,7 +8806,7 @@ func (x *fastReflection_MsgReAssociateRecords) WhichOneof(d protoreflect.OneofDe
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_MsgReAssociateRecords) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_MsgReassociateRecords) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -8817,7 +8817,7 @@ func (x *fastReflection_MsgReAssociateRecords) GetUnknown() protoreflect.RawFiel
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgReAssociateRecords) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_MsgReassociateRecords) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -8829,7 +8829,7 @@ func (x *fastReflection_MsgReAssociateRecords) SetUnknown(fields protoreflect.Ra
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_MsgReAssociateRecords) IsValid() bool {
+func (x *fastReflection_MsgReassociateRecords) IsValid() bool {
 	return x != nil
 }
 
@@ -8839,9 +8839,9 @@ func (x *fastReflection_MsgReAssociateRecords) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_MsgReAssociateRecords) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_MsgReassociateRecords) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*MsgReAssociateRecords)
+		x := input.Message.Interface().(*MsgReassociateRecords)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -8875,7 +8875,7 @@ func (x *fastReflection_MsgReAssociateRecords) ProtoMethods() *protoiface.Method
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*MsgReAssociateRecords)
+		x := input.Message.Interface().(*MsgReassociateRecords)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -8926,7 +8926,7 @@ func (x *fastReflection_MsgReAssociateRecords) ProtoMethods() *protoiface.Method
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*MsgReAssociateRecords)
+		x := input.Message.Interface().(*MsgReassociateRecords)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -8958,10 +8958,10 @@ func (x *fastReflection_MsgReAssociateRecords) ProtoMethods() *protoiface.Method
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgReAssociateRecords: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgReassociateRecords: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgReAssociateRecords: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgReassociateRecords: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
@@ -9096,23 +9096,23 @@ func (x *fastReflection_MsgReAssociateRecords) ProtoMethods() *protoiface.Method
 }
 
 var (
-	md_MsgReAssociateRecordsResponse protoreflect.MessageDescriptor
+	md_MsgReassociateRecordsResponse protoreflect.MessageDescriptor
 )
 
 func init() {
 	file_cerc_registry_v1_tx_proto_init()
-	md_MsgReAssociateRecordsResponse = File_cerc_registry_v1_tx_proto.Messages().ByName("MsgReAssociateRecordsResponse")
+	md_MsgReassociateRecordsResponse = File_cerc_registry_v1_tx_proto.Messages().ByName("MsgReassociateRecordsResponse")
 }
 
-var _ protoreflect.Message = (*fastReflection_MsgReAssociateRecordsResponse)(nil)
+var _ protoreflect.Message = (*fastReflection_MsgReassociateRecordsResponse)(nil)
 
-type fastReflection_MsgReAssociateRecordsResponse MsgReAssociateRecordsResponse
+type fastReflection_MsgReassociateRecordsResponse MsgReassociateRecordsResponse
 
-func (x *MsgReAssociateRecordsResponse) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_MsgReAssociateRecordsResponse)(x)
+func (x *MsgReassociateRecordsResponse) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_MsgReassociateRecordsResponse)(x)
 }
 
-func (x *MsgReAssociateRecordsResponse) slowProtoReflect() protoreflect.Message {
+func (x *MsgReassociateRecordsResponse) slowProtoReflect() protoreflect.Message {
 	mi := &file_cerc_registry_v1_tx_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -9124,43 +9124,43 @@ func (x *MsgReAssociateRecordsResponse) slowProtoReflect() protoreflect.Message 
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_MsgReAssociateRecordsResponse_messageType fastReflection_MsgReAssociateRecordsResponse_messageType
-var _ protoreflect.MessageType = fastReflection_MsgReAssociateRecordsResponse_messageType{}
+var _fastReflection_MsgReassociateRecordsResponse_messageType fastReflection_MsgReassociateRecordsResponse_messageType
+var _ protoreflect.MessageType = fastReflection_MsgReassociateRecordsResponse_messageType{}
 
-type fastReflection_MsgReAssociateRecordsResponse_messageType struct{}
+type fastReflection_MsgReassociateRecordsResponse_messageType struct{}
 
-func (x fastReflection_MsgReAssociateRecordsResponse_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_MsgReAssociateRecordsResponse)(nil)
+func (x fastReflection_MsgReassociateRecordsResponse_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_MsgReassociateRecordsResponse)(nil)
 }
-func (x fastReflection_MsgReAssociateRecordsResponse_messageType) New() protoreflect.Message {
-	return new(fastReflection_MsgReAssociateRecordsResponse)
+func (x fastReflection_MsgReassociateRecordsResponse_messageType) New() protoreflect.Message {
+	return new(fastReflection_MsgReassociateRecordsResponse)
 }
-func (x fastReflection_MsgReAssociateRecordsResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgReAssociateRecordsResponse
+func (x fastReflection_MsgReassociateRecordsResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgReassociateRecordsResponse
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_MsgReAssociateRecordsResponse) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgReAssociateRecordsResponse
+func (x *fastReflection_MsgReassociateRecordsResponse) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgReassociateRecordsResponse
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_MsgReAssociateRecordsResponse) Type() protoreflect.MessageType {
-	return _fastReflection_MsgReAssociateRecordsResponse_messageType
+func (x *fastReflection_MsgReassociateRecordsResponse) Type() protoreflect.MessageType {
+	return _fastReflection_MsgReassociateRecordsResponse_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_MsgReAssociateRecordsResponse) New() protoreflect.Message {
-	return new(fastReflection_MsgReAssociateRecordsResponse)
+func (x *fastReflection_MsgReassociateRecordsResponse) New() protoreflect.Message {
+	return new(fastReflection_MsgReassociateRecordsResponse)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_MsgReAssociateRecordsResponse) Interface() protoreflect.ProtoMessage {
-	return (*MsgReAssociateRecordsResponse)(x)
+func (x *fastReflection_MsgReassociateRecordsResponse) Interface() protoreflect.ProtoMessage {
+	return (*MsgReassociateRecordsResponse)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -9168,7 +9168,7 @@ func (x *fastReflection_MsgReAssociateRecordsResponse) Interface() protoreflect.
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_MsgReAssociateRecordsResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_MsgReassociateRecordsResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
 }
 
 // Has reports whether a field is populated.
@@ -9182,13 +9182,13 @@ func (x *fastReflection_MsgReAssociateRecordsResponse) Range(f func(protoreflect
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_MsgReAssociateRecordsResponse) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_MsgReassociateRecordsResponse) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReAssociateRecordsResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReassociateRecordsResponse"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.MsgReAssociateRecordsResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.MsgReassociateRecordsResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -9198,13 +9198,13 @@ func (x *fastReflection_MsgReAssociateRecordsResponse) Has(fd protoreflect.Field
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgReAssociateRecordsResponse) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_MsgReassociateRecordsResponse) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReAssociateRecordsResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReassociateRecordsResponse"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.MsgReAssociateRecordsResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.MsgReassociateRecordsResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -9214,13 +9214,13 @@ func (x *fastReflection_MsgReAssociateRecordsResponse) Clear(fd protoreflect.Fie
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_MsgReAssociateRecordsResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgReassociateRecordsResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReAssociateRecordsResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReassociateRecordsResponse"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.MsgReAssociateRecordsResponse does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.MsgReassociateRecordsResponse does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -9234,13 +9234,13 @@ func (x *fastReflection_MsgReAssociateRecordsResponse) Get(descriptor protorefle
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgReAssociateRecordsResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_MsgReassociateRecordsResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReAssociateRecordsResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReassociateRecordsResponse"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.MsgReAssociateRecordsResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.MsgReassociateRecordsResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -9254,36 +9254,36 @@ func (x *fastReflection_MsgReAssociateRecordsResponse) Set(fd protoreflect.Field
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgReAssociateRecordsResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgReassociateRecordsResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReAssociateRecordsResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReassociateRecordsResponse"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.MsgReAssociateRecordsResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.MsgReassociateRecordsResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_MsgReAssociateRecordsResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgReassociateRecordsResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReAssociateRecordsResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.MsgReassociateRecordsResponse"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.MsgReAssociateRecordsResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.MsgReassociateRecordsResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_MsgReAssociateRecordsResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_MsgReassociateRecordsResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in cerc.registry.v1.MsgReAssociateRecordsResponse", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in cerc.registry.v1.MsgReassociateRecordsResponse", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -9291,7 +9291,7 @@ func (x *fastReflection_MsgReAssociateRecordsResponse) WhichOneof(d protoreflect
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_MsgReAssociateRecordsResponse) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_MsgReassociateRecordsResponse) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -9302,7 +9302,7 @@ func (x *fastReflection_MsgReAssociateRecordsResponse) GetUnknown() protoreflect
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgReAssociateRecordsResponse) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_MsgReassociateRecordsResponse) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -9314,7 +9314,7 @@ func (x *fastReflection_MsgReAssociateRecordsResponse) SetUnknown(fields protore
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_MsgReAssociateRecordsResponse) IsValid() bool {
+func (x *fastReflection_MsgReassociateRecordsResponse) IsValid() bool {
 	return x != nil
 }
 
@@ -9324,9 +9324,9 @@ func (x *fastReflection_MsgReAssociateRecordsResponse) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_MsgReAssociateRecordsResponse) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_MsgReassociateRecordsResponse) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*MsgReAssociateRecordsResponse)
+		x := input.Message.Interface().(*MsgReassociateRecordsResponse)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -9348,7 +9348,7 @@ func (x *fastReflection_MsgReAssociateRecordsResponse) ProtoMethods() *protoifac
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*MsgReAssociateRecordsResponse)
+		x := input.Message.Interface().(*MsgReassociateRecordsResponse)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -9378,7 +9378,7 @@ func (x *fastReflection_MsgReAssociateRecordsResponse) ProtoMethods() *protoifac
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*MsgReAssociateRecordsResponse)
+		x := input.Message.Interface().(*MsgReassociateRecordsResponse)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -9410,10 +9410,10 @@ func (x *fastReflection_MsgReAssociateRecordsResponse) ProtoMethods() *protoifac
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgReAssociateRecordsResponse: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgReassociateRecordsResponse: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgReAssociateRecordsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgReassociateRecordsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			default:
@@ -10197,8 +10197,8 @@ func (*MsgDissociateRecordsResponse) Descriptor() ([]byte, []int) {
 	return file_cerc_registry_v1_tx_proto_rawDescGZIP(), []int{18}
 }
 
-// MsgReAssociateRecords
-type MsgReAssociateRecords struct {
+// MsgReassociateRecords
+type MsgReassociateRecords struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -10208,8 +10208,8 @@ type MsgReAssociateRecords struct {
 	Signer    string `protobuf:"bytes,3,opt,name=signer,proto3" json:"signer,omitempty"`
 }
 
-func (x *MsgReAssociateRecords) Reset() {
-	*x = MsgReAssociateRecords{}
+func (x *MsgReassociateRecords) Reset() {
+	*x = MsgReassociateRecords{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_cerc_registry_v1_tx_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -10217,47 +10217,47 @@ func (x *MsgReAssociateRecords) Reset() {
 	}
 }
 
-func (x *MsgReAssociateRecords) String() string {
+func (x *MsgReassociateRecords) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MsgReAssociateRecords) ProtoMessage() {}
+func (*MsgReassociateRecords) ProtoMessage() {}
 
-// Deprecated: Use MsgReAssociateRecords.ProtoReflect.Descriptor instead.
-func (*MsgReAssociateRecords) Descriptor() ([]byte, []int) {
+// Deprecated: Use MsgReassociateRecords.ProtoReflect.Descriptor instead.
+func (*MsgReassociateRecords) Descriptor() ([]byte, []int) {
 	return file_cerc_registry_v1_tx_proto_rawDescGZIP(), []int{19}
 }
 
-func (x *MsgReAssociateRecords) GetNewBondId() string {
+func (x *MsgReassociateRecords) GetNewBondId() string {
 	if x != nil {
 		return x.NewBondId
 	}
 	return ""
 }
 
-func (x *MsgReAssociateRecords) GetOldBondId() string {
+func (x *MsgReassociateRecords) GetOldBondId() string {
 	if x != nil {
 		return x.OldBondId
 	}
 	return ""
 }
 
-func (x *MsgReAssociateRecords) GetSigner() string {
+func (x *MsgReassociateRecords) GetSigner() string {
 	if x != nil {
 		return x.Signer
 	}
 	return ""
 }
 
-// MsgReAssociateRecordsResponse
-type MsgReAssociateRecordsResponse struct {
+// MsgReassociateRecordsResponse
+type MsgReassociateRecordsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *MsgReAssociateRecordsResponse) Reset() {
-	*x = MsgReAssociateRecordsResponse{}
+func (x *MsgReassociateRecordsResponse) Reset() {
+	*x = MsgReassociateRecordsResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_cerc_registry_v1_tx_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -10265,14 +10265,14 @@ func (x *MsgReAssociateRecordsResponse) Reset() {
 	}
 }
 
-func (x *MsgReAssociateRecordsResponse) String() string {
+func (x *MsgReassociateRecordsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MsgReAssociateRecordsResponse) ProtoMessage() {}
+func (*MsgReassociateRecordsResponse) ProtoMessage() {}
 
-// Deprecated: Use MsgReAssociateRecordsResponse.ProtoReflect.Descriptor instead.
-func (*MsgReAssociateRecordsResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use MsgReassociateRecordsResponse.ProtoReflect.Descriptor instead.
+func (*MsgReassociateRecordsResponse) Descriptor() ([]byte, []int) {
 	return file_cerc_registry_v1_tx_proto_rawDescGZIP(), []int{20}
 }
 
@@ -10388,7 +10388,7 @@ var file_cerc_registry_v1_tx_proto_rawDesc = []byte{
 	0x2a, 0x06, 0x73, 0x69, 0x67, 0x6e, 0x65, 0x72, 0x22, 0x1e, 0x0a, 0x1c, 0x4d, 0x73, 0x67, 0x44,
 	0x69, 0x73, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x74, 0x65, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73,
 	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0xd2, 0x01, 0x0a, 0x15, 0x4d, 0x73, 0x67,
-	0x52, 0x65, 0x41, 0x73, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x74, 0x65, 0x52, 0x65, 0x63, 0x6f, 0x72,
+	0x52, 0x65, 0x61, 0x73, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x74, 0x65, 0x52, 0x65, 0x63, 0x6f, 0x72,
 	0x64, 0x73, 0x12, 0x49, 0x0a, 0x0b, 0x6e, 0x65, 0x77, 0x5f, 0x62, 0x6f, 0x6e, 0x64, 0x5f, 0x69,
 	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x29, 0xf2, 0xde, 0x1f, 0x25, 0x6a, 0x73, 0x6f,
 	0x6e, 0x3a, 0x22, 0x6e, 0x65, 0x77, 0x5f, 0x62, 0x6f, 0x6e, 0x64, 0x5f, 0x69, 0x64, 0x22, 0x20,
@@ -10401,7 +10401,7 @@ var file_cerc_registry_v1_tx_proto_rawDesc = []byte{
 	0x6c, 0x64, 0x42, 0x6f, 0x6e, 0x64, 0x49, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x69, 0x67, 0x6e,
 	0x65, 0x72, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73, 0x69, 0x67, 0x6e, 0x65, 0x72,
 	0x3a, 0x0b, 0x82, 0xe7, 0xb0, 0x2a, 0x06, 0x73, 0x69, 0x67, 0x6e, 0x65, 0x72, 0x22, 0x1f, 0x0a,
-	0x1d, 0x4d, 0x73, 0x67, 0x52, 0x65, 0x41, 0x73, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x74, 0x65, 0x52,
+	0x1d, 0x4d, 0x73, 0x67, 0x52, 0x65, 0x61, 0x73, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x74, 0x65, 0x52,
 	0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x32, 0x8f,
 	0x0b, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x12, 0x79, 0x0a, 0x09, 0x53, 0x65, 0x74, 0x52, 0x65, 0x63,
 	0x6f, 0x72, 0x64, 0x12, 0x1e, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73,
@@ -10447,12 +10447,12 @@ var file_cerc_registry_v1_tx_proto_rawDesc = []byte{
 	0x2c, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x26, 0x22, 0x24, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x72,
 	0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2f, 0x76, 0x31, 0x2f, 0x64, 0x69, 0x73, 0x73, 0x6f,
 	0x63, 0x69, 0x61, 0x74, 0x65, 0x5f, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x12, 0x9d, 0x01,
-	0x0a, 0x12, 0x52, 0x65, 0x41, 0x73, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x74, 0x65, 0x52, 0x65, 0x63,
+	0x0a, 0x12, 0x52, 0x65, 0x61, 0x73, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x74, 0x65, 0x52, 0x65, 0x63,
 	0x6f, 0x72, 0x64, 0x73, 0x12, 0x27, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69,
-	0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x52, 0x65, 0x41, 0x73, 0x73,
+	0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x52, 0x65, 0x61, 0x73, 0x73,
 	0x6f, 0x63, 0x69, 0x61, 0x74, 0x65, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x1a, 0x2f, 0x2e,
 	0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31,
-	0x2e, 0x4d, 0x73, 0x67, 0x52, 0x65, 0x41, 0x73, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x74, 0x65, 0x52,
+	0x2e, 0x4d, 0x73, 0x67, 0x52, 0x65, 0x61, 0x73, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x74, 0x65, 0x52,
 	0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x2d,
 	0x82, 0xd3, 0xe4, 0x93, 0x02, 0x27, 0x22, 0x25, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x72, 0x65,
 	0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2f, 0x76, 0x31, 0x2f, 0x72, 0x65, 0x61, 0x73, 0x73, 0x6f,
@@ -10540,8 +10540,8 @@ var file_cerc_registry_v1_tx_proto_goTypes = []interface{}{
 	(*MsgDissociateBondResponse)(nil),      // 16: cerc.registry.v1.MsgDissociateBondResponse
 	(*MsgDissociateRecords)(nil),           // 17: cerc.registry.v1.MsgDissociateRecords
 	(*MsgDissociateRecordsResponse)(nil),   // 18: cerc.registry.v1.MsgDissociateRecordsResponse
-	(*MsgReAssociateRecords)(nil),          // 19: cerc.registry.v1.MsgReAssociateRecords
-	(*MsgReAssociateRecordsResponse)(nil),  // 20: cerc.registry.v1.MsgReAssociateRecordsResponse
+	(*MsgReassociateRecords)(nil),          // 19: cerc.registry.v1.MsgReassociateRecords
+	(*MsgReassociateRecordsResponse)(nil),  // 20: cerc.registry.v1.MsgReassociateRecordsResponse
 	(*Record)(nil),                         // 21: cerc.registry.v1.Record
 	(*Signature)(nil),                      // 22: cerc.registry.v1.Signature
 }
@@ -10554,7 +10554,7 @@ var file_cerc_registry_v1_tx_proto_depIdxs = []int32{
 	13, // 5: cerc.registry.v1.Msg.AssociateBond:input_type -> cerc.registry.v1.MsgAssociateBond
 	15, // 6: cerc.registry.v1.Msg.DissociateBond:input_type -> cerc.registry.v1.MsgDissociateBond
 	17, // 7: cerc.registry.v1.Msg.DissociateRecords:input_type -> cerc.registry.v1.MsgDissociateRecords
-	19, // 8: cerc.registry.v1.Msg.ReAssociateRecords:input_type -> cerc.registry.v1.MsgReAssociateRecords
+	19, // 8: cerc.registry.v1.Msg.ReassociateRecords:input_type -> cerc.registry.v1.MsgReassociateRecords
 	3,  // 9: cerc.registry.v1.Msg.SetName:input_type -> cerc.registry.v1.MsgSetName
 	5,  // 10: cerc.registry.v1.Msg.ReserveName:input_type -> cerc.registry.v1.MsgReserveAuthority
 	9,  // 11: cerc.registry.v1.Msg.DeleteName:input_type -> cerc.registry.v1.MsgDeleteNameAuthority
@@ -10564,7 +10564,7 @@ var file_cerc_registry_v1_tx_proto_depIdxs = []int32{
 	14, // 15: cerc.registry.v1.Msg.AssociateBond:output_type -> cerc.registry.v1.MsgAssociateBondResponse
 	16, // 16: cerc.registry.v1.Msg.DissociateBond:output_type -> cerc.registry.v1.MsgDissociateBondResponse
 	18, // 17: cerc.registry.v1.Msg.DissociateRecords:output_type -> cerc.registry.v1.MsgDissociateRecordsResponse
-	20, // 18: cerc.registry.v1.Msg.ReAssociateRecords:output_type -> cerc.registry.v1.MsgReAssociateRecordsResponse
+	20, // 18: cerc.registry.v1.Msg.ReassociateRecords:output_type -> cerc.registry.v1.MsgReassociateRecordsResponse
 	4,  // 19: cerc.registry.v1.Msg.SetName:output_type -> cerc.registry.v1.MsgSetNameResponse
 	6,  // 20: cerc.registry.v1.Msg.ReserveName:output_type -> cerc.registry.v1.MsgReserveAuthorityResponse
 	10, // 21: cerc.registry.v1.Msg.DeleteName:output_type -> cerc.registry.v1.MsgDeleteNameAuthorityResponse
@@ -10812,7 +10812,7 @@ func file_cerc_registry_v1_tx_proto_init() {
 			}
 		}
 		file_cerc_registry_v1_tx_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgReAssociateRecords); i {
+			switch v := v.(*MsgReassociateRecords); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -10824,7 +10824,7 @@ func file_cerc_registry_v1_tx_proto_init() {
 			}
 		}
 		file_cerc_registry_v1_tx_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgReAssociateRecordsResponse); i {
+			switch v := v.(*MsgReassociateRecordsResponse); i {
 			case 0:
 				return &v.state
 			case 1:

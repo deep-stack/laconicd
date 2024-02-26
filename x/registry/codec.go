@@ -18,7 +18,7 @@ func RegisterInterfaces(registry types.InterfaceRegistry) {
 		&MsgAssociateBond{},
 		&MsgDissociateBond{},
 		&MsgDissociateRecords{},
-		&MsgReAssociateRecords{},
+		&MsgReassociateRecords{},
 	)
 
 	msgservice.RegisterMsgServiceDesc(registry, &_Msg_serviceDesc)

@@ -38,8 +38,8 @@ service Msg {
     option (google.api.http).post = "/cerc/registry/v1/dissociate_records";
   }
 
-  // ReAssociateRecords
-  rpc ReAssociateRecords(MsgReAssociateRecords) returns (MsgReAssociateRecordsResponse) {
+  // ReassociateRecords
+  rpc ReassociateRecords(MsgReassociateRecords) returns (MsgReassociateRecordsResponse) {
     option (google.api.http).post = "/cerc/registry/v1/reassociate_records";
   }
 
@@ -181,8 +181,8 @@ message MsgDissociateRecords {
 // MsgDissociateRecordsResponse
 message MsgDissociateRecordsResponse {}
 
-// MsgReAssociateRecords
-message MsgReAssociateRecords {
+// MsgReassociateRecords
+message MsgReassociateRecords {
   option (cosmos.msg.v1.signer) = "signer";
 
   string new_bond_id = 1 [(gogoproto.moretags) = "json:\"new_bond_id\" yaml:\"new_bond_id\""];
@@ -190,5 +190,5 @@ message MsgReAssociateRecords {
   string signer      = 3;
 }
 
-// MsgReAssociateRecordsResponse
-message MsgReAssociateRecordsResponse {}
+// MsgReassociateRecordsResponse
+message MsgReassociateRecordsResponse {}

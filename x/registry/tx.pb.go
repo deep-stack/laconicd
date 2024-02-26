@@ -942,25 +942,25 @@ func (m *MsgDissociateRecordsResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgDissociateRecordsResponse proto.InternalMessageInfo
 
-// MsgReAssociateRecords
-type MsgReAssociateRecords struct {
+// MsgReassociateRecords
+type MsgReassociateRecords struct {
 	NewBondId string `protobuf:"bytes,1,opt,name=new_bond_id,json=newBondId,proto3" json:"new_bond_id,omitempty" json:"new_bond_id" yaml:"new_bond_id"`
 	OldBondId string `protobuf:"bytes,2,opt,name=old_bond_id,json=oldBondId,proto3" json:"old_bond_id,omitempty" json:"old_bond_id" yaml:"old_bond_id"`
 	Signer    string `protobuf:"bytes,3,opt,name=signer,proto3" json:"signer,omitempty"`
 }
 
-func (m *MsgReAssociateRecords) Reset()         { *m = MsgReAssociateRecords{} }
-func (m *MsgReAssociateRecords) String() string { return proto.CompactTextString(m) }
-func (*MsgReAssociateRecords) ProtoMessage()    {}
-func (*MsgReAssociateRecords) Descriptor() ([]byte, []int) {
+func (m *MsgReassociateRecords) Reset()         { *m = MsgReassociateRecords{} }
+func (m *MsgReassociateRecords) String() string { return proto.CompactTextString(m) }
+func (*MsgReassociateRecords) ProtoMessage()    {}
+func (*MsgReassociateRecords) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3c6eb2e5a4d8fa03, []int{19}
 }
-func (m *MsgReAssociateRecords) XXX_Unmarshal(b []byte) error {
+func (m *MsgReassociateRecords) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgReAssociateRecords) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgReassociateRecords) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgReAssociateRecords.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgReassociateRecords.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -970,55 +970,55 @@ func (m *MsgReAssociateRecords) XXX_Marshal(b []byte, deterministic bool) ([]byt
 		return b[:n], nil
 	}
 }
-func (m *MsgReAssociateRecords) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgReAssociateRecords.Merge(m, src)
+func (m *MsgReassociateRecords) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgReassociateRecords.Merge(m, src)
 }
-func (m *MsgReAssociateRecords) XXX_Size() int {
+func (m *MsgReassociateRecords) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgReAssociateRecords) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgReAssociateRecords.DiscardUnknown(m)
+func (m *MsgReassociateRecords) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgReassociateRecords.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgReAssociateRecords proto.InternalMessageInfo
+var xxx_messageInfo_MsgReassociateRecords proto.InternalMessageInfo
 
-func (m *MsgReAssociateRecords) GetNewBondId() string {
+func (m *MsgReassociateRecords) GetNewBondId() string {
 	if m != nil {
 		return m.NewBondId
 	}
 	return ""
 }
 
-func (m *MsgReAssociateRecords) GetOldBondId() string {
+func (m *MsgReassociateRecords) GetOldBondId() string {
 	if m != nil {
 		return m.OldBondId
 	}
 	return ""
 }
 
-func (m *MsgReAssociateRecords) GetSigner() string {
+func (m *MsgReassociateRecords) GetSigner() string {
 	if m != nil {
 		return m.Signer
 	}
 	return ""
 }
 
-// MsgReAssociateRecordsResponse
-type MsgReAssociateRecordsResponse struct {
+// MsgReassociateRecordsResponse
+type MsgReassociateRecordsResponse struct {
 }
 
-func (m *MsgReAssociateRecordsResponse) Reset()         { *m = MsgReAssociateRecordsResponse{} }
-func (m *MsgReAssociateRecordsResponse) String() string { return proto.CompactTextString(m) }
-func (*MsgReAssociateRecordsResponse) ProtoMessage()    {}
-func (*MsgReAssociateRecordsResponse) Descriptor() ([]byte, []int) {
+func (m *MsgReassociateRecordsResponse) Reset()         { *m = MsgReassociateRecordsResponse{} }
+func (m *MsgReassociateRecordsResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgReassociateRecordsResponse) ProtoMessage()    {}
+func (*MsgReassociateRecordsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3c6eb2e5a4d8fa03, []int{20}
 }
-func (m *MsgReAssociateRecordsResponse) XXX_Unmarshal(b []byte) error {
+func (m *MsgReassociateRecordsResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgReAssociateRecordsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgReassociateRecordsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgReAssociateRecordsResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgReassociateRecordsResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -1028,17 +1028,17 @@ func (m *MsgReAssociateRecordsResponse) XXX_Marshal(b []byte, deterministic bool
 		return b[:n], nil
 	}
 }
-func (m *MsgReAssociateRecordsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgReAssociateRecordsResponse.Merge(m, src)
+func (m *MsgReassociateRecordsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgReassociateRecordsResponse.Merge(m, src)
 }
-func (m *MsgReAssociateRecordsResponse) XXX_Size() int {
+func (m *MsgReassociateRecordsResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgReAssociateRecordsResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgReAssociateRecordsResponse.DiscardUnknown(m)
+func (m *MsgReassociateRecordsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgReassociateRecordsResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgReAssociateRecordsResponse proto.InternalMessageInfo
+var xxx_messageInfo_MsgReassociateRecordsResponse proto.InternalMessageInfo
 
 func init() {
 	proto.RegisterType((*MsgSetRecord)(nil), "cerc.registry.v1.MsgSetRecord")
@@ -1060,14 +1060,14 @@ func init() {
 	proto.RegisterType((*MsgDissociateBondResponse)(nil), "cerc.registry.v1.MsgDissociateBondResponse")
 	proto.RegisterType((*MsgDissociateRecords)(nil), "cerc.registry.v1.MsgDissociateRecords")
 	proto.RegisterType((*MsgDissociateRecordsResponse)(nil), "cerc.registry.v1.MsgDissociateRecordsResponse")
-	proto.RegisterType((*MsgReAssociateRecords)(nil), "cerc.registry.v1.MsgReAssociateRecords")
-	proto.RegisterType((*MsgReAssociateRecordsResponse)(nil), "cerc.registry.v1.MsgReAssociateRecordsResponse")
+	proto.RegisterType((*MsgReassociateRecords)(nil), "cerc.registry.v1.MsgReassociateRecords")
+	proto.RegisterType((*MsgReassociateRecordsResponse)(nil), "cerc.registry.v1.MsgReassociateRecordsResponse")
 }
 
 func init() { proto.RegisterFile("cerc/registry/v1/tx.proto", fileDescriptor_3c6eb2e5a4d8fa03) }
 
 var fileDescriptor_3c6eb2e5a4d8fa03 = []byte{
-	// 1037 bytes of a gzipped FileDescriptorProto
+	// 1036 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x97, 0x41, 0x6f, 0xe3, 0x44,
 	0x14, 0xc7, 0x3b, 0xc9, 0x6e, 0x4b, 0x5e, 0xa0, 0xea, 0x9a, 0xb2, 0xa4, 0x6e, 0xea, 0xa4, 0xd3,
 	0x26, 0xcd, 0x76, 0x69, 0xbc, 0x1b, 0x4e, 0xf4, 0xd6, 0x88, 0x4b, 0x0f, 0x01, 0xe4, 0x8a, 0x0b,
@@ -1106,33 +1106,33 @@ var fileDescriptor_3c6eb2e5a4d8fa03 = []byte{
 	0x4b, 0x77, 0x09, 0x3f, 0xb0, 0xd7, 0xc1, 0x75, 0xe3, 0x07, 0x2c, 0x43, 0x65, 0x16, 0x5c, 0xec,
 	0xea, 0x4b, 0xb8, 0xe3, 0x1d, 0x86, 0xf5, 0xda, 0x77, 0xb5, 0x50, 0xb6, 0x37, 0x61, 0x23, 0x15,
 	0x5d, 0xa0, 0x8d, 0xf8, 0x67, 0x2e, 0x32, 0xfa, 0xe7, 0xc1, 0x6e, 0xe2, 0xd3, 0x9c, 0xa4, 0x52,
-	0xa0, 0x9a, 0x15, 0x58, 0x80, 0xfd, 0x81, 0xe0, 0x1d, 0x5e, 0x24, 0x47, 0xb3, 0x68, 0xc7, 0x50,
-	0xb6, 0xc9, 0xe8, 0x34, 0x89, 0x77, 0x6f, 0x3a, 0xa9, 0x35, 0x7c, 0xbc, 0x98, 0x31, 0x44, 0x8c,
-	0x4f, 0x69, 0x25, 0x9b, 0x8c, 0xba, 0x3e, 0xe9, 0x31, 0x94, 0xe9, 0xc0, 0x38, 0x4d, 0x56, 0x46,
-	0xcc, 0x55, 0xcc, 0x18, 0xba, 0x8a, 0x4f, 0x69, 0x25, 0x3a, 0x30, 0xba, 0xff, 0xa1, 0x48, 0x6a,
-	0xb0, 0x95, 0xb9, 0xa7, 0x70, 0xd7, 0x9d, 0x67, 0x65, 0x28, 0xf6, 0x98, 0x29, 0x8d, 0xa1, 0x14,
-	0x5d, 0x93, 0x4a, 0xfa, 0x42, 0x88, 0x5f, 0x4d, 0x72, 0x73, 0xbe, 0x5d, 0xa4, 0x74, 0xf7, 0xe9,
-	0x9f, 0xff, 0xfc, 0x58, 0x50, 0x70, 0x55, 0x4d, 0xdd, 0xd4, 0x8c, 0xb8, 0xa7, 0xc1, 0x95, 0xf4,
-	0x35, 0x82, 0x72, 0xfc, 0xab, 0x50, 0xcf, 0xf4, 0x1e, 0x53, 0xc8, 0xad, 0xeb, 0x14, 0x82, 0xa0,
-	0xc9, 0x09, 0xea, 0x58, 0x51, 0x33, 0xde, 0x0a, 0xde, 0x21, 0x05, 0x0c, 0xdf, 0x20, 0x78, 0x2b,
-	0xf9, 0x0d, 0xc0, 0x99, 0x31, 0x12, 0x1a, 0x79, 0xff, 0x7a, 0x8d, 0x20, 0x69, 0x71, 0x12, 0x8c,
-	0xeb, 0x69, 0x12, 0x3d, 0x5c, 0xc0, 0xcf, 0x59, 0xfa, 0x1e, 0xc1, 0xea, 0x4c, 0xeb, 0xee, 0x64,
-	0x06, 0x4a, 0x8a, 0xe4, 0xfb, 0x0b, 0x88, 0x04, 0xce, 0x3d, 0x8e, 0xb3, 0x83, 0xb7, 0xd3, 0x38,
-	0x86, 0x95, 0xe4, 0xf9, 0x19, 0xc1, 0x9d, 0x74, 0xbf, 0x36, 0xaf, 0x89, 0x16, 0xe8, 0xe4, 0xf6,
-	0x62, 0x3a, 0x01, 0xf6, 0x1e, 0x07, 0x6b, 0xe2, 0xdd, 0xb9, 0x60, 0x4e, 0x40, 0xf1, 0x0b, 0x02,
-	0x29, 0xa3, 0x63, 0xf7, 0x72, 0x0a, 0x64, 0x56, 0x28, 0xab, 0x0b, 0x0a, 0x05, 0xde, 0x01, 0xc7,
-	0xdb, 0xc3, 0x8d, 0xac, 0x82, 0xd2, 0x53, 0x7c, 0x5f, 0xc0, 0x4a, 0xf8, 0x02, 0xaa, 0xe6, 0x35,
-	0x8d, 0x67, 0x95, 0x77, 0xe7, 0x59, 0x45, 0x74, 0xcc, 0xa3, 0x57, 0xb1, 0x9c, 0xdd, 0x50, 0xfc,
-	0x65, 0xf1, 0x1d, 0x6f, 0x27, 0xfe, 0x44, 0xe1, 0x71, 0x1b, 0x39, 0x5b, 0x4c, 0x3e, 0x62, 0xe4,
-	0x83, 0x85, 0x64, 0x8b, 0x35, 0x16, 0x5f, 0xe3, 0xd3, 0x3c, 0x43, 0x00, 0xd1, 0xa3, 0x40, 0xca,
-	0xee, 0xdc, 0x8c, 0x57, 0x83, 0xfc, 0x60, 0x51, 0xa5, 0x40, 0x6a, 0x70, 0xa4, 0x1a, 0xde, 0xca,
-	0xa8, 0x1c, 0xbe, 0xcc, 0x27, 0xfa, 0x09, 0xc1, 0x5a, 0xea, 0x89, 0xd6, 0xc8, 0x4b, 0x7f, 0x42,
-	0x96, 0x93, 0xa4, 0xdc, 0x47, 0xd6, 0x9c, 0x5a, 0xf6, 0x8e, 0x4b, 0x0f, 0x17, 0xf1, 0x3e, 0x93,
-	0x6f, 0x7f, 0xf5, 0xea, 0xf9, 0x3e, 0xea, 0x1e, 0xbd, 0xb8, 0x54, 0xd0, 0xcb, 0x4b, 0x05, 0xfd,
-	0x7d, 0xa9, 0xa0, 0x1f, 0xae, 0x94, 0xa5, 0x97, 0x57, 0xca, 0xd2, 0x5f, 0x57, 0xca, 0xd2, 0x67,
-	0x7b, 0xa6, 0xe5, 0xb6, 0x2f, 0x8c, 0xb3, 0xb6, 0x4b, 0xb9, 0xc3, 0x03, 0x8b, 0xaa, 0x03, 0xbd,
-	0x4f, 0x6d, 0xab, 0xdf, 0x31, 0xd4, 0x27, 0xc2, 0xff, 0xd9, 0x32, 0xff, 0xfb, 0xf3, 0xfe, 0xbf,
-	0x01, 0x00, 0x00, 0xff, 0xff, 0x91, 0x45, 0xb9, 0x1e, 0x9b, 0x0d, 0x00, 0x00,
+	0xa0, 0x9a, 0x15, 0x58, 0x80, 0xfd, 0x81, 0xe0, 0x1d, 0x5e, 0x24, 0xfa, 0x2c, 0xda, 0x31, 0x94,
+	0x6d, 0x32, 0x3a, 0x4d, 0xe2, 0xdd, 0x9b, 0x4e, 0x6a, 0x0d, 0x1f, 0x2f, 0x66, 0x0c, 0x11, 0xe3,
+	0x53, 0x5a, 0xc9, 0x26, 0xa3, 0xae, 0x4f, 0x7a, 0x0c, 0x65, 0x3a, 0x30, 0x4e, 0x93, 0x95, 0x11,
+	0x73, 0x15, 0x33, 0x86, 0xae, 0xe2, 0x53, 0x5a, 0x89, 0x0e, 0x8c, 0xee, 0x7f, 0x28, 0x92, 0x1a,
+	0x6c, 0x65, 0xee, 0x29, 0xdc, 0x75, 0xe7, 0x59, 0x19, 0x8a, 0x3d, 0x66, 0x4a, 0x63, 0x28, 0x45,
+	0xd7, 0xa4, 0x92, 0xbe, 0x10, 0xe2, 0x57, 0x93, 0xdc, 0x9c, 0x6f, 0x17, 0x29, 0xdd, 0x7d, 0xfa,
+	0xe7, 0x3f, 0x3f, 0x16, 0x14, 0x5c, 0x55, 0x53, 0x37, 0x35, 0x23, 0xee, 0x69, 0x70, 0x25, 0x7d,
+	0x8d, 0xa0, 0x1c, 0xff, 0x2a, 0xd4, 0x33, 0xbd, 0xc7, 0x14, 0x72, 0xeb, 0x3a, 0x85, 0x20, 0x68,
+	0x72, 0x82, 0x3a, 0x56, 0xd4, 0x8c, 0xb7, 0x82, 0x77, 0x48, 0x01, 0xc3, 0x37, 0x08, 0xde, 0x4a,
+	0x7e, 0x03, 0x70, 0x66, 0x8c, 0x84, 0x46, 0xde, 0xbf, 0x5e, 0x23, 0x48, 0x5a, 0x9c, 0x04, 0xe3,
+	0x7a, 0x9a, 0x44, 0x1c, 0x0e, 0x3f, 0x67, 0xe9, 0x7b, 0x04, 0xab, 0x33, 0xad, 0xbb, 0x93, 0x19,
+	0x28, 0x29, 0x92, 0xef, 0x2f, 0x20, 0x12, 0x38, 0xf7, 0x38, 0xce, 0x0e, 0xde, 0x4e, 0xe3, 0x18,
+	0x56, 0x92, 0xe7, 0x67, 0x04, 0x77, 0xd2, 0xfd, 0xda, 0xbc, 0x26, 0x5a, 0xa0, 0x93, 0xdb, 0x8b,
+	0xe9, 0x04, 0xd8, 0x7b, 0x1c, 0xac, 0x89, 0x77, 0xe7, 0x82, 0x39, 0x01, 0xc5, 0x2f, 0x08, 0xa4,
+	0x8c, 0x8e, 0xdd, 0xcb, 0x29, 0x90, 0x59, 0xa1, 0xac, 0x2e, 0x28, 0x14, 0x78, 0x07, 0x1c, 0x6f,
+	0x0f, 0x37, 0xb2, 0x0a, 0x4a, 0x4f, 0xf1, 0x7d, 0x01, 0x2b, 0xe1, 0x0b, 0xa8, 0x9a, 0xd7, 0x34,
+	0x9e, 0x55, 0xde, 0x9d, 0x67, 0x15, 0xd1, 0x31, 0x8f, 0x5e, 0xc5, 0x72, 0x76, 0x43, 0xf1, 0x97,
+	0xc5, 0x77, 0xbc, 0x9d, 0xf8, 0x13, 0x85, 0xc7, 0x6d, 0xe4, 0x6c, 0x31, 0xf9, 0x88, 0x91, 0x0f,
+	0x16, 0x92, 0x2d, 0xd6, 0x58, 0x7c, 0x8d, 0x4f, 0xf3, 0x0c, 0x01, 0x44, 0x8f, 0x02, 0x29, 0xbb,
+	0x73, 0x33, 0x5e, 0x0d, 0xf2, 0x83, 0x45, 0x95, 0x02, 0xa9, 0xc1, 0x91, 0x6a, 0x78, 0x2b, 0xa3,
+	0x72, 0xf8, 0x32, 0x9f, 0xe8, 0x27, 0x04, 0x6b, 0xa9, 0x27, 0x5a, 0x23, 0x2f, 0xfd, 0x09, 0x59,
+	0x4e, 0x92, 0x72, 0x1f, 0x59, 0x73, 0x6a, 0xd9, 0x3b, 0x2e, 0x3d, 0x5c, 0xc4, 0xfb, 0x4c, 0xbe,
+	0xfd, 0xd5, 0xab, 0xe7, 0xfb, 0xa8, 0x7b, 0xf4, 0xe2, 0x52, 0x41, 0x2f, 0x2f, 0x15, 0xf4, 0xf7,
+	0xa5, 0x82, 0x7e, 0xb8, 0x52, 0x96, 0x5e, 0x5e, 0x29, 0x4b, 0x7f, 0x5d, 0x29, 0x4b, 0x9f, 0xed,
+	0x99, 0x96, 0xdb, 0xbe, 0x30, 0xce, 0xda, 0x2e, 0xe5, 0x0e, 0x0f, 0x2c, 0xaa, 0x0e, 0xf4, 0x3e,
+	0xb5, 0xad, 0x7e, 0xc7, 0x50, 0x9f, 0x08, 0xff, 0x67, 0xcb, 0xfc, 0xef, 0xcf, 0xfb, 0xff, 0x06,
+	0x00, 0x00, 0xff, 0xff, 0xb4, 0x03, 0xa6, 0xe5, 0x9b, 0x0d, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1157,8 +1157,8 @@ type MsgClient interface {
 	DissociateBond(ctx context.Context, in *MsgDissociateBond, opts ...grpc.CallOption) (*MsgDissociateBondResponse, error)
 	// DissociateRecords
 	DissociateRecords(ctx context.Context, in *MsgDissociateRecords, opts ...grpc.CallOption) (*MsgDissociateRecordsResponse, error)
-	// ReAssociateRecords
-	ReAssociateRecords(ctx context.Context, in *MsgReAssociateRecords, opts ...grpc.CallOption) (*MsgReAssociateRecordsResponse, error)
+	// ReassociateRecords
+	ReassociateRecords(ctx context.Context, in *MsgReassociateRecords, opts ...grpc.CallOption) (*MsgReassociateRecordsResponse, error)
 	// SetName will store the name with given crn and name
 	SetName(ctx context.Context, in *MsgSetName, opts ...grpc.CallOption) (*MsgSetNameResponse, error)
 	// Reserve name
@@ -1222,9 +1222,9 @@ func (c *msgClient) DissociateRecords(ctx context.Context, in *MsgDissociateReco
 	return out, nil
 }
 
-func (c *msgClient) ReAssociateRecords(ctx context.Context, in *MsgReAssociateRecords, opts ...grpc.CallOption) (*MsgReAssociateRecordsResponse, error) {
-	out := new(MsgReAssociateRecordsResponse)
-	err := c.cc.Invoke(ctx, "/cerc.registry.v1.Msg/ReAssociateRecords", in, out, opts...)
+func (c *msgClient) ReassociateRecords(ctx context.Context, in *MsgReassociateRecords, opts ...grpc.CallOption) (*MsgReassociateRecordsResponse, error) {
+	out := new(MsgReassociateRecordsResponse)
+	err := c.cc.Invoke(ctx, "/cerc.registry.v1.Msg/ReassociateRecords", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1279,8 +1279,8 @@ type MsgServer interface {
 	DissociateBond(context.Context, *MsgDissociateBond) (*MsgDissociateBondResponse, error)
 	// DissociateRecords
 	DissociateRecords(context.Context, *MsgDissociateRecords) (*MsgDissociateRecordsResponse, error)
-	// ReAssociateRecords
-	ReAssociateRecords(context.Context, *MsgReAssociateRecords) (*MsgReAssociateRecordsResponse, error)
+	// ReassociateRecords
+	ReassociateRecords(context.Context, *MsgReassociateRecords) (*MsgReassociateRecordsResponse, error)
 	// SetName will store the name with given crn and name
 	SetName(context.Context, *MsgSetName) (*MsgSetNameResponse, error)
 	// Reserve name
@@ -1310,8 +1310,8 @@ func (*UnimplementedMsgServer) DissociateBond(ctx context.Context, req *MsgDisso
 func (*UnimplementedMsgServer) DissociateRecords(ctx context.Context, req *MsgDissociateRecords) (*MsgDissociateRecordsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DissociateRecords not implemented")
 }
-func (*UnimplementedMsgServer) ReAssociateRecords(ctx context.Context, req *MsgReAssociateRecords) (*MsgReAssociateRecordsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReAssociateRecords not implemented")
+func (*UnimplementedMsgServer) ReassociateRecords(ctx context.Context, req *MsgReassociateRecords) (*MsgReassociateRecordsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReassociateRecords not implemented")
 }
 func (*UnimplementedMsgServer) SetName(ctx context.Context, req *MsgSetName) (*MsgSetNameResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetName not implemented")
@@ -1420,20 +1420,20 @@ func _Msg_DissociateRecords_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Msg_ReAssociateRecords_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgReAssociateRecords)
+func _Msg_ReassociateRecords_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgReassociateRecords)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MsgServer).ReAssociateRecords(ctx, in)
+		return srv.(MsgServer).ReassociateRecords(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/cerc.registry.v1.Msg/ReAssociateRecords",
+		FullMethod: "/cerc.registry.v1.Msg/ReassociateRecords",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).ReAssociateRecords(ctx, req.(*MsgReAssociateRecords))
+		return srv.(MsgServer).ReassociateRecords(ctx, req.(*MsgReassociateRecords))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1535,8 +1535,8 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Msg_DissociateRecords_Handler,
 		},
 		{
-			MethodName: "ReAssociateRecords",
-			Handler:    _Msg_ReAssociateRecords_Handler,
+			MethodName: "ReassociateRecords",
+			Handler:    _Msg_ReassociateRecords_Handler,
 		},
 		{
 			MethodName: "SetName",
@@ -2193,7 +2193,7 @@ func (m *MsgDissociateRecordsResponse) MarshalToSizedBuffer(dAtA []byte) (int, e
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgReAssociateRecords) Marshal() (dAtA []byte, err error) {
+func (m *MsgReassociateRecords) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -2203,12 +2203,12 @@ func (m *MsgReAssociateRecords) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgReAssociateRecords) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgReassociateRecords) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgReAssociateRecords) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgReassociateRecords) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -2237,7 +2237,7 @@ func (m *MsgReAssociateRecords) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgReAssociateRecordsResponse) Marshal() (dAtA []byte, err error) {
+func (m *MsgReassociateRecordsResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -2247,12 +2247,12 @@ func (m *MsgReAssociateRecordsResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgReAssociateRecordsResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgReassociateRecordsResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgReAssociateRecordsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgReassociateRecordsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -2546,7 +2546,7 @@ func (m *MsgDissociateRecordsResponse) Size() (n int) {
 	return n
 }
 
-func (m *MsgReAssociateRecords) Size() (n int) {
+func (m *MsgReassociateRecords) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -2567,7 +2567,7 @@ func (m *MsgReAssociateRecords) Size() (n int) {
 	return n
 }
 
-func (m *MsgReAssociateRecordsResponse) Size() (n int) {
+func (m *MsgReassociateRecordsResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -4371,7 +4371,7 @@ func (m *MsgDissociateRecordsResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MsgReAssociateRecords) Unmarshal(dAtA []byte) error {
+func (m *MsgReassociateRecords) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -4394,10 +4394,10 @@ func (m *MsgReAssociateRecords) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgReAssociateRecords: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgReassociateRecords: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgReAssociateRecords: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgReassociateRecords: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -4517,7 +4517,7 @@ func (m *MsgReAssociateRecords) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MsgReAssociateRecordsResponse) Unmarshal(dAtA []byte) error {
+func (m *MsgReassociateRecordsResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -4540,10 +4540,10 @@ func (m *MsgReAssociateRecordsResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgReAssociateRecordsResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgReassociateRecordsResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgReAssociateRecordsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgReassociateRecordsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:
