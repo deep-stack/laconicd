@@ -67,7 +67,7 @@ func (ms msgServer) SetName(c context.Context, msg *registrytypes.MsgSetName) (*
 		sdk.NewEvent(
 			registrytypes.EventTypeSetRecord,
 			sdk.NewAttribute(registrytypes.AttributeKeySigner, msg.Signer),
-			sdk.NewAttribute(registrytypes.AttributeKeyCRN, msg.Crn),
+			sdk.NewAttribute(registrytypes.AttributeKeyLRN, msg.Lrn),
 			sdk.NewAttribute(registrytypes.AttributeKeyCID, msg.Cid),
 		),
 		sdk.NewEvent(
@@ -160,7 +160,7 @@ func (ms msgServer) DeleteName(c context.Context, msg *registrytypes.MsgDeleteNa
 		sdk.NewEvent(
 			registrytypes.EventTypeDeleteName,
 			sdk.NewAttribute(registrytypes.AttributeKeySigner, msg.Signer),
-			sdk.NewAttribute(registrytypes.AttributeKeyCRN, msg.Crn),
+			sdk.NewAttribute(registrytypes.AttributeKeyLRN, msg.Lrn),
 		),
 		sdk.NewEvent(
 			sdk.EventTypeMessage,

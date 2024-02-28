@@ -19,7 +19,7 @@ const (
 	AttributeKeyNewBondId  = "new-bond-id"
 	AttributeKeyCID        = "cid"
 	AttributeKeyName       = "name"
-	AttributeKeyCRN        = "crn"
+	AttributeKeyLRN        = "lrn"
 	AttributeKeyRecordId   = "record-id"
 	AttributeValueCategory = ModuleName
 )

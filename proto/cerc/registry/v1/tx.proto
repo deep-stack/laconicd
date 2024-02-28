@@ -43,7 +43,7 @@ service Msg {
     option (google.api.http).post = "/cerc/registry/v1/reassociate_records";
   }
 
-  // SetName will store the name with given crn and name
+  // SetName will store the name with given lrn and name
   rpc SetName(MsgSetName) returns (MsgSetNameResponse) {
     option (google.api.http).post = "/cerc/registry/v1/set_name";
   }
@@ -91,7 +91,7 @@ message Payload {
 message MsgSetName {
   option (cosmos.msg.v1.signer) = "signer";
 
-  string crn    = 1;
+  string lrn    = 1;
   string cid    = 2;
   string signer = 3;
 }
@@ -129,7 +129,7 @@ message MsgSetAuthorityBondResponse {}
 message MsgDeleteNameAuthority {
   option (cosmos.msg.v1.signer) = "signer";
 
-  string crn    = 1;
+  string lrn    = 1;
   string signer = 2;
 }
 

@@ -47,7 +47,7 @@ type MsgClient interface {
 	DissociateRecords(ctx context.Context, in *MsgDissociateRecords, opts ...grpc.CallOption) (*MsgDissociateRecordsResponse, error)
 	// ReassociateRecords
 	ReassociateRecords(ctx context.Context, in *MsgReassociateRecords, opts ...grpc.CallOption) (*MsgReassociateRecordsResponse, error)
-	// SetName will store the name with given crn and name
+	// SetName will store the name with given lrn and name
 	SetName(ctx context.Context, in *MsgSetName, opts ...grpc.CallOption) (*MsgSetNameResponse, error)
 	// Reserve name
 	ReserveName(ctx context.Context, in *MsgReserveAuthority, opts ...grpc.CallOption) (*MsgReserveAuthorityResponse, error)
@@ -171,7 +171,7 @@ type MsgServer interface {
 	DissociateRecords(context.Context, *MsgDissociateRecords) (*MsgDissociateRecordsResponse, error)
 	// ReassociateRecords
 	ReassociateRecords(context.Context, *MsgReassociateRecords) (*MsgReassociateRecordsResponse, error)
-	// SetName will store the name with given crn and name
+	// SetName will store the name with given lrn and name
 	SetName(context.Context, *MsgSetName) (*MsgSetNameResponse, error)
 	// Reserve name
 	ReserveName(context.Context, *MsgReserveAuthority) (*MsgReserveAuthorityResponse, error)

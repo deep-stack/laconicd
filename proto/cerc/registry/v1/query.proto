@@ -42,13 +42,13 @@ service Query {
     option (google.api.http).get = "/cerc/registry/v1/whois/{name}";
   }
 
-  // LookupCrn
-  rpc LookupCrn(QueryLookupCrnRequest) returns (QueryLookupCrnResponse) {
+  // LookupLrn
+  rpc LookupLrn(QueryLookupLrnRequest) returns (QueryLookupLrnResponse) {
     option (google.api.http).get = "/cerc/registry/v1/lookup";
   }
 
-  // ResolveCrn
-  rpc ResolveCrn(QueryResolveCrnRequest) returns (QueryResolveCrnResponse) {
+  // ResolveLrn
+  rpc ResolveLrn(QueryResolveLrnRequest) returns (QueryResolveLrnResponse) {
     option (google.api.http).get = "/cerc/registry/v1/resolve";
   }
 
@@ -161,23 +161,23 @@ message QueryWhoisResponse {
   ];
 }
 
-// QueryLookupCrnRequest is request type for LookupCrn
-message QueryLookupCrnRequest {
-  string crn = 1;
+// QueryLookupLrnRequest is request type for LookupLrn
+message QueryLookupLrnRequest {
+  string lrn = 1;
 }
 
-// QueryLookupCrnResponse is response type for QueryLookupCrnRequest
-message QueryLookupCrnResponse {
+// QueryLookupLrnResponse is response type for QueryLookupLrnRequest
+message QueryLookupLrnResponse {
   NameRecord name = 1;
 }
 
-// QueryResolveCrnRequest is request type for ResolveCrn
-message QueryResolveCrnRequest {
-  string crn = 1;
+// QueryResolveLrnRequest is request type for ResolveLrn
+message QueryResolveLrnRequest {
+  string lrn = 1;
 }
 
-// QueryResolveCrnResponse is response type for QueryResolveCrnRequest
-message QueryResolveCrnResponse {
+// QueryResolveLrnResponse is response type for QueryResolveLrnRequest
+message QueryResolveLrnResponse {
   Record record = 1;
 }
 

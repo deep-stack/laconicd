@@ -25,8 +25,8 @@ const (
 	Query_GetRecordsByBondId_FullMethodName       = "/cerc.registry.v1.Query/GetRecordsByBondId"
 	Query_NameRecords_FullMethodName              = "/cerc.registry.v1.Query/NameRecords"
 	Query_Whois_FullMethodName                    = "/cerc.registry.v1.Query/Whois"
-	Query_LookupCrn_FullMethodName                = "/cerc.registry.v1.Query/LookupCrn"
-	Query_ResolveCrn_FullMethodName               = "/cerc.registry.v1.Query/ResolveCrn"
+	Query_LookupLrn_FullMethodName                = "/cerc.registry.v1.Query/LookupLrn"
+	Query_ResolveLrn_FullMethodName               = "/cerc.registry.v1.Query/ResolveLrn"
 	Query_GetRegistryModuleBalance_FullMethodName = "/cerc.registry.v1.Query/GetRegistryModuleBalance"
 )
 
@@ -46,10 +46,10 @@ type QueryClient interface {
 	NameRecords(ctx context.Context, in *QueryNameRecordsRequest, opts ...grpc.CallOption) (*QueryNameRecordsResponse, error)
 	// Whois method retrieve the name authority info
 	Whois(ctx context.Context, in *QueryWhoisRequest, opts ...grpc.CallOption) (*QueryWhoisResponse, error)
-	// LookupCrn
-	LookupCrn(ctx context.Context, in *QueryLookupCrnRequest, opts ...grpc.CallOption) (*QueryLookupCrnResponse, error)
-	// ResolveCrn
-	ResolveCrn(ctx context.Context, in *QueryResolveCrnRequest, opts ...grpc.CallOption) (*QueryResolveCrnResponse, error)
+	// LookupLrn
+	LookupLrn(ctx context.Context, in *QueryLookupLrnRequest, opts ...grpc.CallOption) (*QueryLookupLrnResponse, error)
+	// ResolveLrn
+	ResolveLrn(ctx context.Context, in *QueryResolveLrnRequest, opts ...grpc.CallOption) (*QueryResolveLrnResponse, error)
 	// Get registry module balance
 	GetRegistryModuleBalance(ctx context.Context, in *QueryGetRegistryModuleBalanceRequest, opts ...grpc.CallOption) (*QueryGetRegistryModuleBalanceResponse, error)
 }
@@ -116,18 +116,18 @@ func (c *queryClient) Whois(ctx context.Context, in *QueryWhoisRequest, opts ...
 	return out, nil
 }
 
-func (c *queryClient) LookupCrn(ctx context.Context, in *QueryLookupCrnRequest, opts ...grpc.CallOption) (*QueryLookupCrnResponse, error) {
-	out := new(QueryLookupCrnResponse)
-	err := c.cc.Invoke(ctx, Query_LookupCrn_FullMethodName, in, out, opts...)
+func (c *queryClient) LookupLrn(ctx context.Context, in *QueryLookupLrnRequest, opts ...grpc.CallOption) (*QueryLookupLrnResponse, error) {
+	out := new(QueryLookupLrnResponse)
+	err := c.cc.Invoke(ctx, Query_LookupLrn_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *queryClient) ResolveCrn(ctx context.Context, in *QueryResolveCrnRequest, opts ...grpc.CallOption) (*QueryResolveCrnResponse, error) {
-	out := new(QueryResolveCrnResponse)
-	err := c.cc.Invoke(ctx, Query_ResolveCrn_FullMethodName, in, out, opts...)
+func (c *queryClient) ResolveLrn(ctx context.Context, in *QueryResolveLrnRequest, opts ...grpc.CallOption) (*QueryResolveLrnResponse, error) {
+	out := new(QueryResolveLrnResponse)
+	err := c.cc.Invoke(ctx, Query_ResolveLrn_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -159,10 +159,10 @@ type QueryServer interface {
 	NameRecords(context.Context, *QueryNameRecordsRequest) (*QueryNameRecordsResponse, error)
 	// Whois method retrieve the name authority info
 	Whois(context.Context, *QueryWhoisRequest) (*QueryWhoisResponse, error)
-	// LookupCrn
-	LookupCrn(context.Context, *QueryLookupCrnRequest) (*QueryLookupCrnResponse, error)
-	// ResolveCrn
-	ResolveCrn(context.Context, *QueryResolveCrnRequest) (*QueryResolveCrnResponse, error)
+	// LookupLrn
+	LookupLrn(context.Context, *QueryLookupLrnRequest) (*QueryLookupLrnResponse, error)
+	// ResolveLrn
+	ResolveLrn(context.Context, *QueryResolveLrnRequest) (*QueryResolveLrnResponse, error)
 	// Get registry module balance
 	GetRegistryModuleBalance(context.Context, *QueryGetRegistryModuleBalanceRequest) (*QueryGetRegistryModuleBalanceResponse, error)
 	mustEmbedUnimplementedQueryServer()
@@ -190,11 +190,11 @@ func (UnimplementedQueryServer) NameRecords(context.Context, *QueryNameRecordsRe
 func (UnimplementedQueryServer) Whois(context.Context, *QueryWhoisRequest) (*QueryWhoisResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Whois not implemented")
 }
-func (UnimplementedQueryServer) LookupCrn(context.Context, *QueryLookupCrnRequest) (*QueryLookupCrnResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method LookupCrn not implemented")
+func (UnimplementedQueryServer) LookupLrn(context.Context, *QueryLookupLrnRequest) (*QueryLookupLrnResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LookupLrn not implemented")
 }
-func (UnimplementedQueryServer) ResolveCrn(context.Context, *QueryResolveCrnRequest) (*QueryResolveCrnResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ResolveCrn not implemented")
+func (UnimplementedQueryServer) ResolveLrn(context.Context, *QueryResolveLrnRequest) (*QueryResolveLrnResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResolveLrn not implemented")
 }
 func (UnimplementedQueryServer) GetRegistryModuleBalance(context.Context, *QueryGetRegistryModuleBalanceRequest) (*QueryGetRegistryModuleBalanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRegistryModuleBalance not implemented")
@@ -320,38 +320,38 @@ func _Query_Whois_Handler(srv interface{}, ctx context.Context, dec func(interfa
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_LookupCrn_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryLookupCrnRequest)
+func _Query_LookupLrn_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryLookupLrnRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).LookupCrn(ctx, in)
+		return srv.(QueryServer).LookupLrn(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Query_LookupCrn_FullMethodName,
+		FullMethod: Query_LookupLrn_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).LookupCrn(ctx, req.(*QueryLookupCrnRequest))
+		return srv.(QueryServer).LookupLrn(ctx, req.(*QueryLookupLrnRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_ResolveCrn_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryResolveCrnRequest)
+func _Query_ResolveLrn_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryResolveLrnRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).ResolveCrn(ctx, in)
+		return srv.(QueryServer).ResolveLrn(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Query_ResolveCrn_FullMethodName,
+		FullMethod: Query_ResolveLrn_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).ResolveCrn(ctx, req.(*QueryResolveCrnRequest))
+		return srv.(QueryServer).ResolveLrn(ctx, req.(*QueryResolveLrnRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -406,12 +406,12 @@ var Query_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Query_Whois_Handler,
 		},
 		{
-			MethodName: "LookupCrn",
-			Handler:    _Query_LookupCrn_Handler,
+			MethodName: "LookupLrn",
+			Handler:    _Query_LookupLrn_Handler,
 		},
 		{
-			MethodName: "ResolveCrn",
-			Handler:    _Query_ResolveCrn_Handler,
+			MethodName: "ResolveLrn",
+			Handler:    _Query_ResolveLrn_Handler,
 		},
 		{
 			MethodName: "GetRegistryModuleBalance",

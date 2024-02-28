@@ -57,13 +57,13 @@ func (k Keeper) ListNameAuthorityRecords(ctx sdk.Context) (map[string]registryty
 }
 
 // HasNameRecord - checks if a name record exists.
-func (k Keeper) HasNameRecord(ctx sdk.Context, crn string) (bool, error) {
-	return k.NameRecords.Has(ctx, crn)
+func (k Keeper) HasNameRecord(ctx sdk.Context, lrn string) (bool, error) {
+	return k.NameRecords.Has(ctx, lrn)
 }
 
 // GetNameRecord - gets a name record from the store.
-func (k Keeper) GetNameRecord(ctx sdk.Context, crn string) (*registrytypes.NameRecord, error) {
-	nameRecord, err := k.NameRecords.Get(ctx, crn)
+func (k Keeper) GetNameRecord(ctx sdk.Context, lrn string) (*registrytypes.NameRecord, error) {
+	nameRecord, err := k.NameRecords.Get(ctx, lrn)
 	if err != nil {
 		if errors.Is(err, collections.ErrNotFound) {
 			return nil, nil
@@ -75,14 +75,14 @@ func (k Keeper) GetNameRecord(ctx sdk.Context, crn string) (*registrytypes.NameR
 }
 
 // LookupNameRecord - gets a name record which is not stale and under active authority.
-func (k Keeper) LookupNameRecord(ctx sdk.Context, crn string) (*registrytypes.NameRecord, error) {
-	_, _, authority, err := k.getAuthority(ctx, crn)
+func (k Keeper) LookupNameRecord(ctx sdk.Context, lrn string) (*registrytypes.NameRecord, error) {
+	_, _, authority, err := k.getAuthority(ctx, lrn)
 	if err != nil || authority.Status != registrytypes.AuthorityActive {
 		// If authority is not active (or any other error), lookup fails.
 		return nil, nil
 	}
 
-	nameRecord, err := k.GetNameRecord(ctx, crn)
+	nameRecord, err := k.GetNameRecord(ctx, lrn)
 
 	// Name record may not exist.
 	if nameRecord == nil {
@@ -115,9 +115,9 @@ func (k Keeper) ListNameRecords(ctx sdk.Context) ([]registrytypes.NameEntry, err
 }
 
 // SaveNameRecord - sets a name record.
-func (k Keeper) SaveNameRecord(ctx sdk.Context, crn string, id string) error {
+func (k Keeper) SaveNameRecord(ctx sdk.Context, lrn string, id string) error {
 	var nameRecord registrytypes.NameRecord
-	existingNameRecord, err := k.GetNameRecord(ctx, crn)
+	existingNameRecord, err := k.GetNameRecord(ctx, lrn)
 	if err != nil {
 		return err
 	}
@@ -132,21 +132,21 @@ func (k Keeper) SaveNameRecord(ctx sdk.Context, crn string, id string) error {
 		Height: uint64(ctx.BlockHeight()),
 	}
 
-	return k.NameRecords.Set(ctx, crn, nameRecord)
+	return k.NameRecords.Set(ctx, lrn, nameRecord)
 }
 
-// SetName creates a CRN -> Record ID mapping.
+// SetName creates a LRN -> Record ID mapping.
 func (k Keeper) SetName(ctx sdk.Context, msg registrytypes.MsgSetName) error {
 	signerAddress, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
 		return err
 	}
-	err = k.checkCRNAccess(ctx, signerAddress, msg.Crn)
+	err = k.checkLRNAccess(ctx, signerAddress, msg.Lrn)
 	if err != nil {
 		return err
 	}
 
-	nameRecord, err := k.LookupNameRecord(ctx, msg.Crn)
+	nameRecord, err := k.LookupNameRecord(ctx, msg.Lrn)
 	if err != nil {
 		return err
 	}
@@ -154,7 +154,7 @@ func (k Keeper) SetName(ctx sdk.Context, msg registrytypes.MsgSetName) error {
 		return nil
 	}
 
-	return k.SaveNameRecord(ctx, msg.Crn, msg.Cid)
+	return k.SaveNameRecord(ctx, msg.Lrn, msg.Cid)
 }
 
 // SaveNameAuthority creates the NameAuthority record.
@@ -164,14 +164,14 @@ func (k Keeper) SaveNameAuthority(ctx sdk.Context, name string, authority *regis
 
 // ReserveAuthority reserves a name authority.
 func (k Keeper) ReserveAuthority(ctx sdk.Context, msg registrytypes.MsgReserveAuthority) error {
-	crn := fmt.Sprintf("crn://%s", msg.GetName())
-	parsedCrn, err := url.Parse(crn)
+	lrn := fmt.Sprintf("lrn://%s", msg.GetName())
+	parsedLrn, err := url.Parse(lrn)
 	if err != nil {
 		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Invalid name")
 	}
 
-	name := parsedCrn.Host
-	if fmt.Sprintf("crn://%s", name) != crn {
+	name := parsedLrn.Host
+	if fmt.Sprintf("lrn://%s", name) != lrn {
 		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Invalid name")
 	}
 
@@ -352,32 +352,32 @@ func (k Keeper) SetAuthorityBond(ctx sdk.Context, msg registrytypes.MsgSetAuthor
 	return nil
 }
 
-// DeleteName removes a CRN -> Record ID mapping.
+// DeleteName removes a LRN -> Record ID mapping.
 func (k Keeper) DeleteName(ctx sdk.Context, msg registrytypes.MsgDeleteNameAuthority) error {
 	signerAddress, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
 		return err
 	}
-	err = k.checkCRNAccess(ctx, signerAddress, msg.Crn)
+	err = k.checkLRNAccess(ctx, signerAddress, msg.Lrn)
 	if err != nil {
 		return err
 	}
 
-	crnExists, err := k.HasNameRecord(ctx, msg.Crn)
+	lrnExists, err := k.HasNameRecord(ctx, msg.Lrn)
 	if err != nil {
 		return err
 	}
-	if !crnExists {
+	if !lrnExists {
 		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Name not found.")
 	}
 
 	// Set CID to empty string.
-	return k.SaveNameRecord(ctx, msg.Crn, "")
+	return k.SaveNameRecord(ctx, msg.Lrn, "")
 }
 
-// ResolveCRN resolves a CRN to a record.
-func (k Keeper) ResolveCRN(ctx sdk.Context, crn string) (*registrytypes.Record, error) {
-	_, _, authority, err := k.getAuthority(ctx, crn)
+// ResolveLRN resolves a LRN to a record.
+func (k Keeper) ResolveLRN(ctx sdk.Context, lrn string) (*registrytypes.Record, error) {
+	_, _, authority, err := k.getAuthority(ctx, lrn)
 	if err != nil || authority.Status != registrytypes.AuthorityActive {
 		// If authority is not active (or any other error), resolution fails.
 		return nil, err
@@ -385,7 +385,7 @@ func (k Keeper) ResolveCRN(ctx sdk.Context, crn string) (*registrytypes.Record, 
 
 	// Name should not resolve if it's stale.
 	// i.e. authority was registered later than the name.
-	record, nameRecord, err := k.resolveCRNRecord(ctx, crn)
+	record, nameRecord, err := k.resolveLRNRecord(ctx, lrn)
 	if err != nil {
 		return nil, err
 	}
@@ -396,8 +396,8 @@ func (k Keeper) ResolveCRN(ctx sdk.Context, crn string) (*registrytypes.Record, 
 	return record, nil
 }
 
-func (k Keeper) resolveCRNRecord(ctx sdk.Context, crn string) (*registrytypes.Record, *registrytypes.NameRecord, error) {
-	nameRecord, err := k.GetNameRecord(ctx, crn)
+func (k Keeper) resolveLRNRecord(ctx sdk.Context, lrn string) (*registrytypes.Record, *registrytypes.NameRecord, error) {
+	nameRecord, err := k.GetNameRecord(ctx, lrn)
 	if nameRecord == nil {
 		return nil, nil, err
 	}
@@ -423,13 +423,13 @@ func (k Keeper) resolveCRNRecord(ctx sdk.Context, crn string) (*registrytypes.Re
 	return &record, nameRecord, nil
 }
 
-func (k Keeper) getAuthority(ctx sdk.Context, crn string) (string, *url.URL, *registrytypes.NameAuthority, error) {
-	parsedCRN, err := url.Parse(crn)
+func (k Keeper) getAuthority(ctx sdk.Context, lrn string) (string, *url.URL, *registrytypes.NameAuthority, error) {
+	parsedLRN, err := url.Parse(lrn)
 	if err != nil {
-		return "", nil, nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Invalid CRN.")
+		return "", nil, nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Invalid LRN.")
 	}
 
-	name := parsedCRN.Host
+	name := parsedLRN.Host
 	if has, err := k.HasNameAuthority(ctx, name); !has {
 		if err != nil {
 			return "", nil, nil, err
@@ -443,18 +443,18 @@ func (k Keeper) getAuthority(ctx sdk.Context, crn string) (string, *url.URL, *re
 		return "", nil, nil, err
 	}
 
-	return name, parsedCRN, &authority, nil
+	return name, parsedLRN, &authority, nil
 }
 
-func (k Keeper) checkCRNAccess(ctx sdk.Context, signer sdk.AccAddress, crn string) error {
-	name, parsedCRN, authority, err := k.getAuthority(ctx, crn)
+func (k Keeper) checkLRNAccess(ctx sdk.Context, signer sdk.AccAddress, lrn string) error {
+	name, parsedLRN, authority, err := k.getAuthority(ctx, lrn)
 	if err != nil {
 		return err
 	}
 
-	formattedCRN := fmt.Sprintf("crn://%s%s", name, parsedCRN.RequestURI())
-	if formattedCRN != crn {
-		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Invalid CRN.")
+	formattedLRN := fmt.Sprintf("lrn://%s%s", name, parsedLRN.RequestURI())
+	if formattedLRN != lrn {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Invalid LRN.")
 	}
 
 	if authority.OwnerAddress != signer.String() {

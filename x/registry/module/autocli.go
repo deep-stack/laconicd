@@ -58,19 +58,19 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{},
 				},
 				{
-					RpcMethod: "LookupCrn",
-					Use:       "lookup [crn]",
-					Short:     "Get naming info for CRN",
+					RpcMethod: "LookupLrn",
+					Use:       "lookup [lrn]",
+					Short:     "Get naming info for LRN",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
-						{ProtoField: "crn"},
+						{ProtoField: "lrn"},
 					},
 				},
 				{
-					RpcMethod: "ResolveCrn",
-					Use:       "resolve [crn]",
-					Short:     "Resolve CRN to record",
+					RpcMethod: "ResolveLrn",
+					Use:       "resolve [lrn]",
+					Short:     "Resolve LRN to record",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
-						{ProtoField: "crn"},
+						{ProtoField: "lrn"},
 					},
 				},
 				{
@@ -112,19 +112,19 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 				},
 				{
 					RpcMethod: "SetName",
-					Use:       "set-name [crn] [cid]",
-					Short:     "Set CRN to CID mapping",
+					Use:       "set-name [lrn] [cid]",
+					Short:     "Set LRN to CID mapping",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
-						{ProtoField: "crn"},
+						{ProtoField: "lrn"},
 						{ProtoField: "cid"},
 					},
 				},
 				{
 					RpcMethod: "DeleteName",
-					Use:       "delete-name [crn]",
-					Short:     "Delete CRN",
+					Use:       "delete-name [lrn]",
+					Short:     "Delete LRN",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
-						{ProtoField: "crn"},
+						{ProtoField: "lrn"},
 					},
 				},
 				{

@@ -120,19 +120,19 @@ func (qs queryServer) Whois(c context.Context, request *registrytypes.QueryWhois
 	return &registrytypes.QueryWhoisResponse{NameAuthority: nameAuthority}, nil
 }
 
-func (qs queryServer) LookupCrn(c context.Context, req *registrytypes.QueryLookupCrnRequest) (*registrytypes.QueryLookupCrnResponse, error) {
+func (qs queryServer) LookupLrn(c context.Context, req *registrytypes.QueryLookupLrnRequest) (*registrytypes.QueryLookupLrnResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
-	crn := req.GetCrn()
+	lrn := req.GetLrn()
 
-	crnExists, err := qs.k.HasNameRecord(ctx, crn)
+	lrnExists, err := qs.k.HasNameRecord(ctx, lrn)
 	if err != nil {
 		return nil, err
 	}
-	if !crnExists {
-		return nil, errorsmod.Wrap(sdkerrors.ErrUnknownRequest, "CRN not found.")
+	if !lrnExists {
+		return nil, errorsmod.Wrap(sdkerrors.ErrUnknownRequest, "LRN not found.")
 	}
 
-	nameRecord, err := qs.k.LookupNameRecord(ctx, crn)
+	nameRecord, err := qs.k.LookupNameRecord(ctx, lrn)
 	if nameRecord == nil {
 		if err != nil {
 			return nil, err
@@ -141,14 +141,14 @@ func (qs queryServer) LookupCrn(c context.Context, req *registrytypes.QueryLooku
 		return nil, errorsmod.Wrap(sdkerrors.ErrUnknownRequest, "name record not found.")
 	}
 
-	return &registrytypes.QueryLookupCrnResponse{Name: nameRecord}, nil
+	return &registrytypes.QueryLookupLrnResponse{Name: nameRecord}, nil
 }
 
-func (qs queryServer) ResolveCrn(c context.Context, req *registrytypes.QueryResolveCrnRequest) (*registrytypes.QueryResolveCrnResponse, error) {
+func (qs queryServer) ResolveLrn(c context.Context, req *registrytypes.QueryResolveLrnRequest) (*registrytypes.QueryResolveLrnResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 
-	crn := req.GetCrn()
-	record, err := qs.k.ResolveCRN(ctx, crn)
+	lrn := req.GetLrn()
+	record, err := qs.k.ResolveLRN(ctx, lrn)
 	if record == nil {
 		if err != nil {
 			return nil, err
@@ -157,5 +157,5 @@ func (qs queryServer) ResolveCrn(c context.Context, req *registrytypes.QueryReso
 		return nil, errorsmod.Wrap(sdkerrors.ErrUnknownRequest, "record not found.")
 	}
 
-	return &registrytypes.QueryResolveCrnResponse{Record: record}, nil
+	return &registrytypes.QueryResolveLrnResponse{Record: record}, nil
 }

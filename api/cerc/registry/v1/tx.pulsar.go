@@ -1573,7 +1573,7 @@ func (x *fastReflection_Payload) ProtoMethods() *protoiface.Methods {
 
 var (
 	md_MsgSetName        protoreflect.MessageDescriptor
-	fd_MsgSetName_crn    protoreflect.FieldDescriptor
+	fd_MsgSetName_lrn    protoreflect.FieldDescriptor
 	fd_MsgSetName_cid    protoreflect.FieldDescriptor
 	fd_MsgSetName_signer protoreflect.FieldDescriptor
 )
@@ -1581,7 +1581,7 @@ var (
 func init() {
 	file_cerc_registry_v1_tx_proto_init()
 	md_MsgSetName = File_cerc_registry_v1_tx_proto.Messages().ByName("MsgSetName")
-	fd_MsgSetName_crn = md_MsgSetName.Fields().ByName("crn")
+	fd_MsgSetName_lrn = md_MsgSetName.Fields().ByName("lrn")
 	fd_MsgSetName_cid = md_MsgSetName.Fields().ByName("cid")
 	fd_MsgSetName_signer = md_MsgSetName.Fields().ByName("signer")
 }
@@ -1651,9 +1651,9 @@ func (x *fastReflection_MsgSetName) Interface() protoreflect.ProtoMessage {
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
 func (x *fastReflection_MsgSetName) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
-	if x.Crn != "" {
-		value := protoreflect.ValueOfString(x.Crn)
-		if !f(fd_MsgSetName_crn, value) {
+	if x.Lrn != "" {
+		value := protoreflect.ValueOfString(x.Lrn)
+		if !f(fd_MsgSetName_lrn, value) {
 			return
 		}
 	}
@@ -1684,8 +1684,8 @@ func (x *fastReflection_MsgSetName) Range(f func(protoreflect.FieldDescriptor, p
 // a repeated field is populated if it is non-empty.
 func (x *fastReflection_MsgSetName) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "cerc.registry.v1.MsgSetName.crn":
-		return x.Crn != ""
+	case "cerc.registry.v1.MsgSetName.lrn":
+		return x.Lrn != ""
 	case "cerc.registry.v1.MsgSetName.cid":
 		return x.Cid != ""
 	case "cerc.registry.v1.MsgSetName.signer":
@@ -1706,8 +1706,8 @@ func (x *fastReflection_MsgSetName) Has(fd protoreflect.FieldDescriptor) bool {
 // Clear is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_MsgSetName) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "cerc.registry.v1.MsgSetName.crn":
-		x.Crn = ""
+	case "cerc.registry.v1.MsgSetName.lrn":
+		x.Lrn = ""
 	case "cerc.registry.v1.MsgSetName.cid":
 		x.Cid = ""
 	case "cerc.registry.v1.MsgSetName.signer":
@@ -1728,8 +1728,8 @@ func (x *fastReflection_MsgSetName) Clear(fd protoreflect.FieldDescriptor) {
 // of the value; to obtain a mutable reference, use Mutable.
 func (x *fastReflection_MsgSetName) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "cerc.registry.v1.MsgSetName.crn":
-		value := x.Crn
+	case "cerc.registry.v1.MsgSetName.lrn":
+		value := x.Lrn
 		return protoreflect.ValueOfString(value)
 	case "cerc.registry.v1.MsgSetName.cid":
 		value := x.Cid
@@ -1757,8 +1757,8 @@ func (x *fastReflection_MsgSetName) Get(descriptor protoreflect.FieldDescriptor)
 // Set is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_MsgSetName) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "cerc.registry.v1.MsgSetName.crn":
-		x.Crn = value.Interface().(string)
+	case "cerc.registry.v1.MsgSetName.lrn":
+		x.Lrn = value.Interface().(string)
 	case "cerc.registry.v1.MsgSetName.cid":
 		x.Cid = value.Interface().(string)
 	case "cerc.registry.v1.MsgSetName.signer":
@@ -1783,8 +1783,8 @@ func (x *fastReflection_MsgSetName) Set(fd protoreflect.FieldDescriptor, value p
 // Mutable is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_MsgSetName) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.registry.v1.MsgSetName.crn":
-		panic(fmt.Errorf("field crn of message cerc.registry.v1.MsgSetName is not mutable"))
+	case "cerc.registry.v1.MsgSetName.lrn":
+		panic(fmt.Errorf("field lrn of message cerc.registry.v1.MsgSetName is not mutable"))
 	case "cerc.registry.v1.MsgSetName.cid":
 		panic(fmt.Errorf("field cid of message cerc.registry.v1.MsgSetName is not mutable"))
 	case "cerc.registry.v1.MsgSetName.signer":
@@ -1802,7 +1802,7 @@ func (x *fastReflection_MsgSetName) Mutable(fd protoreflect.FieldDescriptor) pro
 // For lists, maps, and messages, this returns a new, empty, mutable value.
 func (x *fastReflection_MsgSetName) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.registry.v1.MsgSetName.crn":
+	case "cerc.registry.v1.MsgSetName.lrn":
 		return protoreflect.ValueOfString("")
 	case "cerc.registry.v1.MsgSetName.cid":
 		return protoreflect.ValueOfString("")
@@ -1877,7 +1877,7 @@ func (x *fastReflection_MsgSetName) ProtoMethods() *protoiface.Methods {
 		var n int
 		var l int
 		_ = l
-		l = len(x.Crn)
+		l = len(x.Lrn)
 		if l > 0 {
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
@@ -1932,10 +1932,10 @@ func (x *fastReflection_MsgSetName) ProtoMethods() *protoiface.Methods {
 			i--
 			dAtA[i] = 0x12
 		}
-		if len(x.Crn) > 0 {
-			i -= len(x.Crn)
-			copy(dAtA[i:], x.Crn)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Crn)))
+		if len(x.Lrn) > 0 {
+			i -= len(x.Lrn)
+			copy(dAtA[i:], x.Lrn)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Lrn)))
 			i--
 			dAtA[i] = 0xa
 		}
@@ -1990,7 +1990,7 @@ func (x *fastReflection_MsgSetName) ProtoMethods() *protoiface.Methods {
 			switch fieldNum {
 			case 1:
 				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Crn", wireType)
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Lrn", wireType)
 				}
 				var stringLen uint64
 				for shift := uint(0); ; shift += 7 {
@@ -2018,7 +2018,7 @@ func (x *fastReflection_MsgSetName) ProtoMethods() *protoiface.Methods {
 				if postIndex > l {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
 				}
-				x.Crn = string(dAtA[iNdEx:postIndex])
+				x.Lrn = string(dAtA[iNdEx:postIndex])
 				iNdEx = postIndex
 			case 2:
 				if wireType != 2 {
@@ -4285,14 +4285,14 @@ func (x *fastReflection_MsgSetAuthorityBondResponse) ProtoMethods() *protoiface.
 
 var (
 	md_MsgDeleteNameAuthority        protoreflect.MessageDescriptor
-	fd_MsgDeleteNameAuthority_crn    protoreflect.FieldDescriptor
+	fd_MsgDeleteNameAuthority_lrn    protoreflect.FieldDescriptor
 	fd_MsgDeleteNameAuthority_signer protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_cerc_registry_v1_tx_proto_init()
 	md_MsgDeleteNameAuthority = File_cerc_registry_v1_tx_proto.Messages().ByName("MsgDeleteNameAuthority")
-	fd_MsgDeleteNameAuthority_crn = md_MsgDeleteNameAuthority.Fields().ByName("crn")
+	fd_MsgDeleteNameAuthority_lrn = md_MsgDeleteNameAuthority.Fields().ByName("lrn")
 	fd_MsgDeleteNameAuthority_signer = md_MsgDeleteNameAuthority.Fields().ByName("signer")
 }
 
@@ -4361,9 +4361,9 @@ func (x *fastReflection_MsgDeleteNameAuthority) Interface() protoreflect.ProtoMe
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
 func (x *fastReflection_MsgDeleteNameAuthority) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
-	if x.Crn != "" {
-		value := protoreflect.ValueOfString(x.Crn)
-		if !f(fd_MsgDeleteNameAuthority_crn, value) {
+	if x.Lrn != "" {
+		value := protoreflect.ValueOfString(x.Lrn)
+		if !f(fd_MsgDeleteNameAuthority_lrn, value) {
 			return
 		}
 	}
@@ -4388,8 +4388,8 @@ func (x *fastReflection_MsgDeleteNameAuthority) Range(f func(protoreflect.FieldD
 // a repeated field is populated if it is non-empty.
 func (x *fastReflection_MsgDeleteNameAuthority) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "cerc.registry.v1.MsgDeleteNameAuthority.crn":
-		return x.Crn != ""
+	case "cerc.registry.v1.MsgDeleteNameAuthority.lrn":
+		return x.Lrn != ""
 	case "cerc.registry.v1.MsgDeleteNameAuthority.signer":
 		return x.Signer != ""
 	default:
@@ -4408,8 +4408,8 @@ func (x *fastReflection_MsgDeleteNameAuthority) Has(fd protoreflect.FieldDescrip
 // Clear is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_MsgDeleteNameAuthority) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "cerc.registry.v1.MsgDeleteNameAuthority.crn":
-		x.Crn = ""
+	case "cerc.registry.v1.MsgDeleteNameAuthority.lrn":
+		x.Lrn = ""
 	case "cerc.registry.v1.MsgDeleteNameAuthority.signer":
 		x.Signer = ""
 	default:
@@ -4428,8 +4428,8 @@ func (x *fastReflection_MsgDeleteNameAuthority) Clear(fd protoreflect.FieldDescr
 // of the value; to obtain a mutable reference, use Mutable.
 func (x *fastReflection_MsgDeleteNameAuthority) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "cerc.registry.v1.MsgDeleteNameAuthority.crn":
-		value := x.Crn
+	case "cerc.registry.v1.MsgDeleteNameAuthority.lrn":
+		value := x.Lrn
 		return protoreflect.ValueOfString(value)
 	case "cerc.registry.v1.MsgDeleteNameAuthority.signer":
 		value := x.Signer
@@ -4454,8 +4454,8 @@ func (x *fastReflection_MsgDeleteNameAuthority) Get(descriptor protoreflect.Fiel
 // Set is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_MsgDeleteNameAuthority) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "cerc.registry.v1.MsgDeleteNameAuthority.crn":
-		x.Crn = value.Interface().(string)
+	case "cerc.registry.v1.MsgDeleteNameAuthority.lrn":
+		x.Lrn = value.Interface().(string)
 	case "cerc.registry.v1.MsgDeleteNameAuthority.signer":
 		x.Signer = value.Interface().(string)
 	default:
@@ -4478,8 +4478,8 @@ func (x *fastReflection_MsgDeleteNameAuthority) Set(fd protoreflect.FieldDescrip
 // Mutable is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_MsgDeleteNameAuthority) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.registry.v1.MsgDeleteNameAuthority.crn":
-		panic(fmt.Errorf("field crn of message cerc.registry.v1.MsgDeleteNameAuthority is not mutable"))
+	case "cerc.registry.v1.MsgDeleteNameAuthority.lrn":
+		panic(fmt.Errorf("field lrn of message cerc.registry.v1.MsgDeleteNameAuthority is not mutable"))
 	case "cerc.registry.v1.MsgDeleteNameAuthority.signer":
 		panic(fmt.Errorf("field signer of message cerc.registry.v1.MsgDeleteNameAuthority is not mutable"))
 	default:
@@ -4495,7 +4495,7 @@ func (x *fastReflection_MsgDeleteNameAuthority) Mutable(fd protoreflect.FieldDes
 // For lists, maps, and messages, this returns a new, empty, mutable value.
 func (x *fastReflection_MsgDeleteNameAuthority) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.registry.v1.MsgDeleteNameAuthority.crn":
+	case "cerc.registry.v1.MsgDeleteNameAuthority.lrn":
 		return protoreflect.ValueOfString("")
 	case "cerc.registry.v1.MsgDeleteNameAuthority.signer":
 		return protoreflect.ValueOfString("")
@@ -4568,7 +4568,7 @@ func (x *fastReflection_MsgDeleteNameAuthority) ProtoMethods() *protoiface.Metho
 		var n int
 		var l int
 		_ = l
-		l = len(x.Crn)
+		l = len(x.Lrn)
 		if l > 0 {
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
@@ -4612,10 +4612,10 @@ func (x *fastReflection_MsgDeleteNameAuthority) ProtoMethods() *protoiface.Metho
 			i--
 			dAtA[i] = 0x12
 		}
-		if len(x.Crn) > 0 {
-			i -= len(x.Crn)
-			copy(dAtA[i:], x.Crn)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Crn)))
+		if len(x.Lrn) > 0 {
+			i -= len(x.Lrn)
+			copy(dAtA[i:], x.Lrn)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Lrn)))
 			i--
 			dAtA[i] = 0xa
 		}
@@ -4670,7 +4670,7 @@ func (x *fastReflection_MsgDeleteNameAuthority) ProtoMethods() *protoiface.Metho
 			switch fieldNum {
 			case 1:
 				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Crn", wireType)
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Lrn", wireType)
 				}
 				var stringLen uint64
 				for shift := uint(0); ; shift += 7 {
@@ -4698,7 +4698,7 @@ func (x *fastReflection_MsgDeleteNameAuthority) ProtoMethods() *protoiface.Metho
 				if postIndex > l {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
 				}
-				x.Crn = string(dAtA[iNdEx:postIndex])
+				x.Lrn = string(dAtA[iNdEx:postIndex])
 				iNdEx = postIndex
 			case 2:
 				if wireType != 2 {
@@ -9602,7 +9602,7 @@ type MsgSetName struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Crn    string `protobuf:"bytes,1,opt,name=crn,proto3" json:"crn,omitempty"`
+	Lrn    string `protobuf:"bytes,1,opt,name=lrn,proto3" json:"lrn,omitempty"`
 	Cid    string `protobuf:"bytes,2,opt,name=cid,proto3" json:"cid,omitempty"`
 	Signer string `protobuf:"bytes,3,opt,name=signer,proto3" json:"signer,omitempty"`
 }
@@ -9627,9 +9627,9 @@ func (*MsgSetName) Descriptor() ([]byte, []int) {
 	return file_cerc_registry_v1_tx_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *MsgSetName) GetCrn() string {
+func (x *MsgSetName) GetLrn() string {
 	if x != nil {
-		return x.Crn
+		return x.Lrn
 	}
 	return ""
 }
@@ -9840,7 +9840,7 @@ type MsgDeleteNameAuthority struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Crn    string `protobuf:"bytes,1,opt,name=crn,proto3" json:"crn,omitempty"`
+	Lrn    string `protobuf:"bytes,1,opt,name=lrn,proto3" json:"lrn,omitempty"`
 	Signer string `protobuf:"bytes,2,opt,name=signer,proto3" json:"signer,omitempty"`
 }
 
@@ -9864,9 +9864,9 @@ func (*MsgDeleteNameAuthority) Descriptor() ([]byte, []int) {
 	return file_cerc_registry_v1_tx_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *MsgDeleteNameAuthority) GetCrn() string {
+func (x *MsgDeleteNameAuthority) GetLrn() string {
 	if x != nil {
-		return x.Crn
+		return x.Lrn
 	}
 	return ""
 }
@@ -10313,8 +10313,8 @@ var file_cerc_registry_v1_tx_proto_rawDesc = []byte{
 	0x69, 0x67, 0x6e, 0x61, 0x74, 0x75, 0x72, 0x65, 0x73, 0x22, 0x20, 0x79, 0x61, 0x6d, 0x6c, 0x3a,
 	0x22, 0x73, 0x69, 0x67, 0x6e, 0x61, 0x74, 0x75, 0x72, 0x65, 0x73, 0x22, 0x52, 0x0a, 0x73, 0x69,
 	0x67, 0x6e, 0x61, 0x74, 0x75, 0x72, 0x65, 0x73, 0x22, 0x55, 0x0a, 0x0a, 0x4d, 0x73, 0x67, 0x53,
-	0x65, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x63, 0x72, 0x6e, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x03, 0x63, 0x72, 0x6e, 0x12, 0x10, 0x0a, 0x03, 0x63, 0x69, 0x64, 0x18,
+	0x65, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6c, 0x72, 0x6e, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x03, 0x6c, 0x72, 0x6e, 0x12, 0x10, 0x0a, 0x03, 0x63, 0x69, 0x64, 0x18,
 	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x63, 0x69, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x69,
 	0x67, 0x6e, 0x65, 0x72, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73, 0x69, 0x67, 0x6e,
 	0x65, 0x72, 0x3a, 0x0b, 0x82, 0xe7, 0xb0, 0x2a, 0x06, 0x73, 0x69, 0x67, 0x6e, 0x65, 0x72, 0x22,
@@ -10340,7 +10340,7 @@ var file_cerc_registry_v1_tx_proto_rawDesc = []byte{
 	0x74, 0x41, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x42, 0x6f, 0x6e, 0x64, 0x52, 0x65,
 	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x4f, 0x0a, 0x16, 0x4d, 0x73, 0x67, 0x44, 0x65, 0x6c,
 	0x65, 0x74, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x41, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79,
-	0x12, 0x10, 0x0a, 0x03, 0x63, 0x72, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x63,
+	0x12, 0x10, 0x0a, 0x03, 0x6c, 0x72, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6c,
 	0x72, 0x6e, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x69, 0x67, 0x6e, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01,
 	0x28, 0x09, 0x52, 0x06, 0x73, 0x69, 0x67, 0x6e, 0x65, 0x72, 0x3a, 0x0b, 0x82, 0xe7, 0xb0, 0x2a,
 	0x06, 0x73, 0x69, 0x67, 0x6e, 0x65, 0x72, 0x22, 0x20, 0x0a, 0x1e, 0x4d, 0x73, 0x67, 0x44, 0x65,
