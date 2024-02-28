@@ -25,9 +25,9 @@ func NewMsgCreateAuction(params Params, signer sdk.AccAddress) MsgCreateAuction 
 }
 
 // NewMsgCommitBid is the constructor function for MsgCommitBid.
-func NewMsgCommitBid(auctionID string, commitHash string, signer sdk.AccAddress) MsgCommitBid {
+func NewMsgCommitBid(auctionId string, commitHash string, signer sdk.AccAddress) MsgCommitBid {
 	return MsgCommitBid{
-		AuctionId:  auctionID,
+		AuctionId:  auctionId,
 		CommitHash: commitHash,
 		Signer:     signer.String(),
 	}

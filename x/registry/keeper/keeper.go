@@ -11,6 +11,7 @@ import (
 	"cosmossdk.io/collections/indexes"
 	storetypes "cosmossdk.io/core/store"
 	errorsmod "cosmossdk.io/errors"
+	"cosmossdk.io/log"
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/cosmos/cosmos-sdk/codec/legacy"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -27,8 +28,6 @@ import (
 	registrytypes "git.vdb.to/cerc-io/laconic2d/x/registry"
 	"git.vdb.to/cerc-io/laconic2d/x/registry/helpers"
 )
-
-// TODO: Add required methods
 
 type RecordsIndexes struct {
 	BondId *indexes.Multi[string, string, registrytypes.Record]
@@ -50,16 +49,24 @@ func newRecordIndexes(sb *collections.SchemaBuilder) RecordsIndexes {
 	}
 }
 
-// TODO
 type AuthoritiesIndexes struct {
+	AuctionId *indexes.Multi[string, string, registrytypes.NameAuthority]
 }
 
-func (b AuthoritiesIndexes) IndexesList() []collections.Index[string, registrytypes.NameAuthority] {
-	return []collections.Index[string, registrytypes.NameAuthority]{}
+func (a AuthoritiesIndexes) IndexesList() []collections.Index[string, registrytypes.NameAuthority] {
+	return []collections.Index[string, registrytypes.NameAuthority]{a.AuctionId}
 }
 
 func newAuthorityIndexes(sb *collections.SchemaBuilder) AuthoritiesIndexes {
-	return AuthoritiesIndexes{}
+	return AuthoritiesIndexes{
+		AuctionId: indexes.NewMulti(
+			sb, registrytypes.AuthoritiesByAuctionIdIndexPrefix, "authorities_by_auction_id",
+			collections.StringKey, collections.StringKey,
+			func(name string, v registrytypes.NameAuthority) (string, error) {
+				return v.AuctionId, nil
+			},
+		),
+	}
 }
 
 type NameRecordsIndexes struct {
@@ -87,9 +94,8 @@ type Keeper struct {
 
 	accountKeeper auth.AccountKeeper
 	bankKeeper    bank.Keeper
-	recordKeeper  RecordKeeper
-	bondKeeper    bondkeeper.Keeper
-	auctionKeeper auctionkeeper.Keeper
+	bondKeeper    *bondkeeper.Keeper
+	auctionKeeper *auctionkeeper.Keeper
 
 	// state management
 	Schema               collections.Schema
@@ -107,16 +113,14 @@ func NewKeeper(
 	storeService storetypes.KVStoreService,
 	accountKeeper auth.AccountKeeper,
 	bankKeeper bank.Keeper,
-	recordKeeper RecordKeeper,
-	bondKeeper bondkeeper.Keeper,
-	auctionKeeper auctionkeeper.Keeper,
+	bondKeeper *bondkeeper.Keeper,
+	auctionKeeper *auctionkeeper.Keeper,
 ) Keeper {
 	sb := collections.NewSchemaBuilder(storeService)
 	k := Keeper{
 		cdc:           cdc,
 		accountKeeper: accountKeeper,
 		bankKeeper:    bankKeeper,
-		recordKeeper:  recordKeeper,
 		bondKeeper:    bondKeeper,
 		auctionKeeper: auctionKeeper,
 		Params:        collections.NewItem(sb, registrytypes.ParamsPrefix, "params", codec.CollValue[registrytypes.Params](cdc)),
@@ -153,6 +157,15 @@ func NewKeeper(
 	k.Schema = schema
 
 	return k
+}
+
+// Logger returns a module-specific logger.
+func (k Keeper) Logger(ctx sdk.Context) log.Logger {
+	return logger(ctx)
+}
+
+func logger(ctx sdk.Context) log.Logger {
+	return ctx.Logger().With("module", registrytypes.ModuleName)
 }
 
 // HasRecord - checks if a record by the given id exists.
@@ -230,9 +243,6 @@ func (k Keeper) RecordsFromAttributes(ctx sdk.Context, attributes []*registrytyp
 // PutRecord - saves a record to the store.
 func (k Keeper) SaveRecord(ctx sdk.Context, record registrytypes.Record) error {
 	return k.Records.Set(ctx, record.Id, record)
-
-	// TODO
-	// k.updateBlockChangeSetForRecord(ctx, record.Id)
 }
 
 // ProcessSetRecord creates a record.
@@ -274,7 +284,7 @@ func (k Keeper) SetRecord(ctx sdk.Context, msg registrytypes.MsgSetRecord) (*reg
 
 	// Sort owners list.
 	sort.Strings(record.Owners)
-	sdkErr := k.processRecord(ctx, &record, false)
+	sdkErr := k.processRecord(ctx, &record)
 	if sdkErr != nil {
 		return nil, sdkErr
 	}
@@ -282,7 +292,7 @@ func (k Keeper) SetRecord(ctx sdk.Context, msg registrytypes.MsgSetRecord) (*reg
 	return &record, nil
 }
 
-func (k Keeper) processRecord(ctx sdk.Context, record *registrytypes.ReadableRecord, isRenewal bool) error {
+func (k Keeper) processRecord(ctx sdk.Context, record *registrytypes.ReadableRecord) error {
 	params, err := k.GetParams(ctx)
 	if err != nil {
 		return err
@@ -420,7 +430,6 @@ func (k Keeper) GetModuleBalances(ctx sdk.Context) []*registrytypes.AccountBalan
 
 // ProcessRecordExpiryQueue tries to renew expiring records (by collecting rent) else marks them as deleted.
 func (k Keeper) ProcessRecordExpiryQueue(ctx sdk.Context) error {
-	// TODO: process expired records
 	cids, err := k.getAllExpiredRecords(ctx, ctx.BlockHeader().Time)
 	if err != nil {
 		return err

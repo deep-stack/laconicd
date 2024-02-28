@@ -77,7 +77,7 @@ message QueryAuctionsResponse {
 
 // AuctionRequest is the format for querying a specific auction
 message QueryAuctionRequest {
-  // Auction ID
+  // Auction id
   string id = 1;
 }
 
@@ -89,7 +89,7 @@ message QueryAuctionResponse {
 
 // BidRequest is the format for querying a specific bid in an auction
 message QueryBidRequest {
-  // Auction ID
+  // Auction id
   string auction_id = 1;
   // Bidder address
   string bidder = 2;
@@ -103,7 +103,7 @@ message QueryBidResponse {
 
 // BidsRequest is the format for querying all bids in an auction
 message QueryBidsRequest {
-  // Auction ID
+  // Auction id
   string auction_id = 1;
 }
 

@@ -132,16 +132,7 @@ func (k Keeper) SaveNameRecord(ctx sdk.Context, crn string, id string) error {
 		Height: uint64(ctx.BlockHeight()),
 	}
 
-	// TODO: Check if index gets updated on entry updates
-	if err := k.NameRecords.Set(ctx, crn, nameRecord); err != nil {
-		return err
-	}
-
-	// TODO
-	// Update changeSet for name.
-	// k.updateBlockChangeSetForName(ctx, crn)
-
-	return nil
+	return k.NameRecords.Set(ctx, crn, nameRecord)
 }
 
 // SetName creates a CRN -> Record ID mapping.
@@ -169,9 +160,6 @@ func (k Keeper) SetName(ctx sdk.Context, msg registrytypes.MsgSetName) error {
 // SaveNameAuthority creates the NameAuthority record.
 func (k Keeper) SaveNameAuthority(ctx sdk.Context, name string, authority *registrytypes.NameAuthority) error {
 	return k.Authorities.Set(ctx, name, *authority)
-
-	// TODO
-	// updateBlockChangeSetForNameAuthority(ctx, codec, store, name)
 }
 
 // ReserveAuthority reserves a name authority.
@@ -282,12 +270,9 @@ func (k Keeper) createAuthority(ctx sdk.Context, name string, owner string, isRo
 		// If auctions are enabled, clear out owner fields. They will be set after a winner is picked.
 		authority.OwnerAddress = ""
 		authority.OwnerPublicKey = ""
+
 		// Reset bond ID if required.
-		if authority.BondId != "" || len(authority.BondId) != 0 {
-			// TODO
-			// k.RemoveBondToAuthorityIndexEntry(ctx, authority.BondId, name)
-			authority.BondId = ""
-		}
+		authority.BondId = ""
 
 		params := auctiontypes.Params{
 			CommitsDuration: moduleParams.AuthorityAuctionCommitsDuration,
@@ -304,10 +289,6 @@ func (k Keeper) createAuthority(ctx sdk.Context, name string, owner string, isRo
 		if sdkErr != nil {
 			return sdkErr
 		}
-
-		// TODO
-		// Create auction ID -> authority name index.
-		// k.AddAuctionToAuthorityMapping(ctx, auction.Id, name)
 
 		authority.Status = registrytypes.AuthorityUnderAuction
 		authority.AuctionId = auction.Id
@@ -362,21 +343,11 @@ func (k Keeper) SetAuthorityBond(ctx sdk.Context, msg registrytypes.MsgSetAuthor
 		return nil
 	}
 
-	// TODO
-	// Remove old bond ID mapping, if any.
-	// if authority.BondId != "" {
-	// 	k.RemoveBondToAuthorityIndexEntry(ctx, authority.BondId, name)
-	// }
-
 	// Update bond id and save name authority in store.
 	authority.BondId = bond.Id
 	if err = k.SaveNameAuthority(ctx, name, &authority); err != nil {
 		return err
 	}
-
-	// TODO
-	// Add new bond ID mapping.
-	// k.AddBondToAuthorityIndexEntry(ctx, authority.BondId, name)
 
 	return nil
 }
@@ -546,8 +517,7 @@ func (k Keeper) ProcessAuthorityExpiryQueue(ctx sdk.Context) error {
 				return err
 			}
 
-			// TODO: Setup logger
-			// k.Logger(ctx).Info(fmt.Sprintf("Marking authority expired as no bond present: %s", name))
+			k.Logger(ctx).Info(fmt.Sprintf("Marking authority expired as no bond present: %s", name))
 
 			return nil
 		}
@@ -620,7 +590,7 @@ func (k Keeper) deleteAuthorityExpiryQueue(ctx sdk.Context, name string, authori
 
 // tryTakeAuthorityRent tries to take rent from the authority bond.
 func (k Keeper) tryTakeAuthorityRent(ctx sdk.Context, name string, authority registrytypes.NameAuthority) error {
-	// k.Logger(ctx).Info(fmt.Sprintf("Trying to take rent for authority: %s", name))
+	k.Logger(ctx).Info(fmt.Sprintf("Trying to take rent for authority: %s", name))
 
 	params, err := k.GetParams(ctx)
 	if err != nil {
@@ -636,7 +606,8 @@ func (k Keeper) tryTakeAuthorityRent(ctx sdk.Context, name string, authority reg
 			return err
 		}
 
-		// k.Logger(ctx).Info(fmt.Sprintf("Insufficient funds in owner account to pay authority rent, marking as expired: %s", name))
+		k.Logger(ctx).Info(fmt.Sprintf("Insufficient funds in owner account to pay authority rent, marking as expired: %s", name))
+
 		return k.deleteAuthorityExpiryQueue(ctx, name, authority)
 	}
 
@@ -653,7 +624,8 @@ func (k Keeper) tryTakeAuthorityRent(ctx sdk.Context, name string, authority reg
 	// Save authority.
 	authority.Status = registrytypes.AuthorityActive
 
-	// k.Logger(ctx).Info(fmt.Sprintf("Authority rent paid successfully: %s", name))
+	k.Logger(ctx).Info(fmt.Sprintf("Authority rent paid successfully: %s", name))
+
 	return k.SaveNameAuthority(ctx, name, &authority)
 }
 

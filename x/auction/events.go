@@ -11,7 +11,7 @@ const (
 	AttributeKeyRevealFee       = "reveal-fee"
 	AttributeKeyMinimumBid      = "minimum-bid"
 	AttributeKeySigner          = "signer"
-	AttributeKeyAuctionID       = "auction-id"
+	AttributeKeyAuctionId       = "auction-id"
 	AttributeKeyCommitHash      = "commit-hash"
 	AttributeKeyReveal          = "reveal"
 

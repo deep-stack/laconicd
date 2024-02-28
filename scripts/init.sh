@@ -3,6 +3,7 @@
 rm -r ~/.laconic2d || true
 LACONIC2D_BIN=$(which laconic2d)
 # configure laconic2d
+$LACONIC2D_BIN config set config log_level "*:error,p2p:info,state:info,auction:info,bond:info,registry:info" --skip-validate
 $LACONIC2D_BIN config set client chain-id demo
 $LACONIC2D_BIN config set client keyring-backend test
 $LACONIC2D_BIN keys add alice

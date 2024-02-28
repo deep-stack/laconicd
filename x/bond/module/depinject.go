@@ -4,12 +4,14 @@ import (
 	"cosmossdk.io/core/appmodule"
 	"cosmossdk.io/core/store"
 	"cosmossdk.io/depinject"
+	"golang.org/x/exp/maps"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	auth "github.com/cosmos/cosmos-sdk/x/auth/keeper"
 	bank "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 
 	modulev1 "git.vdb.to/cerc-io/laconic2d/api/cerc/bond/module/v1"
+	"git.vdb.to/cerc-io/laconic2d/x/bond"
 	"git.vdb.to/cerc-io/laconic2d/x/bond/keeper"
 )
 
@@ -25,6 +27,7 @@ func init() {
 	appmodule.Register(
 		&modulev1.Module{},
 		appmodule.Provide(ProvideModule),
+		appmodule.Invoke(InvokeSetBondHooks),
 	)
 }
 
@@ -41,7 +44,7 @@ type ModuleInputs struct {
 type ModuleOutputs struct {
 	depinject.Out
 
-	Keeper keeper.Keeper
+	Keeper *keeper.Keeper
 	Module appmodule.AppModule
 }
 
@@ -50,4 +53,26 @@ func ProvideModule(in ModuleInputs) ModuleOutputs {
 	m := NewAppModule(in.Cdc, k)
 
 	return ModuleOutputs{Module: m, Keeper: k}
+}
+
+func InvokeSetBondHooks(
+	config *modulev1.Module,
+	keeper *keeper.Keeper,
+	bondHooks map[string]bond.BondHooksWrapper,
+) error {
+	// all arguments to invokers are optional
+	if keeper == nil || config == nil {
+		return nil
+	}
+
+	var usageKeepers []bond.BondUsageKeeper
+
+	for _, modName := range maps.Keys(bondHooks) {
+		hook := bondHooks[modName]
+		usageKeepers = append(usageKeepers, hook)
+	}
+
+	keeper.SetUsageKeepers(usageKeepers)
+
+	return nil
 }

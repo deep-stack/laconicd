@@ -10,11 +10,11 @@ import (
 var _ auctiontypes.MsgServer = msgServer{}
 
 type msgServer struct {
-	k Keeper
+	k *Keeper
 }
 
 // NewMsgServerImpl returns an implementation of the module MsgServer interface.
-func NewMsgServerImpl(keeper Keeper) auctiontypes.MsgServer {
+func NewMsgServerImpl(keeper *Keeper) auctiontypes.MsgServer {
 	return &msgServer{k: keeper}
 }
 
@@ -67,7 +67,7 @@ func (ms msgServer) CommitBid(c context.Context, msg *auctiontypes.MsgCommitBid)
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
 			auctiontypes.EventTypeCommitBid,
-			sdk.NewAttribute(auctiontypes.AttributeKeyAuctionID, msg.AuctionId),
+			sdk.NewAttribute(auctiontypes.AttributeKeyAuctionId, msg.AuctionId),
 			sdk.NewAttribute(auctiontypes.AttributeKeyCommitHash, msg.CommitHash),
 		),
 		sdk.NewEvent(
@@ -98,7 +98,7 @@ func (ms msgServer) RevealBid(c context.Context, msg *auctiontypes.MsgRevealBid)
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
 			auctiontypes.EventTypeRevealBid,
-			sdk.NewAttribute(auctiontypes.AttributeKeyAuctionID, msg.AuctionId),
+			sdk.NewAttribute(auctiontypes.AttributeKeyAuctionId, msg.AuctionId),
 			sdk.NewAttribute(auctiontypes.AttributeKeyReveal, msg.Reveal),
 		),
 		sdk.NewEvent(

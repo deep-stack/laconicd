@@ -43,12 +43,6 @@ func (k *Keeper) InitGenesis(ctx sdk.Context, data *registry.GenesisState) error
 			if err := k.insertAuthorityExpiryQueue(ctx, authority.Name, authority.Entry.ExpiryTime); err != nil {
 				return err
 			}
-
-			// TODO
-			// Note: Bond genesis runs first, so bonds will already be present.
-			// if authority.Entry.BondId != "" {
-			// 	k.AddBondToAuthorityIndexEntry(ctx, authority.Entry.BondId, authority.Name)
-			// }
 		}
 	}
 

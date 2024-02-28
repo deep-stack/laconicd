@@ -85,7 +85,7 @@ message MsgCommitBid {
   option (gogoproto.goproto_getters) = false;
   option (cosmos.msg.v1.signer) = "signer";
 
-  // Auction ID
+  // Auction id
   string auction_id = 1 [(gogoproto.moretags) = "json:\"auction_id\" yaml:\"auction_id\""];
 
   // Commit Hash
@@ -109,7 +109,7 @@ message MsgRevealBid {
   option (gogoproto.goproto_getters) = false;
   option (cosmos.msg.v1.signer) = "signer";
 
-  // Auction ID
+  // Auction id
   string auction_id = 1 [(gogoproto.moretags) = "json:\"auction_id\" yaml:\"auction_id\""];
 
   // Commit Hash

@@ -1,24 +1,137 @@
 package keeper
 
 import (
+	"errors"
+	"fmt"
 	"time"
 
+	"cosmossdk.io/collections"
 	errorsmod "cosmossdk.io/errors"
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
+	auctiontypes "git.vdb.to/cerc-io/laconic2d/x/auction"
 	auctionkeeper "git.vdb.to/cerc-io/laconic2d/x/auction/keeper"
+	bondtypes "git.vdb.to/cerc-io/laconic2d/x/bond"
 	registrytypes "git.vdb.to/cerc-io/laconic2d/x/registry"
 )
 
-// TODO: Add methods
+// Record keeper implements the bond usage keeper interface.
+var (
+	_ auctiontypes.AuctionUsageKeeper = RecordKeeper{}
+	_ bondtypes.BondUsageKeeper       = RecordKeeper{}
+)
 
 // RecordKeeper exposes the bare minimal read-only API for other modules.
 type RecordKeeper struct {
 	cdc           codec.BinaryCodec // The wire codec for binary encoding/decoding.
-	auctionKeeper auctionkeeper.Keeper
-	// storeKey      storetypes.StoreKey // Unexposed key to access store from sdk.Context
+	k             *Keeper
+	auctionKeeper *auctionkeeper.Keeper
+}
+
+// NewRecordKeeper creates new instances of the registry RecordKeeper
+func NewRecordKeeper(cdc codec.BinaryCodec, k *Keeper, auctionKeeper *auctionkeeper.Keeper) RecordKeeper {
+	return RecordKeeper{
+		cdc:           cdc,
+		k:             k,
+		auctionKeeper: auctionKeeper,
+	}
+}
+
+// ModuleName returns the module name.
+func (rk RecordKeeper) ModuleName() string {
+	return registrytypes.ModuleName
+}
+
+func (rk RecordKeeper) UsesAuction(ctx sdk.Context, auctionId string) bool {
+	iter, err := rk.k.Authorities.Indexes.AuctionId.MatchExact(ctx, auctionId)
+	if err != nil {
+		panic(err)
+	}
+
+	return iter.Valid()
+}
+
+func (rk RecordKeeper) OnAuctionWinnerSelected(ctx sdk.Context, auctionId string) {
+	// Update authority status based on auction status/winner.
+	iter, err := rk.k.Authorities.Indexes.AuctionId.MatchExact(ctx, auctionId)
+	if err != nil && !errors.Is(err, collections.ErrNotFound) {
+		panic(err)
+	}
+	names, err := iter.PrimaryKeys()
+	if err != nil {
+		panic(err)
+	}
+
+	if len(names) == 0 {
+		// We don't know about this auction, ignore.
+		logger(ctx).Info(fmt.Sprintf("Ignoring auction notification, name mapping not found: %s", auctionId))
+		return
+	}
+
+	// Take the first one as an auction (non-empty) will map to only one name
+	// MultiIndex being used as there can be multiple entries with empty auction id ("")
+	name := names[0]
+	if has, err := rk.k.HasNameAuthority(ctx, name); !has {
+		if err != nil {
+			panic(err)
+		}
+
+		// We don't know about this authority, ignore.
+		logger(ctx).Info(fmt.Sprintf("Ignoring auction notification, authority not found: %s", auctionId))
+		return
+	}
+
+	authority, err := rk.k.GetNameAuthority(ctx, name)
+	if err != nil {
+		panic(err)
+	}
+
+	auctionObj, err := rk.auctionKeeper.GetAuctionById(ctx, auctionId)
+	if err != nil {
+		panic(err)
+	}
+
+	if auctionObj.Status == auctiontypes.AuctionStatusCompleted {
+		if auctionObj.WinnerAddress != "" {
+			// Mark authority owner and change status to active.
+			authority.OwnerAddress = auctionObj.WinnerAddress
+			authority.Status = registrytypes.AuthorityActive
+
+			// Reset bond id if required, as owner has changed.
+			authority.BondId = ""
+
+			// Update height for updated/changed authority (owner).
+			// Can be used to check if names are older than the authority itself (stale names).
+			authority.Height = uint64(ctx.BlockHeight())
+
+			logger(ctx).Info(fmt.Sprintf("Winner selected, marking authority as active: %s", name))
+		} else {
+			// Mark as expired.
+			authority.Status = registrytypes.AuthorityExpired
+			logger(ctx).Info(fmt.Sprintf("No winner, marking authority as expired: %s", name))
+		}
+
+		// Forget about this auction now, we no longer need it.
+		authority.AuctionId = ""
+
+		if err = rk.k.SaveNameAuthority(ctx, name, &authority); err != nil {
+			panic(err)
+		}
+	} else {
+		logger(ctx).Info(fmt.Sprintf("Ignoring auction notification, status: %s", auctionObj.Status))
+	}
+}
+
+// UsesBond returns true if the bond has associated records.
+func (rk RecordKeeper) UsesBond(ctx sdk.Context, bondId string) bool {
+	iter, err := rk.k.Records.Indexes.BondId.MatchExact(ctx, bondId)
+	if err != nil {
+		panic(err)
+	}
+
+	return iter.Valid()
 }
 
 // RenewRecord renews a record.
@@ -46,7 +159,7 @@ func (k Keeper) RenewRecord(ctx sdk.Context, msg registrytypes.MsgRenewRecord) e
 	}
 
 	readableRecord := record.ToReadableRecord()
-	return k.processRecord(ctx, &readableRecord, true)
+	return k.processRecord(ctx, &readableRecord)
 }
 
 // AssociateBond associates a record with a bond.

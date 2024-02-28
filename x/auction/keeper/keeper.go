@@ -11,6 +11,7 @@ import (
 	"cosmossdk.io/collections/indexes"
 	storetypes "cosmossdk.io/core/store"
 	errorsmod "cosmossdk.io/errors"
+	"cosmossdk.io/log"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -62,8 +63,6 @@ func newBidsIndexes(sb *collections.SchemaBuilder) BidsIndexes {
 	}
 }
 
-// TODO: Add required methods
-
 type Keeper struct {
 	// Codecs
 	cdc codec.BinaryCodec
@@ -73,7 +72,7 @@ type Keeper struct {
 	bankKeeper    bank.Keeper
 
 	// Track auction usage in other cosmos-sdk modules (more like a usage tracker).
-	// usageKeepers []types.AuctionUsageKeeper
+	usageKeepers []auctiontypes.AuctionUsageKeeper
 
 	// state management
 	Schema   collections.Schema
@@ -88,7 +87,7 @@ func NewKeeper(
 	storeService storetypes.KVStoreService,
 	accountKeeper auth.AccountKeeper,
 	bankKeeper bank.Keeper,
-) Keeper {
+) *Keeper {
 	sb := collections.NewSchemaBuilder(storeService)
 	k := Keeper{
 		cdc:           cdc,
@@ -97,7 +96,7 @@ func NewKeeper(
 		Params:        collections.NewItem(sb, auctiontypes.ParamsPrefix, "params", codec.CollValue[auctiontypes.Params](cdc)),
 		Auctions:      collections.NewIndexedMap(sb, auctiontypes.AuctionsPrefix, "auctions", collections.StringKey, codec.CollValue[auctiontypes.Auction](cdc), newAuctionIndexes(sb)),
 		Bids:          collections.NewIndexedMap(sb, auctiontypes.BidsPrefix, "bids", collections.PairKeyCodec(collections.StringKey, collections.StringKey), codec.CollValue[auctiontypes.Bid](cdc), newBidsIndexes(sb)),
-		// usageKeepers:  usageKeepers,
+		usageKeepers:  nil,
 	}
 
 	schema, err := sb.Build()
@@ -107,22 +106,29 @@ func NewKeeper(
 
 	k.Schema = schema
 
-	return k
+	return &k
 }
 
-// func (k *Keeper) SetUsageKeepers(usageKeepers []types.AuctionUsageKeeper) {
-// 	k.usageKeepers = usageKeepers
-// }
+// Logger returns a module-specific logger.
+func (k Keeper) Logger(ctx sdk.Context) log.Logger {
+	return logger(ctx)
+}
+
+func logger(ctx sdk.Context) log.Logger {
+	return ctx.Logger().With("module", auctiontypes.ModuleName)
+}
+
+func (k *Keeper) SetUsageKeepers(usageKeepers []auctiontypes.AuctionUsageKeeper) {
+	if k.usageKeepers != nil {
+		panic("cannot set auction hooks twice")
+	}
+
+	k.usageKeepers = usageKeepers
+}
 
 // SaveAuction - saves a auction to the store.
 func (k Keeper) SaveAuction(ctx sdk.Context, auction *auctiontypes.Auction) error {
 	return k.Auctions.Set(ctx, auction.Id, *auction)
-
-	// // Notify interested parties.
-	// for _, keeper := range k.usageKeepers {
-	// 	keeper.OnAuction(ctx, auction.Id)
-	// }
-	// return nil
 }
 
 // DeleteAuction - deletes the auction.
@@ -154,12 +160,6 @@ func (k Keeper) HasAuction(ctx sdk.Context, id string) (bool, error) {
 func (k Keeper) SaveBid(ctx sdk.Context, bid *auctiontypes.Bid) error {
 	key := collections.Join(bid.AuctionId, bid.BidderAddress)
 	return k.Bids.Set(ctx, key, *bid)
-
-	// // Notify interested parties.
-	// for _, keeper := range k.usageKeepers {
-	// 	keeper.OnAuctionBid(ctx, bid.AuctionId, bid.BidderAddress)
-	// }
-	// return nil
 }
 
 func (k Keeper) DeleteBid(ctx sdk.Context, bid auctiontypes.Bid) error {
@@ -191,7 +191,6 @@ func (k Keeper) GetBid(ctx sdk.Context, id string, bidder string) (auctiontypes.
 func (k Keeper) GetBids(ctx sdk.Context, id string) ([]*auctiontypes.Bid, error) {
 	var bids []*auctiontypes.Bid
 
-	// TODO: Optimize using return by value?
 	err := k.Bids.Walk(ctx, collections.NewPrefixedPairRange[string, string](id), func(key collections.Pair[string, string], value auctiontypes.Bid) (stop bool, err error) {
 		bids = append(bids, &value)
 		return false, nil
@@ -463,13 +462,13 @@ func (k Keeper) RevealBid(ctx sdk.Context, msg auctiontypes.MsgRevealBid) (*auct
 		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Reveal JSON unmarshal error.")
 	}
 
-	chainID, err := wnsUtils.GetAttributeAsString(reveal, "chainId")
-	if err != nil || chainID != ctx.ChainID() {
+	chainId, err := wnsUtils.GetAttributeAsString(reveal, "chainId")
+	if err != nil || chainId != ctx.ChainID() {
 		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Invalid reveal chainID.")
 	}
 
-	auctionID, err := wnsUtils.GetAttributeAsString(reveal, "auctionId")
-	if err != nil || auctionID != msg.AuctionId {
+	auctionId, err := wnsUtils.GetAttributeAsString(reveal, "auctionId")
+	if err != nil || auctionId != msg.AuctionId {
 		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Invalid reveal auction Id.")
 	}
 
@@ -557,7 +556,7 @@ func (k Keeper) processAuctionPhases(ctx sdk.Context) error {
 				return err
 			}
 
-			ctx.Logger().Info(fmt.Sprintf("Moved auction %s to reveal phase.", auction.Id))
+			k.Logger(ctx).Info(fmt.Sprintf("Moved auction %s to reveal phase.", auction.Id))
 		}
 
 		// Reveal -> Expired state.
@@ -567,7 +566,7 @@ func (k Keeper) processAuctionPhases(ctx sdk.Context) error {
 				return err
 			}
 
-			ctx.Logger().Info(fmt.Sprintf("Moved auction %s to expired state.", auction.Id))
+			k.Logger(ctx).Info(fmt.Sprintf("Moved auction %s to expired state.", auction.Id))
 		}
 
 		// If auction has expired, pick a winner from revealed bids.
@@ -592,7 +591,7 @@ func (k Keeper) deleteCompletedAuctions(ctx sdk.Context) error {
 	}
 
 	for _, auction := range auctions {
-		ctx.Logger().Info(fmt.Sprintf("Deleting completed auction %s after timeout.", auction.Id))
+		k.Logger(ctx).Info(fmt.Sprintf("Deleting completed auction %s after timeout.", auction.Id))
 		if err := k.DeleteAuction(ctx, *auction); err != nil {
 			return err
 		}
@@ -602,7 +601,7 @@ func (k Keeper) deleteCompletedAuctions(ctx sdk.Context) error {
 }
 
 func (k Keeper) pickAuctionWinner(ctx sdk.Context, auction *auctiontypes.Auction) error {
-	ctx.Logger().Info(fmt.Sprintf("Picking auction %s winner.", auction.Id))
+	k.Logger(ctx).Info(fmt.Sprintf("Picking auction %s winner.", auction.Id))
 
 	var highestBid *auctiontypes.Bid
 	var secondHighestBid *auctiontypes.Bid
@@ -613,38 +612,38 @@ func (k Keeper) pickAuctionWinner(ctx sdk.Context, auction *auctiontypes.Auction
 	}
 
 	for _, bid := range bids {
-		ctx.Logger().Info(fmt.Sprintf("Processing bid %s %s", bid.BidderAddress, bid.BidAmount.String()))
+		k.Logger(ctx).Info(fmt.Sprintf("Processing bid %s %s", bid.BidderAddress, bid.BidAmount.String()))
 
 		// Only consider revealed bids.
 		if bid.Status != auctiontypes.BidStatusRevealed {
-			ctx.Logger().Info(fmt.Sprintf("Ignoring unrevealed bid %s %s", bid.BidderAddress, bid.BidAmount.String()))
+			k.Logger(ctx).Info(fmt.Sprintf("Ignoring unrevealed bid %s %s", bid.BidderAddress, bid.BidAmount.String()))
 			continue
 		}
 
 		// Init highest bid.
 		if highestBid == nil {
 			highestBid = bid
-			ctx.Logger().Info(fmt.Sprintf("Initializing 1st bid %s %s", bid.BidderAddress, bid.BidAmount.String()))
+			k.Logger(ctx).Info(fmt.Sprintf("Initializing 1st bid %s %s", bid.BidderAddress, bid.BidAmount.String()))
 			continue
 		}
 
 		//nolint: all
 		if highestBid.BidAmount.IsLT(bid.BidAmount) {
-			ctx.Logger().Info(fmt.Sprintf("New highest bid %s %s", bid.BidderAddress, bid.BidAmount.String()))
+			k.Logger(ctx).Info(fmt.Sprintf("New highest bid %s %s", bid.BidderAddress, bid.BidAmount.String()))
 
 			secondHighestBid = highestBid
 			highestBid = bid
 
-			ctx.Logger().Info(fmt.Sprintf("Updated 1st bid %s %s", highestBid.BidderAddress, highestBid.BidAmount.String()))
-			ctx.Logger().Info(fmt.Sprintf("Updated 2nd bid %s %s", secondHighestBid.BidderAddress, secondHighestBid.BidAmount.String()))
+			k.Logger(ctx).Info(fmt.Sprintf("Updated 1st bid %s %s", highestBid.BidderAddress, highestBid.BidAmount.String()))
+			k.Logger(ctx).Info(fmt.Sprintf("Updated 2nd bid %s %s", secondHighestBid.BidderAddress, secondHighestBid.BidAmount.String()))
 
 		} else if secondHighestBid == nil || secondHighestBid.BidAmount.IsLT(bid.BidAmount) {
-			ctx.Logger().Info(fmt.Sprintf("New 2nd highest bid %s %s", bid.BidderAddress, bid.BidAmount.String()))
+			k.Logger(ctx).Info(fmt.Sprintf("New 2nd highest bid %s %s", bid.BidderAddress, bid.BidAmount.String()))
 
 			secondHighestBid = bid
-			ctx.Logger().Info(fmt.Sprintf("Updated 2nd bid %s %s", secondHighestBid.BidderAddress, secondHighestBid.BidAmount.String()))
+			k.Logger(ctx).Info(fmt.Sprintf("Updated 2nd bid %s %s", secondHighestBid.BidderAddress, secondHighestBid.BidAmount.String()))
 		} else {
-			ctx.Logger().Info(fmt.Sprintf("Ignoring bid as it doesn't affect 1st/2nd price %s %s", bid.BidderAddress, bid.BidAmount.String()))
+			k.Logger(ctx).Info(fmt.Sprintf("Ignoring bid as it doesn't affect 1st/2nd price %s %s", bid.BidderAddress, bid.BidAmount.String()))
 		}
 	}
 
@@ -660,11 +659,11 @@ func (k Keeper) pickAuctionWinner(ctx sdk.Context, auction *auctiontypes.Auction
 		if secondHighestBid != nil {
 			auction.WinningPrice = secondHighestBid.BidAmount
 		}
-		ctx.Logger().Info(fmt.Sprintf("Auction %s winner %s.", auction.Id, auction.WinnerAddress))
-		ctx.Logger().Info(fmt.Sprintf("Auction %s winner bid %s.", auction.Id, auction.WinningBid.String()))
-		ctx.Logger().Info(fmt.Sprintf("Auction %s winner price %s.", auction.Id, auction.WinningPrice.String()))
+		k.Logger(ctx).Info(fmt.Sprintf("Auction %s winner %s.", auction.Id, auction.WinnerAddress))
+		k.Logger(ctx).Info(fmt.Sprintf("Auction %s winner bid %s.", auction.Id, auction.WinningBid.String()))
+		k.Logger(ctx).Info(fmt.Sprintf("Auction %s winner price %s.", auction.Id, auction.WinningPrice.String()))
 	} else {
-		ctx.Logger().Info(fmt.Sprintf("Auction %s has no valid revealed bids (no winner).", auction.Id))
+		k.Logger(ctx).Info(fmt.Sprintf("Auction %s has no valid revealed bids (no winner).", auction.Id))
 	}
 
 	if err := k.SaveAuction(ctx, auction); err != nil {
@@ -674,7 +673,7 @@ func (k Keeper) pickAuctionWinner(ctx sdk.Context, auction *auctiontypes.Auction
 	for _, bid := range bids {
 		bidderAddress, err := sdk.AccAddressFromBech32(bid.BidderAddress)
 		if err != nil {
-			ctx.Logger().Error(fmt.Sprintf("Invalid bidderAddress address. %v", err))
+			k.Logger(ctx).Error(fmt.Sprintf("Invalid bidderAddress address. %v", err))
 			panic("Invalid bidder address.")
 		}
 
@@ -682,7 +681,7 @@ func (k Keeper) pickAuctionWinner(ctx sdk.Context, auction *auctiontypes.Auction
 			// Send reveal fee back to bidders that've revealed the bid.
 			sdkErr := k.bankKeeper.SendCoinsFromModuleToAccount(ctx, auctiontypes.ModuleName, bidderAddress, sdk.NewCoins(bid.RevealFee))
 			if sdkErr != nil {
-				ctx.Logger().Error(fmt.Sprintf("Auction error returning reveal fee: %v", sdkErr))
+				k.Logger(ctx).Error(fmt.Sprintf("Auction error returning reveal fee: %v", sdkErr))
 				panic(sdkErr)
 			}
 		}
@@ -690,7 +689,7 @@ func (k Keeper) pickAuctionWinner(ctx sdk.Context, auction *auctiontypes.Auction
 		// Send back locked bid amount to all bidders.
 		sdkErr := k.bankKeeper.SendCoinsFromModuleToAccount(ctx, auctiontypes.ModuleName, bidderAddress, sdk.NewCoins(bid.BidAmount))
 		if sdkErr != nil {
-			ctx.Logger().Error(fmt.Sprintf("Auction error returning bid amount: %v", sdkErr))
+			k.Logger(ctx).Error(fmt.Sprintf("Auction error returning bid amount: %v", sdkErr))
 			panic(sdkErr)
 		}
 	}
@@ -699,39 +698,38 @@ func (k Keeper) pickAuctionWinner(ctx sdk.Context, auction *auctiontypes.Auction
 	if auction.WinnerAddress != "" {
 		winnerAddress, err := sdk.AccAddressFromBech32(auction.WinnerAddress)
 		if err != nil {
-			ctx.Logger().Error(fmt.Sprintf("Invalid winner address. %v", err))
+			k.Logger(ctx).Error(fmt.Sprintf("Invalid winner address. %v", err))
 			panic("Invalid winner address.")
 		}
 
 		// Take 2nd price from winner.
 		sdkErr := k.bankKeeper.SendCoinsFromAccountToModule(ctx, winnerAddress, auctiontypes.ModuleName, sdk.NewCoins(auction.WinningPrice))
 		if sdkErr != nil {
-			ctx.Logger().Error(fmt.Sprintf("Auction error taking funds from winner: %v", sdkErr))
+			k.Logger(ctx).Error(fmt.Sprintf("Auction error taking funds from winner: %v", sdkErr))
 			panic(sdkErr)
 		}
 
 		// Burn anything over the min. bid amount.
 		amountToBurn := auction.WinningPrice.Sub(auction.MinimumBid)
 		if amountToBurn.IsNegative() {
-			ctx.Logger().Error("Auction coins to burn cannot be negative.")
+			k.Logger(ctx).Error("Auction coins to burn cannot be negative.")
 			panic("Auction coins to burn cannot be negative.")
 		}
 
 		// Use auction burn module account instead of actually burning coins to better keep track of supply.
 		sdkErr = k.bankKeeper.SendCoinsFromModuleToModule(ctx, auctiontypes.ModuleName, auctiontypes.AuctionBurnModuleAccountName, sdk.NewCoins(amountToBurn))
 		if sdkErr != nil {
-			ctx.Logger().Error(fmt.Sprintf("Auction error burning coins: %v", sdkErr))
+			k.Logger(ctx).Error(fmt.Sprintf("Auction error burning coins: %v", sdkErr))
 			panic(sdkErr)
 		}
 	}
 
-	// TODO
 	// Notify other modules (hook).
-	// ctx.Logger().Info(fmt.Sprintf("Auction %s notifying %d modules.", auction.Id, len(k.usageKeepers)))
-	// for _, keeper := range k.usageKeepers {
-	// 	ctx.Logger().Info(fmt.Sprintf("Auction %s notifying module %s.", auction.Id, keeper.ModuleName()))
-	// 	keeper.OnAuctionWinnerSelected(ctx, auction.Id)
-	// }
+	k.Logger(ctx).Info(fmt.Sprintf("Auction %s notifying %d modules.", auction.Id, len(k.usageKeepers)))
+	for _, keeper := range k.usageKeepers {
+		k.Logger(ctx).Info(fmt.Sprintf("Auction %s notifying module %s.", auction.Id, keeper.ModuleName()))
+		keeper.OnAuctionWinnerSelected(ctx, auction.Id)
+	}
 
 	return nil
 }

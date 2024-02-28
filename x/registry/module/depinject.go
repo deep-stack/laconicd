@@ -10,7 +10,9 @@ import (
 	bank "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 
 	modulev1 "git.vdb.to/cerc-io/laconic2d/api/cerc/registry/module/v1"
+	"git.vdb.to/cerc-io/laconic2d/x/auction"
 	auctionkeeper "git.vdb.to/cerc-io/laconic2d/x/auction/keeper"
+	"git.vdb.to/cerc-io/laconic2d/x/bond"
 	bondkeeper "git.vdb.to/cerc-io/laconic2d/x/bond/keeper"
 	"git.vdb.to/cerc-io/laconic2d/x/registry/keeper"
 )
@@ -39,8 +41,8 @@ type ModuleInputs struct {
 	AccountKeeper auth.AccountKeeper
 	BankKeeper    bank.Keeper
 
-	BondKeeper    bondkeeper.Keeper
-	AuctionKeeper auctionkeeper.Keeper
+	BondKeeper    *bondkeeper.Keeper
+	AuctionKeeper *auctionkeeper.Keeper
 }
 
 type ModuleOutputs struct {
@@ -48,6 +50,9 @@ type ModuleOutputs struct {
 
 	Keeper keeper.Keeper
 	Module appmodule.AppModule
+
+	AuctionHooks auction.AuctionHooksWrapper
+	BondHooks    bond.BondHooksWrapper
 }
 
 func ProvideModule(in ModuleInputs) ModuleOutputs {
@@ -56,11 +61,16 @@ func ProvideModule(in ModuleInputs) ModuleOutputs {
 		in.StoreService,
 		in.AccountKeeper,
 		in.BankKeeper,
-		keeper.RecordKeeper{},
 		in.BondKeeper,
 		in.AuctionKeeper,
 	)
 	m := NewAppModule(in.Cdc, k)
 
-	return ModuleOutputs{Module: m, Keeper: k}
+	recordKeeper := keeper.NewRecordKeeper(in.Cdc, &k, in.AuctionKeeper)
+
+	return ModuleOutputs{
+		Module: m, Keeper: k,
+		AuctionHooks: auction.AuctionHooksWrapper{AuctionUsageKeeper: recordKeeper},
+		BondHooks:    bond.BondHooksWrapper{BondUsageKeeper: recordKeeper},
+	}
 }

@@ -29,14 +29,14 @@ const (
 	BidStatusRevealed  = "reveal"
 )
 
-// AuctionId simplifies generation of auction IDs.
+// AuctionId simplifies generation of auction ids.
 type AuctionId struct {
 	Address  sdk.Address
 	AccNum   uint64
 	Sequence uint64
 }
 
-// Generate creates the auction ID.
+// Generate creates the auction id.
 func (auctionId AuctionId) Generate() string {
 	hasher := sha256.New()
 	str := fmt.Sprintf("%s:%d:%d", auctionId.Address.String(), auctionId.AccNum, auctionId.Sequence)

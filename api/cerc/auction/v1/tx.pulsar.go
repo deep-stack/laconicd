@@ -3371,7 +3371,7 @@ type MsgCommitBid struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Auction ID
+	// Auction id
 	AuctionId string `protobuf:"bytes,1,opt,name=auction_id,json=auctionId,proto3" json:"auction_id,omitempty"`
 	// Commit Hash
 	CommitHash string `protobuf:"bytes,2,opt,name=commit_hash,json=commitHash,proto3" json:"commit_hash,omitempty"`
@@ -3463,7 +3463,7 @@ type MsgRevealBid struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Auction ID
+	// Auction id
 	AuctionId string `protobuf:"bytes,1,opt,name=auction_id,json=auctionId,proto3" json:"auction_id,omitempty"`
 	// Commit Hash
 	Reveal string `protobuf:"bytes,2,opt,name=reveal,proto3" json:"reveal,omitempty"`

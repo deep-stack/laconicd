@@ -18,8 +18,6 @@ import (
 	"git.vdb.to/cerc-io/laconic2d/x/bond/keeper"
 )
 
-// TODO: Port remaining AppModule methods
-
 var (
 	_ module.AppModuleBasic      = AppModule{}
 	_ appmodule.AppModule        = AppModule{}
@@ -33,11 +31,11 @@ const ConsensusVersion = 1
 
 type AppModule struct {
 	cdc    codec.Codec
-	keeper keeper.Keeper
+	keeper *keeper.Keeper
 }
 
 // NewAppModule creates a new AppModule object
-func NewAppModule(cdc codec.Codec, keeper keeper.Keeper) AppModule {
+func NewAppModule(cdc codec.Codec, keeper *keeper.Keeper) AppModule {
 	return AppModule{
 		cdc:    cdc,
 		keeper: keeper,

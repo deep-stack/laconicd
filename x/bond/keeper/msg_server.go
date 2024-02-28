@@ -11,11 +11,11 @@ import (
 var _ bond.MsgServer = msgServer{}
 
 type msgServer struct {
-	k Keeper
+	k *Keeper
 }
 
 // NewMsgServerImpl returns an implementation of the module MsgServer interface.
-func NewMsgServerImpl(keeper Keeper) bond.MsgServer {
+func NewMsgServerImpl(keeper *Keeper) bond.MsgServer {
 	return &msgServer{k: keeper}
 }
 

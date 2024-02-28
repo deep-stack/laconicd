@@ -49,7 +49,7 @@ type Keeper struct {
 	bankKeeper    bank.Keeper
 
 	// Track bond usage in other cosmos-sdk modules (more like a usage tracker).
-	// usageKeepers []types.BondUsageKeeper
+	usageKeepers []bondtypes.BondUsageKeeper
 
 	// State management
 	Schema collections.Schema
@@ -63,8 +63,7 @@ func NewKeeper(
 	storeService store.KVStoreService,
 	accountKeeper auth.AccountKeeper,
 	bankKeeper bank.Keeper,
-	// usageKeepers []types.BondUsageKeeper,
-) Keeper {
+) *Keeper {
 	sb := collections.NewSchemaBuilder(storeService)
 	k := Keeper{
 		cdc:           cdc,
@@ -72,7 +71,7 @@ func NewKeeper(
 		bankKeeper:    bankKeeper,
 		Params:        collections.NewItem(sb, bondtypes.ParamsPrefix, "params", codec.CollValue[bondtypes.Params](cdc)),
 		Bonds:         collections.NewIndexedMap(sb, bondtypes.BondsPrefix, "bonds", collections.StringKey, codec.CollValue[bondtypes.Bond](cdc), newBondIndexes(sb)),
-		// usageKeepers:  usageKeepers,
+		usageKeepers:  nil,
 	}
 
 	schema, err := sb.Build()
@@ -82,7 +81,15 @@ func NewKeeper(
 
 	k.Schema = schema
 
-	return k
+	return &k
+}
+
+func (k *Keeper) SetUsageKeepers(usageKeepers []bondtypes.BondUsageKeeper) {
+	if k.usageKeepers != nil {
+		panic("cannot set bond hooks twice")
+	}
+
+	k.usageKeepers = usageKeepers
 }
 
 // BondId simplifies generation of bond Ids.
@@ -318,13 +325,12 @@ func (k Keeper) CancelBond(ctx sdk.Context, id string, ownerAddress sdk.AccAddre
 		return nil, errorsmod.Wrap(sdkerrors.ErrUnauthorized, "Bond owner mismatch.")
 	}
 
-	// TODO
 	// Check if bond is used in other modules.
-	// for _, usageKeeper := range k.usageKeepers {
-	// 	if usageKeeper.UsesBond(ctx, id) {
-	// 		return nil, errorsmod.Wrap(sdkerrors.ErrUnauthorized, fmt.Sprintf("Bond in use by the '%s' module.", usageKeeper.ModuleName()))
-	// 	}
-	// }
+	for _, usageKeeper := range k.usageKeepers {
+		if usageKeeper.UsesBond(ctx, id) {
+			return nil, errorsmod.Wrap(sdkerrors.ErrUnauthorized, fmt.Sprintf("Bond in use by the '%s' module.", usageKeeper.ModuleName()))
+		}
+	}
 
 	// Move funds from the bond into the account.
 	err = k.bankKeeper.SendCoinsFromModuleToAccount(ctx, bondtypes.ModuleName, ownerAddress, bond.Balance)

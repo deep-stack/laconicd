@@ -76,8 +76,8 @@ type LaconicApp struct {
 	ConsensusParamsKeeper consensuskeeper.Keeper
 
 	// laconic keepers
-	AuctionKeeper  auctionkeeper.Keeper
-	BondKeeper     bondkeeper.Keeper
+	AuctionKeeper  *auctionkeeper.Keeper // (Use * as per ProvideModule implementation)
+	BondKeeper     *bondkeeper.Keeper
 	RegistryKeeper registrykeeper.Keeper
 	// RegistryRecordKeeper registrykeeper.RecordKeeper
 

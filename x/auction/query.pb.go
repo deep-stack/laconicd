@@ -217,7 +217,7 @@ func (m *QueryAuctionsResponse) GetPagination() *query.PageRequest {
 
 // AuctionRequest is the format for querying a specific auction
 type QueryAuctionRequest struct {
-	// Auction ID
+	// Auction id
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
@@ -309,7 +309,7 @@ func (m *QueryAuctionResponse) GetAuction() *Auction {
 
 // BidRequest is the format for querying a specific bid in an auction
 type QueryBidRequest struct {
-	// Auction ID
+	// Auction id
 	AuctionId string `protobuf:"bytes,1,opt,name=auction_id,json=auctionId,proto3" json:"auction_id,omitempty"`
 	// Bidder address
 	Bidder string `protobuf:"bytes,2,opt,name=bidder,proto3" json:"bidder,omitempty"`
@@ -410,7 +410,7 @@ func (m *QueryBidResponse) GetBid() *Bid {
 
 // BidsRequest is the format for querying all bids in an auction
 type QueryBidsRequest struct {
-	// Auction ID
+	// Auction id
 	AuctionId string `protobuf:"bytes,1,opt,name=auction_id,json=auctionId,proto3" json:"auction_id,omitempty"`
 }
 

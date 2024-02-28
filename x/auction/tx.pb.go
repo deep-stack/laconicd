@@ -125,7 +125,7 @@ var xxx_messageInfo_MsgCreateAuctionResponse proto.InternalMessageInfo
 
 // CommitBid defines the message to commit a bid
 type MsgCommitBid struct {
-	// Auction ID
+	// Auction id
 	AuctionId string `protobuf:"bytes,1,opt,name=auction_id,json=auctionId,proto3" json:"auction_id,omitempty" json:"auction_id" yaml:"auction_id"`
 	// Commit Hash
 	CommitHash string `protobuf:"bytes,2,opt,name=commit_hash,json=commitHash,proto3" json:"commit_hash,omitempty" json:"commit_hash" yaml:"commit_hash"`
@@ -207,7 +207,7 @@ var xxx_messageInfo_MsgCommitBidResponse proto.InternalMessageInfo
 
 // RevealBid defines the message to reveal a bid
 type MsgRevealBid struct {
-	// Auction ID
+	// Auction id
 	AuctionId string `protobuf:"bytes,1,opt,name=auction_id,json=auctionId,proto3" json:"auction_id,omitempty" json:"auction_id" yaml:"auction_id"`
 	// Commit Hash
 	Reveal string `protobuf:"bytes,2,opt,name=reveal,proto3" json:"reveal,omitempty" json:"reveal" yaml:"reveal"`

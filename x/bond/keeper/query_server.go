@@ -13,11 +13,11 @@ import (
 var _ bondtypes.QueryServer = queryServer{}
 
 type queryServer struct {
-	k Keeper
+	k *Keeper
 }
 
 // NewQueryServerImpl returns an implementation of the module QueryServer.
-func NewQueryServerImpl(k Keeper) bondtypes.QueryServer {
+func NewQueryServerImpl(k *Keeper) bondtypes.QueryServer {
 	return queryServer{k}
 }
 

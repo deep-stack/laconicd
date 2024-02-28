@@ -131,22 +131,6 @@ message Signature {
   string pub_key = 2 [(gogoproto.moretags) = "json:\"pub_key\" yaml:\"pub_key\""];
 }
 
-// BlockChangeSet
-message BlockChangeSet {
-  int64                   height       = 1;
-  repeated string         records      = 2;
-  repeated string         auctions     = 3;
-  repeated AuctionBidInfo auction_bids = 4 [(gogoproto.moretags) = "json:\"auction_bids\" yaml:\"auction_bids\""];
-  repeated string         authorities  = 5;
-  repeated string         names        = 6;
-}
-
-// AuctionBidInfo
-message AuctionBidInfo {
-  string auction_id     = 1 [(gogoproto.moretags) = "json:\"auction_id\" yaml:\"auction_id\""];
-  string bidder_address = 2 [(gogoproto.moretags) = "json:\"bidder_address\" yaml:\"bidder_address\""];
-}
-
 // ExpiryQueue: record / authority expiry queue type
 // id:    expiry time
 // value: array of ids (record cids / authority names)

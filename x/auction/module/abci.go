@@ -9,7 +9,7 @@ import (
 )
 
 // EndBlocker is called every block
-func EndBlocker(ctx context.Context, k keeper.Keeper) error {
+func EndBlocker(ctx context.Context, k *keeper.Keeper) error {
 	sdkCtx := sdk.UnwrapSDKContext(ctx)
 
 	return k.EndBlockerProcessAuctions(sdkCtx)
