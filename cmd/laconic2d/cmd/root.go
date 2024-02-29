@@ -27,6 +27,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/auth/types"
 
 	"git.vdb.to/cerc-io/laconic2d/app"
+	"git.vdb.to/cerc-io/laconic2d/gql"
 )
 
 const EnvPrefix = "LACONIC"
@@ -106,7 +107,7 @@ func NewRootCmd() *cobra.Command {
 			// overwrite the block timeout
 			cmtCfg := cmtcfg.DefaultConfig()
 			cmtCfg.Consensus.TimeoutCommit = 3 * time.Second
-			cmtCfg.LogLevel = "*:error,p2p:info,state:info,auction:info,bond:info,registry:info" // better default logging
+			cmtCfg.LogLevel = "*:error,p2p:info,state:info,auction:info,bond:info,registry:info,gql-server:info" // better default logging
 
 			return server.InterceptConfigsPreRunHandler(cmd, serverconfig.DefaultConfigTemplate, srvCfg, cmtCfg)
 		},
@@ -117,6 +118,9 @@ func NewRootCmd() *cobra.Command {
 	if err := autoCliOpts.EnhanceRootCommand(rootCmd); err != nil {
 		panic(err)
 	}
+
+	// Add flags for GQL server.
+	rootCmd = gql.AddGQLFlags(rootCmd)
 
 	return rootCmd
 }

@@ -1,12 +1,14 @@
 package cmd
 
 import (
+	"context"
 	"errors"
 	"io"
 
 	dbm "github.com/cosmos/cosmos-db"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"golang.org/x/sync/errgroup"
 
 	"cosmossdk.io/log"
 	confixcmd "cosmossdk.io/tools/confix/cmd"
@@ -26,6 +28,7 @@ import (
 	genutilcli "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
 
 	"git.vdb.to/cerc-io/laconic2d/app"
+	"git.vdb.to/cerc-io/laconic2d/gql"
 )
 
 func initRootCmd(rootCmd *cobra.Command, txConfig client.TxConfig, basicManager module.BasicManager) {
@@ -40,7 +43,20 @@ func initRootCmd(rootCmd *cobra.Command, txConfig client.TxConfig, basicManager 
 		snapshot.Cmd(newApp),
 	)
 
-	server.AddCommands(rootCmd, app.DefaultNodeHome, newApp, appExport, func(startCmd *cobra.Command) {})
+	server.AddCommands(rootCmd, app.DefaultNodeHome, newApp, appExport, func(startCmd *cobra.Command) {
+		// Override start command to run the GQL server
+		newStartCmd := server.StartCmdWithOptions(newApp, app.DefaultNodeHome, server.StartCmdOptions{
+			PostSetup: func(svrCtx *server.Context, clientCtx client.Context, ctx context.Context, g *errgroup.Group) error {
+				g.Go(func() error {
+					return gql.Server(ctx, clientCtx, svrCtx.Logger.With("module", "gql-server"))
+				})
+
+				return nil
+			},
+		})
+
+		startCmd.RunE = newStartCmd.RunE
+	})
 
 	// add keybase, auxiliary RPC, query, genesis, and tx child commands
 	rootCmd.AddCommand(

@@ -1,0 +1,17 @@
+# Refer to https://gqlgen.com/config/
+# for detailed .gqlgen.yml documentation.
+
+schema:
+  - cerc-io/laconic2d/*.graphql
+exec:
+  filename: generated.go
+model:
+  filename: models_gen.go
+resolver:
+  filename: resolver.go
+  type: Resolver
+
+models:
+  Link:
+    model:
+      - git.vdb.to/cerc-io/laconic2d/gql.Link
