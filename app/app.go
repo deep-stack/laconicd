@@ -79,7 +79,6 @@ type LaconicApp struct {
 	AuctionKeeper  *auctionkeeper.Keeper // (Use * as per ProvideModule implementation)
 	BondKeeper     *bondkeeper.Keeper
 	RegistryKeeper registrykeeper.Keeper
-	// RegistryRecordKeeper registrykeeper.RecordKeeper
 
 	// simulation manager
 	sm *module.SimulationManager
@@ -141,7 +140,6 @@ func NewLaconicApp(
 		&app.ConsensusParamsKeeper,
 		&app.AuctionKeeper,
 		&app.BondKeeper,
-		// &app.RegistryRecordKeeper,
 		&app.RegistryKeeper,
 	); err != nil {
 		return nil, err

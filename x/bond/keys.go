@@ -4,6 +4,9 @@ import "cosmossdk.io/collections"
 
 const (
 	ModuleName = "bond"
+
+	// StoreKey defines the primary module store key
+	StoreKey = ModuleName
 )
 
 // Store prefixes

@@ -5,6 +5,9 @@ import "cosmossdk.io/collections"
 const (
 	ModuleName = "auction"
 
+	// StoreKey defines the primary module store key
+	StoreKey = ModuleName
+
 	// AuctionBurnModuleAccountName is the name of the auction burn module account.
 	AuctionBurnModuleAccountName = "auction_burn"
 )

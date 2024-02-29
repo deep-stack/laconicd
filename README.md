@@ -12,3 +12,9 @@ Install and run `laconic2d`:
   # start the chain
   laconic2d start
   ```
+
+Run tests:
+
+  ```bash
+  make test-integration
+  ```

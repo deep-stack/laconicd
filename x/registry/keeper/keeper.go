@@ -19,8 +19,10 @@ import (
 	auth "github.com/cosmos/cosmos-sdk/x/auth/keeper"
 	bank "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 	"github.com/gibson042/canonicaljson-go"
+	cid "github.com/ipfs/go-cid"
 	"github.com/ipld/go-ipld-prime"
 	"github.com/ipld/go-ipld-prime/codec/dagjson"
+	cidlink "github.com/ipld/go-ipld-prime/linking/cid"
 	"github.com/ipld/go-ipld-prime/node/basicnode"
 
 	auctionkeeper "git.vdb.to/cerc-io/laconic2d/x/auction/keeper"
@@ -105,6 +107,7 @@ type Keeper struct {
 	NameRecords          *collections.IndexedMap[string, registrytypes.NameRecord, NameRecordsIndexes]
 	RecordExpiryQueue    collections.Map[time.Time, registrytypes.ExpiryQueue]
 	AuthorityExpiryQueue collections.Map[time.Time, registrytypes.ExpiryQueue]
+	AttributesMap        collections.Map[collections.Pair[string, string], registrytypes.RecordsList]
 }
 
 // NewKeeper creates a new Keeper instance
@@ -146,6 +149,10 @@ func NewKeeper(
 		AuthorityExpiryQueue: collections.NewMap(
 			sb, registrytypes.AuthorityExpiryQueuePrefix, "authority_expiry_queue",
 			sdk.TimeKey, codec.CollValue[registrytypes.ExpiryQueue](cdc),
+		),
+		AttributesMap: collections.NewMap(
+			sb, registrytypes.AttributesMapPrefix, "attributes_map",
+			collections.PairKeyCodec(collections.StringKey, collections.StringKey), codec.CollValue[registrytypes.RecordsList](cdc),
 		),
 	}
 
@@ -237,7 +244,90 @@ func (k Keeper) GetRecordsByBondId(ctx sdk.Context, bondId string) ([]registryty
 
 // RecordsFromAttributes gets a list of records whose attributes match all provided values
 func (k Keeper) RecordsFromAttributes(ctx sdk.Context, attributes []*registrytypes.QueryRecordsRequest_KeyValueInput, all bool) ([]registrytypes.Record, error) {
-	panic("unimplemented")
+	resultRecordIds := []string{}
+	for i, attr := range attributes {
+		suffix, err := QueryValueToJSON(attr.Value)
+		if err != nil {
+			return nil, err
+		}
+		mapKey := collections.Join(attr.Key, string(suffix))
+		recordIds, err := k.getAttributeMapping(ctx, mapKey)
+		if err != nil {
+			return nil, err
+		}
+
+		if i == 0 {
+			resultRecordIds = recordIds
+		} else {
+			resultRecordIds = getIntersection(recordIds, resultRecordIds)
+		}
+	}
+
+	records := []registrytypes.Record{}
+	for _, id := range resultRecordIds {
+		record, err := k.GetRecordById(ctx, id)
+		if err != nil {
+			return nil, err
+		}
+		if record.Deleted {
+			continue
+		}
+		if !all && len(record.Names) == 0 {
+			continue
+		}
+		records = append(records, record)
+	}
+
+	return records, nil
+}
+
+// TODO not recursive, and only should be if we want to support querying with whole sub-objects,
+// which seems unnecessary.
+func QueryValueToJSON(input *registrytypes.QueryRecordsRequest_ValueInput) ([]byte, error) {
+	np := basicnode.Prototype.Any
+	nb := np.NewBuilder()
+
+	switch value := input.GetValue().(type) {
+	case *registrytypes.QueryRecordsRequest_ValueInput_String_:
+		err := nb.AssignString(value.String_)
+		if err != nil {
+			return nil, err
+		}
+	case *registrytypes.QueryRecordsRequest_ValueInput_Int:
+		err := nb.AssignInt(value.Int)
+		if err != nil {
+			return nil, err
+		}
+	case *registrytypes.QueryRecordsRequest_ValueInput_Float:
+		err := nb.AssignFloat(value.Float)
+		if err != nil {
+			return nil, err
+		}
+	case *registrytypes.QueryRecordsRequest_ValueInput_Boolean:
+		err := nb.AssignBool(value.Boolean)
+		if err != nil {
+			return nil, err
+		}
+	case *registrytypes.QueryRecordsRequest_ValueInput_Link:
+		link := cidlink.Link{Cid: cid.MustParse(value.Link)}
+		err := nb.AssignLink(link)
+		if err != nil {
+			return nil, err
+		}
+	case *registrytypes.QueryRecordsRequest_ValueInput_Array:
+		return nil, fmt.Errorf("recursive query values are not supported")
+	case *registrytypes.QueryRecordsRequest_ValueInput_Map:
+		return nil, fmt.Errorf("recursive query values are not supported")
+	default:
+		return nil, fmt.Errorf("value has unexpected type %T", value)
+	}
+
+	n := nb.Build()
+	var buf bytes.Buffer
+	if err := dagjson.Encode(n, &buf); err != nil {
+		return nil, fmt.Errorf("encoding value to JSON failed: %w", err)
+	}
+	return buf.Bytes(), nil
 }
 
 // PutRecord - saves a record to the store.
@@ -321,20 +411,14 @@ func (k Keeper) processRecord(ctx sdk.Context, record *registrytypes.ReadableRec
 
 	// TODO look up/validate record type here
 
-	if err := k.processAttributes(ctx, record.Attributes, record.Id, ""); err != nil {
+	if err := k.processAttributes(ctx, record.Attributes, record.Id); err != nil {
 		return err
 	}
-
-	// TODO
-	// expiryTimeKey := GetAttributesIndexKey(ExpiryTimeAttributeName, []byte(record.ExpiryTime))
-	// if err := k.SetAttributeMapping(ctx, expiryTimeKey, record.ID); err != nil {
-	// 	return err
-	// }
 
 	return k.insertRecordExpiryQueue(ctx, recordObj)
 }
 
-func (k Keeper) processAttributes(ctx sdk.Context, attrs registrytypes.AttributeMap, id string, prefix string) error {
+func (k Keeper) processAttributes(ctx sdk.Context, attrs registrytypes.AttributeMap, id string) error {
 	np := basicnode.Prototype.Map
 	nb := np.NewBuilder()
 	encAttrs, err := canonicaljson.Marshal(attrs)
@@ -353,7 +437,7 @@ func (k Keeper) processAttributes(ctx sdk.Context, attrs registrytypes.Attribute
 		return fmt.Errorf("record attributes must be a map, not %T", n.Kind())
 	}
 
-	return k.processAttributeMap(ctx, n, id, prefix)
+	return k.processAttributeMap(ctx, n, id, "")
 }
 
 func (k Keeper) processAttributeMap(ctx sdk.Context, n ipld.Node, id string, prefix string) error {
@@ -378,15 +462,53 @@ func (k Keeper) processAttributeMap(ctx sdk.Context, n ipld.Node, id string, pre
 			if err := dagjson.Encode(valuenode, &buf); err != nil {
 				return err
 			}
-			// TODO
-			// value := buf.Bytes()
-			// indexKey := GetAttributesIndexKey(prefix+key, value)
-			// if err := k.SetAttributeMapping(ctx, indexKey, id); err != nil {
-			// 	return err
-			// }
+
+			value := buf.Bytes()
+			mapKey := collections.Join(prefix+key, string(value))
+			if err := k.setAttributeMapping(ctx, mapKey, id); err != nil {
+				return err
+			}
 		}
 	}
 	return nil
+}
+
+func (k Keeper) setAttributeMapping(ctx sdk.Context, key collections.Pair[string, string], recordId string) error {
+	var recordIds []string
+
+	has, err := k.AttributesMap.Has(ctx, key)
+	if err != nil {
+		return err
+	}
+	if has {
+		value, err := k.AttributesMap.Get(ctx, key)
+		if err != nil {
+			return err
+		}
+		recordIds = value.Value
+	}
+
+	recordIds = append(recordIds, recordId)
+
+	return k.AttributesMap.Set(ctx, key, registrytypes.RecordsList{Value: recordIds})
+}
+
+func (k Keeper) getAttributeMapping(ctx sdk.Context, key collections.Pair[string, string]) ([]string, error) {
+	if has, err := k.AttributesMap.Has(ctx, key); !has {
+		if err != nil {
+			return []string{}, err
+		}
+
+		k.Logger(ctx).Debug(fmt.Sprintf("store doesn't have key: %v", key))
+		return []string{}, nil
+	}
+
+	value, err := k.AttributesMap.Get(ctx, key)
+	if err != nil {
+		return []string{}, err
+	}
+
+	return value.Value, nil
 }
 
 func (k Keeper) populateRecordNames(ctx sdk.Context, record *registrytypes.Record) error {
@@ -570,4 +692,31 @@ func (k Keeper) tryTakeRecordRent(ctx sdk.Context, record registrytypes.Record) 
 	// Save record.
 	record.Deleted = false
 	return k.SaveRecord(ctx, record)
+}
+
+func getIntersection(a []string, b []string) []string {
+	result := []string{}
+	if len(a) < len(b) {
+		for _, str := range a {
+			if contains(b, str) {
+				result = append(result, str)
+			}
+		}
+	} else {
+		for _, str := range b {
+			if contains(a, str) {
+				result = append(result, str)
+			}
+		}
+	}
+	return result
+}
+
+func contains(arr []string, str string) bool {
+	for _, s := range arr {
+		if s == str {
+			return true
+		}
+	}
+	return false
 }

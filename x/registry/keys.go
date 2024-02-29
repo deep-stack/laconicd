@@ -6,6 +6,9 @@ const (
 	// ModuleName is the name of the registry module
 	ModuleName = "registry"
 
+	// StoreKey defines the primary module store key
+	StoreKey = ModuleName
+
 	// RecordRentModuleAccountName is the name of the module account that keeps track of record rents paid.
 	RecordRentModuleAccountName = "record_rent"
 
@@ -30,4 +33,6 @@ var (
 
 	RecordExpiryQueuePrefix    = collections.NewPrefix(8)
 	AuthorityExpiryQueuePrefix = collections.NewPrefix(9)
+
+	AttributesMapPrefix = collections.NewPrefix(10)
 )

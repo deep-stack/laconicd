@@ -106,7 +106,7 @@ func NewRootCmd() *cobra.Command {
 			// overwrite the block timeout
 			cmtCfg := cmtcfg.DefaultConfig()
 			cmtCfg.Consensus.TimeoutCommit = 3 * time.Second
-			cmtCfg.LogLevel = "*:error,p2p:info,state:info" // better default logging
+			cmtCfg.LogLevel = "*:error,p2p:info,state:info,auction:info,bond:info,registry:info" // better default logging
 
 			return server.InterceptConfigsPreRunHandler(cmd, serverconfig.DefaultConfigTemplate, srvCfg, cmtCfg)
 		},

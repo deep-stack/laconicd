@@ -138,3 +138,9 @@ message ExpiryQueue {
   string          id    = 1;
   repeated string value = 2;
 }
+
+// List of record ids
+// Value type to be used in AttributesMap
+message RecordsList {
+  repeated string value = 1;
+}

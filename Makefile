@@ -81,3 +81,10 @@ lint-fix:
 	@$(golangci_lint_cmd) run ./... --fix --timeout 15m
 
 .PHONY: lint lint-fix
+
+#################
+###  Tests  ###
+#################
+
+test-integration:
+	$(MAKE) -C tests test-integration
