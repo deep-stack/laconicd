@@ -88,3 +88,6 @@ lint-fix:
 
 test-integration:
 	$(MAKE) -C tests test-integration
+
+test-e2e:
+	$(MAKE) -C tests test-e2e

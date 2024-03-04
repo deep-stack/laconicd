@@ -608,7 +608,6 @@ type GenesisState struct {
 	// params defines all the parameters of the module.
 	Params *Params `protobuf:"bytes,1,opt,name=params,proto3" json:"params,omitempty"`
 	// bonds defines all the bonds
-	// TODO: Add nullable = false ?
 	Bonds []*Bond `protobuf:"bytes,2,rep,name=bonds,proto3" json:"bonds,omitempty"`
 }
 

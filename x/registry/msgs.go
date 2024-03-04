@@ -33,3 +33,60 @@ func (msg MsgSetRecord) ValidateBasic() error {
 
 	return nil
 }
+
+// NewMsgReserveAuthority is the constructor function for MsgReserveName.
+func NewMsgReserveAuthority(name string, signer sdk.AccAddress, owner sdk.AccAddress) MsgReserveAuthority {
+	return MsgReserveAuthority{
+		Name:   name,
+		Owner:  owner.String(),
+		Signer: signer.String(),
+	}
+}
+
+// ValidateBasic Implements Msg.
+func (msg MsgReserveAuthority) ValidateBasic() error {
+	if len(msg.Name) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "name is required.")
+	}
+
+	if len(msg.Signer) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidAddress, "invalid signer")
+	}
+
+	return nil
+}
+
+// NewMsgSetAuthorityBond is the constructor function for MsgSetAuthorityBond.
+func NewMsgSetAuthorityBond(name string, bondID string, signer sdk.AccAddress) MsgSetAuthorityBond {
+	return MsgSetAuthorityBond{
+		Name:   name,
+		Signer: signer.String(),
+		BondId: bondID,
+	}
+}
+
+// NewMsgSetName is the constructor function for MsgSetName.
+func NewMsgSetName(lrn string, cid string, signer sdk.AccAddress) *MsgSetName {
+	return &MsgSetName{
+		Lrn:    lrn,
+		Cid:    cid,
+		Signer: signer.String(),
+	}
+}
+
+// ValidateBasic Implements Msg.
+func (msg MsgSetName) ValidateBasic() error {
+	if msg.Lrn == "" {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "LRN is required.")
+	}
+
+	if msg.Cid == "" {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "CID is required.")
+	}
+
+	if len(msg.Signer) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidAddress, "invalid signer")
+	}
+
+	return nil
+}

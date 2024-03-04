@@ -10,11 +10,15 @@ Install and run `laconic2d`:
   make init
 
   # start the chain
-  laconic2d start
+  laconic2d start --gql-playground --gql-server
   ```
 
 Run tests:
 
   ```bash
+  # integration tests
   make test-integration
+
+  # e2e tests
+  make test-e2e
   ```

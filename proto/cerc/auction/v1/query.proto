@@ -123,8 +123,6 @@ message QueryAuctionsByBidderRequest {
 message QueryAuctionsByBidderResponse {
   // List of auctions
   Auctions auctions = 1;
-
-  // TODO: Add pagination?
 }
 
 // AuctionsByOwnerRequest is the format for querying all auctions created by an owner

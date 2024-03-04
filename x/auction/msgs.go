@@ -34,6 +34,27 @@ func NewMsgCommitBid(auctionId string, commitHash string, signer sdk.AccAddress)
 }
 
 // ValidateBasic Implements Msg.
+func (msg MsgCreateAuction) ValidateBasic() error {
+	if msg.Signer == "" {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidAddress, msg.Signer)
+	}
+
+	if msg.CommitsDuration <= 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "commit phase duration invalid.")
+	}
+
+	if msg.RevealsDuration <= 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "reveal phase duration invalid.")
+	}
+
+	if !msg.MinimumBid.IsPositive() {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "minimum bid should be greater than zero.")
+	}
+
+	return nil
+}
+
+// ValidateBasic Implements Msg.
 func (msg MsgCommitBid) ValidateBasic() error {
 	if msg.Signer == "" {
 		return errorsmod.Wrap(sdkerrors.ErrInvalidAddress, "invalid signer address")

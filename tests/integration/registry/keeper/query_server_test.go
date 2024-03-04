@@ -37,9 +37,9 @@ func (kts *KeeperTestSuite) TestGrpcGetRecordLists() {
 
 	var recordId string
 	examples := []string{
-		"../../data/examples/service_provider_example.yml",
-		"../../data/examples/website_registration_example.yml",
-		"../../data/examples/general_record_example.yml",
+		"../../../data/examples/service_provider_example.yml",
+		"../../../data/examples/website_registration_example.yml",
+		"../../../data/examples/general_record_example.yml",
 	}
 	testCases := []struct {
 		msg           string
@@ -268,7 +268,7 @@ func (kts *KeeperTestSuite) TestGrpcGetRecordLists() {
 	}
 
 	// Get the records by record id
-	testCasesByBondID := []struct {
+	testCasesByBondId := []struct {
 		msg          string
 		req          *types.QueryRecordsByBondIdRequest
 		createRecord bool
@@ -292,7 +292,7 @@ func (kts *KeeperTestSuite) TestGrpcGetRecordLists() {
 			1,
 		},
 	}
-	for _, test := range testCasesByBondID {
+	for _, test := range testCasesByBondId {
 		kts.Run(fmt.Sprintf("Case %s ", test.msg), func() {
 			resp, err := queryClient.GetRecordsByBondId(context.Background(), test.req)
 
@@ -314,8 +314,8 @@ func (kts *KeeperTestSuite) TestGrpcQueryRegistryModuleBalance() {
 	queryClient, ctx := kts.queryClient, kts.SdkCtx
 	sr := kts.Require()
 	examples := []string{
-		"../../data/examples/service_provider_example.yml",
-		"../../data/examples/website_registration_example.yml",
+		"../../../data/examples/service_provider_example.yml",
+		"../../../data/examples/website_registration_example.yml",
 	}
 	testCases := []struct {
 		msg           string

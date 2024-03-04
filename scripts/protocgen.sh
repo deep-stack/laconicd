@@ -16,7 +16,6 @@ for dir in $proto_dirs; do
   done
 done
 
-# TODO: Check if required
 echo "Generating pulsar proto code"
 buf generate --template buf.gen.pulsar.yaml
 

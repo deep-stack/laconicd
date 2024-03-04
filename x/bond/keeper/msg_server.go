@@ -26,7 +26,8 @@ func (ms msgServer) CreateBond(c context.Context, msg *bond.MsgCreateBond) (*bon
 	if err != nil {
 		return nil, err
 	}
-	_, err = ms.k.CreateBond(ctx, signerAddress, msg.Coins)
+
+	resp, err := ms.k.CreateBond(ctx, signerAddress, msg.Coins)
 	if err != nil {
 		return nil, err
 	}
@@ -44,7 +45,7 @@ func (ms msgServer) CreateBond(c context.Context, msg *bond.MsgCreateBond) (*bon
 		),
 	})
 
-	return &bond.MsgCreateBondResponse{}, nil
+	return &bond.MsgCreateBondResponse{Id: resp.Id}, nil
 }
 
 // RefillBond implements bond.MsgServer.
