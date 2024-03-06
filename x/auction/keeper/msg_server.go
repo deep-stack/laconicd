@@ -52,6 +52,10 @@ func (ms msgServer) CreateAuction(c context.Context, msg *auctiontypes.MsgCreate
 // CommitBid is the command for committing a bid
 // nolint: all
 func (ms msgServer) CommitBid(c context.Context, msg *auctiontypes.MsgCommitBid) (*auctiontypes.MsgCommitBidResponse, error) {
+	if err := msg.ValidateBasic(); err != nil {
+		return nil, err
+	}
+
 	ctx := sdk.UnwrapSDKContext(c)
 
 	signerAddress, err := sdk.AccAddressFromBech32(msg.Signer)
@@ -83,6 +87,10 @@ func (ms msgServer) CommitBid(c context.Context, msg *auctiontypes.MsgCommitBid)
 // RevealBid is the command for revealing a bid
 // nolint: all
 func (ms msgServer) RevealBid(c context.Context, msg *auctiontypes.MsgRevealBid) (*auctiontypes.MsgRevealBidResponse, error) {
+	if err := msg.ValidateBasic(); err != nil {
+		return nil, err
+	}
+
 	ctx := sdk.UnwrapSDKContext(c)
 
 	signerAddress, err := sdk.AccAddressFromBech32(msg.Signer)

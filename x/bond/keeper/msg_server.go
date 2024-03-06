@@ -20,6 +20,10 @@ func NewMsgServerImpl(keeper *Keeper) bond.MsgServer {
 }
 
 func (ms msgServer) CreateBond(c context.Context, msg *bond.MsgCreateBond) (*bond.MsgCreateBondResponse, error) {
+	if err := msg.ValidateBasic(); err != nil {
+		return nil, err
+	}
+
 	ctx := sdk.UnwrapSDKContext(c)
 
 	signerAddress, err := sdk.AccAddressFromBech32(msg.Signer)
@@ -50,6 +54,10 @@ func (ms msgServer) CreateBond(c context.Context, msg *bond.MsgCreateBond) (*bon
 
 // RefillBond implements bond.MsgServer.
 func (ms msgServer) RefillBond(c context.Context, msg *bond.MsgRefillBond) (*bond.MsgRefillBondResponse, error) {
+	if err := msg.ValidateBasic(); err != nil {
+		return nil, err
+	}
+
 	ctx := sdk.UnwrapSDKContext(c)
 
 	signerAddress, err := sdk.AccAddressFromBech32(msg.Signer)
@@ -81,6 +89,10 @@ func (ms msgServer) RefillBond(c context.Context, msg *bond.MsgRefillBond) (*bon
 
 // WithdrawBond implements bond.MsgServer.
 func (ms msgServer) WithdrawBond(c context.Context, msg *bond.MsgWithdrawBond) (*bond.MsgWithdrawBondResponse, error) {
+	if err := msg.ValidateBasic(); err != nil {
+		return nil, err
+	}
+
 	ctx := sdk.UnwrapSDKContext(c)
 
 	signerAddress, err := sdk.AccAddressFromBech32(msg.Signer)
@@ -112,11 +124,17 @@ func (ms msgServer) WithdrawBond(c context.Context, msg *bond.MsgWithdrawBond) (
 
 // CancelBond implements bond.MsgServer.
 func (ms msgServer) CancelBond(c context.Context, msg *bond.MsgCancelBond) (*bond.MsgCancelBondResponse, error) {
+	if err := msg.ValidateBasic(); err != nil {
+		return nil, err
+	}
+
 	ctx := sdk.UnwrapSDKContext(c)
+
 	signerAddress, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
 		return nil, err
 	}
+
 	_, err = ms.k.CancelBond(ctx, msg.Id, signerAddress)
 	if err != nil {
 		return nil, err

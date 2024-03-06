@@ -285,12 +285,11 @@ func (k Keeper) QueryAuctionsByBidder(ctx sdk.Context, bidderAddress string) ([]
 
 // CreateAuction creates a new auction.
 func (k Keeper) CreateAuction(ctx sdk.Context, msg auctiontypes.MsgCreateAuction) (*auctiontypes.Auction, error) {
-	// TODO: Setup checks
 	// Might be called from another module directly, always validate.
-	// err := msg.ValidateBasic()
-	// if err != nil {
-	// 	return nil, err
-	// }
+	err := msg.ValidateBasic()
+	if err != nil {
+		return nil, err
+	}
 
 	signerAddress, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {

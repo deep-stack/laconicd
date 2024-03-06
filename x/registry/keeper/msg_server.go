@@ -20,6 +20,10 @@ func NewMsgServerImpl(keeper Keeper) registrytypes.MsgServer {
 }
 
 func (ms msgServer) SetRecord(c context.Context, msg *registrytypes.MsgSetRecord) (*registrytypes.MsgSetRecordResponse, error) {
+	if err := msg.ValidateBasic(); err != nil {
+		return nil, err
+	}
+
 	ctx := sdk.UnwrapSDKContext(c)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
@@ -51,6 +55,10 @@ func (ms msgServer) SetRecord(c context.Context, msg *registrytypes.MsgSetRecord
 
 // nolint: all
 func (ms msgServer) SetName(c context.Context, msg *registrytypes.MsgSetName) (*registrytypes.MsgSetNameResponse, error) {
+	if err := msg.ValidateBasic(); err != nil {
+		return nil, err
+	}
+
 	ctx := sdk.UnwrapSDKContext(c)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
@@ -80,6 +88,10 @@ func (ms msgServer) SetName(c context.Context, msg *registrytypes.MsgSetName) (*
 }
 
 func (ms msgServer) ReserveName(c context.Context, msg *registrytypes.MsgReserveAuthority) (*registrytypes.MsgReserveAuthorityResponse, error) {
+	if err := msg.ValidateBasic(); err != nil {
+		return nil, err
+	}
+
 	ctx := sdk.UnwrapSDKContext(c)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
@@ -114,6 +126,10 @@ func (ms msgServer) ReserveName(c context.Context, msg *registrytypes.MsgReserve
 
 // nolint: all
 func (ms msgServer) SetAuthorityBond(c context.Context, msg *registrytypes.MsgSetAuthorityBond) (*registrytypes.MsgSetAuthorityBondResponse, error) {
+	if err := msg.ValidateBasic(); err != nil {
+		return nil, err
+	}
+
 	ctx := sdk.UnwrapSDKContext(c)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
@@ -144,6 +160,10 @@ func (ms msgServer) SetAuthorityBond(c context.Context, msg *registrytypes.MsgSe
 }
 
 func (ms msgServer) DeleteName(c context.Context, msg *registrytypes.MsgDeleteNameAuthority) (*registrytypes.MsgDeleteNameAuthorityResponse, error) {
+	if err := msg.ValidateBasic(); err != nil {
+		return nil, err
+	}
+
 	ctx := sdk.UnwrapSDKContext(c)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
@@ -172,6 +192,10 @@ func (ms msgServer) DeleteName(c context.Context, msg *registrytypes.MsgDeleteNa
 }
 
 func (ms msgServer) RenewRecord(c context.Context, msg *registrytypes.MsgRenewRecord) (*registrytypes.MsgRenewRecordResponse, error) {
+	if err := msg.ValidateBasic(); err != nil {
+		return nil, err
+	}
+
 	ctx := sdk.UnwrapSDKContext(c)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
@@ -201,6 +225,10 @@ func (ms msgServer) RenewRecord(c context.Context, msg *registrytypes.MsgRenewRe
 
 // nolint: all
 func (ms msgServer) AssociateBond(c context.Context, msg *registrytypes.MsgAssociateBond) (*registrytypes.MsgAssociateBondResponse, error) {
+	if err := msg.ValidateBasic(); err != nil {
+		return nil, err
+	}
+
 	ctx := sdk.UnwrapSDKContext(c)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
@@ -231,6 +259,10 @@ func (ms msgServer) AssociateBond(c context.Context, msg *registrytypes.MsgAssoc
 }
 
 func (ms msgServer) DissociateBond(c context.Context, msg *registrytypes.MsgDissociateBond) (*registrytypes.MsgDissociateBondResponse, error) {
+	if err := msg.ValidateBasic(); err != nil {
+		return nil, err
+	}
+
 	ctx := sdk.UnwrapSDKContext(c)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
@@ -260,6 +292,10 @@ func (ms msgServer) DissociateBond(c context.Context, msg *registrytypes.MsgDiss
 }
 
 func (ms msgServer) DissociateRecords(c context.Context, msg *registrytypes.MsgDissociateRecords) (*registrytypes.MsgDissociateRecordsResponse, error) {
+	if err := msg.ValidateBasic(); err != nil {
+		return nil, err
+	}
+
 	ctx := sdk.UnwrapSDKContext(c)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
@@ -289,6 +325,10 @@ func (ms msgServer) DissociateRecords(c context.Context, msg *registrytypes.MsgD
 }
 
 func (ms msgServer) ReassociateRecords(c context.Context, msg *registrytypes.MsgReassociateRecords) (*registrytypes.MsgReassociateRecordsResponse, error) { //nolint: all
+	if err := msg.ValidateBasic(); err != nil {
+		return nil, err
+	}
+
 	ctx := sdk.UnwrapSDKContext(c)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)

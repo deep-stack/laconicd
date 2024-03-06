@@ -29,6 +29,7 @@ import (
 	authkeeper "github.com/cosmos/cosmos-sdk/x/auth/keeper"
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 	consensuskeeper "github.com/cosmos/cosmos-sdk/x/consensus/keeper"
+	crisiskeeper "github.com/cosmos/cosmos-sdk/x/crisis/keeper"
 	distrkeeper "github.com/cosmos/cosmos-sdk/x/distribution/keeper"
 	"github.com/cosmos/cosmos-sdk/x/genutil"
 	genutiltypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
@@ -42,6 +43,7 @@ import (
 	_ "github.com/cosmos/cosmos-sdk/x/auth/tx/config"  // import for side-effects
 	_ "github.com/cosmos/cosmos-sdk/x/bank"            // import for side-effects
 	_ "github.com/cosmos/cosmos-sdk/x/consensus"       // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/crisis"          // import for side-effects
 	_ "github.com/cosmos/cosmos-sdk/x/distribution"    // import for side-effects
 	_ "github.com/cosmos/cosmos-sdk/x/mint"            // import for side-effects
 	_ "github.com/cosmos/cosmos-sdk/x/staking"         // import for side-effects
@@ -73,6 +75,7 @@ type LaconicApp struct {
 	BankKeeper            bankkeeper.Keeper
 	StakingKeeper         *stakingkeeper.Keeper
 	DistrKeeper           distrkeeper.Keeper
+	CrisisKeeper          *crisiskeeper.Keeper
 	ConsensusParamsKeeper consensuskeeper.Keeper
 
 	// laconic keepers
@@ -137,6 +140,7 @@ func NewLaconicApp(
 		&app.BankKeeper,
 		&app.StakingKeeper,
 		&app.DistrKeeper,
+		&app.CrisisKeeper,
 		&app.ConsensusParamsKeeper,
 		&app.AuctionKeeper,
 		&app.BondKeeper,
@@ -154,7 +158,8 @@ func NewLaconicApp(
 
 	/****  Module Options ****/
 
-	// TOOD: Required?
+	app.ModuleManager.RegisterInvariants(app.CrisisKeeper)
+
 	// create the simulation manager and define the order of the modules for deterministic simulations
 	// NOTE: this is not required apps that don't use the simulator for fuzz testing transactions
 	app.sm = module.NewSimulationManagerFromAppModules(app.ModuleManager.Modules, make(map[string]module.AppModuleSimulation, 0))

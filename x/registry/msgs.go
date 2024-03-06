@@ -1,6 +1,8 @@
 package registry
 
 import (
+	"net/url"
+
 	errorsmod "cosmossdk.io/errors"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
@@ -29,6 +31,18 @@ func (msg MsgSetRecord) ValidateBasic() error {
 
 	if len(msg.BondId) == 0 {
 		return errorsmod.Wrap(sdkerrors.ErrUnauthorized, "Bond Id is required.")
+	}
+
+	return nil
+}
+
+func (msg MsgRenewRecord) ValidateBasic() error {
+	if len(msg.RecordId) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "record id is required.")
+	}
+
+	if len(msg.Signer) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidAddress, "invalid signer.")
 	}
 
 	return nil
@@ -65,6 +79,22 @@ func NewMsgSetAuthorityBond(name string, bondID string, signer sdk.AccAddress) M
 	}
 }
 
+func (msg MsgSetAuthorityBond) ValidateBasic() error {
+	if len(msg.Name) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "name is required.")
+	}
+
+	if len(msg.Signer) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidAddress, "invalid signer.")
+	}
+
+	if len(msg.BondId) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidAddress, "bond id is required.")
+	}
+
+	return nil
+}
+
 // NewMsgSetName is the constructor function for MsgSetName.
 func NewMsgSetName(lrn string, cid string, signer sdk.AccAddress) *MsgSetName {
 	return &MsgSetName{
@@ -86,6 +116,73 @@ func (msg MsgSetName) ValidateBasic() error {
 
 	if len(msg.Signer) == 0 {
 		return errorsmod.Wrap(sdkerrors.ErrInvalidAddress, "invalid signer")
+	}
+
+	return nil
+}
+
+func (msg MsgDeleteNameAuthority) ValidateBasic() error {
+	if len(msg.Lrn) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "lrn is required.")
+	}
+
+	if len(msg.Signer) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidAddress, "invalid signer.")
+	}
+
+	_, err := url.Parse(msg.Lrn)
+	if err != nil {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "invalid lrn.")
+	}
+
+	return nil
+}
+
+func (msg MsgAssociateBond) ValidateBasic() error {
+	if len(msg.RecordId) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "record id is required.")
+	}
+	if len(msg.BondId) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "bond id is required.")
+	}
+	if len(msg.Signer) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidAddress, "invalid signer.")
+	}
+
+	return nil
+}
+
+func (msg MsgDissociateBond) ValidateBasic() error {
+	if len(msg.RecordId) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "record id is required.")
+	}
+	if len(msg.Signer) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidAddress, "invalid signer.")
+	}
+
+	return nil
+}
+
+func (msg MsgDissociateRecords) ValidateBasic() error {
+	if len(msg.BondId) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "bond id is required.")
+	}
+	if len(msg.Signer) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidAddress, "invalid signer.")
+	}
+
+	return nil
+}
+
+func (msg MsgReassociateRecords) ValidateBasic() error {
+	if len(msg.OldBondId) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "old-bond-id is required.")
+	}
+	if len(msg.NewBondId) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "new-bond-id is required.")
+	}
+	if len(msg.Signer) == 0 {
+		return errorsmod.Wrap(sdkerrors.ErrInvalidAddress, "invalid signer.")
 	}
 
 	return nil

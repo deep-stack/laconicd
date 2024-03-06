@@ -118,6 +118,8 @@ func (ets *E2ETestSuite) createBond() string {
 	sr.NoError(err)
 
 	// extract bond id from bonds list
-	bond := queryResponse.GetBonds()[0]
-	return bond.GetId()
+	bonds := queryResponse.GetBonds()
+	sr.NotEmpty(bonds)
+
+	return queryResponse.GetBonds()[0].GetId()
 }

@@ -27,6 +27,7 @@ var (
 	_ module.HasServices         = AppModule{}
 	_ module.HasConsensusVersion = AppModule{}
 	_ appmodule.HasEndBlocker    = AppModule{}
+	_ module.HasInvariants       = AppModule{}
 )
 
 // ConsensusVersion defines the current module consensus version.
@@ -125,6 +126,12 @@ func (am AppModule) RegisterServices(cfg module.Configurator) {
 
 func (am AppModule) EndBlock(ctx context.Context) error {
 	return EndBlocker(ctx, am.keeper)
+}
+
+// module.HasInvariants
+
+func (am AppModule) RegisterInvariants(ir sdk.InvariantRegistry) {
+	keeper.RegisterInvariants(ir, am.keeper)
 }
 
 // Get the root tx command of this module

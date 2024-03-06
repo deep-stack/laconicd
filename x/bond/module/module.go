@@ -24,6 +24,7 @@ var (
 	_ module.HasGenesis          = AppModule{}
 	_ module.HasServices         = AppModule{}
 	_ module.HasConsensusVersion = AppModule{}
+	_ module.HasInvariants       = AppModule{}
 )
 
 // ConsensusVersion defines the current module consensus version
@@ -115,4 +116,10 @@ func (am AppModule) RegisterServices(cfg module.Configurator) {
 	// Register servers
 	bond.RegisterMsgServer(cfg.MsgServer(), keeper.NewMsgServerImpl(am.keeper))
 	bond.RegisterQueryServer(cfg.QueryServer(), keeper.NewQueryServerImpl(am.keeper))
+}
+
+// module.HasInvariants
+
+func (am AppModule) RegisterInvariants(ir sdk.InvariantRegistry) {
+	keeper.RegisterInvariants(ir, am.keeper)
 }
