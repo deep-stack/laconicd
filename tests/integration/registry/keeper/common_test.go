@@ -25,10 +25,11 @@ type KeeperTestSuite struct {
 }
 
 func (kts *KeeperTestSuite) SetupTest() {
-	kts.TestFixture.Setup()
+	err := kts.TestFixture.Setup()
+	assert.Nil(kts.T(), err)
 
 	// set default params
-	err := kts.RegistryKeeper.Params.Set(kts.SdkCtx, types.DefaultParams())
+	err = kts.RegistryKeeper.Params.Set(kts.SdkCtx, types.DefaultParams())
 	assert.Nil(kts.T(), err)
 
 	qr := kts.App.QueryHelper()

@@ -6,6 +6,7 @@ import (
 	"strconv"
 
 	"github.com/cosmos/cosmos-sdk/client"
+	types "github.com/cosmos/cosmos-sdk/types"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
@@ -216,7 +217,7 @@ func (q queryResolver) GetAccount(ctx context.Context, address string) (*Account
 	if err != nil {
 		return nil, err
 	}
-	var account authtypes.AccountI
+	var account types.AccountI
 	err = q.ctx.Codec.UnpackAny(accountResponse.GetAccount(), &account)
 	if err != nil {
 		return nil, err

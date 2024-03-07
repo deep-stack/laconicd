@@ -130,19 +130,16 @@ func (ets *E2ETestSuite) createAuctionAndBid(createAuction, createBid bool) stri
 	return auctionId
 }
 
-func (ets *E2ETestSuite) cleanupBidFiles() error {
+func (ets *E2ETestSuite) cleanupBidFiles() {
 	matches, err := filepath.Glob(fmt.Sprintf("%s-*.json", bidderAccount))
 	if err != nil {
 		ets.T().Errorf("Error matching bidder files: %v\n", err)
-		return err
 	}
 
 	for _, match := range matches {
 		err := os.Remove(match)
 		if err != nil {
-			return err
+			ets.T().Errorf("Error removing bidder file: %v\n", err)
 		}
 	}
-
-	return nil
 }

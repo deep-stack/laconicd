@@ -103,3 +103,6 @@ test-integration:
 
 test-e2e:
 	$(MAKE) -C tests test-e2e
+
+test-unit:
+	go test ./utils/... ./cmd/... -mod=readonly -test.v
