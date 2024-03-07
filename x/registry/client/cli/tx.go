@@ -85,8 +85,8 @@ func GetPayloadFromFile(filePath string) (*registrytypes.ReadablePayload, error)
 	return &payload, nil
 }
 
-// GetCmdReserveName is the CLI command for reserving a name.
-func GetCmdReserveName() *cobra.Command {
+// GetCmdReserveAuthority is the CLI command for reserving a name.
+func GetCmdReserveAuthority() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "reserve-name [name]",
 		Short: "Reserve name.",

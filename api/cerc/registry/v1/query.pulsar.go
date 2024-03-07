@@ -4612,25 +4612,25 @@ func (x *fastReflection_QueryRecordsResponse) ProtoMethods() *protoiface.Methods
 }
 
 var (
-	md_QueryRecordByIdRequest    protoreflect.MessageDescriptor
-	fd_QueryRecordByIdRequest_id protoreflect.FieldDescriptor
+	md_QueryGetRecordRequest    protoreflect.MessageDescriptor
+	fd_QueryGetRecordRequest_id protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_cerc_registry_v1_query_proto_init()
-	md_QueryRecordByIdRequest = File_cerc_registry_v1_query_proto.Messages().ByName("QueryRecordByIdRequest")
-	fd_QueryRecordByIdRequest_id = md_QueryRecordByIdRequest.Fields().ByName("id")
+	md_QueryGetRecordRequest = File_cerc_registry_v1_query_proto.Messages().ByName("QueryGetRecordRequest")
+	fd_QueryGetRecordRequest_id = md_QueryGetRecordRequest.Fields().ByName("id")
 }
 
-var _ protoreflect.Message = (*fastReflection_QueryRecordByIdRequest)(nil)
+var _ protoreflect.Message = (*fastReflection_QueryGetRecordRequest)(nil)
 
-type fastReflection_QueryRecordByIdRequest QueryRecordByIdRequest
+type fastReflection_QueryGetRecordRequest QueryGetRecordRequest
 
-func (x *QueryRecordByIdRequest) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_QueryRecordByIdRequest)(x)
+func (x *QueryGetRecordRequest) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_QueryGetRecordRequest)(x)
 }
 
-func (x *QueryRecordByIdRequest) slowProtoReflect() protoreflect.Message {
+func (x *QueryGetRecordRequest) slowProtoReflect() protoreflect.Message {
 	mi := &file_cerc_registry_v1_query_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -4642,43 +4642,43 @@ func (x *QueryRecordByIdRequest) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_QueryRecordByIdRequest_messageType fastReflection_QueryRecordByIdRequest_messageType
-var _ protoreflect.MessageType = fastReflection_QueryRecordByIdRequest_messageType{}
+var _fastReflection_QueryGetRecordRequest_messageType fastReflection_QueryGetRecordRequest_messageType
+var _ protoreflect.MessageType = fastReflection_QueryGetRecordRequest_messageType{}
 
-type fastReflection_QueryRecordByIdRequest_messageType struct{}
+type fastReflection_QueryGetRecordRequest_messageType struct{}
 
-func (x fastReflection_QueryRecordByIdRequest_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_QueryRecordByIdRequest)(nil)
+func (x fastReflection_QueryGetRecordRequest_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_QueryGetRecordRequest)(nil)
 }
-func (x fastReflection_QueryRecordByIdRequest_messageType) New() protoreflect.Message {
-	return new(fastReflection_QueryRecordByIdRequest)
+func (x fastReflection_QueryGetRecordRequest_messageType) New() protoreflect.Message {
+	return new(fastReflection_QueryGetRecordRequest)
 }
-func (x fastReflection_QueryRecordByIdRequest_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryRecordByIdRequest
+func (x fastReflection_QueryGetRecordRequest_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetRecordRequest
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_QueryRecordByIdRequest) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryRecordByIdRequest
+func (x *fastReflection_QueryGetRecordRequest) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetRecordRequest
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_QueryRecordByIdRequest) Type() protoreflect.MessageType {
-	return _fastReflection_QueryRecordByIdRequest_messageType
+func (x *fastReflection_QueryGetRecordRequest) Type() protoreflect.MessageType {
+	return _fastReflection_QueryGetRecordRequest_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_QueryRecordByIdRequest) New() protoreflect.Message {
-	return new(fastReflection_QueryRecordByIdRequest)
+func (x *fastReflection_QueryGetRecordRequest) New() protoreflect.Message {
+	return new(fastReflection_QueryGetRecordRequest)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_QueryRecordByIdRequest) Interface() protoreflect.ProtoMessage {
-	return (*QueryRecordByIdRequest)(x)
+func (x *fastReflection_QueryGetRecordRequest) Interface() protoreflect.ProtoMessage {
+	return (*QueryGetRecordRequest)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -4686,10 +4686,10 @@ func (x *fastReflection_QueryRecordByIdRequest) Interface() protoreflect.ProtoMe
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_QueryRecordByIdRequest) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_QueryGetRecordRequest) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
 	if x.Id != "" {
 		value := protoreflect.ValueOfString(x.Id)
-		if !f(fd_QueryRecordByIdRequest_id, value) {
+		if !f(fd_QueryGetRecordRequest_id, value) {
 			return
 		}
 	}
@@ -4706,15 +4706,15 @@ func (x *fastReflection_QueryRecordByIdRequest) Range(f func(protoreflect.FieldD
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_QueryRecordByIdRequest) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_QueryGetRecordRequest) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordByIdRequest.id":
+	case "cerc.registry.v1.QueryGetRecordRequest.id":
 		return x.Id != ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordByIdRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordRequest"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordByIdRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordRequest does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -4724,15 +4724,15 @@ func (x *fastReflection_QueryRecordByIdRequest) Has(fd protoreflect.FieldDescrip
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryRecordByIdRequest) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_QueryGetRecordRequest) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordByIdRequest.id":
+	case "cerc.registry.v1.QueryGetRecordRequest.id":
 		x.Id = ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordByIdRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordRequest"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordByIdRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordRequest does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -4742,16 +4742,16 @@ func (x *fastReflection_QueryRecordByIdRequest) Clear(fd protoreflect.FieldDescr
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_QueryRecordByIdRequest) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetRecordRequest) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "cerc.registry.v1.QueryRecordByIdRequest.id":
+	case "cerc.registry.v1.QueryGetRecordRequest.id":
 		value := x.Id
 		return protoreflect.ValueOfString(value)
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordByIdRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordRequest"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordByIdRequest does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordRequest does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -4765,15 +4765,15 @@ func (x *fastReflection_QueryRecordByIdRequest) Get(descriptor protoreflect.Fiel
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryRecordByIdRequest) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_QueryGetRecordRequest) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordByIdRequest.id":
+	case "cerc.registry.v1.QueryGetRecordRequest.id":
 		x.Id = value.Interface().(string)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordByIdRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordRequest"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordByIdRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordRequest does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -4787,40 +4787,40 @@ func (x *fastReflection_QueryRecordByIdRequest) Set(fd protoreflect.FieldDescrip
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryRecordByIdRequest) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetRecordRequest) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordByIdRequest.id":
-		panic(fmt.Errorf("field id of message cerc.registry.v1.QueryRecordByIdRequest is not mutable"))
+	case "cerc.registry.v1.QueryGetRecordRequest.id":
+		panic(fmt.Errorf("field id of message cerc.registry.v1.QueryGetRecordRequest is not mutable"))
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordByIdRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordRequest"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordByIdRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordRequest does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_QueryRecordByIdRequest) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetRecordRequest) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordByIdRequest.id":
+	case "cerc.registry.v1.QueryGetRecordRequest.id":
 		return protoreflect.ValueOfString("")
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordByIdRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordRequest"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordByIdRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordRequest does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_QueryRecordByIdRequest) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_QueryGetRecordRequest) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in cerc.registry.v1.QueryRecordByIdRequest", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in cerc.registry.v1.QueryGetRecordRequest", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -4828,7 +4828,7 @@ func (x *fastReflection_QueryRecordByIdRequest) WhichOneof(d protoreflect.OneofD
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_QueryRecordByIdRequest) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_QueryGetRecordRequest) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -4839,7 +4839,7 @@ func (x *fastReflection_QueryRecordByIdRequest) GetUnknown() protoreflect.RawFie
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryRecordByIdRequest) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_QueryGetRecordRequest) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -4851,7 +4851,7 @@ func (x *fastReflection_QueryRecordByIdRequest) SetUnknown(fields protoreflect.R
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_QueryRecordByIdRequest) IsValid() bool {
+func (x *fastReflection_QueryGetRecordRequest) IsValid() bool {
 	return x != nil
 }
 
@@ -4861,9 +4861,9 @@ func (x *fastReflection_QueryRecordByIdRequest) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_QueryRecordByIdRequest) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_QueryGetRecordRequest) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*QueryRecordByIdRequest)
+		x := input.Message.Interface().(*QueryGetRecordRequest)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -4889,7 +4889,7 @@ func (x *fastReflection_QueryRecordByIdRequest) ProtoMethods() *protoiface.Metho
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*QueryRecordByIdRequest)
+		x := input.Message.Interface().(*QueryGetRecordRequest)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -4926,7 +4926,7 @@ func (x *fastReflection_QueryRecordByIdRequest) ProtoMethods() *protoiface.Metho
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*QueryRecordByIdRequest)
+		x := input.Message.Interface().(*QueryGetRecordRequest)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -4958,10 +4958,10 @@ func (x *fastReflection_QueryRecordByIdRequest) ProtoMethods() *protoiface.Metho
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryRecordByIdRequest: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetRecordRequest: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryRecordByIdRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetRecordRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
@@ -5032,25 +5032,25 @@ func (x *fastReflection_QueryRecordByIdRequest) ProtoMethods() *protoiface.Metho
 }
 
 var (
-	md_QueryRecordByIdResponse        protoreflect.MessageDescriptor
-	fd_QueryRecordByIdResponse_record protoreflect.FieldDescriptor
+	md_QueryGetRecordResponse        protoreflect.MessageDescriptor
+	fd_QueryGetRecordResponse_record protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_cerc_registry_v1_query_proto_init()
-	md_QueryRecordByIdResponse = File_cerc_registry_v1_query_proto.Messages().ByName("QueryRecordByIdResponse")
-	fd_QueryRecordByIdResponse_record = md_QueryRecordByIdResponse.Fields().ByName("record")
+	md_QueryGetRecordResponse = File_cerc_registry_v1_query_proto.Messages().ByName("QueryGetRecordResponse")
+	fd_QueryGetRecordResponse_record = md_QueryGetRecordResponse.Fields().ByName("record")
 }
 
-var _ protoreflect.Message = (*fastReflection_QueryRecordByIdResponse)(nil)
+var _ protoreflect.Message = (*fastReflection_QueryGetRecordResponse)(nil)
 
-type fastReflection_QueryRecordByIdResponse QueryRecordByIdResponse
+type fastReflection_QueryGetRecordResponse QueryGetRecordResponse
 
-func (x *QueryRecordByIdResponse) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_QueryRecordByIdResponse)(x)
+func (x *QueryGetRecordResponse) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_QueryGetRecordResponse)(x)
 }
 
-func (x *QueryRecordByIdResponse) slowProtoReflect() protoreflect.Message {
+func (x *QueryGetRecordResponse) slowProtoReflect() protoreflect.Message {
 	mi := &file_cerc_registry_v1_query_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -5062,43 +5062,43 @@ func (x *QueryRecordByIdResponse) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_QueryRecordByIdResponse_messageType fastReflection_QueryRecordByIdResponse_messageType
-var _ protoreflect.MessageType = fastReflection_QueryRecordByIdResponse_messageType{}
+var _fastReflection_QueryGetRecordResponse_messageType fastReflection_QueryGetRecordResponse_messageType
+var _ protoreflect.MessageType = fastReflection_QueryGetRecordResponse_messageType{}
 
-type fastReflection_QueryRecordByIdResponse_messageType struct{}
+type fastReflection_QueryGetRecordResponse_messageType struct{}
 
-func (x fastReflection_QueryRecordByIdResponse_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_QueryRecordByIdResponse)(nil)
+func (x fastReflection_QueryGetRecordResponse_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_QueryGetRecordResponse)(nil)
 }
-func (x fastReflection_QueryRecordByIdResponse_messageType) New() protoreflect.Message {
-	return new(fastReflection_QueryRecordByIdResponse)
+func (x fastReflection_QueryGetRecordResponse_messageType) New() protoreflect.Message {
+	return new(fastReflection_QueryGetRecordResponse)
 }
-func (x fastReflection_QueryRecordByIdResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryRecordByIdResponse
+func (x fastReflection_QueryGetRecordResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetRecordResponse
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_QueryRecordByIdResponse) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryRecordByIdResponse
+func (x *fastReflection_QueryGetRecordResponse) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetRecordResponse
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_QueryRecordByIdResponse) Type() protoreflect.MessageType {
-	return _fastReflection_QueryRecordByIdResponse_messageType
+func (x *fastReflection_QueryGetRecordResponse) Type() protoreflect.MessageType {
+	return _fastReflection_QueryGetRecordResponse_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_QueryRecordByIdResponse) New() protoreflect.Message {
-	return new(fastReflection_QueryRecordByIdResponse)
+func (x *fastReflection_QueryGetRecordResponse) New() protoreflect.Message {
+	return new(fastReflection_QueryGetRecordResponse)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_QueryRecordByIdResponse) Interface() protoreflect.ProtoMessage {
-	return (*QueryRecordByIdResponse)(x)
+func (x *fastReflection_QueryGetRecordResponse) Interface() protoreflect.ProtoMessage {
+	return (*QueryGetRecordResponse)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -5106,10 +5106,10 @@ func (x *fastReflection_QueryRecordByIdResponse) Interface() protoreflect.ProtoM
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_QueryRecordByIdResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_QueryGetRecordResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
 	if x.Record != nil {
 		value := protoreflect.ValueOfMessage(x.Record.ProtoReflect())
-		if !f(fd_QueryRecordByIdResponse_record, value) {
+		if !f(fd_QueryGetRecordResponse_record, value) {
 			return
 		}
 	}
@@ -5126,15 +5126,15 @@ func (x *fastReflection_QueryRecordByIdResponse) Range(f func(protoreflect.Field
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_QueryRecordByIdResponse) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_QueryGetRecordResponse) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordByIdResponse.record":
+	case "cerc.registry.v1.QueryGetRecordResponse.record":
 		return x.Record != nil
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordByIdResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordResponse"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordByIdResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -5144,15 +5144,15 @@ func (x *fastReflection_QueryRecordByIdResponse) Has(fd protoreflect.FieldDescri
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryRecordByIdResponse) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_QueryGetRecordResponse) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordByIdResponse.record":
+	case "cerc.registry.v1.QueryGetRecordResponse.record":
 		x.Record = nil
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordByIdResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordResponse"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordByIdResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -5162,16 +5162,16 @@ func (x *fastReflection_QueryRecordByIdResponse) Clear(fd protoreflect.FieldDesc
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_QueryRecordByIdResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetRecordResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "cerc.registry.v1.QueryRecordByIdResponse.record":
+	case "cerc.registry.v1.QueryGetRecordResponse.record":
 		value := x.Record
 		return protoreflect.ValueOfMessage(value.ProtoReflect())
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordByIdResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordResponse"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordByIdResponse does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordResponse does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -5185,15 +5185,15 @@ func (x *fastReflection_QueryRecordByIdResponse) Get(descriptor protoreflect.Fie
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryRecordByIdResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_QueryGetRecordResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordByIdResponse.record":
+	case "cerc.registry.v1.QueryGetRecordResponse.record":
 		x.Record = value.Message().Interface().(*Record)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordByIdResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordResponse"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordByIdResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -5207,44 +5207,44 @@ func (x *fastReflection_QueryRecordByIdResponse) Set(fd protoreflect.FieldDescri
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryRecordByIdResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetRecordResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordByIdResponse.record":
+	case "cerc.registry.v1.QueryGetRecordResponse.record":
 		if x.Record == nil {
 			x.Record = new(Record)
 		}
 		return protoreflect.ValueOfMessage(x.Record.ProtoReflect())
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordByIdResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordResponse"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordByIdResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_QueryRecordByIdResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetRecordResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordByIdResponse.record":
+	case "cerc.registry.v1.QueryGetRecordResponse.record":
 		m := new(Record)
 		return protoreflect.ValueOfMessage(m.ProtoReflect())
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordByIdResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordResponse"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordByIdResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_QueryRecordByIdResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_QueryGetRecordResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in cerc.registry.v1.QueryRecordByIdResponse", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in cerc.registry.v1.QueryGetRecordResponse", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -5252,7 +5252,7 @@ func (x *fastReflection_QueryRecordByIdResponse) WhichOneof(d protoreflect.Oneof
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_QueryRecordByIdResponse) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_QueryGetRecordResponse) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -5263,7 +5263,7 @@ func (x *fastReflection_QueryRecordByIdResponse) GetUnknown() protoreflect.RawFi
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryRecordByIdResponse) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_QueryGetRecordResponse) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -5275,7 +5275,7 @@ func (x *fastReflection_QueryRecordByIdResponse) SetUnknown(fields protoreflect.
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_QueryRecordByIdResponse) IsValid() bool {
+func (x *fastReflection_QueryGetRecordResponse) IsValid() bool {
 	return x != nil
 }
 
@@ -5285,9 +5285,9 @@ func (x *fastReflection_QueryRecordByIdResponse) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_QueryRecordByIdResponse) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_QueryGetRecordResponse) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*QueryRecordByIdResponse)
+		x := input.Message.Interface().(*QueryGetRecordResponse)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -5313,7 +5313,7 @@ func (x *fastReflection_QueryRecordByIdResponse) ProtoMethods() *protoiface.Meth
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*QueryRecordByIdResponse)
+		x := input.Message.Interface().(*QueryGetRecordResponse)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -5357,7 +5357,7 @@ func (x *fastReflection_QueryRecordByIdResponse) ProtoMethods() *protoiface.Meth
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*QueryRecordByIdResponse)
+		x := input.Message.Interface().(*QueryGetRecordResponse)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -5389,10 +5389,10 @@ func (x *fastReflection_QueryRecordByIdResponse) ProtoMethods() *protoiface.Meth
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryRecordByIdResponse: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetRecordResponse: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryRecordByIdResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetRecordResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
@@ -5467,27 +5467,27 @@ func (x *fastReflection_QueryRecordByIdResponse) ProtoMethods() *protoiface.Meth
 }
 
 var (
-	md_QueryRecordsByBondIdRequest            protoreflect.MessageDescriptor
-	fd_QueryRecordsByBondIdRequest_id         protoreflect.FieldDescriptor
-	fd_QueryRecordsByBondIdRequest_pagination protoreflect.FieldDescriptor
+	md_QueryGetRecordsByBondIdRequest            protoreflect.MessageDescriptor
+	fd_QueryGetRecordsByBondIdRequest_id         protoreflect.FieldDescriptor
+	fd_QueryGetRecordsByBondIdRequest_pagination protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_cerc_registry_v1_query_proto_init()
-	md_QueryRecordsByBondIdRequest = File_cerc_registry_v1_query_proto.Messages().ByName("QueryRecordsByBondIdRequest")
-	fd_QueryRecordsByBondIdRequest_id = md_QueryRecordsByBondIdRequest.Fields().ByName("id")
-	fd_QueryRecordsByBondIdRequest_pagination = md_QueryRecordsByBondIdRequest.Fields().ByName("pagination")
+	md_QueryGetRecordsByBondIdRequest = File_cerc_registry_v1_query_proto.Messages().ByName("QueryGetRecordsByBondIdRequest")
+	fd_QueryGetRecordsByBondIdRequest_id = md_QueryGetRecordsByBondIdRequest.Fields().ByName("id")
+	fd_QueryGetRecordsByBondIdRequest_pagination = md_QueryGetRecordsByBondIdRequest.Fields().ByName("pagination")
 }
 
-var _ protoreflect.Message = (*fastReflection_QueryRecordsByBondIdRequest)(nil)
+var _ protoreflect.Message = (*fastReflection_QueryGetRecordsByBondIdRequest)(nil)
 
-type fastReflection_QueryRecordsByBondIdRequest QueryRecordsByBondIdRequest
+type fastReflection_QueryGetRecordsByBondIdRequest QueryGetRecordsByBondIdRequest
 
-func (x *QueryRecordsByBondIdRequest) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_QueryRecordsByBondIdRequest)(x)
+func (x *QueryGetRecordsByBondIdRequest) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_QueryGetRecordsByBondIdRequest)(x)
 }
 
-func (x *QueryRecordsByBondIdRequest) slowProtoReflect() protoreflect.Message {
+func (x *QueryGetRecordsByBondIdRequest) slowProtoReflect() protoreflect.Message {
 	mi := &file_cerc_registry_v1_query_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -5499,43 +5499,43 @@ func (x *QueryRecordsByBondIdRequest) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_QueryRecordsByBondIdRequest_messageType fastReflection_QueryRecordsByBondIdRequest_messageType
-var _ protoreflect.MessageType = fastReflection_QueryRecordsByBondIdRequest_messageType{}
+var _fastReflection_QueryGetRecordsByBondIdRequest_messageType fastReflection_QueryGetRecordsByBondIdRequest_messageType
+var _ protoreflect.MessageType = fastReflection_QueryGetRecordsByBondIdRequest_messageType{}
 
-type fastReflection_QueryRecordsByBondIdRequest_messageType struct{}
+type fastReflection_QueryGetRecordsByBondIdRequest_messageType struct{}
 
-func (x fastReflection_QueryRecordsByBondIdRequest_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_QueryRecordsByBondIdRequest)(nil)
+func (x fastReflection_QueryGetRecordsByBondIdRequest_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_QueryGetRecordsByBondIdRequest)(nil)
 }
-func (x fastReflection_QueryRecordsByBondIdRequest_messageType) New() protoreflect.Message {
-	return new(fastReflection_QueryRecordsByBondIdRequest)
+func (x fastReflection_QueryGetRecordsByBondIdRequest_messageType) New() protoreflect.Message {
+	return new(fastReflection_QueryGetRecordsByBondIdRequest)
 }
-func (x fastReflection_QueryRecordsByBondIdRequest_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryRecordsByBondIdRequest
+func (x fastReflection_QueryGetRecordsByBondIdRequest_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetRecordsByBondIdRequest
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_QueryRecordsByBondIdRequest) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryRecordsByBondIdRequest
+func (x *fastReflection_QueryGetRecordsByBondIdRequest) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetRecordsByBondIdRequest
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_QueryRecordsByBondIdRequest) Type() protoreflect.MessageType {
-	return _fastReflection_QueryRecordsByBondIdRequest_messageType
+func (x *fastReflection_QueryGetRecordsByBondIdRequest) Type() protoreflect.MessageType {
+	return _fastReflection_QueryGetRecordsByBondIdRequest_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_QueryRecordsByBondIdRequest) New() protoreflect.Message {
-	return new(fastReflection_QueryRecordsByBondIdRequest)
+func (x *fastReflection_QueryGetRecordsByBondIdRequest) New() protoreflect.Message {
+	return new(fastReflection_QueryGetRecordsByBondIdRequest)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_QueryRecordsByBondIdRequest) Interface() protoreflect.ProtoMessage {
-	return (*QueryRecordsByBondIdRequest)(x)
+func (x *fastReflection_QueryGetRecordsByBondIdRequest) Interface() protoreflect.ProtoMessage {
+	return (*QueryGetRecordsByBondIdRequest)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -5543,16 +5543,16 @@ func (x *fastReflection_QueryRecordsByBondIdRequest) Interface() protoreflect.Pr
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_QueryRecordsByBondIdRequest) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_QueryGetRecordsByBondIdRequest) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
 	if x.Id != "" {
 		value := protoreflect.ValueOfString(x.Id)
-		if !f(fd_QueryRecordsByBondIdRequest_id, value) {
+		if !f(fd_QueryGetRecordsByBondIdRequest_id, value) {
 			return
 		}
 	}
 	if x.Pagination != nil {
 		value := protoreflect.ValueOfMessage(x.Pagination.ProtoReflect())
-		if !f(fd_QueryRecordsByBondIdRequest_pagination, value) {
+		if !f(fd_QueryGetRecordsByBondIdRequest_pagination, value) {
 			return
 		}
 	}
@@ -5569,17 +5569,17 @@ func (x *fastReflection_QueryRecordsByBondIdRequest) Range(f func(protoreflect.F
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_QueryRecordsByBondIdRequest) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_QueryGetRecordsByBondIdRequest) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordsByBondIdRequest.id":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdRequest.id":
 		return x.Id != ""
-	case "cerc.registry.v1.QueryRecordsByBondIdRequest.pagination":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdRequest.pagination":
 		return x.Pagination != nil
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordsByBondIdRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordsByBondIdRequest"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordsByBondIdRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordsByBondIdRequest does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -5589,17 +5589,17 @@ func (x *fastReflection_QueryRecordsByBondIdRequest) Has(fd protoreflect.FieldDe
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryRecordsByBondIdRequest) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_QueryGetRecordsByBondIdRequest) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordsByBondIdRequest.id":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdRequest.id":
 		x.Id = ""
-	case "cerc.registry.v1.QueryRecordsByBondIdRequest.pagination":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdRequest.pagination":
 		x.Pagination = nil
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordsByBondIdRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordsByBondIdRequest"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordsByBondIdRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordsByBondIdRequest does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -5609,19 +5609,19 @@ func (x *fastReflection_QueryRecordsByBondIdRequest) Clear(fd protoreflect.Field
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_QueryRecordsByBondIdRequest) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetRecordsByBondIdRequest) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "cerc.registry.v1.QueryRecordsByBondIdRequest.id":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdRequest.id":
 		value := x.Id
 		return protoreflect.ValueOfString(value)
-	case "cerc.registry.v1.QueryRecordsByBondIdRequest.pagination":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdRequest.pagination":
 		value := x.Pagination
 		return protoreflect.ValueOfMessage(value.ProtoReflect())
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordsByBondIdRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordsByBondIdRequest"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordsByBondIdRequest does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordsByBondIdRequest does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -5635,17 +5635,17 @@ func (x *fastReflection_QueryRecordsByBondIdRequest) Get(descriptor protoreflect
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryRecordsByBondIdRequest) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_QueryGetRecordsByBondIdRequest) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordsByBondIdRequest.id":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdRequest.id":
 		x.Id = value.Interface().(string)
-	case "cerc.registry.v1.QueryRecordsByBondIdRequest.pagination":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdRequest.pagination":
 		x.Pagination = value.Message().Interface().(*v1beta1.PageRequest)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordsByBondIdRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordsByBondIdRequest"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordsByBondIdRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordsByBondIdRequest does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -5659,48 +5659,48 @@ func (x *fastReflection_QueryRecordsByBondIdRequest) Set(fd protoreflect.FieldDe
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryRecordsByBondIdRequest) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetRecordsByBondIdRequest) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordsByBondIdRequest.pagination":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdRequest.pagination":
 		if x.Pagination == nil {
 			x.Pagination = new(v1beta1.PageRequest)
 		}
 		return protoreflect.ValueOfMessage(x.Pagination.ProtoReflect())
-	case "cerc.registry.v1.QueryRecordsByBondIdRequest.id":
-		panic(fmt.Errorf("field id of message cerc.registry.v1.QueryRecordsByBondIdRequest is not mutable"))
+	case "cerc.registry.v1.QueryGetRecordsByBondIdRequest.id":
+		panic(fmt.Errorf("field id of message cerc.registry.v1.QueryGetRecordsByBondIdRequest is not mutable"))
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordsByBondIdRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordsByBondIdRequest"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordsByBondIdRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordsByBondIdRequest does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_QueryRecordsByBondIdRequest) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetRecordsByBondIdRequest) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordsByBondIdRequest.id":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdRequest.id":
 		return protoreflect.ValueOfString("")
-	case "cerc.registry.v1.QueryRecordsByBondIdRequest.pagination":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdRequest.pagination":
 		m := new(v1beta1.PageRequest)
 		return protoreflect.ValueOfMessage(m.ProtoReflect())
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordsByBondIdRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordsByBondIdRequest"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordsByBondIdRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordsByBondIdRequest does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_QueryRecordsByBondIdRequest) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_QueryGetRecordsByBondIdRequest) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in cerc.registry.v1.QueryRecordsByBondIdRequest", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in cerc.registry.v1.QueryGetRecordsByBondIdRequest", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -5708,7 +5708,7 @@ func (x *fastReflection_QueryRecordsByBondIdRequest) WhichOneof(d protoreflect.O
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_QueryRecordsByBondIdRequest) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_QueryGetRecordsByBondIdRequest) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -5719,7 +5719,7 @@ func (x *fastReflection_QueryRecordsByBondIdRequest) GetUnknown() protoreflect.R
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryRecordsByBondIdRequest) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_QueryGetRecordsByBondIdRequest) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -5731,7 +5731,7 @@ func (x *fastReflection_QueryRecordsByBondIdRequest) SetUnknown(fields protorefl
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_QueryRecordsByBondIdRequest) IsValid() bool {
+func (x *fastReflection_QueryGetRecordsByBondIdRequest) IsValid() bool {
 	return x != nil
 }
 
@@ -5741,9 +5741,9 @@ func (x *fastReflection_QueryRecordsByBondIdRequest) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_QueryRecordsByBondIdRequest) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_QueryGetRecordsByBondIdRequest) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*QueryRecordsByBondIdRequest)
+		x := input.Message.Interface().(*QueryGetRecordsByBondIdRequest)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -5773,7 +5773,7 @@ func (x *fastReflection_QueryRecordsByBondIdRequest) ProtoMethods() *protoiface.
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*QueryRecordsByBondIdRequest)
+		x := input.Message.Interface().(*QueryGetRecordsByBondIdRequest)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -5824,7 +5824,7 @@ func (x *fastReflection_QueryRecordsByBondIdRequest) ProtoMethods() *protoiface.
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*QueryRecordsByBondIdRequest)
+		x := input.Message.Interface().(*QueryGetRecordsByBondIdRequest)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -5856,10 +5856,10 @@ func (x *fastReflection_QueryRecordsByBondIdRequest) ProtoMethods() *protoiface.
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryRecordsByBondIdRequest: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetRecordsByBondIdRequest: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryRecordsByBondIdRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetRecordsByBondIdRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
@@ -5965,79 +5965,79 @@ func (x *fastReflection_QueryRecordsByBondIdRequest) ProtoMethods() *protoiface.
 	}
 }
 
-var _ protoreflect.List = (*_QueryRecordsByBondIdResponse_1_list)(nil)
+var _ protoreflect.List = (*_QueryGetRecordsByBondIdResponse_1_list)(nil)
 
-type _QueryRecordsByBondIdResponse_1_list struct {
+type _QueryGetRecordsByBondIdResponse_1_list struct {
 	list *[]*Record
 }
 
-func (x *_QueryRecordsByBondIdResponse_1_list) Len() int {
+func (x *_QueryGetRecordsByBondIdResponse_1_list) Len() int {
 	if x.list == nil {
 		return 0
 	}
 	return len(*x.list)
 }
 
-func (x *_QueryRecordsByBondIdResponse_1_list) Get(i int) protoreflect.Value {
+func (x *_QueryGetRecordsByBondIdResponse_1_list) Get(i int) protoreflect.Value {
 	return protoreflect.ValueOfMessage((*x.list)[i].ProtoReflect())
 }
 
-func (x *_QueryRecordsByBondIdResponse_1_list) Set(i int, value protoreflect.Value) {
+func (x *_QueryGetRecordsByBondIdResponse_1_list) Set(i int, value protoreflect.Value) {
 	valueUnwrapped := value.Message()
 	concreteValue := valueUnwrapped.Interface().(*Record)
 	(*x.list)[i] = concreteValue
 }
 
-func (x *_QueryRecordsByBondIdResponse_1_list) Append(value protoreflect.Value) {
+func (x *_QueryGetRecordsByBondIdResponse_1_list) Append(value protoreflect.Value) {
 	valueUnwrapped := value.Message()
 	concreteValue := valueUnwrapped.Interface().(*Record)
 	*x.list = append(*x.list, concreteValue)
 }
 
-func (x *_QueryRecordsByBondIdResponse_1_list) AppendMutable() protoreflect.Value {
+func (x *_QueryGetRecordsByBondIdResponse_1_list) AppendMutable() protoreflect.Value {
 	v := new(Record)
 	*x.list = append(*x.list, v)
 	return protoreflect.ValueOfMessage(v.ProtoReflect())
 }
 
-func (x *_QueryRecordsByBondIdResponse_1_list) Truncate(n int) {
+func (x *_QueryGetRecordsByBondIdResponse_1_list) Truncate(n int) {
 	for i := n; i < len(*x.list); i++ {
 		(*x.list)[i] = nil
 	}
 	*x.list = (*x.list)[:n]
 }
 
-func (x *_QueryRecordsByBondIdResponse_1_list) NewElement() protoreflect.Value {
+func (x *_QueryGetRecordsByBondIdResponse_1_list) NewElement() protoreflect.Value {
 	v := new(Record)
 	return protoreflect.ValueOfMessage(v.ProtoReflect())
 }
 
-func (x *_QueryRecordsByBondIdResponse_1_list) IsValid() bool {
+func (x *_QueryGetRecordsByBondIdResponse_1_list) IsValid() bool {
 	return x.list != nil
 }
 
 var (
-	md_QueryRecordsByBondIdResponse            protoreflect.MessageDescriptor
-	fd_QueryRecordsByBondIdResponse_records    protoreflect.FieldDescriptor
-	fd_QueryRecordsByBondIdResponse_pagination protoreflect.FieldDescriptor
+	md_QueryGetRecordsByBondIdResponse            protoreflect.MessageDescriptor
+	fd_QueryGetRecordsByBondIdResponse_records    protoreflect.FieldDescriptor
+	fd_QueryGetRecordsByBondIdResponse_pagination protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_cerc_registry_v1_query_proto_init()
-	md_QueryRecordsByBondIdResponse = File_cerc_registry_v1_query_proto.Messages().ByName("QueryRecordsByBondIdResponse")
-	fd_QueryRecordsByBondIdResponse_records = md_QueryRecordsByBondIdResponse.Fields().ByName("records")
-	fd_QueryRecordsByBondIdResponse_pagination = md_QueryRecordsByBondIdResponse.Fields().ByName("pagination")
+	md_QueryGetRecordsByBondIdResponse = File_cerc_registry_v1_query_proto.Messages().ByName("QueryGetRecordsByBondIdResponse")
+	fd_QueryGetRecordsByBondIdResponse_records = md_QueryGetRecordsByBondIdResponse.Fields().ByName("records")
+	fd_QueryGetRecordsByBondIdResponse_pagination = md_QueryGetRecordsByBondIdResponse.Fields().ByName("pagination")
 }
 
-var _ protoreflect.Message = (*fastReflection_QueryRecordsByBondIdResponse)(nil)
+var _ protoreflect.Message = (*fastReflection_QueryGetRecordsByBondIdResponse)(nil)
 
-type fastReflection_QueryRecordsByBondIdResponse QueryRecordsByBondIdResponse
+type fastReflection_QueryGetRecordsByBondIdResponse QueryGetRecordsByBondIdResponse
 
-func (x *QueryRecordsByBondIdResponse) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_QueryRecordsByBondIdResponse)(x)
+func (x *QueryGetRecordsByBondIdResponse) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_QueryGetRecordsByBondIdResponse)(x)
 }
 
-func (x *QueryRecordsByBondIdResponse) slowProtoReflect() protoreflect.Message {
+func (x *QueryGetRecordsByBondIdResponse) slowProtoReflect() protoreflect.Message {
 	mi := &file_cerc_registry_v1_query_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -6049,43 +6049,43 @@ func (x *QueryRecordsByBondIdResponse) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_QueryRecordsByBondIdResponse_messageType fastReflection_QueryRecordsByBondIdResponse_messageType
-var _ protoreflect.MessageType = fastReflection_QueryRecordsByBondIdResponse_messageType{}
+var _fastReflection_QueryGetRecordsByBondIdResponse_messageType fastReflection_QueryGetRecordsByBondIdResponse_messageType
+var _ protoreflect.MessageType = fastReflection_QueryGetRecordsByBondIdResponse_messageType{}
 
-type fastReflection_QueryRecordsByBondIdResponse_messageType struct{}
+type fastReflection_QueryGetRecordsByBondIdResponse_messageType struct{}
 
-func (x fastReflection_QueryRecordsByBondIdResponse_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_QueryRecordsByBondIdResponse)(nil)
+func (x fastReflection_QueryGetRecordsByBondIdResponse_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_QueryGetRecordsByBondIdResponse)(nil)
 }
-func (x fastReflection_QueryRecordsByBondIdResponse_messageType) New() protoreflect.Message {
-	return new(fastReflection_QueryRecordsByBondIdResponse)
+func (x fastReflection_QueryGetRecordsByBondIdResponse_messageType) New() protoreflect.Message {
+	return new(fastReflection_QueryGetRecordsByBondIdResponse)
 }
-func (x fastReflection_QueryRecordsByBondIdResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryRecordsByBondIdResponse
+func (x fastReflection_QueryGetRecordsByBondIdResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetRecordsByBondIdResponse
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_QueryRecordsByBondIdResponse) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryRecordsByBondIdResponse
+func (x *fastReflection_QueryGetRecordsByBondIdResponse) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetRecordsByBondIdResponse
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_QueryRecordsByBondIdResponse) Type() protoreflect.MessageType {
-	return _fastReflection_QueryRecordsByBondIdResponse_messageType
+func (x *fastReflection_QueryGetRecordsByBondIdResponse) Type() protoreflect.MessageType {
+	return _fastReflection_QueryGetRecordsByBondIdResponse_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_QueryRecordsByBondIdResponse) New() protoreflect.Message {
-	return new(fastReflection_QueryRecordsByBondIdResponse)
+func (x *fastReflection_QueryGetRecordsByBondIdResponse) New() protoreflect.Message {
+	return new(fastReflection_QueryGetRecordsByBondIdResponse)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_QueryRecordsByBondIdResponse) Interface() protoreflect.ProtoMessage {
-	return (*QueryRecordsByBondIdResponse)(x)
+func (x *fastReflection_QueryGetRecordsByBondIdResponse) Interface() protoreflect.ProtoMessage {
+	return (*QueryGetRecordsByBondIdResponse)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -6093,16 +6093,16 @@ func (x *fastReflection_QueryRecordsByBondIdResponse) Interface() protoreflect.P
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_QueryRecordsByBondIdResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_QueryGetRecordsByBondIdResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
 	if len(x.Records) != 0 {
-		value := protoreflect.ValueOfList(&_QueryRecordsByBondIdResponse_1_list{list: &x.Records})
-		if !f(fd_QueryRecordsByBondIdResponse_records, value) {
+		value := protoreflect.ValueOfList(&_QueryGetRecordsByBondIdResponse_1_list{list: &x.Records})
+		if !f(fd_QueryGetRecordsByBondIdResponse_records, value) {
 			return
 		}
 	}
 	if x.Pagination != nil {
 		value := protoreflect.ValueOfMessage(x.Pagination.ProtoReflect())
-		if !f(fd_QueryRecordsByBondIdResponse_pagination, value) {
+		if !f(fd_QueryGetRecordsByBondIdResponse_pagination, value) {
 			return
 		}
 	}
@@ -6119,17 +6119,17 @@ func (x *fastReflection_QueryRecordsByBondIdResponse) Range(f func(protoreflect.
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_QueryRecordsByBondIdResponse) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_QueryGetRecordsByBondIdResponse) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordsByBondIdResponse.records":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdResponse.records":
 		return len(x.Records) != 0
-	case "cerc.registry.v1.QueryRecordsByBondIdResponse.pagination":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdResponse.pagination":
 		return x.Pagination != nil
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordsByBondIdResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordsByBondIdResponse"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordsByBondIdResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordsByBondIdResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -6139,17 +6139,17 @@ func (x *fastReflection_QueryRecordsByBondIdResponse) Has(fd protoreflect.FieldD
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryRecordsByBondIdResponse) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_QueryGetRecordsByBondIdResponse) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordsByBondIdResponse.records":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdResponse.records":
 		x.Records = nil
-	case "cerc.registry.v1.QueryRecordsByBondIdResponse.pagination":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdResponse.pagination":
 		x.Pagination = nil
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordsByBondIdResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordsByBondIdResponse"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordsByBondIdResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordsByBondIdResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -6159,22 +6159,22 @@ func (x *fastReflection_QueryRecordsByBondIdResponse) Clear(fd protoreflect.Fiel
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_QueryRecordsByBondIdResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetRecordsByBondIdResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "cerc.registry.v1.QueryRecordsByBondIdResponse.records":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdResponse.records":
 		if len(x.Records) == 0 {
-			return protoreflect.ValueOfList(&_QueryRecordsByBondIdResponse_1_list{})
+			return protoreflect.ValueOfList(&_QueryGetRecordsByBondIdResponse_1_list{})
 		}
-		listValue := &_QueryRecordsByBondIdResponse_1_list{list: &x.Records}
+		listValue := &_QueryGetRecordsByBondIdResponse_1_list{list: &x.Records}
 		return protoreflect.ValueOfList(listValue)
-	case "cerc.registry.v1.QueryRecordsByBondIdResponse.pagination":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdResponse.pagination":
 		value := x.Pagination
 		return protoreflect.ValueOfMessage(value.ProtoReflect())
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordsByBondIdResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordsByBondIdResponse"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordsByBondIdResponse does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordsByBondIdResponse does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -6188,19 +6188,19 @@ func (x *fastReflection_QueryRecordsByBondIdResponse) Get(descriptor protoreflec
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryRecordsByBondIdResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_QueryGetRecordsByBondIdResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordsByBondIdResponse.records":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdResponse.records":
 		lv := value.List()
-		clv := lv.(*_QueryRecordsByBondIdResponse_1_list)
+		clv := lv.(*_QueryGetRecordsByBondIdResponse_1_list)
 		x.Records = *clv.list
-	case "cerc.registry.v1.QueryRecordsByBondIdResponse.pagination":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdResponse.pagination":
 		x.Pagination = value.Message().Interface().(*v1beta1.PageResponse)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordsByBondIdResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordsByBondIdResponse"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordsByBondIdResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordsByBondIdResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -6214,53 +6214,53 @@ func (x *fastReflection_QueryRecordsByBondIdResponse) Set(fd protoreflect.FieldD
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryRecordsByBondIdResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetRecordsByBondIdResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordsByBondIdResponse.records":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdResponse.records":
 		if x.Records == nil {
 			x.Records = []*Record{}
 		}
-		value := &_QueryRecordsByBondIdResponse_1_list{list: &x.Records}
+		value := &_QueryGetRecordsByBondIdResponse_1_list{list: &x.Records}
 		return protoreflect.ValueOfList(value)
-	case "cerc.registry.v1.QueryRecordsByBondIdResponse.pagination":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdResponse.pagination":
 		if x.Pagination == nil {
 			x.Pagination = new(v1beta1.PageResponse)
 		}
 		return protoreflect.ValueOfMessage(x.Pagination.ProtoReflect())
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordsByBondIdResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordsByBondIdResponse"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordsByBondIdResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordsByBondIdResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_QueryRecordsByBondIdResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetRecordsByBondIdResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.registry.v1.QueryRecordsByBondIdResponse.records":
+	case "cerc.registry.v1.QueryGetRecordsByBondIdResponse.records":
 		list := []*Record{}
-		return protoreflect.ValueOfList(&_QueryRecordsByBondIdResponse_1_list{list: &list})
-	case "cerc.registry.v1.QueryRecordsByBondIdResponse.pagination":
+		return protoreflect.ValueOfList(&_QueryGetRecordsByBondIdResponse_1_list{list: &list})
+	case "cerc.registry.v1.QueryGetRecordsByBondIdResponse.pagination":
 		m := new(v1beta1.PageResponse)
 		return protoreflect.ValueOfMessage(m.ProtoReflect())
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryRecordsByBondIdResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.registry.v1.QueryGetRecordsByBondIdResponse"))
 		}
-		panic(fmt.Errorf("message cerc.registry.v1.QueryRecordsByBondIdResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.registry.v1.QueryGetRecordsByBondIdResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_QueryRecordsByBondIdResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_QueryGetRecordsByBondIdResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in cerc.registry.v1.QueryRecordsByBondIdResponse", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in cerc.registry.v1.QueryGetRecordsByBondIdResponse", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -6268,7 +6268,7 @@ func (x *fastReflection_QueryRecordsByBondIdResponse) WhichOneof(d protoreflect.
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_QueryRecordsByBondIdResponse) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_QueryGetRecordsByBondIdResponse) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -6279,7 +6279,7 @@ func (x *fastReflection_QueryRecordsByBondIdResponse) GetUnknown() protoreflect.
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryRecordsByBondIdResponse) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_QueryGetRecordsByBondIdResponse) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -6291,7 +6291,7 @@ func (x *fastReflection_QueryRecordsByBondIdResponse) SetUnknown(fields protoref
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_QueryRecordsByBondIdResponse) IsValid() bool {
+func (x *fastReflection_QueryGetRecordsByBondIdResponse) IsValid() bool {
 	return x != nil
 }
 
@@ -6301,9 +6301,9 @@ func (x *fastReflection_QueryRecordsByBondIdResponse) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_QueryRecordsByBondIdResponse) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_QueryGetRecordsByBondIdResponse) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*QueryRecordsByBondIdResponse)
+		x := input.Message.Interface().(*QueryGetRecordsByBondIdResponse)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -6335,7 +6335,7 @@ func (x *fastReflection_QueryRecordsByBondIdResponse) ProtoMethods() *protoiface
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*QueryRecordsByBondIdResponse)
+		x := input.Message.Interface().(*QueryGetRecordsByBondIdResponse)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -6395,7 +6395,7 @@ func (x *fastReflection_QueryRecordsByBondIdResponse) ProtoMethods() *protoiface
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*QueryRecordsByBondIdResponse)
+		x := input.Message.Interface().(*QueryGetRecordsByBondIdResponse)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -6427,10 +6427,10 @@ func (x *fastReflection_QueryRecordsByBondIdResponse) ProtoMethods() *protoiface
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryRecordsByBondIdResponse: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetRecordsByBondIdResponse: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryRecordsByBondIdResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetRecordsByBondIdResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
@@ -11693,8 +11693,8 @@ func (x *QueryRecordsResponse) GetPagination() *v1beta1.PageResponse {
 	return nil
 }
 
-// QueryRecordByIdRequest is request type for registry records by id
-type QueryRecordByIdRequest struct {
+// QueryGetRecordRequest is request type for registry records by id
+type QueryGetRecordRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -11702,8 +11702,8 @@ type QueryRecordByIdRequest struct {
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
-func (x *QueryRecordByIdRequest) Reset() {
-	*x = QueryRecordByIdRequest{}
+func (x *QueryGetRecordRequest) Reset() {
+	*x = QueryGetRecordRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_cerc_registry_v1_query_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -11711,26 +11711,26 @@ func (x *QueryRecordByIdRequest) Reset() {
 	}
 }
 
-func (x *QueryRecordByIdRequest) String() string {
+func (x *QueryGetRecordRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*QueryRecordByIdRequest) ProtoMessage() {}
+func (*QueryGetRecordRequest) ProtoMessage() {}
 
-// Deprecated: Use QueryRecordByIdRequest.ProtoReflect.Descriptor instead.
-func (*QueryRecordByIdRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use QueryGetRecordRequest.ProtoReflect.Descriptor instead.
+func (*QueryGetRecordRequest) Descriptor() ([]byte, []int) {
 	return file_cerc_registry_v1_query_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *QueryRecordByIdRequest) GetId() string {
+func (x *QueryGetRecordRequest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
 	return ""
 }
 
-// QueryRecordByIdResponse is response type for registry records by id
-type QueryRecordByIdResponse struct {
+// QueryGetRecordResponse is response type for registry records by id
+type QueryGetRecordResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -11738,8 +11738,8 @@ type QueryRecordByIdResponse struct {
 	Record *Record `protobuf:"bytes,1,opt,name=record,proto3" json:"record,omitempty"`
 }
 
-func (x *QueryRecordByIdResponse) Reset() {
-	*x = QueryRecordByIdResponse{}
+func (x *QueryGetRecordResponse) Reset() {
+	*x = QueryGetRecordResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_cerc_registry_v1_query_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -11747,26 +11747,26 @@ func (x *QueryRecordByIdResponse) Reset() {
 	}
 }
 
-func (x *QueryRecordByIdResponse) String() string {
+func (x *QueryGetRecordResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*QueryRecordByIdResponse) ProtoMessage() {}
+func (*QueryGetRecordResponse) ProtoMessage() {}
 
-// Deprecated: Use QueryRecordByIdResponse.ProtoReflect.Descriptor instead.
-func (*QueryRecordByIdResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use QueryGetRecordResponse.ProtoReflect.Descriptor instead.
+func (*QueryGetRecordResponse) Descriptor() ([]byte, []int) {
 	return file_cerc_registry_v1_query_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *QueryRecordByIdResponse) GetRecord() *Record {
+func (x *QueryGetRecordResponse) GetRecord() *Record {
 	if x != nil {
 		return x.Record
 	}
 	return nil
 }
 
-// QueryRecordsByBondIdRequest is request type for get the records by bond-id
-type QueryRecordsByBondIdRequest struct {
+// QueryGetRecordsByBondIdRequest is request type for get the records by bond-id
+type QueryGetRecordsByBondIdRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -11776,8 +11776,8 @@ type QueryRecordsByBondIdRequest struct {
 	Pagination *v1beta1.PageRequest `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
 }
 
-func (x *QueryRecordsByBondIdRequest) Reset() {
-	*x = QueryRecordsByBondIdRequest{}
+func (x *QueryGetRecordsByBondIdRequest) Reset() {
+	*x = QueryGetRecordsByBondIdRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_cerc_registry_v1_query_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -11785,33 +11785,33 @@ func (x *QueryRecordsByBondIdRequest) Reset() {
 	}
 }
 
-func (x *QueryRecordsByBondIdRequest) String() string {
+func (x *QueryGetRecordsByBondIdRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*QueryRecordsByBondIdRequest) ProtoMessage() {}
+func (*QueryGetRecordsByBondIdRequest) ProtoMessage() {}
 
-// Deprecated: Use QueryRecordsByBondIdRequest.ProtoReflect.Descriptor instead.
-func (*QueryRecordsByBondIdRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use QueryGetRecordsByBondIdRequest.ProtoReflect.Descriptor instead.
+func (*QueryGetRecordsByBondIdRequest) Descriptor() ([]byte, []int) {
 	return file_cerc_registry_v1_query_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *QueryRecordsByBondIdRequest) GetId() string {
+func (x *QueryGetRecordsByBondIdRequest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
 	return ""
 }
 
-func (x *QueryRecordsByBondIdRequest) GetPagination() *v1beta1.PageRequest {
+func (x *QueryGetRecordsByBondIdRequest) GetPagination() *v1beta1.PageRequest {
 	if x != nil {
 		return x.Pagination
 	}
 	return nil
 }
 
-// QueryRecordsByBondIdResponse is response type for records list by bond-id
-type QueryRecordsByBondIdResponse struct {
+// QueryGetRecordsByBondIdResponse is response type for records list by bond-id
+type QueryGetRecordsByBondIdResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -11821,8 +11821,8 @@ type QueryRecordsByBondIdResponse struct {
 	Pagination *v1beta1.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
 }
 
-func (x *QueryRecordsByBondIdResponse) Reset() {
-	*x = QueryRecordsByBondIdResponse{}
+func (x *QueryGetRecordsByBondIdResponse) Reset() {
+	*x = QueryGetRecordsByBondIdResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_cerc_registry_v1_query_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -11830,25 +11830,25 @@ func (x *QueryRecordsByBondIdResponse) Reset() {
 	}
 }
 
-func (x *QueryRecordsByBondIdResponse) String() string {
+func (x *QueryGetRecordsByBondIdResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*QueryRecordsByBondIdResponse) ProtoMessage() {}
+func (*QueryGetRecordsByBondIdResponse) ProtoMessage() {}
 
-// Deprecated: Use QueryRecordsByBondIdResponse.ProtoReflect.Descriptor instead.
-func (*QueryRecordsByBondIdResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use QueryGetRecordsByBondIdResponse.ProtoReflect.Descriptor instead.
+func (*QueryGetRecordsByBondIdResponse) Descriptor() ([]byte, []int) {
 	return file_cerc_registry_v1_query_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *QueryRecordsByBondIdResponse) GetRecords() []*Record {
+func (x *QueryGetRecordsByBondIdResponse) GetRecords() []*Record {
 	if x != nil {
 		return x.Records
 	}
 	return nil
 }
 
-func (x *QueryRecordsByBondIdResponse) GetPagination() *v1beta1.PageResponse {
+func (x *QueryGetRecordsByBondIdResponse) GetPagination() *v1beta1.PageResponse {
 	if x != nil {
 		return x.Pagination
 	}
@@ -12153,7 +12153,8 @@ func (x *QueryResolveLrnResponse) GetRecord() *Record {
 	return nil
 }
 
-// QueryGetRegistryModuleBalanceRequest is request type for registry module accounts balance
+// QueryGetRegistryModuleBalanceRequest is request type for registry module
+// accounts balance
 type QueryGetRegistryModuleBalanceRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -12180,7 +12181,8 @@ func (*QueryGetRegistryModuleBalanceRequest) Descriptor() ([]byte, []int) {
 	return file_cerc_registry_v1_query_proto_rawDescGZIP(), []int{16}
 }
 
-// QueryGetRegistryModuleBalanceResponse is response type for registry module accounts balance
+// QueryGetRegistryModuleBalanceResponse is response type for registry module
+// accounts balance
 type QueryGetRegistryModuleBalanceResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -12260,6 +12262,7 @@ func (x *AccountBalance) GetBalance() []*v1beta11.Coin {
 	return nil
 }
 
+// Array type attribute
 type QueryRecordsRequest_ArrayInput struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -12295,6 +12298,7 @@ func (x *QueryRecordsRequest_ArrayInput) GetValues() []*QueryRecordsRequest_Valu
 	return nil
 }
 
+// Map type attribute
 type QueryRecordsRequest_MapInput struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -12330,12 +12334,13 @@ func (x *QueryRecordsRequest_MapInput) GetValues() map[string]*QueryRecordsReque
 	return nil
 }
 
+// Type for record attribute value
 type QueryRecordsRequest_ValueInput struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Type of record attribute value
+	// Value is one of the following types
 	//
 	// Types that are assignable to Value:
 	//
@@ -12471,6 +12476,7 @@ func (*QueryRecordsRequest_ValueInput_Array) isQueryRecordsRequest_ValueInput_Va
 
 func (*QueryRecordsRequest_ValueInput_Map) isQueryRecordsRequest_ValueInput_Value() {}
 
+// Type for record attribute key
 type QueryRecordsRequest_KeyValueInput struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -12601,191 +12607,191 @@ var file_cerc_registry_v1_query_proto_rawDesc = []byte{
 	0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x61, 0x73, 0x65, 0x2e, 0x71, 0x75, 0x65, 0x72,
 	0x79, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x50, 0x61, 0x67, 0x65, 0x52, 0x65,
 	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x52, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74, 0x69,
-	0x6f, 0x6e, 0x22, 0x28, 0x0a, 0x16, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65, 0x63, 0x6f, 0x72,
-	0x64, 0x42, 0x79, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02,
-	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0x51, 0x0a, 0x17,
-	0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x42, 0x79, 0x49, 0x64, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x36, 0x0a, 0x06, 0x72, 0x65, 0x63, 0x6f, 0x72,
-	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72,
-	0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x72,
-	0x64, 0x42, 0x04, 0xc8, 0xde, 0x1f, 0x00, 0x52, 0x06, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x22,
-	0x75, 0x0a, 0x1b, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x42,
-	0x79, 0x42, 0x6f, 0x6e, 0x64, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e,
-	0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x46,
-	0x0a, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x0b, 0x32, 0x26, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x61, 0x73, 0x65,
-	0x2e, 0x71, 0x75, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x50,
-	0x61, 0x67, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x52, 0x0a, 0x70, 0x61, 0x67, 0x69,
-	0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0xa1, 0x01, 0x0a, 0x1c, 0x51, 0x75, 0x65, 0x72, 0x79,
-	0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x42, 0x79, 0x42, 0x6f, 0x6e, 0x64, 0x49, 0x64, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x38, 0x0a, 0x07, 0x72, 0x65, 0x63, 0x6f, 0x72,
-	0x64, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e,
-	0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x63, 0x6f,
-	0x72, 0x64, 0x42, 0x04, 0xc8, 0xde, 0x1f, 0x00, 0x52, 0x07, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64,
-	0x73, 0x12, 0x47, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x27, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x62,
-	0x61, 0x73, 0x65, 0x2e, 0x71, 0x75, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61,
-	0x31, 0x2e, 0x50, 0x61, 0x67, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x52, 0x0a,
-	0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x61, 0x0a, 0x17, 0x51, 0x75,
-	0x65, 0x72, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x46, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74,
-	0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x26, 0x2e, 0x63, 0x6f, 0x73, 0x6d,
+	0x6f, 0x6e, 0x22, 0x27, 0x0a, 0x15, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x52, 0x65,
+	0x63, 0x6f, 0x72, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0x50, 0x0a, 0x16, 0x51,
+	0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x36, 0x0a, 0x06, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67,
+	0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x42,
+	0x04, 0xc8, 0xde, 0x1f, 0x00, 0x52, 0x06, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x22, 0x78, 0x0a,
+	0x1e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73,
+	0x42, 0x79, 0x42, 0x6f, 0x6e, 0x64, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
+	0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12,
+	0x46, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x26, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x61, 0x73,
+	0x65, 0x2e, 0x71, 0x75, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e,
+	0x50, 0x61, 0x67, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x52, 0x0a, 0x70, 0x61, 0x67,
+	0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0xa4, 0x01, 0x0a, 0x1f, 0x51, 0x75, 0x65, 0x72,
+	0x79, 0x47, 0x65, 0x74, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x42, 0x79, 0x42, 0x6f, 0x6e,
+	0x64, 0x49, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x38, 0x0a, 0x07, 0x72,
+	0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x63,
+	0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e,
+	0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x42, 0x04, 0xc8, 0xde, 0x1f, 0x00, 0x52, 0x07, 0x72, 0x65,
+	0x63, 0x6f, 0x72, 0x64, 0x73, 0x12, 0x47, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x27, 0x2e, 0x63, 0x6f, 0x73, 0x6d,
 	0x6f, 0x73, 0x2e, 0x62, 0x61, 0x73, 0x65, 0x2e, 0x71, 0x75, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31,
-	0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x50, 0x61, 0x67, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x52, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x9c, 0x01,
-	0x0a, 0x18, 0x51, 0x75, 0x65, 0x72, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x63, 0x6f, 0x72,
-	0x64, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x37, 0x0a, 0x05, 0x6e, 0x61,
-	0x6d, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x63, 0x65, 0x72, 0x63,
-	0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x4e, 0x61, 0x6d,
-	0x65, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x42, 0x04, 0xc8, 0xde, 0x1f, 0x00, 0x52, 0x05, 0x6e, 0x61,
-	0x6d, 0x65, 0x73, 0x12, 0x47, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f,
-	0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x27, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73,
-	0x2e, 0x62, 0x61, 0x73, 0x65, 0x2e, 0x71, 0x75, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x62, 0x65,
-	0x74, 0x61, 0x31, 0x2e, 0x50, 0x61, 0x67, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x52, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x27, 0x0a, 0x11,
-	0x51, 0x75, 0x65, 0x72, 0x79, 0x57, 0x68, 0x6f, 0x69, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x91, 0x01, 0x0a, 0x12, 0x51, 0x75, 0x65, 0x72, 0x79, 0x57,
-	0x68, 0x6f, 0x69, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x7b, 0x0a, 0x0e,
-	0x6e, 0x61, 0x6d, 0x65, 0x5f, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69,
-	0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x4e, 0x61, 0x6d, 0x65, 0x41, 0x75, 0x74, 0x68,
-	0x6f, 0x72, 0x69, 0x74, 0x79, 0x42, 0x33, 0xc8, 0xde, 0x1f, 0x00, 0xf2, 0xde, 0x1f, 0x2b, 0x6a,
-	0x73, 0x6f, 0x6e, 0x3a, 0x22, 0x6e, 0x61, 0x6d, 0x65, 0x5f, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72,
-	0x69, 0x74, 0x79, 0x22, 0x20, 0x79, 0x61, 0x6d, 0x6c, 0x3a, 0x22, 0x6e, 0x61, 0x6d, 0x65, 0x5f,
-	0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x22, 0x52, 0x0d, 0x6e, 0x61, 0x6d, 0x65,
-	0x41, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x22, 0x29, 0x0a, 0x15, 0x51, 0x75, 0x65,
-	0x72, 0x79, 0x4c, 0x6f, 0x6f, 0x6b, 0x75, 0x70, 0x4c, 0x72, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x6c, 0x72, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x03, 0x6c, 0x72, 0x6e, 0x22, 0x4a, 0x0a, 0x16, 0x51, 0x75, 0x65, 0x72, 0x79, 0x4c, 0x6f, 0x6f,
-	0x6b, 0x75, 0x70, 0x4c, 0x72, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x30,
-	0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x63,
+	0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x50, 0x61, 0x67, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x52, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x61,
+	0x0a, 0x17, 0x51, 0x75, 0x65, 0x72, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x63, 0x6f, 0x72,
+	0x64, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x46, 0x0a, 0x0a, 0x70, 0x61, 0x67,
+	0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x26, 0x2e,
+	0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x61, 0x73, 0x65, 0x2e, 0x71, 0x75, 0x65, 0x72,
+	0x79, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x50, 0x61, 0x67, 0x65, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x52, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x22, 0x9c, 0x01, 0x0a, 0x18, 0x51, 0x75, 0x65, 0x72, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x52,
+	0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x37,
+	0x0a, 0x05, 0x6e, 0x61, 0x6d, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1b, 0x2e,
+	0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31,
+	0x2e, 0x4e, 0x61, 0x6d, 0x65, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x42, 0x04, 0xc8, 0xde, 0x1f, 0x00,
+	0x52, 0x05, 0x6e, 0x61, 0x6d, 0x65, 0x73, 0x12, 0x47, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x27, 0x2e, 0x63, 0x6f,
+	0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x61, 0x73, 0x65, 0x2e, 0x71, 0x75, 0x65, 0x72, 0x79, 0x2e,
+	0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x50, 0x61, 0x67, 0x65, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x52, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x22, 0x27, 0x0a, 0x11, 0x51, 0x75, 0x65, 0x72, 0x79, 0x57, 0x68, 0x6f, 0x69, 0x73, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x91, 0x01, 0x0a, 0x12, 0x51, 0x75,
+	0x65, 0x72, 0x79, 0x57, 0x68, 0x6f, 0x69, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x7b, 0x0a, 0x0e, 0x6e, 0x61, 0x6d, 0x65, 0x5f, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69,
+	0x74, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e,
+	0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x4e, 0x61, 0x6d, 0x65,
+	0x41, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x42, 0x33, 0xc8, 0xde, 0x1f, 0x00, 0xf2,
+	0xde, 0x1f, 0x2b, 0x6a, 0x73, 0x6f, 0x6e, 0x3a, 0x22, 0x6e, 0x61, 0x6d, 0x65, 0x5f, 0x61, 0x75,
+	0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x22, 0x20, 0x79, 0x61, 0x6d, 0x6c, 0x3a, 0x22, 0x6e,
+	0x61, 0x6d, 0x65, 0x5f, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x22, 0x52, 0x0d,
+	0x6e, 0x61, 0x6d, 0x65, 0x41, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x22, 0x29, 0x0a,
+	0x15, 0x51, 0x75, 0x65, 0x72, 0x79, 0x4c, 0x6f, 0x6f, 0x6b, 0x75, 0x70, 0x4c, 0x72, 0x6e, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x6c, 0x72, 0x6e, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x03, 0x6c, 0x72, 0x6e, 0x22, 0x4a, 0x0a, 0x16, 0x51, 0x75, 0x65, 0x72,
+	0x79, 0x4c, 0x6f, 0x6f, 0x6b, 0x75, 0x70, 0x4c, 0x72, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x30, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x1c, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79,
+	0x2e, 0x76, 0x31, 0x2e, 0x4e, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52, 0x04,
+	0x6e, 0x61, 0x6d, 0x65, 0x22, 0x2a, 0x0a, 0x16, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65, 0x73,
+	0x6f, 0x6c, 0x76, 0x65, 0x4c, 0x72, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x10,
+	0x0a, 0x03, 0x6c, 0x72, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6c, 0x72, 0x6e,
+	0x22, 0x4b, 0x0a, 0x17, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65,
+	0x4c, 0x72, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x30, 0x0a, 0x06, 0x72,
+	0x65, 0x63, 0x6f, 0x72, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x63, 0x65,
+	0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x52,
+	0x65, 0x63, 0x6f, 0x72, 0x64, 0x52, 0x06, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x22, 0x26, 0x0a,
+	0x24, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72,
+	0x79, 0x4d, 0x6f, 0x64, 0x75, 0x6c, 0x65, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x65, 0x0a, 0x25, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65,
+	0x74, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x4d, 0x6f, 0x64, 0x75, 0x6c, 0x65, 0x42,
+	0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3c,
+	0x0a, 0x08, 0x62, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b,
+	0x32, 0x20, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79,
+	0x2e, 0x76, 0x31, 0x2e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x42, 0x61, 0x6c, 0x61, 0x6e,
+	0x63, 0x65, 0x52, 0x08, 0x62, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x73, 0x22, 0xe9, 0x01, 0x0a,
+	0x0e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x12,
+	0x4e, 0x0a, 0x0c, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x2b, 0xf2, 0xde, 0x1f, 0x27, 0x6a, 0x73, 0x6f, 0x6e, 0x3a,
+	0x22, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x20, 0x79,
+	0x61, 0x6d, 0x6c, 0x3a, 0x22, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x5f, 0x6e, 0x61, 0x6d,
+	0x65, 0x22, 0x52, 0x0b, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x12,
+	0x86, 0x01, 0x0a, 0x07, 0x62, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x18, 0x03, 0x20, 0x03, 0x28,
+	0x0b, 0x32, 0x19, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x61, 0x73, 0x65, 0x2e,
+	0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x43, 0x6f, 0x69, 0x6e, 0x42, 0x51, 0xc8, 0xde,
+	0x1f, 0x00, 0xf2, 0xde, 0x1f, 0x1d, 0x6a, 0x73, 0x6f, 0x6e, 0x3a, 0x22, 0x62, 0x61, 0x6c, 0x61,
+	0x6e, 0x63, 0x65, 0x22, 0x20, 0x79, 0x61, 0x6d, 0x6c, 0x3a, 0x22, 0x62, 0x61, 0x6c, 0x61, 0x6e,
+	0x63, 0x65, 0x22, 0xaa, 0xdf, 0x1f, 0x28, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f,
+	0x6d, 0x2f, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2d,
+	0x73, 0x64, 0x6b, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x43, 0x6f, 0x69, 0x6e, 0x73, 0x52,
+	0x07, 0x62, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x32, 0xf4, 0x09, 0x0a, 0x05, 0x51, 0x75, 0x65,
+	0x72, 0x79, 0x12, 0x77, 0x0a, 0x06, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x24, 0x2e, 0x63,
 	0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e,
-	0x4e, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65,
-	0x22, 0x2a, 0x0a, 0x16, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65,
-	0x4c, 0x72, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x6c, 0x72,
-	0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6c, 0x72, 0x6e, 0x22, 0x4b, 0x0a, 0x17,
-	0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x4c, 0x72, 0x6e, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x30, 0x0a, 0x06, 0x72, 0x65, 0x63, 0x6f, 0x72,
-	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72,
-	0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x72,
-	0x64, 0x52, 0x06, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x22, 0x26, 0x0a, 0x24, 0x51, 0x75, 0x65,
-	0x72, 0x79, 0x47, 0x65, 0x74, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x4d, 0x6f, 0x64,
-	0x75, 0x6c, 0x65, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x22, 0x65, 0x0a, 0x25, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x52, 0x65, 0x67,
-	0x69, 0x73, 0x74, 0x72, 0x79, 0x4d, 0x6f, 0x64, 0x75, 0x6c, 0x65, 0x42, 0x61, 0x6c, 0x61, 0x6e,
-	0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3c, 0x0a, 0x08, 0x62, 0x61,
-	0x6c, 0x61, 0x6e, 0x63, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x63,
-	0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e,
-	0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x52, 0x08,
-	0x62, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x73, 0x22, 0xe9, 0x01, 0x0a, 0x0e, 0x41, 0x63, 0x63,
-	0x6f, 0x75, 0x6e, 0x74, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x12, 0x4e, 0x0a, 0x0c, 0x61,
-	0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x42, 0x2b, 0xf2, 0xde, 0x1f, 0x27, 0x6a, 0x73, 0x6f, 0x6e, 0x3a, 0x22, 0x61, 0x63, 0x63,
-	0x6f, 0x75, 0x6e, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x20, 0x79, 0x61, 0x6d, 0x6c, 0x3a,
-	0x22, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x52, 0x0b,
-	0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x86, 0x01, 0x0a, 0x07,
-	0x62, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x19, 0x2e,
-	0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x61, 0x73, 0x65, 0x2e, 0x76, 0x31, 0x62, 0x65,
-	0x74, 0x61, 0x31, 0x2e, 0x43, 0x6f, 0x69, 0x6e, 0x42, 0x51, 0xc8, 0xde, 0x1f, 0x00, 0xf2, 0xde,
-	0x1f, 0x1d, 0x6a, 0x73, 0x6f, 0x6e, 0x3a, 0x22, 0x62, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x22,
-	0x20, 0x79, 0x61, 0x6d, 0x6c, 0x3a, 0x22, 0x62, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x22, 0xaa,
-	0xdf, 0x1f, 0x28, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x63, 0x6f,
-	0x73, 0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2d, 0x73, 0x64, 0x6b, 0x2f,
-	0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x43, 0x6f, 0x69, 0x6e, 0x73, 0x52, 0x07, 0x62, 0x61, 0x6c,
-	0x61, 0x6e, 0x63, 0x65, 0x32, 0xf0, 0x09, 0x0a, 0x05, 0x51, 0x75, 0x65, 0x72, 0x79, 0x12, 0x77,
-	0x0a, 0x06, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x24, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e,
+	0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x25, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74,
+	0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d,
+	0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x20, 0x82, 0xd3, 0xe4, 0x93, 0x02,
+	0x1a, 0x12, 0x18, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72,
+	0x79, 0x2f, 0x76, 0x31, 0x2f, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x7b, 0x0a, 0x07, 0x52,
+	0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x12, 0x25, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65,
+	0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52,
+	0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x26, 0x2e,
+	0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31,
+	0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x21, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1b, 0x12, 0x19, 0x2f,
+	0x63, 0x65, 0x72, 0x63, 0x2f, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2f, 0x76, 0x31,
+	0x2f, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x12, 0x86, 0x01, 0x0a, 0x09, 0x47, 0x65, 0x74,
+	0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x12, 0x27, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65,
+	0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47,
+	0x65, 0x74, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x28, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e,
+	0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x52, 0x65, 0x63, 0x6f, 0x72,
+	0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x26, 0x82, 0xd3, 0xe4, 0x93, 0x02,
+	0x20, 0x12, 0x1e, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72,
+	0x79, 0x2f, 0x76, 0x31, 0x2f, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x2f, 0x7b, 0x69, 0x64,
+	0x7d, 0x12, 0xac, 0x01, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73,
+	0x42, 0x79, 0x42, 0x6f, 0x6e, 0x64, 0x49, 0x64, 0x12, 0x30, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e,
 	0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72,
-	0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x25,
-	0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76,
-	0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73,
+	0x79, 0x47, 0x65, 0x74, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x42, 0x79, 0x42, 0x6f, 0x6e,
+	0x64, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x31, 0x2e, 0x63, 0x65, 0x72,
+	0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75,
+	0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x42, 0x79, 0x42,
+	0x6f, 0x6e, 0x64, 0x49, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x31, 0x82,
+	0xd3, 0xe4, 0x93, 0x02, 0x2b, 0x12, 0x29, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x72, 0x65, 0x67,
+	0x69, 0x73, 0x74, 0x72, 0x79, 0x2f, 0x76, 0x31, 0x2f, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73,
+	0x2d, 0x62, 0x79, 0x2d, 0x62, 0x6f, 0x6e, 0x64, 0x2d, 0x69, 0x64, 0x2f, 0x7b, 0x69, 0x64, 0x7d,
+	0x12, 0x85, 0x01, 0x0a, 0x0b, 0x4e, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73,
+	0x12, 0x29, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79,
+	0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x63,
+	0x6f, 0x72, 0x64, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2a, 0x2e, 0x63, 0x65,
+	0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51,
+	0x75, 0x65, 0x72, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1f, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x19, 0x12,
+	0x17, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2f,
+	0x76, 0x31, 0x2f, 0x6e, 0x61, 0x6d, 0x65, 0x73, 0x12, 0x7a, 0x0a, 0x05, 0x57, 0x68, 0x6f, 0x69,
+	0x73, 0x12, 0x23, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72,
+	0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x57, 0x68, 0x6f, 0x69, 0x73, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x24, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65,
+	0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x57,
+	0x68, 0x6f, 0x69, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x26, 0x82, 0xd3,
+	0xe4, 0x93, 0x02, 0x20, 0x12, 0x1e, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x72, 0x65, 0x67, 0x69,
+	0x73, 0x74, 0x72, 0x79, 0x2f, 0x76, 0x31, 0x2f, 0x77, 0x68, 0x6f, 0x69, 0x73, 0x2f, 0x7b, 0x6e,
+	0x61, 0x6d, 0x65, 0x7d, 0x12, 0x80, 0x01, 0x0a, 0x09, 0x4c, 0x6f, 0x6f, 0x6b, 0x75, 0x70, 0x4c,
+	0x72, 0x6e, 0x12, 0x27, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74,
+	0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x4c, 0x6f, 0x6f, 0x6b, 0x75,
+	0x70, 0x4c, 0x72, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x28, 0x2e, 0x63, 0x65,
+	0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51,
+	0x75, 0x65, 0x72, 0x79, 0x4c, 0x6f, 0x6f, 0x6b, 0x75, 0x70, 0x4c, 0x72, 0x6e, 0x52, 0x65, 0x73,
 	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x20, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1a, 0x12, 0x18, 0x2f,
 	0x63, 0x65, 0x72, 0x63, 0x2f, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2f, 0x76, 0x31,
-	0x2f, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x7b, 0x0a, 0x07, 0x52, 0x65, 0x63, 0x6f, 0x72,
-	0x64, 0x73, 0x12, 0x25, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74,
-	0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65, 0x63, 0x6f, 0x72,
-	0x64, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x26, 0x2e, 0x63, 0x65, 0x72, 0x63,
-	0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65,
-	0x72, 0x79, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x22, 0x21, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1b, 0x12, 0x19, 0x2f, 0x63, 0x65, 0x72, 0x63,
-	0x2f, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2f, 0x76, 0x31, 0x2f, 0x72, 0x65, 0x63,
-	0x6f, 0x72, 0x64, 0x73, 0x12, 0x88, 0x01, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x52, 0x65, 0x63, 0x6f,
-	0x72, 0x64, 0x12, 0x28, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74,
-	0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65, 0x63, 0x6f, 0x72,
-	0x64, 0x42, 0x79, 0x49, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x29, 0x2e, 0x63,
-	0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e,
-	0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x42, 0x79, 0x49, 0x64, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x26, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x20, 0x12,
-	0x1e, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2f,
-	0x76, 0x31, 0x2f, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x2f, 0x7b, 0x69, 0x64, 0x7d, 0x12,
-	0xa6, 0x01, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x42, 0x79,
-	0x42, 0x6f, 0x6e, 0x64, 0x49, 0x64, 0x12, 0x2d, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65,
+	0x2f, 0x6c, 0x6f, 0x6f, 0x6b, 0x75, 0x70, 0x12, 0x84, 0x01, 0x0a, 0x0a, 0x52, 0x65, 0x73, 0x6f,
+	0x6c, 0x76, 0x65, 0x4c, 0x72, 0x6e, 0x12, 0x28, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65,
 	0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52,
-	0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x42, 0x79, 0x42, 0x6f, 0x6e, 0x64, 0x49, 0x64, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2e, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67,
-	0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65,
-	0x63, 0x6f, 0x72, 0x64, 0x73, 0x42, 0x79, 0x42, 0x6f, 0x6e, 0x64, 0x49, 0x64, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x31, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x2b, 0x12, 0x29, 0x2f,
-	0x63, 0x65, 0x72, 0x63, 0x2f, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2f, 0x76, 0x31,
-	0x2f, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x2d, 0x62, 0x79, 0x2d, 0x62, 0x6f, 0x6e, 0x64,
-	0x2d, 0x69, 0x64, 0x2f, 0x7b, 0x69, 0x64, 0x7d, 0x12, 0x85, 0x01, 0x0a, 0x0b, 0x4e, 0x61, 0x6d,
-	0x65, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x12, 0x29, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e,
-	0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72,
-	0x79, 0x4e, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x1a, 0x2a, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73,
-	0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x4e, 0x61, 0x6d, 0x65,
-	0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
-	0x1f, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x19, 0x12, 0x17, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x72,
-	0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2f, 0x76, 0x31, 0x2f, 0x6e, 0x61, 0x6d, 0x65, 0x73,
-	0x12, 0x7a, 0x0a, 0x05, 0x57, 0x68, 0x6f, 0x69, 0x73, 0x12, 0x23, 0x2e, 0x63, 0x65, 0x72, 0x63,
-	0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65,
-	0x72, 0x79, 0x57, 0x68, 0x6f, 0x69, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x24,
-	0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76,
-	0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x57, 0x68, 0x6f, 0x69, 0x73, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x26, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x20, 0x12, 0x1e, 0x2f, 0x63,
-	0x65, 0x72, 0x63, 0x2f, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2f, 0x76, 0x31, 0x2f,
-	0x77, 0x68, 0x6f, 0x69, 0x73, 0x2f, 0x7b, 0x6e, 0x61, 0x6d, 0x65, 0x7d, 0x12, 0x80, 0x01, 0x0a,
-	0x09, 0x4c, 0x6f, 0x6f, 0x6b, 0x75, 0x70, 0x4c, 0x72, 0x6e, 0x12, 0x27, 0x2e, 0x63, 0x65, 0x72,
-	0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75,
-	0x65, 0x72, 0x79, 0x4c, 0x6f, 0x6f, 0x6b, 0x75, 0x70, 0x4c, 0x72, 0x6e, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x1a, 0x28, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73,
-	0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x4c, 0x6f, 0x6f, 0x6b,
-	0x75, 0x70, 0x4c, 0x72, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x20, 0x82,
-	0xd3, 0xe4, 0x93, 0x02, 0x1a, 0x12, 0x18, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x72, 0x65, 0x67,
-	0x69, 0x73, 0x74, 0x72, 0x79, 0x2f, 0x76, 0x31, 0x2f, 0x6c, 0x6f, 0x6f, 0x6b, 0x75, 0x70, 0x12,
-	0x84, 0x01, 0x0a, 0x0a, 0x52, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x4c, 0x72, 0x6e, 0x12, 0x28,
-	0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76,
-	0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x4c, 0x72,
-	0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x29, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e,
-	0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72,
-	0x79, 0x52, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x4c, 0x72, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x22, 0x21, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1b, 0x12, 0x19, 0x2f, 0x63, 0x65,
-	0x72, 0x63, 0x2f, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2f, 0x76, 0x31, 0x2f, 0x72,
-	0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x12, 0xae, 0x01, 0x0a, 0x18, 0x47, 0x65, 0x74, 0x52, 0x65,
-	0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x4d, 0x6f, 0x64, 0x75, 0x6c, 0x65, 0x42, 0x61, 0x6c, 0x61,
-	0x6e, 0x63, 0x65, 0x12, 0x36, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73,
-	0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x52,
-	0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x4d, 0x6f, 0x64, 0x75, 0x6c, 0x65, 0x42, 0x61, 0x6c,
-	0x61, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x37, 0x2e, 0x63, 0x65,
+	0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x4c, 0x72, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x29, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79,
+	0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65,
+	0x4c, 0x72, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x21, 0x82, 0xd3, 0xe4,
+	0x93, 0x02, 0x1b, 0x12, 0x19, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x72, 0x65, 0x67, 0x69, 0x73,
+	0x74, 0x72, 0x79, 0x2f, 0x76, 0x31, 0x2f, 0x72, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x12, 0xae,
+	0x01, 0x0a, 0x18, 0x47, 0x65, 0x74, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x4d, 0x6f,
+	0x64, 0x75, 0x6c, 0x65, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x12, 0x36, 0x2e, 0x63, 0x65,
 	0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51,
 	0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x4d,
-	0x6f, 0x64, 0x75, 0x6c, 0x65, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x21, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1b, 0x12, 0x19, 0x2f, 0x63,
-	0x65, 0x72, 0x63, 0x2f, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2f, 0x76, 0x31, 0x2f,
-	0x62, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x42, 0xc2, 0x01, 0x0a, 0x14, 0x63, 0x6f, 0x6d, 0x2e,
-	0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31,
-	0x42, 0x0a, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x3c,
-	0x67, 0x69, 0x74, 0x2e, 0x76, 0x64, 0x62, 0x2e, 0x74, 0x6f, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2d,
-	0x69, 0x6f, 0x2f, 0x6c, 0x61, 0x63, 0x6f, 0x6e, 0x69, 0x63, 0x32, 0x64, 0x2f, 0x61, 0x70, 0x69,
-	0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2f, 0x76,
-	0x31, 0x3b, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x76, 0x31, 0xa2, 0x02, 0x03, 0x43,
-	0x52, 0x58, 0xaa, 0x02, 0x10, 0x43, 0x65, 0x72, 0x63, 0x2e, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74,
-	0x72, 0x79, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x10, 0x43, 0x65, 0x72, 0x63, 0x5c, 0x52, 0x65, 0x67,
-	0x69, 0x73, 0x74, 0x72, 0x79, 0x5c, 0x56, 0x31, 0xe2, 0x02, 0x1c, 0x43, 0x65, 0x72, 0x63, 0x5c,
-	0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d,
-	0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x12, 0x43, 0x65, 0x72, 0x63, 0x3a, 0x3a,
-	0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x64, 0x75, 0x6c, 0x65, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x37, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67, 0x69, 0x73,
+	0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x52,
+	0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x4d, 0x6f, 0x64, 0x75, 0x6c, 0x65, 0x42, 0x61, 0x6c,
+	0x61, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x21, 0x82, 0xd3,
+	0xe4, 0x93, 0x02, 0x1b, 0x12, 0x19, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x72, 0x65, 0x67, 0x69,
+	0x73, 0x74, 0x72, 0x79, 0x2f, 0x76, 0x31, 0x2f, 0x62, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x42,
+	0xc2, 0x01, 0x0a, 0x14, 0x63, 0x6f, 0x6d, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x72, 0x65, 0x67,
+	0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x42, 0x0a, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50,
+	0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x3c, 0x67, 0x69, 0x74, 0x2e, 0x76, 0x64, 0x62, 0x2e,
+	0x74, 0x6f, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2d, 0x69, 0x6f, 0x2f, 0x6c, 0x61, 0x63, 0x6f, 0x6e,
+	0x69, 0x63, 0x32, 0x64, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x72, 0x65,
+	0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2f, 0x76, 0x31, 0x3b, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74,
+	0x72, 0x79, 0x76, 0x31, 0xa2, 0x02, 0x03, 0x43, 0x52, 0x58, 0xaa, 0x02, 0x10, 0x43, 0x65, 0x72,
+	0x63, 0x2e, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x10,
+	0x43, 0x65, 0x72, 0x63, 0x5c, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79, 0x5c, 0x56, 0x31,
+	0xe2, 0x02, 0x1c, 0x43, 0x65, 0x72, 0x63, 0x5c, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79,
+	0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea,
+	0x02, 0x12, 0x43, 0x65, 0x72, 0x63, 0x3a, 0x3a, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x72, 0x79,
+	0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -12806,10 +12812,10 @@ var file_cerc_registry_v1_query_proto_goTypes = []interface{}{
 	(*QueryParamsResponse)(nil),                   // 1: cerc.registry.v1.QueryParamsResponse
 	(*QueryRecordsRequest)(nil),                   // 2: cerc.registry.v1.QueryRecordsRequest
 	(*QueryRecordsResponse)(nil),                  // 3: cerc.registry.v1.QueryRecordsResponse
-	(*QueryRecordByIdRequest)(nil),                // 4: cerc.registry.v1.QueryRecordByIdRequest
-	(*QueryRecordByIdResponse)(nil),               // 5: cerc.registry.v1.QueryRecordByIdResponse
-	(*QueryRecordsByBondIdRequest)(nil),           // 6: cerc.registry.v1.QueryRecordsByBondIdRequest
-	(*QueryRecordsByBondIdResponse)(nil),          // 7: cerc.registry.v1.QueryRecordsByBondIdResponse
+	(*QueryGetRecordRequest)(nil),                 // 4: cerc.registry.v1.QueryGetRecordRequest
+	(*QueryGetRecordResponse)(nil),                // 5: cerc.registry.v1.QueryGetRecordResponse
+	(*QueryGetRecordsByBondIdRequest)(nil),        // 6: cerc.registry.v1.QueryGetRecordsByBondIdRequest
+	(*QueryGetRecordsByBondIdResponse)(nil),       // 7: cerc.registry.v1.QueryGetRecordsByBondIdResponse
 	(*QueryNameRecordsRequest)(nil),               // 8: cerc.registry.v1.QueryNameRecordsRequest
 	(*QueryNameRecordsResponse)(nil),              // 9: cerc.registry.v1.QueryNameRecordsResponse
 	(*QueryWhoisRequest)(nil),                     // 10: cerc.registry.v1.QueryWhoisRequest
@@ -12841,10 +12847,10 @@ var file_cerc_registry_v1_query_proto_depIdxs = []int32{
 	25, // 2: cerc.registry.v1.QueryRecordsRequest.pagination:type_name -> cosmos.base.query.v1beta1.PageRequest
 	26, // 3: cerc.registry.v1.QueryRecordsResponse.records:type_name -> cerc.registry.v1.Record
 	27, // 4: cerc.registry.v1.QueryRecordsResponse.pagination:type_name -> cosmos.base.query.v1beta1.PageResponse
-	26, // 5: cerc.registry.v1.QueryRecordByIdResponse.record:type_name -> cerc.registry.v1.Record
-	25, // 6: cerc.registry.v1.QueryRecordsByBondIdRequest.pagination:type_name -> cosmos.base.query.v1beta1.PageRequest
-	26, // 7: cerc.registry.v1.QueryRecordsByBondIdResponse.records:type_name -> cerc.registry.v1.Record
-	27, // 8: cerc.registry.v1.QueryRecordsByBondIdResponse.pagination:type_name -> cosmos.base.query.v1beta1.PageResponse
+	26, // 5: cerc.registry.v1.QueryGetRecordResponse.record:type_name -> cerc.registry.v1.Record
+	25, // 6: cerc.registry.v1.QueryGetRecordsByBondIdRequest.pagination:type_name -> cosmos.base.query.v1beta1.PageRequest
+	26, // 7: cerc.registry.v1.QueryGetRecordsByBondIdResponse.records:type_name -> cerc.registry.v1.Record
+	27, // 8: cerc.registry.v1.QueryGetRecordsByBondIdResponse.pagination:type_name -> cosmos.base.query.v1beta1.PageResponse
 	25, // 9: cerc.registry.v1.QueryNameRecordsRequest.pagination:type_name -> cosmos.base.query.v1beta1.PageRequest
 	28, // 10: cerc.registry.v1.QueryNameRecordsResponse.names:type_name -> cerc.registry.v1.NameEntry
 	27, // 11: cerc.registry.v1.QueryNameRecordsResponse.pagination:type_name -> cosmos.base.query.v1beta1.PageResponse
@@ -12861,8 +12867,8 @@ var file_cerc_registry_v1_query_proto_depIdxs = []int32{
 	21, // 22: cerc.registry.v1.QueryRecordsRequest.MapInput.ValuesEntry.value:type_name -> cerc.registry.v1.QueryRecordsRequest.ValueInput
 	0,  // 23: cerc.registry.v1.Query.Params:input_type -> cerc.registry.v1.QueryParamsRequest
 	2,  // 24: cerc.registry.v1.Query.Records:input_type -> cerc.registry.v1.QueryRecordsRequest
-	4,  // 25: cerc.registry.v1.Query.GetRecord:input_type -> cerc.registry.v1.QueryRecordByIdRequest
-	6,  // 26: cerc.registry.v1.Query.GetRecordsByBondId:input_type -> cerc.registry.v1.QueryRecordsByBondIdRequest
+	4,  // 25: cerc.registry.v1.Query.GetRecord:input_type -> cerc.registry.v1.QueryGetRecordRequest
+	6,  // 26: cerc.registry.v1.Query.GetRecordsByBondId:input_type -> cerc.registry.v1.QueryGetRecordsByBondIdRequest
 	8,  // 27: cerc.registry.v1.Query.NameRecords:input_type -> cerc.registry.v1.QueryNameRecordsRequest
 	10, // 28: cerc.registry.v1.Query.Whois:input_type -> cerc.registry.v1.QueryWhoisRequest
 	12, // 29: cerc.registry.v1.Query.LookupLrn:input_type -> cerc.registry.v1.QueryLookupLrnRequest
@@ -12870,8 +12876,8 @@ var file_cerc_registry_v1_query_proto_depIdxs = []int32{
 	16, // 31: cerc.registry.v1.Query.GetRegistryModuleBalance:input_type -> cerc.registry.v1.QueryGetRegistryModuleBalanceRequest
 	1,  // 32: cerc.registry.v1.Query.Params:output_type -> cerc.registry.v1.QueryParamsResponse
 	3,  // 33: cerc.registry.v1.Query.Records:output_type -> cerc.registry.v1.QueryRecordsResponse
-	5,  // 34: cerc.registry.v1.Query.GetRecord:output_type -> cerc.registry.v1.QueryRecordByIdResponse
-	7,  // 35: cerc.registry.v1.Query.GetRecordsByBondId:output_type -> cerc.registry.v1.QueryRecordsByBondIdResponse
+	5,  // 34: cerc.registry.v1.Query.GetRecord:output_type -> cerc.registry.v1.QueryGetRecordResponse
+	7,  // 35: cerc.registry.v1.Query.GetRecordsByBondId:output_type -> cerc.registry.v1.QueryGetRecordsByBondIdResponse
 	9,  // 36: cerc.registry.v1.Query.NameRecords:output_type -> cerc.registry.v1.QueryNameRecordsResponse
 	11, // 37: cerc.registry.v1.Query.Whois:output_type -> cerc.registry.v1.QueryWhoisResponse
 	13, // 38: cerc.registry.v1.Query.LookupLrn:output_type -> cerc.registry.v1.QueryLookupLrnResponse
@@ -12940,7 +12946,7 @@ func file_cerc_registry_v1_query_proto_init() {
 			}
 		}
 		file_cerc_registry_v1_query_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QueryRecordByIdRequest); i {
+			switch v := v.(*QueryGetRecordRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -12952,7 +12958,7 @@ func file_cerc_registry_v1_query_proto_init() {
 			}
 		}
 		file_cerc_registry_v1_query_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QueryRecordByIdResponse); i {
+			switch v := v.(*QueryGetRecordResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -12964,7 +12970,7 @@ func file_cerc_registry_v1_query_proto_init() {
 			}
 		}
 		file_cerc_registry_v1_query_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QueryRecordsByBondIdRequest); i {
+			switch v := v.(*QueryGetRecordsByBondIdRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -12976,7 +12982,7 @@ func file_cerc_registry_v1_query_proto_init() {
 			}
 		}
 		file_cerc_registry_v1_query_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QueryRecordsByBondIdResponse); i {
+			switch v := v.(*QueryGetRecordsByBondIdResponse); i {
 			case 0:
 				return &v.state
 			case 1:

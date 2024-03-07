@@ -55,7 +55,7 @@ func (qs queryServer) Records(c context.Context, req *registrytypes.QueryRecords
 	return &registrytypes.QueryRecordsResponse{Records: records}, nil
 }
 
-func (qs queryServer) GetRecord(c context.Context, req *registrytypes.QueryRecordByIdRequest) (*registrytypes.QueryRecordByIdResponse, error) {
+func (qs queryServer) GetRecord(c context.Context, req *registrytypes.QueryGetRecordRequest) (*registrytypes.QueryGetRecordResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 	id := req.GetId()
 
@@ -72,10 +72,10 @@ func (qs queryServer) GetRecord(c context.Context, req *registrytypes.QueryRecor
 		return nil, err
 	}
 
-	return &registrytypes.QueryRecordByIdResponse{Record: record}, nil
+	return &registrytypes.QueryGetRecordResponse{Record: record}, nil
 }
 
-func (qs queryServer) GetRecordsByBondId(c context.Context, req *registrytypes.QueryRecordsByBondIdRequest) (*registrytypes.QueryRecordsByBondIdResponse, error) {
+func (qs queryServer) GetRecordsByBondId(c context.Context, req *registrytypes.QueryGetRecordsByBondIdRequest) (*registrytypes.QueryGetRecordsByBondIdResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 
 	records, err := qs.k.GetRecordsByBondId(ctx, req.GetId())
@@ -83,7 +83,7 @@ func (qs queryServer) GetRecordsByBondId(c context.Context, req *registrytypes.Q
 		return nil, err
 	}
 
-	return &registrytypes.QueryRecordsByBondIdResponse{Records: records}, nil
+	return &registrytypes.QueryGetRecordsByBondIdResponse{Records: records}, nil
 }
 
 func (qs queryServer) GetRegistryModuleBalance(c context.Context,

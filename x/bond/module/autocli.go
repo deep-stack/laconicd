@@ -44,7 +44,7 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					},
 				},
 				{
-					RpcMethod:      "GetBondsModuleBalance",
+					RpcMethod:      "GetBondModuleBalance",
 					Use:            "balance",
 					Short:          "Get bond module account balances",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{},

@@ -263,7 +263,7 @@ func (ets *E2ETestSuite) TestGRPCQueryGetRecordById() {
 			if tc.expectErr {
 				require.Contains(string(resp), tc.errorMsg)
 			} else {
-				var response registrytypes.QueryRecordByIdResponse
+				var response registrytypes.QueryGetRecordResponse
 				err := val.ClientCtx.Codec.UnmarshalJSON(resp, &response)
 				sr.NoError(err)
 				record := response.GetRecord()
@@ -317,7 +317,7 @@ func (ets *E2ETestSuite) TestGRPCQueryGetRecordByBondId() {
 			if tc.expectErr {
 				require.Contains(string(resp), tc.errorMsg)
 			} else {
-				var response registrytypes.QueryRecordsByBondIdResponse
+				var response registrytypes.QueryGetRecordsByBondIdResponse
 				err := val.ClientCtx.Codec.UnmarshalJSON(resp, &response)
 				sr.NoError(err)
 				records := response.GetRecords()

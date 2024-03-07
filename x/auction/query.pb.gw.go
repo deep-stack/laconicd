@@ -88,7 +88,7 @@ func local_request_Query_Auctions_0(ctx context.Context, marshaler runtime.Marsh
 }
 
 func request_Query_GetAuction_0(ctx context.Context, marshaler runtime.Marshaler, client QueryClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq QueryAuctionRequest
+	var protoReq QueryGetAuctionRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -115,7 +115,7 @@ func request_Query_GetAuction_0(ctx context.Context, marshaler runtime.Marshaler
 }
 
 func local_request_Query_GetAuction_0(ctx context.Context, marshaler runtime.Marshaler, server QueryServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq QueryAuctionRequest
+	var protoReq QueryGetAuctionRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -142,7 +142,7 @@ func local_request_Query_GetAuction_0(ctx context.Context, marshaler runtime.Mar
 }
 
 func request_Query_GetBid_0(ctx context.Context, marshaler runtime.Marshaler, client QueryClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq QueryBidRequest
+	var protoReq QueryGetBidRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -180,7 +180,7 @@ func request_Query_GetBid_0(ctx context.Context, marshaler runtime.Marshaler, cl
 }
 
 func local_request_Query_GetBid_0(ctx context.Context, marshaler runtime.Marshaler, server QueryServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq QueryBidRequest
+	var protoReq QueryGetBidRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -218,7 +218,7 @@ func local_request_Query_GetBid_0(ctx context.Context, marshaler runtime.Marshal
 }
 
 func request_Query_GetBids_0(ctx context.Context, marshaler runtime.Marshaler, client QueryClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq QueryBidsRequest
+	var protoReq QueryGetBidsRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -245,7 +245,7 @@ func request_Query_GetBids_0(ctx context.Context, marshaler runtime.Marshaler, c
 }
 
 func local_request_Query_GetBids_0(ctx context.Context, marshaler runtime.Marshaler, server QueryServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq QueryBidsRequest
+	var protoReq QueryGetBidsRequest
 	var metadata runtime.ServerMetadata
 
 	var (

@@ -106,7 +106,7 @@ func (ets *E2ETestSuite) TestGetAuctionGrpc() {
 				sr.Contains(string(resp), tc.errorMsg)
 			} else {
 				sr.NoError(err)
-				var auction auctiontypes.QueryAuctionResponse
+				var auction auctiontypes.QueryGetAuctionResponse
 				err = val.ClientCtx.Codec.UnmarshalJSON(resp, &auction)
 				sr.NoError(err)
 				sr.Equal(auctionId, auction.Auction.Id)
@@ -151,7 +151,7 @@ func (ets *E2ETestSuite) TestGetBidsGrpc() {
 				sr.Contains(string(resp), tc.errorMsg)
 			} else {
 				sr.NoError(err)
-				var bids auctiontypes.QueryBidsResponse
+				var bids auctiontypes.QueryGetBidsResponse
 				err = val.ClientCtx.Codec.UnmarshalJSON(resp, &bids)
 				sr.NoError(err)
 				sr.Equal(auctionId, bids.Bids[0].AuctionId)
@@ -196,7 +196,7 @@ func (ets *E2ETestSuite) TestGetBidGrpc() {
 				sr.Contains(string(resp), tc.errorMsg)
 			} else {
 				sr.NoError(err)
-				var bid auctiontypes.QueryBidResponse
+				var bid auctiontypes.QueryGetBidResponse
 				err = val.ClientCtx.Codec.UnmarshalJSON(resp, &bid)
 				sr.NoError(err)
 			}

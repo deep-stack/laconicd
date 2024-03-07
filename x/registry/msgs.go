@@ -121,7 +121,7 @@ func (msg MsgSetName) ValidateBasic() error {
 	return nil
 }
 
-func (msg MsgDeleteNameAuthority) ValidateBasic() error {
+func (msg MsgDeleteName) ValidateBasic() error {
 	if len(msg.Lrn) == 0 {
 		return errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "lrn is required.")
 	}

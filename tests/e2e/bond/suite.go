@@ -113,7 +113,7 @@ func (ets *E2ETestSuite) createBond() string {
 	}
 	out, err = clitestutil.ExecTestCLICmd(clientCtx, cmd, args)
 	sr.NoError(err)
-	var queryResponse bondtypes.QueryGetBondsResponse
+	var queryResponse bondtypes.QueryBondsResponse
 	err = val.ClientCtx.Codec.UnmarshalJSON(out.Bytes(), &queryResponse)
 	sr.NoError(err)
 

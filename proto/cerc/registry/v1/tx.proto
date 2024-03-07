@@ -34,12 +34,14 @@ service Msg {
   }
 
   // DissociateRecords
-  rpc DissociateRecords(MsgDissociateRecords) returns (MsgDissociateRecordsResponse) {
+  rpc DissociateRecords(MsgDissociateRecords)
+      returns (MsgDissociateRecordsResponse) {
     option (google.api.http).post = "/cerc/registry/v1/dissociate_records";
   }
 
   // ReassociateRecords
-  rpc ReassociateRecords(MsgReassociateRecords) returns (MsgReassociateRecordsResponse) {
+  rpc ReassociateRecords(MsgReassociateRecords)
+      returns (MsgReassociateRecordsResponse) {
     option (google.api.http).post = "/cerc/registry/v1/reassociate_records";
   }
 
@@ -48,18 +50,20 @@ service Msg {
     option (google.api.http).post = "/cerc/registry/v1/set_name";
   }
 
-  // Reserve name
-  rpc ReserveName(MsgReserveAuthority) returns (MsgReserveAuthorityResponse) {
-    option (google.api.http).post = "/cerc/registry/v1/reserve_name";
-  }
-
   // Delete Name method will remove authority name
-  rpc DeleteName(MsgDeleteNameAuthority) returns (MsgDeleteNameAuthorityResponse) {
+  rpc DeleteName(MsgDeleteName) returns (MsgDeleteNameResponse) {
     option (google.api.http).post = "/cerc/registry/v1/delete_name";
   }
 
+  // Reserve authority name
+  rpc ReserveAuthority(MsgReserveAuthority)
+      returns (MsgReserveAuthorityResponse) {
+    option (google.api.http).post = "/cerc/registry/v1/reserve_authority";
+  }
+
   // SetAuthorityBond
-  rpc SetAuthorityBond(MsgSetAuthorityBond) returns (MsgSetAuthorityBondResponse) {
+  rpc SetAuthorityBond(MsgSetAuthorityBond)
+      returns (MsgSetAuthorityBondResponse) {
     option (google.api.http).post = "/cerc/registry/v1/set_authority_bond";
   }
 }
@@ -68,19 +72,18 @@ service Msg {
 message MsgSetRecord {
   option (cosmos.msg.v1.signer) = "signer";
 
-  string  bond_id = 1 [(gogoproto.moretags) = "json:\"bond_id\" yaml:\"bond_id\""];
-  string  signer  = 2;
-  Payload payload = 3 [(gogoproto.nullable) = false];
+  string bond_id = 1
+      [ (gogoproto.moretags) = "json:\"bond_id\" yaml:\"bond_id\"" ];
+  string signer = 2;
+  Payload payload = 3 [ (gogoproto.nullable) = false ];
 }
 
 // MsgSetRecordResponse
-message MsgSetRecordResponse {
-  string id = 1;
-}
+message MsgSetRecordResponse { string id = 1; }
 
 // Payload
 message Payload {
-  Record             record     = 1;
+  Record record = 1;
   repeated Signature signatures = 2 [
     (gogoproto.nullable) = false,
     (gogoproto.moretags) = "json:\"signatures\" yaml:\"signatures\""
@@ -91,57 +94,59 @@ message Payload {
 message MsgSetName {
   option (cosmos.msg.v1.signer) = "signer";
 
-  string lrn    = 1;
-  string cid    = 2;
+  string lrn = 1;
+  string cid = 2;
   string signer = 3;
 }
 
 // MsgSetNameResponse
 message MsgSetNameResponse {}
 
-// MsgReserveName
+// MsgReserveAuthority
 message MsgReserveAuthority {
   option (cosmos.msg.v1.signer) = "signer";
 
-  string name   = 1;
+  string name = 1;
   string signer = 2;
 
   // if creating a sub-authority.
   string owner = 3;
 }
 
-// MsgReserveNameResponse
+// MsgReserveAuthorityResponse
 message MsgReserveAuthorityResponse {}
 
 // MsgSetAuthorityBond
 message MsgSetAuthorityBond {
   option (cosmos.msg.v1.signer) = "signer";
 
-  string name    = 1;
-  string bond_id = 2 [(gogoproto.moretags) = "json:\"bond_id\" yaml:\"bond_id\""];
-  string signer  = 3;
+  string name = 1;
+  string bond_id = 2
+      [ (gogoproto.moretags) = "json:\"bond_id\" yaml:\"bond_id\"" ];
+  string signer = 3;
 }
 
 // MsgSetAuthorityBondResponse
 message MsgSetAuthorityBondResponse {}
 
-// MsgDeleteNameAuthority
-message MsgDeleteNameAuthority {
+// MsgDeleteName
+message MsgDeleteName {
   option (cosmos.msg.v1.signer) = "signer";
 
-  string lrn    = 1;
+  string lrn = 1;
   string signer = 2;
 }
 
-// MsgDeleteNameAuthorityResponse
-message MsgDeleteNameAuthorityResponse {}
+// MsgDeleteNameResponse
+message MsgDeleteNameResponse {}
 
 // MsgRenewRecord
 message MsgRenewRecord {
   option (cosmos.msg.v1.signer) = "signer";
 
-  string record_id = 1 [(gogoproto.moretags) = "json:\"record_id\" yaml:\"record_id\""];
-  string signer    = 2;
+  string record_id = 1
+      [ (gogoproto.moretags) = "json:\"record_id\" yaml:\"record_id\"" ];
+  string signer = 2;
 }
 
 // MsgRenewRecordResponse
@@ -151,9 +156,11 @@ message MsgRenewRecordResponse {}
 message MsgAssociateBond {
   option (cosmos.msg.v1.signer) = "signer";
 
-  string record_id = 1 [(gogoproto.moretags) = "json:\"record_id\" yaml:\"record_id\""];
-  string bond_id   = 2 [(gogoproto.moretags) = "json:\"bond_id\" yaml:\"bond_id\""];
-  string signer    = 3;
+  string record_id = 1
+      [ (gogoproto.moretags) = "json:\"record_id\" yaml:\"record_id\"" ];
+  string bond_id = 2
+      [ (gogoproto.moretags) = "json:\"bond_id\" yaml:\"bond_id\"" ];
+  string signer = 3;
 }
 
 // MsgAssociateBondResponse
@@ -163,8 +170,9 @@ message MsgAssociateBondResponse {}
 message MsgDissociateBond {
   option (cosmos.msg.v1.signer) = "signer";
 
-  string record_id = 1 [(gogoproto.moretags) = "json:\"record_id\" yaml:\"record_id\""];
-  string signer    = 2;
+  string record_id = 1
+      [ (gogoproto.moretags) = "json:\"record_id\" yaml:\"record_id\"" ];
+  string signer = 2;
 }
 
 // MsgDissociateBondResponse
@@ -174,8 +182,9 @@ message MsgDissociateBondResponse {}
 message MsgDissociateRecords {
   option (cosmos.msg.v1.signer) = "signer";
 
-  string bond_id = 1 [(gogoproto.moretags) = "json:\"bond_id\" yaml:\"bond_id\""];
-  string signer  = 2;
+  string bond_id = 1
+      [ (gogoproto.moretags) = "json:\"bond_id\" yaml:\"bond_id\"" ];
+  string signer = 2;
 }
 
 // MsgDissociateRecordsResponse
@@ -185,9 +194,11 @@ message MsgDissociateRecordsResponse {}
 message MsgReassociateRecords {
   option (cosmos.msg.v1.signer) = "signer";
 
-  string new_bond_id = 1 [(gogoproto.moretags) = "json:\"new_bond_id\" yaml:\"new_bond_id\""];
-  string old_bond_id = 2 [(gogoproto.moretags) = "json:\"old_bond_id\" yaml:\"old_bond_id\""];
-  string signer      = 3;
+  string new_bond_id = 1
+      [ (gogoproto.moretags) = "json:\"new_bond_id\" yaml:\"new_bond_id\"" ];
+  string old_bond_id = 2
+      [ (gogoproto.moretags) = "json:\"old_bond_id\" yaml:\"old_bond_id\"" ];
+  string signer = 3;
 }
 
 // MsgReassociateRecordsResponse

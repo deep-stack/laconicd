@@ -26,8 +26,8 @@ const (
 	Msg_DissociateRecords_FullMethodName  = "/cerc.registry.v1.Msg/DissociateRecords"
 	Msg_ReassociateRecords_FullMethodName = "/cerc.registry.v1.Msg/ReassociateRecords"
 	Msg_SetName_FullMethodName            = "/cerc.registry.v1.Msg/SetName"
-	Msg_ReserveName_FullMethodName        = "/cerc.registry.v1.Msg/ReserveName"
 	Msg_DeleteName_FullMethodName         = "/cerc.registry.v1.Msg/DeleteName"
+	Msg_ReserveAuthority_FullMethodName   = "/cerc.registry.v1.Msg/ReserveAuthority"
 	Msg_SetAuthorityBond_FullMethodName   = "/cerc.registry.v1.Msg/SetAuthorityBond"
 )
 
@@ -49,10 +49,10 @@ type MsgClient interface {
 	ReassociateRecords(ctx context.Context, in *MsgReassociateRecords, opts ...grpc.CallOption) (*MsgReassociateRecordsResponse, error)
 	// SetName will store the name with given lrn and name
 	SetName(ctx context.Context, in *MsgSetName, opts ...grpc.CallOption) (*MsgSetNameResponse, error)
-	// Reserve name
-	ReserveName(ctx context.Context, in *MsgReserveAuthority, opts ...grpc.CallOption) (*MsgReserveAuthorityResponse, error)
 	// Delete Name method will remove authority name
-	DeleteName(ctx context.Context, in *MsgDeleteNameAuthority, opts ...grpc.CallOption) (*MsgDeleteNameAuthorityResponse, error)
+	DeleteName(ctx context.Context, in *MsgDeleteName, opts ...grpc.CallOption) (*MsgDeleteNameResponse, error)
+	// Reserve authority name
+	ReserveAuthority(ctx context.Context, in *MsgReserveAuthority, opts ...grpc.CallOption) (*MsgReserveAuthorityResponse, error)
 	// SetAuthorityBond
 	SetAuthorityBond(ctx context.Context, in *MsgSetAuthorityBond, opts ...grpc.CallOption) (*MsgSetAuthorityBondResponse, error)
 }
@@ -128,18 +128,18 @@ func (c *msgClient) SetName(ctx context.Context, in *MsgSetName, opts ...grpc.Ca
 	return out, nil
 }
 
-func (c *msgClient) ReserveName(ctx context.Context, in *MsgReserveAuthority, opts ...grpc.CallOption) (*MsgReserveAuthorityResponse, error) {
-	out := new(MsgReserveAuthorityResponse)
-	err := c.cc.Invoke(ctx, Msg_ReserveName_FullMethodName, in, out, opts...)
+func (c *msgClient) DeleteName(ctx context.Context, in *MsgDeleteName, opts ...grpc.CallOption) (*MsgDeleteNameResponse, error) {
+	out := new(MsgDeleteNameResponse)
+	err := c.cc.Invoke(ctx, Msg_DeleteName_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *msgClient) DeleteName(ctx context.Context, in *MsgDeleteNameAuthority, opts ...grpc.CallOption) (*MsgDeleteNameAuthorityResponse, error) {
-	out := new(MsgDeleteNameAuthorityResponse)
-	err := c.cc.Invoke(ctx, Msg_DeleteName_FullMethodName, in, out, opts...)
+func (c *msgClient) ReserveAuthority(ctx context.Context, in *MsgReserveAuthority, opts ...grpc.CallOption) (*MsgReserveAuthorityResponse, error) {
+	out := new(MsgReserveAuthorityResponse)
+	err := c.cc.Invoke(ctx, Msg_ReserveAuthority_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -173,10 +173,10 @@ type MsgServer interface {
 	ReassociateRecords(context.Context, *MsgReassociateRecords) (*MsgReassociateRecordsResponse, error)
 	// SetName will store the name with given lrn and name
 	SetName(context.Context, *MsgSetName) (*MsgSetNameResponse, error)
-	// Reserve name
-	ReserveName(context.Context, *MsgReserveAuthority) (*MsgReserveAuthorityResponse, error)
 	// Delete Name method will remove authority name
-	DeleteName(context.Context, *MsgDeleteNameAuthority) (*MsgDeleteNameAuthorityResponse, error)
+	DeleteName(context.Context, *MsgDeleteName) (*MsgDeleteNameResponse, error)
+	// Reserve authority name
+	ReserveAuthority(context.Context, *MsgReserveAuthority) (*MsgReserveAuthorityResponse, error)
 	// SetAuthorityBond
 	SetAuthorityBond(context.Context, *MsgSetAuthorityBond) (*MsgSetAuthorityBondResponse, error)
 	mustEmbedUnimplementedMsgServer()
@@ -207,11 +207,11 @@ func (UnimplementedMsgServer) ReassociateRecords(context.Context, *MsgReassociat
 func (UnimplementedMsgServer) SetName(context.Context, *MsgSetName) (*MsgSetNameResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetName not implemented")
 }
-func (UnimplementedMsgServer) ReserveName(context.Context, *MsgReserveAuthority) (*MsgReserveAuthorityResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReserveName not implemented")
-}
-func (UnimplementedMsgServer) DeleteName(context.Context, *MsgDeleteNameAuthority) (*MsgDeleteNameAuthorityResponse, error) {
+func (UnimplementedMsgServer) DeleteName(context.Context, *MsgDeleteName) (*MsgDeleteNameResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteName not implemented")
+}
+func (UnimplementedMsgServer) ReserveAuthority(context.Context, *MsgReserveAuthority) (*MsgReserveAuthorityResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReserveAuthority not implemented")
 }
 func (UnimplementedMsgServer) SetAuthorityBond(context.Context, *MsgSetAuthorityBond) (*MsgSetAuthorityBondResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetAuthorityBond not implemented")
@@ -355,26 +355,8 @@ func _Msg_SetName_Handler(srv interface{}, ctx context.Context, dec func(interfa
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Msg_ReserveName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgReserveAuthority)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MsgServer).ReserveName(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Msg_ReserveName_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).ReserveName(ctx, req.(*MsgReserveAuthority))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Msg_DeleteName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgDeleteNameAuthority)
+	in := new(MsgDeleteName)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -386,7 +368,25 @@ func _Msg_DeleteName_Handler(srv interface{}, ctx context.Context, dec func(inte
 		FullMethod: Msg_DeleteName_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).DeleteName(ctx, req.(*MsgDeleteNameAuthority))
+		return srv.(MsgServer).DeleteName(ctx, req.(*MsgDeleteName))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_ReserveAuthority_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgReserveAuthority)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).ReserveAuthority(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_ReserveAuthority_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).ReserveAuthority(ctx, req.(*MsgReserveAuthority))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -445,12 +445,12 @@ var Msg_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Msg_SetName_Handler,
 		},
 		{
-			MethodName: "ReserveName",
-			Handler:    _Msg_ReserveName_Handler,
-		},
-		{
 			MethodName: "DeleteName",
 			Handler:    _Msg_DeleteName_Handler,
+		},
+		{
+			MethodName: "ReserveAuthority",
+			Handler:    _Msg_ReserveAuthority_Handler,
 		},
 		{
 			MethodName: "SetAuthorityBond",

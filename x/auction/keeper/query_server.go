@@ -46,7 +46,7 @@ func (qs queryServer) Auctions(c context.Context, req *auctiontypes.QueryAuction
 }
 
 // GetAuction queries an auction by id
-func (qs queryServer) GetAuction(c context.Context, req *auctiontypes.QueryAuctionRequest) (*auctiontypes.QueryAuctionResponse, error) {
+func (qs queryServer) GetAuction(c context.Context, req *auctiontypes.QueryGetAuctionRequest) (*auctiontypes.QueryGetAuctionResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 
 	if req.Id == "" {
@@ -58,11 +58,11 @@ func (qs queryServer) GetAuction(c context.Context, req *auctiontypes.QueryAucti
 		return nil, err
 	}
 
-	return &auctiontypes.QueryAuctionResponse{Auction: &auction}, nil
+	return &auctiontypes.QueryGetAuctionResponse{Auction: &auction}, nil
 }
 
 // GetBid queries an auction bid by auction-id and bidder
-func (qs queryServer) GetBid(c context.Context, req *auctiontypes.QueryBidRequest) (*auctiontypes.QueryBidResponse, error) {
+func (qs queryServer) GetBid(c context.Context, req *auctiontypes.QueryGetBidRequest) (*auctiontypes.QueryGetBidResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 
 	if req.AuctionId == "" {
@@ -78,11 +78,11 @@ func (qs queryServer) GetBid(c context.Context, req *auctiontypes.QueryBidReques
 		return nil, err
 	}
 
-	return &auctiontypes.QueryBidResponse{Bid: &bid}, nil
+	return &auctiontypes.QueryGetBidResponse{Bid: &bid}, nil
 }
 
 // GetBids queries all auction bids
-func (qs queryServer) GetBids(c context.Context, req *auctiontypes.QueryBidsRequest) (*auctiontypes.QueryBidsResponse, error) {
+func (qs queryServer) GetBids(c context.Context, req *auctiontypes.QueryGetBidsRequest) (*auctiontypes.QueryGetBidsResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 
 	if req.AuctionId == "" {
@@ -94,7 +94,7 @@ func (qs queryServer) GetBids(c context.Context, req *auctiontypes.QueryBidsRequ
 		return nil, err
 	}
 
-	return &auctiontypes.QueryBidsResponse{Bids: bids}, nil
+	return &auctiontypes.QueryGetBidsResponse{Bids: bids}, nil
 }
 
 // AuctionsByBidder queries auctions by bidder

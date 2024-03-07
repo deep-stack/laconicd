@@ -19,7 +19,7 @@ service Query {
   }
 
   // Bonds queries bonds list
-  rpc Bonds(QueryGetBondsRequest) returns (QueryGetBondsResponse) {
+  rpc Bonds(QueryBondsRequest) returns (QueryBondsResponse) {
     // Mark query as module_query_safe?
     // option (cosmos.query.v1.module_query_safe) = true;
     option (google.api.http).get = "/cerc/bond/v1/bonds";
@@ -31,12 +31,14 @@ service Query {
   }
 
   // Get Bonds list by Owner
-  rpc GetBondsByOwner(QueryGetBondsByOwnerRequest) returns (QueryGetBondsByOwnerResponse) {
+  rpc GetBondsByOwner(QueryGetBondsByOwnerRequest)
+      returns (QueryGetBondsByOwnerResponse) {
     option (google.api.http).get = "/cerc/bond/v1/by-owner/{owner}";
   }
 
   // Get Bond module balance
-  rpc GetBondsModuleBalance(QueryGetBondModuleBalanceRequest) returns (QueryGetBondModuleBalanceResponse) {
+  rpc GetBondModuleBalance(QueryGetBondModuleBalanceRequest)
+      returns (QueryGetBondModuleBalanceResponse) {
     option (google.api.http).get = "/cerc/bond/v1/balance";
   }
 }
@@ -46,41 +48,45 @@ message QueryParamsRequest {}
 
 // QueryParamsResponse returns response type  of bond module params
 message QueryParamsResponse {
-  Params params = 1 [(gogoproto.moretags) = "json:\"params\" yaml:\"params\""];
+  Params params = 1
+      [ (gogoproto.moretags) = "json:\"params\" yaml:\"params\"" ];
 }
 
-// QueryGetBondById queries a bonds.
-message QueryGetBondsRequest {
+// QueryBondsRequest queries bonds
+message QueryBondsRequest {
   // pagination defines an optional pagination for the request.
   cosmos.base.query.v1beta1.PageRequest pagination = 1;
 }
 
-// QueryGetBondsResponse is response type for get the bonds by bond-id
-message QueryGetBondsResponse {
-  repeated Bond bonds = 1 [(gogoproto.moretags) = "json:\"bonds\" yaml:\"bonds\""];
+// QueryBondsResponse is response type for get the bonds by bond-id
+message QueryBondsResponse {
+  repeated Bond bonds = 1
+      [ (gogoproto.moretags) = "json:\"bonds\" yaml:\"bonds\"" ];
 
   // pagination defines the pagination in the response.
   cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
-// QueryGetBondById
+// QueryGetBondById queries bond by bond id
 message QueryGetBondByIdRequest {
-  string id = 1 [(gogoproto.moretags) = "json:\"id\" yaml:\"id\""];
+  string id = 1 [ (gogoproto.moretags) = "json:\"id\" yaml:\"id\"" ];
 }
 
 // QueryGetBondByIdResponse returns QueryGetBondById query response
 message QueryGetBondByIdResponse {
-  Bond bond = 1 [(gogoproto.moretags) = "json:\"bond\" yaml:\"bond\""];
+  Bond bond = 1 [ (gogoproto.moretags) = "json:\"bond\" yaml:\"bond\"" ];
 }
 
-// QueryGetBondsByOwnerRequest is request type for Query/GetBondsByOwner RPC Method
+// QueryGetBondsByOwnerRequest is request type for Query/GetBondsByOwner RPC
+// Method
 message QueryGetBondsByOwnerRequest {
   string owner = 1;
   // pagination defines the pagination in the response.
   cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
-// QueryGetBondsByOwnerResponse is response type for Query/GetBondsByOwner RPC Method
+// QueryGetBondsByOwnerResponse is response type for Query/GetBondsByOwner RPC
+// Method
 message QueryGetBondsByOwnerResponse {
   repeated Bond bonds = 1 [
     (gogoproto.nullable) = false,
@@ -91,14 +97,16 @@ message QueryGetBondsByOwnerResponse {
   cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
-// QueryGetBondModuleBalanceRequest is request type for bond module balance rpc method
+// QueryGetBondModuleBalanceRequest is request type for bond module balance rpc
+// method
 message QueryGetBondModuleBalanceRequest {}
 
-// QueryGetBondModuleBalanceResponse is the response type for bond module balance rpc method
+// QueryGetBondModuleBalanceResponse is the response type for bond module
+// balance rpc method
 message QueryGetBondModuleBalanceResponse {
   repeated cosmos.base.v1beta1.Coin balance = 1 [
-    (gogoproto.nullable)     = false,
+    (gogoproto.nullable) = false,
     (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins",
-    (gogoproto.moretags)     = "json:\"coins\" yaml:\"coins\""
+    (gogoproto.moretags) = "json:\"coins\" yaml:\"coins\""
   ];
 }

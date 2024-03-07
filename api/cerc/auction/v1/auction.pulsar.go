@@ -3732,6 +3732,7 @@ func (x *Auction) GetWinningPrice() *v1beta1.Coin {
 	return nil
 }
 
+// Auctions represent all the auctions in the module
 type Auctions struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

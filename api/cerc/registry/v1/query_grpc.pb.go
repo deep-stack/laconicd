@@ -39,9 +39,9 @@ type QueryClient interface {
 	// Records queries all records
 	Records(ctx context.Context, in *QueryRecordsRequest, opts ...grpc.CallOption) (*QueryRecordsResponse, error)
 	// Get record by id
-	GetRecord(ctx context.Context, in *QueryRecordByIdRequest, opts ...grpc.CallOption) (*QueryRecordByIdResponse, error)
+	GetRecord(ctx context.Context, in *QueryGetRecordRequest, opts ...grpc.CallOption) (*QueryGetRecordResponse, error)
 	// Get records by bond id
-	GetRecordsByBondId(ctx context.Context, in *QueryRecordsByBondIdRequest, opts ...grpc.CallOption) (*QueryRecordsByBondIdResponse, error)
+	GetRecordsByBondId(ctx context.Context, in *QueryGetRecordsByBondIdRequest, opts ...grpc.CallOption) (*QueryGetRecordsByBondIdResponse, error)
 	// NameRecords queries all name records
 	NameRecords(ctx context.Context, in *QueryNameRecordsRequest, opts ...grpc.CallOption) (*QueryNameRecordsResponse, error)
 	// Whois method retrieve the name authority info
@@ -80,8 +80,8 @@ func (c *queryClient) Records(ctx context.Context, in *QueryRecordsRequest, opts
 	return out, nil
 }
 
-func (c *queryClient) GetRecord(ctx context.Context, in *QueryRecordByIdRequest, opts ...grpc.CallOption) (*QueryRecordByIdResponse, error) {
-	out := new(QueryRecordByIdResponse)
+func (c *queryClient) GetRecord(ctx context.Context, in *QueryGetRecordRequest, opts ...grpc.CallOption) (*QueryGetRecordResponse, error) {
+	out := new(QueryGetRecordResponse)
 	err := c.cc.Invoke(ctx, Query_GetRecord_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -89,8 +89,8 @@ func (c *queryClient) GetRecord(ctx context.Context, in *QueryRecordByIdRequest,
 	return out, nil
 }
 
-func (c *queryClient) GetRecordsByBondId(ctx context.Context, in *QueryRecordsByBondIdRequest, opts ...grpc.CallOption) (*QueryRecordsByBondIdResponse, error) {
-	out := new(QueryRecordsByBondIdResponse)
+func (c *queryClient) GetRecordsByBondId(ctx context.Context, in *QueryGetRecordsByBondIdRequest, opts ...grpc.CallOption) (*QueryGetRecordsByBondIdResponse, error) {
+	out := new(QueryGetRecordsByBondIdResponse)
 	err := c.cc.Invoke(ctx, Query_GetRecordsByBondId_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -152,9 +152,9 @@ type QueryServer interface {
 	// Records queries all records
 	Records(context.Context, *QueryRecordsRequest) (*QueryRecordsResponse, error)
 	// Get record by id
-	GetRecord(context.Context, *QueryRecordByIdRequest) (*QueryRecordByIdResponse, error)
+	GetRecord(context.Context, *QueryGetRecordRequest) (*QueryGetRecordResponse, error)
 	// Get records by bond id
-	GetRecordsByBondId(context.Context, *QueryRecordsByBondIdRequest) (*QueryRecordsByBondIdResponse, error)
+	GetRecordsByBondId(context.Context, *QueryGetRecordsByBondIdRequest) (*QueryGetRecordsByBondIdResponse, error)
 	// NameRecords queries all name records
 	NameRecords(context.Context, *QueryNameRecordsRequest) (*QueryNameRecordsResponse, error)
 	// Whois method retrieve the name authority info
@@ -178,10 +178,10 @@ func (UnimplementedQueryServer) Params(context.Context, *QueryParamsRequest) (*Q
 func (UnimplementedQueryServer) Records(context.Context, *QueryRecordsRequest) (*QueryRecordsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Records not implemented")
 }
-func (UnimplementedQueryServer) GetRecord(context.Context, *QueryRecordByIdRequest) (*QueryRecordByIdResponse, error) {
+func (UnimplementedQueryServer) GetRecord(context.Context, *QueryGetRecordRequest) (*QueryGetRecordResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRecord not implemented")
 }
-func (UnimplementedQueryServer) GetRecordsByBondId(context.Context, *QueryRecordsByBondIdRequest) (*QueryRecordsByBondIdResponse, error) {
+func (UnimplementedQueryServer) GetRecordsByBondId(context.Context, *QueryGetRecordsByBondIdRequest) (*QueryGetRecordsByBondIdResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRecordsByBondId not implemented")
 }
 func (UnimplementedQueryServer) NameRecords(context.Context, *QueryNameRecordsRequest) (*QueryNameRecordsResponse, error) {
@@ -249,7 +249,7 @@ func _Query_Records_Handler(srv interface{}, ctx context.Context, dec func(inter
 }
 
 func _Query_GetRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryRecordByIdRequest)
+	in := new(QueryGetRecordRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -261,13 +261,13 @@ func _Query_GetRecord_Handler(srv interface{}, ctx context.Context, dec func(int
 		FullMethod: Query_GetRecord_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).GetRecord(ctx, req.(*QueryRecordByIdRequest))
+		return srv.(QueryServer).GetRecord(ctx, req.(*QueryGetRecordRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Query_GetRecordsByBondId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryRecordsByBondIdRequest)
+	in := new(QueryGetRecordsByBondIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -279,7 +279,7 @@ func _Query_GetRecordsByBondId_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: Query_GetRecordsByBondId_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).GetRecordsByBondId(ctx, req.(*QueryRecordsByBondIdRequest))
+		return srv.(QueryServer).GetRecordsByBondId(ctx, req.(*QueryGetRecordsByBondIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

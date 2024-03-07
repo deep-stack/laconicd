@@ -38,29 +38,27 @@ service Msg {
 message MsgCreateBond {
   option (cosmos.msg.v1.signer) = "signer";
 
-  string   signer                         = 1;
+  string signer = 1;
   repeated cosmos.base.v1beta1.Coin coins = 2 [
-    (gogoproto.nullable)     = false,
+    (gogoproto.nullable) = false,
     (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins",
-    (gogoproto.moretags)     = "json:\"coins\" yaml:\"coins\""
+    (gogoproto.moretags) = "json:\"coins\" yaml:\"coins\""
   ];
 }
 
 // MsgCreateBondResponse defines the Msg/CreateBond response type.
-message MsgCreateBondResponse {
-  string id = 1;
-}
+message MsgCreateBondResponse { string id = 1; }
 
 // MsgRefillBond defines a SDK message for refill the amount for bond.
 message MsgRefillBond {
   option (cosmos.msg.v1.signer) = "signer";
 
-  string   id                             = 1;
-  string   signer                         = 2;
+  string id = 1;
+  string signer = 2;
   repeated cosmos.base.v1beta1.Coin coins = 3 [
-    (gogoproto.nullable)     = false,
+    (gogoproto.nullable) = false,
     (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins",
-    (gogoproto.moretags)     = "json:\"coins\" yaml:\"coins\""
+    (gogoproto.moretags) = "json:\"coins\" yaml:\"coins\""
   ];
 }
 
@@ -71,12 +69,12 @@ message MsgRefillBondResponse {}
 message MsgWithdrawBond {
   option (cosmos.msg.v1.signer) = "signer";
 
-  string   id                             = 1;
-  string   signer                         = 2;
+  string id = 1;
+  string signer = 2;
   repeated cosmos.base.v1beta1.Coin coins = 3 [
-    (gogoproto.nullable)     = false,
+    (gogoproto.nullable) = false,
     (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins",
-    (gogoproto.moretags)     = "json:\"coins\" yaml:\"coins\""
+    (gogoproto.moretags) = "json:\"coins\" yaml:\"coins\""
   ];
 }
 
@@ -87,7 +85,7 @@ message MsgWithdrawBondResponse {}
 message MsgCancelBond {
   option (cosmos.msg.v1.signer) = "signer";
 
-  string id     = 1;
+  string id = 1;
   string signer = 2;
 }
 

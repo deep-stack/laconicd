@@ -34,22 +34,22 @@ func (kts *KeeperTestSuite) TestGrpcQueryParams() {
 func (kts *KeeperTestSuite) TestGrpcQueryBondsList() {
 	testCases := []struct {
 		msg         string
-		req         *types.QueryGetBondsRequest
-		resp        *types.QueryGetBondsResponse
+		req         *types.QueryBondsRequest
+		resp        *types.QueryBondsResponse
 		noOfBonds   int
 		createBonds bool
 	}{
 		{
 			"empty request",
-			&types.QueryGetBondsRequest{},
-			&types.QueryGetBondsResponse{},
+			&types.QueryBondsRequest{},
+			&types.QueryBondsResponse{},
 			0,
 			false,
 		},
 		{
 			"Get Bonds",
-			&types.QueryGetBondsRequest{},
-			&types.QueryGetBondsResponse{},
+			&types.QueryBondsRequest{},
+			&types.QueryBondsResponse{},
 			1,
 			true,
 		},
@@ -181,7 +181,7 @@ func (kts *KeeperTestSuite) TestGrpcGetModuleBalance() {
 				_, err := kts.createBond()
 				kts.Require().NoError(err)
 			}
-			resp, err := kts.queryClient.GetBondsModuleBalance(context.Background(), test.req)
+			resp, err := kts.queryClient.GetBondModuleBalance(context.Background(), test.req)
 			if !test.errResponse {
 				kts.Require().Nil(err)
 				kts.Require().NotNil(resp.GetBalance())

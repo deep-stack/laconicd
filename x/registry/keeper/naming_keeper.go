@@ -353,7 +353,7 @@ func (k Keeper) SetAuthorityBond(ctx sdk.Context, msg registrytypes.MsgSetAuthor
 }
 
 // DeleteName removes a LRN -> Record ID mapping.
-func (k Keeper) DeleteName(ctx sdk.Context, msg registrytypes.MsgDeleteNameAuthority) error {
+func (k Keeper) DeleteName(ctx sdk.Context, msg registrytypes.MsgDeleteName) error {
 	signerAddress, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
 		return err

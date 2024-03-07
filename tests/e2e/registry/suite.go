@@ -132,7 +132,7 @@ func (ets *E2ETestSuite) createBond() string {
 	}
 	out, err = clitestutil.ExecTestCLICmd(clientCtx, cmd, args)
 	sr.NoError(err)
-	var queryResponse bondtypes.QueryGetBondsResponse
+	var queryResponse bondtypes.QueryBondsResponse
 	err = val.ClientCtx.Codec.UnmarshalJSON(out.Bytes(), &queryResponse)
 	sr.NoError(err)
 
@@ -146,7 +146,7 @@ func (ets *E2ETestSuite) reserveName(authorityName string) {
 	sr := ets.Require()
 
 	clientCtx := val.ClientCtx
-	cmd := cli.GetCmdReserveName()
+	cmd := cli.GetCmdReserveAuthority()
 	args := []string{
 		authorityName,
 		fmt.Sprintf("--owner=%s", ets.accountAddress),
@@ -174,7 +174,7 @@ func (ets *E2ETestSuite) createNameRecord(authorityName string) {
 
 	// reserving the name
 	clientCtx := val.ClientCtx
-	cmd := cli.GetCmdReserveName()
+	cmd := cli.GetCmdReserveAuthority()
 	args := []string{
 		authorityName,
 		fmt.Sprintf("--owner=%s", ets.accountAddress),

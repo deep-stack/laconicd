@@ -40,7 +40,7 @@ func (ets *E2ETestSuite) TestGetQueryBondList() {
 			cmd := cli.GetQueryBondList()
 			out, err := clitestutil.ExecTestCLICmd(clientCtx, cmd, tc.args)
 			sr.NoError(err)
-			var queryResponse bondtypes.QueryGetBondsResponse
+			var queryResponse bondtypes.QueryBondsResponse
 			err = clientCtx.Codec.UnmarshalJSON(out.Bytes(), &queryResponse)
 			sr.NoError(err)
 			sr.NotZero(len(queryResponse.GetBonds()))

@@ -228,21 +228,21 @@ func (kts *KeeperTestSuite) TestGrpcGetRecordLists() {
 	// Get the records by record id
 	testCases1 := []struct {
 		msg          string
-		req          *types.QueryRecordByIdRequest
+		req          *types.QueryGetRecordRequest
 		createRecord bool
 		expErr       bool
 		noOfRecords  int
 	}{
 		{
 			"Invalid Request without record id",
-			&types.QueryRecordByIdRequest{},
+			&types.QueryGetRecordRequest{},
 			false,
 			true,
 			0,
 		},
 		{
 			"With Record ID",
-			&types.QueryRecordByIdRequest{
+			&types.QueryGetRecordRequest{
 				Id: recordId,
 			},
 			true,
@@ -270,21 +270,21 @@ func (kts *KeeperTestSuite) TestGrpcGetRecordLists() {
 	// Get the records by record id
 	testCasesByBondId := []struct {
 		msg          string
-		req          *types.QueryRecordsByBondIdRequest
+		req          *types.QueryGetRecordsByBondIdRequest
 		createRecord bool
 		expErr       bool
 		noOfRecords  int
 	}{
 		{
 			"Invalid Request without bond id",
-			&types.QueryRecordsByBondIdRequest{},
+			&types.QueryGetRecordsByBondIdRequest{},
 			false,
 			true,
 			0,
 		},
 		{
 			"With Bond ID",
-			&types.QueryRecordsByBondIdRequest{
+			&types.QueryGetRecordsByBondIdRequest{
 				Id: kts.bond.GetId(),
 			},
 			true,

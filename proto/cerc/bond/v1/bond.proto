@@ -26,8 +26,8 @@ message Bond {
 
   // balance of the bond
   repeated cosmos.base.v1beta1.Coin balance = 3 [
-    (gogoproto.nullable)     = false,
+    (gogoproto.nullable) = false,
     (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins",
-    (gogoproto.moretags)     = "json:\"balance\" yaml:\"balance\""
+    (gogoproto.moretags) = "json:\"balance\" yaml:\"balance\""
   ];
 }

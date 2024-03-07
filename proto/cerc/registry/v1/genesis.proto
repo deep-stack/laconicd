@@ -10,7 +10,7 @@ option go_package = "git.vdb.to/cerc-io/laconic2d/x/registry";
 // GenesisState defines the registry module's genesis state.
 message GenesisState {
   // params defines all the params of registry module.
-  Params params = 1 [(gogoproto.nullable) = false];
+  Params params = 1 [ (gogoproto.nullable) = false ];
 
   // records
   repeated Record records = 2 [

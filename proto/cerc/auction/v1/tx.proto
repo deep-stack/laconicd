@@ -38,16 +38,16 @@ message MsgCreateAuction {
 
   // Duration of the commits phase in seconds
   google.protobuf.Duration commits_duration = 1 [
-    (gogoproto.nullable)    = false,
+    (gogoproto.nullable) = false,
     (gogoproto.stdduration) = true,
-    (gogoproto.moretags)    = "json:\"commits_duration\" yaml:\"commits_duration\""
+    (gogoproto.moretags) = "json:\"commits_duration\" yaml:\"commits_duration\""
   ];
 
   // Duration of the reveals phase in seconds
   google.protobuf.Duration reveals_duration = 2 [
-    (gogoproto.nullable)    = false,
+    (gogoproto.nullable) = false,
     (gogoproto.stdduration) = true,
-    (gogoproto.moretags)    = "json:\"reveals_duration\" yaml:\"reveals_duration\""
+    (gogoproto.moretags) = "json:\"reveals_duration\" yaml:\"reveals_duration\""
   ];
 
   // Commit fees
@@ -69,7 +69,8 @@ message MsgCreateAuction {
   ];
 
   // Address of the signer
-  string signer = 6 [(gogoproto.moretags) = "json:\"signer\" yaml:\"signer\""];
+  string signer = 6
+      [ (gogoproto.moretags) = "json:\"signer\" yaml:\"signer\"" ];
 }
 
 // MsgCreateAuctionResponse returns the details of the created auction
@@ -77,7 +78,8 @@ message MsgCreateAuctionResponse {
   option (gogoproto.goproto_getters) = false;
 
   // Auction details
-  Auction auction = 1 [(gogoproto.moretags) = "json:\"auction\" yaml:\"auction\""];
+  Auction auction = 1
+      [ (gogoproto.moretags) = "json:\"auction\" yaml:\"auction\"" ];
 }
 
 // CommitBid defines the message to commit a bid
@@ -86,13 +88,16 @@ message MsgCommitBid {
   option (cosmos.msg.v1.signer) = "signer";
 
   // Auction id
-  string auction_id = 1 [(gogoproto.moretags) = "json:\"auction_id\" yaml:\"auction_id\""];
+  string auction_id = 1
+      [ (gogoproto.moretags) = "json:\"auction_id\" yaml:\"auction_id\"" ];
 
   // Commit Hash
-  string commit_hash = 2 [(gogoproto.moretags) = "json:\"commit_hash\" yaml:\"commit_hash\""];
+  string commit_hash = 2
+      [ (gogoproto.moretags) = "json:\"commit_hash\" yaml:\"commit_hash\"" ];
 
   // Address of the signer
-  string signer = 3 [(gogoproto.moretags) = "json:\"signer\" yaml:\"signer\""];
+  string signer = 3
+      [ (gogoproto.moretags) = "json:\"signer\" yaml:\"signer\"" ];
 }
 
 // MsgCommitBidResponse returns the state of the auction after the bid creation
@@ -100,9 +105,8 @@ message MsgCommitBidResponse {
   option (gogoproto.goproto_getters) = false;
 
   // Auction details
-  Bid bid = 1 [(gogoproto.moretags) = "json:\"bid\" yaml:\"bid\""];
+  Bid bid = 1 [ (gogoproto.moretags) = "json:\"bid\" yaml:\"bid\"" ];
 }
-
 
 // RevealBid defines the message to reveal a bid
 message MsgRevealBid {
@@ -110,20 +114,23 @@ message MsgRevealBid {
   option (cosmos.msg.v1.signer) = "signer";
 
   // Auction id
-  string auction_id = 1 [(gogoproto.moretags) = "json:\"auction_id\" yaml:\"auction_id\""];
+  string auction_id = 1
+      [ (gogoproto.moretags) = "json:\"auction_id\" yaml:\"auction_id\"" ];
 
   // Commit Hash
-  string reveal = 2 [(gogoproto.moretags) = "json:\"reveal\" yaml:\"reveal\""];
+  string reveal = 2
+      [ (gogoproto.moretags) = "json:\"reveal\" yaml:\"reveal\"" ];
 
   // Address of the signer
-  string signer = 3 [(gogoproto.moretags) = "json:\"signer\" yaml:\"signer\""];
+  string signer = 3
+      [ (gogoproto.moretags) = "json:\"signer\" yaml:\"signer\"" ];
 }
-
 
 // MsgRevealBidResponse returns the state of the auction after the bid reveal
 message MsgRevealBidResponse {
   option (gogoproto.goproto_getters) = false;
 
   // Auction details
-  Auction auction = 1 [(gogoproto.moretags) = "json:\"auction\" yaml:\"auction\""];
+  Auction auction = 1
+      [ (gogoproto.moretags) = "json:\"auction\" yaml:\"auction\"" ];
 }

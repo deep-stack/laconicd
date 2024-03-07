@@ -58,7 +58,7 @@ func (ets *E2ETestSuite) TestGRPCGetBonds() {
 			if tc.expErr {
 				sr.Contains(string(resp), tc.errorMsg)
 			} else {
-				var response bondtypes.QueryGetBondsResponse
+				var response bondtypes.QueryBondsResponse
 				err := val.ClientCtx.Codec.UnmarshalJSON(resp, &response)
 				sr.NoError(err)
 				sr.NotZero(len(response.GetBonds()))

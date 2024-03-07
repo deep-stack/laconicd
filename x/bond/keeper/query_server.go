@@ -34,7 +34,7 @@ func (qs queryServer) Params(c context.Context, _ *bondtypes.QueryParamsRequest)
 }
 
 // Bonds implements bond.QueryServer.
-func (qs queryServer) Bonds(c context.Context, _ *bondtypes.QueryGetBondsRequest) (*bondtypes.QueryGetBondsResponse, error) {
+func (qs queryServer) Bonds(c context.Context, _ *bondtypes.QueryBondsRequest) (*bondtypes.QueryBondsResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 
 	resp, err := qs.k.ListBonds(ctx)
@@ -42,7 +42,7 @@ func (qs queryServer) Bonds(c context.Context, _ *bondtypes.QueryGetBondsRequest
 		return nil, err
 	}
 
-	return &bondtypes.QueryGetBondsResponse{Bonds: resp}, nil
+	return &bondtypes.QueryBondsResponse{Bonds: resp}, nil
 }
 
 // GetBondById implements bond.QueryServer.
@@ -79,8 +79,8 @@ func (qs queryServer) GetBondsByOwner(c context.Context, req *bondtypes.QueryGet
 	return &bondtypes.QueryGetBondsByOwnerResponse{Bonds: bonds}, nil
 }
 
-// GetBondsModuleBalance implements bond.QueryServer.
-func (qs queryServer) GetBondsModuleBalance(c context.Context, _ *bondtypes.QueryGetBondModuleBalanceRequest) (*bondtypes.QueryGetBondModuleBalanceResponse, error) {
+// GetBondModuleBalance implements bond.QueryServer.
+func (qs queryServer) GetBondModuleBalance(c context.Context, _ *bondtypes.QueryGetBondModuleBalanceRequest) (*bondtypes.QueryGetBondModuleBalanceResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 	balances := qs.k.GetBondModuleBalances(ctx)
 

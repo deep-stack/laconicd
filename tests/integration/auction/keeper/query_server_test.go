@@ -35,17 +35,17 @@ func (kts *KeeperTestSuite) TestGrpcQueryParams() {
 func (kts *KeeperTestSuite) TestGrpcGetAuction() {
 	testCases := []struct {
 		msg           string
-		req           *types.QueryAuctionRequest
+		req           *types.QueryGetAuctionRequest
 		createAuction bool
 	}{
 		{
 			"fetch auction with empty auction ID",
-			&types.QueryAuctionRequest{},
+			&types.QueryGetAuctionRequest{},
 			false,
 		},
 		{
 			"fetch auction with valid auction ID",
-			&types.QueryAuctionRequest{},
+			&types.QueryGetAuctionRequest{},
 			true,
 		},
 	}
@@ -111,28 +111,28 @@ func (kts *KeeperTestSuite) TestGrpcGetAllAuctions() {
 func (kts *KeeperTestSuite) TestGrpcGetBids() {
 	testCases := []struct {
 		msg           string
-		req           *types.QueryBidsRequest
+		req           *types.QueryGetBidsRequest
 		createAuction bool
 		commitBid     bool
 		bidCount      int
 	}{
 		{
 			"fetch all bids when no auction exists",
-			&types.QueryBidsRequest{},
+			&types.QueryGetBidsRequest{},
 			false,
 			false,
 			0,
 		},
 		{
 			"fetch all bids for valid auction but no added bids",
-			&types.QueryBidsRequest{},
+			&types.QueryGetBidsRequest{},
 			true,
 			false,
 			0,
 		},
 		{
 			"fetch all bids for valid auction and valid bid",
-			&types.QueryBidsRequest{},
+			&types.QueryGetBidsRequest{},
 			true,
 			true,
 			1,
@@ -162,17 +162,17 @@ func (kts *KeeperTestSuite) TestGrpcGetBids() {
 func (kts *KeeperTestSuite) TestGrpcGetBid() {
 	testCases := []struct {
 		msg                 string
-		req                 *types.QueryBidRequest
+		req                 *types.QueryGetBidRequest
 		createAuctionAndBid bool
 	}{
 		{
 			"fetch bid when bid does not exist",
-			&types.QueryBidRequest{},
+			&types.QueryGetBidRequest{},
 			false,
 		},
 		{
 			"fetch bid when valid bid exists",
-			&types.QueryBidRequest{},
+			&types.QueryGetBidRequest{},
 			true,
 		},
 	}

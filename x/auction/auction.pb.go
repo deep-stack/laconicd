@@ -169,6 +169,7 @@ func (m *Auction) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Auction proto.InternalMessageInfo
 
+// Auctions represent all the auctions in the module
 type Auctions struct {
 	Auctions []Auction `protobuf:"bytes,1,rep,name=auctions,proto3" json:"auctions"`
 }

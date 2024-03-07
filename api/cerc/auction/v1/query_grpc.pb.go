@@ -38,11 +38,11 @@ type QueryClient interface {
 	// Auctions queries all auctions
 	Auctions(ctx context.Context, in *QueryAuctionsRequest, opts ...grpc.CallOption) (*QueryAuctionsResponse, error)
 	// GetAuction queries an auction
-	GetAuction(ctx context.Context, in *QueryAuctionRequest, opts ...grpc.CallOption) (*QueryAuctionResponse, error)
+	GetAuction(ctx context.Context, in *QueryGetAuctionRequest, opts ...grpc.CallOption) (*QueryGetAuctionResponse, error)
 	// GetBid queries an auction bid
-	GetBid(ctx context.Context, in *QueryBidRequest, opts ...grpc.CallOption) (*QueryBidResponse, error)
+	GetBid(ctx context.Context, in *QueryGetBidRequest, opts ...grpc.CallOption) (*QueryGetBidResponse, error)
 	// GetBids queries all auction bids
-	GetBids(ctx context.Context, in *QueryBidsRequest, opts ...grpc.CallOption) (*QueryBidsResponse, error)
+	GetBids(ctx context.Context, in *QueryGetBidsRequest, opts ...grpc.CallOption) (*QueryGetBidsResponse, error)
 	// AuctionsByBidder queries auctions by bidder
 	AuctionsByBidder(ctx context.Context, in *QueryAuctionsByBidderRequest, opts ...grpc.CallOption) (*QueryAuctionsByBidderResponse, error)
 	// AuctionsByOwner queries auctions by owner
@@ -77,8 +77,8 @@ func (c *queryClient) Auctions(ctx context.Context, in *QueryAuctionsRequest, op
 	return out, nil
 }
 
-func (c *queryClient) GetAuction(ctx context.Context, in *QueryAuctionRequest, opts ...grpc.CallOption) (*QueryAuctionResponse, error) {
-	out := new(QueryAuctionResponse)
+func (c *queryClient) GetAuction(ctx context.Context, in *QueryGetAuctionRequest, opts ...grpc.CallOption) (*QueryGetAuctionResponse, error) {
+	out := new(QueryGetAuctionResponse)
 	err := c.cc.Invoke(ctx, Query_GetAuction_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -86,8 +86,8 @@ func (c *queryClient) GetAuction(ctx context.Context, in *QueryAuctionRequest, o
 	return out, nil
 }
 
-func (c *queryClient) GetBid(ctx context.Context, in *QueryBidRequest, opts ...grpc.CallOption) (*QueryBidResponse, error) {
-	out := new(QueryBidResponse)
+func (c *queryClient) GetBid(ctx context.Context, in *QueryGetBidRequest, opts ...grpc.CallOption) (*QueryGetBidResponse, error) {
+	out := new(QueryGetBidResponse)
 	err := c.cc.Invoke(ctx, Query_GetBid_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -95,8 +95,8 @@ func (c *queryClient) GetBid(ctx context.Context, in *QueryBidRequest, opts ...g
 	return out, nil
 }
 
-func (c *queryClient) GetBids(ctx context.Context, in *QueryBidsRequest, opts ...grpc.CallOption) (*QueryBidsResponse, error) {
-	out := new(QueryBidsResponse)
+func (c *queryClient) GetBids(ctx context.Context, in *QueryGetBidsRequest, opts ...grpc.CallOption) (*QueryGetBidsResponse, error) {
+	out := new(QueryGetBidsResponse)
 	err := c.cc.Invoke(ctx, Query_GetBids_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -140,11 +140,11 @@ type QueryServer interface {
 	// Auctions queries all auctions
 	Auctions(context.Context, *QueryAuctionsRequest) (*QueryAuctionsResponse, error)
 	// GetAuction queries an auction
-	GetAuction(context.Context, *QueryAuctionRequest) (*QueryAuctionResponse, error)
+	GetAuction(context.Context, *QueryGetAuctionRequest) (*QueryGetAuctionResponse, error)
 	// GetBid queries an auction bid
-	GetBid(context.Context, *QueryBidRequest) (*QueryBidResponse, error)
+	GetBid(context.Context, *QueryGetBidRequest) (*QueryGetBidResponse, error)
 	// GetBids queries all auction bids
-	GetBids(context.Context, *QueryBidsRequest) (*QueryBidsResponse, error)
+	GetBids(context.Context, *QueryGetBidsRequest) (*QueryGetBidsResponse, error)
 	// AuctionsByBidder queries auctions by bidder
 	AuctionsByBidder(context.Context, *QueryAuctionsByBidderRequest) (*QueryAuctionsByBidderResponse, error)
 	// AuctionsByOwner queries auctions by owner
@@ -164,13 +164,13 @@ func (UnimplementedQueryServer) Params(context.Context, *QueryParamsRequest) (*Q
 func (UnimplementedQueryServer) Auctions(context.Context, *QueryAuctionsRequest) (*QueryAuctionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Auctions not implemented")
 }
-func (UnimplementedQueryServer) GetAuction(context.Context, *QueryAuctionRequest) (*QueryAuctionResponse, error) {
+func (UnimplementedQueryServer) GetAuction(context.Context, *QueryGetAuctionRequest) (*QueryGetAuctionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAuction not implemented")
 }
-func (UnimplementedQueryServer) GetBid(context.Context, *QueryBidRequest) (*QueryBidResponse, error) {
+func (UnimplementedQueryServer) GetBid(context.Context, *QueryGetBidRequest) (*QueryGetBidResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBid not implemented")
 }
-func (UnimplementedQueryServer) GetBids(context.Context, *QueryBidsRequest) (*QueryBidsResponse, error) {
+func (UnimplementedQueryServer) GetBids(context.Context, *QueryGetBidsRequest) (*QueryGetBidsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBids not implemented")
 }
 func (UnimplementedQueryServer) AuctionsByBidder(context.Context, *QueryAuctionsByBidderRequest) (*QueryAuctionsByBidderResponse, error) {
@@ -232,7 +232,7 @@ func _Query_Auctions_Handler(srv interface{}, ctx context.Context, dec func(inte
 }
 
 func _Query_GetAuction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryAuctionRequest)
+	in := new(QueryGetAuctionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -244,13 +244,13 @@ func _Query_GetAuction_Handler(srv interface{}, ctx context.Context, dec func(in
 		FullMethod: Query_GetAuction_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).GetAuction(ctx, req.(*QueryAuctionRequest))
+		return srv.(QueryServer).GetAuction(ctx, req.(*QueryGetAuctionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Query_GetBid_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryBidRequest)
+	in := new(QueryGetBidRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -262,13 +262,13 @@ func _Query_GetBid_Handler(srv interface{}, ctx context.Context, dec func(interf
 		FullMethod: Query_GetBid_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).GetBid(ctx, req.(*QueryBidRequest))
+		return srv.(QueryServer).GetBid(ctx, req.(*QueryGetBidRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Query_GetBids_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryBidsRequest)
+	in := new(QueryGetBidsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -280,7 +280,7 @@ func _Query_GetBids_Handler(srv interface{}, ctx context.Context, dec func(inter
 		FullMethod: Query_GetBids_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).GetBids(ctx, req.(*QueryBidsRequest))
+		return srv.(QueryServer).GetBids(ctx, req.(*QueryGetBidsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

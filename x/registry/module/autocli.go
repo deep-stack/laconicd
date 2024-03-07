@@ -93,9 +93,9 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					},
 				},
 				{
-					RpcMethod: "ReserveName",
-					Use:       "reserve-name [name] [owner]",
-					Short:     "Reserve name",
+					RpcMethod: "ReserveAuthority",
+					Use:       "reserve-authority [name] [owner]",
+					Short:     "Reserve authority name",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
 						{ProtoField: "name"},
 						{ProtoField: "owner"},

@@ -51,11 +51,11 @@ func (q queryResolver) LookupAuthorities(ctx context.Context, names []string) ([
 		}
 
 		if nameAuthority.AuctionId != "" {
-			auctionResp, err := auctionQueryClient.GetAuction(context.Background(), &auctiontypes.QueryAuctionRequest{Id: nameAuthority.GetAuctionId()})
+			auctionResp, err := auctionQueryClient.GetAuction(context.Background(), &auctiontypes.QueryGetAuctionRequest{Id: nameAuthority.GetAuctionId()})
 			if err != nil {
 				return nil, err
 			}
-			bidsResp, err := auctionQueryClient.GetBids(context.Background(), &auctiontypes.QueryBidsRequest{AuctionId: nameAuthority.GetAuctionId()})
+			bidsResp, err := auctionQueryClient.GetBids(context.Background(), &auctiontypes.QueryGetBidsRequest{AuctionId: nameAuthority.GetAuctionId()})
 			if err != nil {
 				return nil, err
 			}
@@ -150,7 +150,7 @@ func (q queryResolver) GetRecordsByIds(ctx context.Context, ids []string) ([]*Re
 	gqlResponse := make([]*Record, len(ids))
 
 	for i, id := range ids {
-		res, err := nsQueryClient.GetRecord(context.Background(), &registrytypes.QueryRecordByIdRequest{Id: id})
+		res, err := nsQueryClient.GetRecord(context.Background(), &registrytypes.QueryGetRecordRequest{Id: id})
 		if err != nil {
 			// Return nil for record not found.
 			gqlResponse[i] = nil
@@ -275,7 +275,7 @@ func (q *queryResolver) GetBond(ctx context.Context, id string) (*Bond, error) {
 
 func (q queryResolver) QueryBonds(ctx context.Context, attributes []*KeyValueInput) ([]*Bond, error) {
 	bondQueryClient := bondtypes.NewQueryClient(q.ctx)
-	bonds, err := bondQueryClient.Bonds(context.Background(), &bondtypes.QueryGetBondsRequest{})
+	bonds, err := bondQueryClient.Bonds(context.Background(), &bondtypes.QueryBondsRequest{})
 	if err != nil {
 		return nil, err
 	}
@@ -330,11 +330,11 @@ func (q queryResolver) GetAuctionsByIds(ctx context.Context, ids []string) ([]*A
 	auctionQueryClient := auctiontypes.NewQueryClient(q.ctx)
 	gqlAuctionResponse := make([]*Auction, len(ids))
 	for i, id := range ids {
-		auctionObj, err := auctionQueryClient.GetAuction(context.Background(), &auctiontypes.QueryAuctionRequest{Id: id})
+		auctionObj, err := auctionQueryClient.GetAuction(context.Background(), &auctiontypes.QueryGetAuctionRequest{Id: id})
 		if err != nil {
 			return nil, err
 		}
-		bidsObj, err := auctionQueryClient.GetBids(context.Background(), &auctiontypes.QueryBidsRequest{AuctionId: id})
+		bidsObj, err := auctionQueryClient.GetBids(context.Background(), &auctiontypes.QueryGetBidsRequest{AuctionId: id})
 		if err != nil {
 			return nil, err
 		}

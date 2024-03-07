@@ -87,7 +87,7 @@ func (ms msgServer) SetName(c context.Context, msg *registrytypes.MsgSetName) (*
 	return &registrytypes.MsgSetNameResponse{}, nil
 }
 
-func (ms msgServer) ReserveName(c context.Context, msg *registrytypes.MsgReserveAuthority) (*registrytypes.MsgReserveAuthorityResponse, error) {
+func (ms msgServer) ReserveAuthority(c context.Context, msg *registrytypes.MsgReserveAuthority) (*registrytypes.MsgReserveAuthorityResponse, error) {
 	if err := msg.ValidateBasic(); err != nil {
 		return nil, err
 	}
@@ -110,7 +110,7 @@ func (ms msgServer) ReserveName(c context.Context, msg *registrytypes.MsgReserve
 
 	ctx.EventManager().EmitEvents(sdk.Events{
 		sdk.NewEvent(
-			registrytypes.EventTypeReserveNameAuthority,
+			registrytypes.EventTypeReserveAuthority,
 			sdk.NewAttribute(registrytypes.AttributeKeySigner, msg.Signer),
 			sdk.NewAttribute(registrytypes.AttributeKeyName, msg.Name),
 			sdk.NewAttribute(registrytypes.AttributeKeyOwner, msg.Owner),
@@ -159,7 +159,7 @@ func (ms msgServer) SetAuthorityBond(c context.Context, msg *registrytypes.MsgSe
 	return &registrytypes.MsgSetAuthorityBondResponse{}, nil
 }
 
-func (ms msgServer) DeleteName(c context.Context, msg *registrytypes.MsgDeleteNameAuthority) (*registrytypes.MsgDeleteNameAuthorityResponse, error) {
+func (ms msgServer) DeleteName(c context.Context, msg *registrytypes.MsgDeleteName) (*registrytypes.MsgDeleteNameResponse, error) {
 	if err := msg.ValidateBasic(); err != nil {
 		return nil, err
 	}
@@ -188,7 +188,7 @@ func (ms msgServer) DeleteName(c context.Context, msg *registrytypes.MsgDeleteNa
 			sdk.NewAttribute(registrytypes.AttributeKeySigner, msg.Signer),
 		),
 	})
-	return &registrytypes.MsgDeleteNameAuthorityResponse{}, nil
+	return &registrytypes.MsgDeleteNameResponse{}, nil
 }
 
 func (ms msgServer) RenewRecord(c context.Context, msg *registrytypes.MsgRenewRecord) (*registrytypes.MsgRenewRecordResponse, error) {

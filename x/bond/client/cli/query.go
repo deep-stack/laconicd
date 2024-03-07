@@ -33,7 +33,7 @@ $ %s query %s list
 				return err
 			}
 			queryClient := bondtypes.NewQueryClient(clientCtx)
-			res, err := queryClient.Bonds(cmd.Context(), &bondtypes.QueryGetBondsRequest{})
+			res, err := queryClient.Bonds(cmd.Context(), &bondtypes.QueryBondsRequest{})
 			if err != nil {
 				return err
 			}

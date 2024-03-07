@@ -19,11 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Query_Params_FullMethodName                = "/cerc.bond.v1.Query/Params"
-	Query_Bonds_FullMethodName                 = "/cerc.bond.v1.Query/Bonds"
-	Query_GetBondById_FullMethodName           = "/cerc.bond.v1.Query/GetBondById"
-	Query_GetBondsByOwner_FullMethodName       = "/cerc.bond.v1.Query/GetBondsByOwner"
-	Query_GetBondsModuleBalance_FullMethodName = "/cerc.bond.v1.Query/GetBondsModuleBalance"
+	Query_Params_FullMethodName               = "/cerc.bond.v1.Query/Params"
+	Query_Bonds_FullMethodName                = "/cerc.bond.v1.Query/Bonds"
+	Query_GetBondById_FullMethodName          = "/cerc.bond.v1.Query/GetBondById"
+	Query_GetBondsByOwner_FullMethodName      = "/cerc.bond.v1.Query/GetBondsByOwner"
+	Query_GetBondModuleBalance_FullMethodName = "/cerc.bond.v1.Query/GetBondModuleBalance"
 )
 
 // QueryClient is the client API for Query service.
@@ -33,13 +33,13 @@ type QueryClient interface {
 	// Params queries bonds module params.
 	Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error)
 	// Bonds queries bonds list
-	Bonds(ctx context.Context, in *QueryGetBondsRequest, opts ...grpc.CallOption) (*QueryGetBondsResponse, error)
+	Bonds(ctx context.Context, in *QueryBondsRequest, opts ...grpc.CallOption) (*QueryBondsResponse, error)
 	// GetBondById
 	GetBondById(ctx context.Context, in *QueryGetBondByIdRequest, opts ...grpc.CallOption) (*QueryGetBondByIdResponse, error)
 	// Get Bonds list by Owner
 	GetBondsByOwner(ctx context.Context, in *QueryGetBondsByOwnerRequest, opts ...grpc.CallOption) (*QueryGetBondsByOwnerResponse, error)
 	// Get Bond module balance
-	GetBondsModuleBalance(ctx context.Context, in *QueryGetBondModuleBalanceRequest, opts ...grpc.CallOption) (*QueryGetBondModuleBalanceResponse, error)
+	GetBondModuleBalance(ctx context.Context, in *QueryGetBondModuleBalanceRequest, opts ...grpc.CallOption) (*QueryGetBondModuleBalanceResponse, error)
 }
 
 type queryClient struct {
@@ -59,8 +59,8 @@ func (c *queryClient) Params(ctx context.Context, in *QueryParamsRequest, opts .
 	return out, nil
 }
 
-func (c *queryClient) Bonds(ctx context.Context, in *QueryGetBondsRequest, opts ...grpc.CallOption) (*QueryGetBondsResponse, error) {
-	out := new(QueryGetBondsResponse)
+func (c *queryClient) Bonds(ctx context.Context, in *QueryBondsRequest, opts ...grpc.CallOption) (*QueryBondsResponse, error) {
+	out := new(QueryBondsResponse)
 	err := c.cc.Invoke(ctx, Query_Bonds_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -86,9 +86,9 @@ func (c *queryClient) GetBondsByOwner(ctx context.Context, in *QueryGetBondsByOw
 	return out, nil
 }
 
-func (c *queryClient) GetBondsModuleBalance(ctx context.Context, in *QueryGetBondModuleBalanceRequest, opts ...grpc.CallOption) (*QueryGetBondModuleBalanceResponse, error) {
+func (c *queryClient) GetBondModuleBalance(ctx context.Context, in *QueryGetBondModuleBalanceRequest, opts ...grpc.CallOption) (*QueryGetBondModuleBalanceResponse, error) {
 	out := new(QueryGetBondModuleBalanceResponse)
-	err := c.cc.Invoke(ctx, Query_GetBondsModuleBalance_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, Query_GetBondModuleBalance_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -102,13 +102,13 @@ type QueryServer interface {
 	// Params queries bonds module params.
 	Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error)
 	// Bonds queries bonds list
-	Bonds(context.Context, *QueryGetBondsRequest) (*QueryGetBondsResponse, error)
+	Bonds(context.Context, *QueryBondsRequest) (*QueryBondsResponse, error)
 	// GetBondById
 	GetBondById(context.Context, *QueryGetBondByIdRequest) (*QueryGetBondByIdResponse, error)
 	// Get Bonds list by Owner
 	GetBondsByOwner(context.Context, *QueryGetBondsByOwnerRequest) (*QueryGetBondsByOwnerResponse, error)
 	// Get Bond module balance
-	GetBondsModuleBalance(context.Context, *QueryGetBondModuleBalanceRequest) (*QueryGetBondModuleBalanceResponse, error)
+	GetBondModuleBalance(context.Context, *QueryGetBondModuleBalanceRequest) (*QueryGetBondModuleBalanceResponse, error)
 	mustEmbedUnimplementedQueryServer()
 }
 
@@ -119,7 +119,7 @@ type UnimplementedQueryServer struct {
 func (UnimplementedQueryServer) Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Params not implemented")
 }
-func (UnimplementedQueryServer) Bonds(context.Context, *QueryGetBondsRequest) (*QueryGetBondsResponse, error) {
+func (UnimplementedQueryServer) Bonds(context.Context, *QueryBondsRequest) (*QueryBondsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Bonds not implemented")
 }
 func (UnimplementedQueryServer) GetBondById(context.Context, *QueryGetBondByIdRequest) (*QueryGetBondByIdResponse, error) {
@@ -128,8 +128,8 @@ func (UnimplementedQueryServer) GetBondById(context.Context, *QueryGetBondByIdRe
 func (UnimplementedQueryServer) GetBondsByOwner(context.Context, *QueryGetBondsByOwnerRequest) (*QueryGetBondsByOwnerResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBondsByOwner not implemented")
 }
-func (UnimplementedQueryServer) GetBondsModuleBalance(context.Context, *QueryGetBondModuleBalanceRequest) (*QueryGetBondModuleBalanceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetBondsModuleBalance not implemented")
+func (UnimplementedQueryServer) GetBondModuleBalance(context.Context, *QueryGetBondModuleBalanceRequest) (*QueryGetBondModuleBalanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBondModuleBalance not implemented")
 }
 func (UnimplementedQueryServer) mustEmbedUnimplementedQueryServer() {}
 
@@ -163,7 +163,7 @@ func _Query_Params_Handler(srv interface{}, ctx context.Context, dec func(interf
 }
 
 func _Query_Bonds_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryGetBondsRequest)
+	in := new(QueryBondsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -175,7 +175,7 @@ func _Query_Bonds_Handler(srv interface{}, ctx context.Context, dec func(interfa
 		FullMethod: Query_Bonds_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).Bonds(ctx, req.(*QueryGetBondsRequest))
+		return srv.(QueryServer).Bonds(ctx, req.(*QueryBondsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -216,20 +216,20 @@ func _Query_GetBondsByOwner_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_GetBondsModuleBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Query_GetBondModuleBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(QueryGetBondModuleBalanceRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).GetBondsModuleBalance(ctx, in)
+		return srv.(QueryServer).GetBondModuleBalance(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Query_GetBondsModuleBalance_FullMethodName,
+		FullMethod: Query_GetBondModuleBalance_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).GetBondsModuleBalance(ctx, req.(*QueryGetBondModuleBalanceRequest))
+		return srv.(QueryServer).GetBondModuleBalance(ctx, req.(*QueryGetBondModuleBalanceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -258,8 +258,8 @@ var Query_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Query_GetBondsByOwner_Handler,
 		},
 		{
-			MethodName: "GetBondsModuleBalance",
-			Handler:    _Query_GetBondsModuleBalance_Handler,
+			MethodName: "GetBondModuleBalance",
+			Handler:    _Query_GetBondModuleBalance_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

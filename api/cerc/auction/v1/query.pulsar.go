@@ -1757,25 +1757,25 @@ func (x *fastReflection_QueryAuctionsResponse) ProtoMethods() *protoiface.Method
 }
 
 var (
-	md_QueryAuctionRequest    protoreflect.MessageDescriptor
-	fd_QueryAuctionRequest_id protoreflect.FieldDescriptor
+	md_QueryGetAuctionRequest    protoreflect.MessageDescriptor
+	fd_QueryGetAuctionRequest_id protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_cerc_auction_v1_query_proto_init()
-	md_QueryAuctionRequest = File_cerc_auction_v1_query_proto.Messages().ByName("QueryAuctionRequest")
-	fd_QueryAuctionRequest_id = md_QueryAuctionRequest.Fields().ByName("id")
+	md_QueryGetAuctionRequest = File_cerc_auction_v1_query_proto.Messages().ByName("QueryGetAuctionRequest")
+	fd_QueryGetAuctionRequest_id = md_QueryGetAuctionRequest.Fields().ByName("id")
 }
 
-var _ protoreflect.Message = (*fastReflection_QueryAuctionRequest)(nil)
+var _ protoreflect.Message = (*fastReflection_QueryGetAuctionRequest)(nil)
 
-type fastReflection_QueryAuctionRequest QueryAuctionRequest
+type fastReflection_QueryGetAuctionRequest QueryGetAuctionRequest
 
-func (x *QueryAuctionRequest) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_QueryAuctionRequest)(x)
+func (x *QueryGetAuctionRequest) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_QueryGetAuctionRequest)(x)
 }
 
-func (x *QueryAuctionRequest) slowProtoReflect() protoreflect.Message {
+func (x *QueryGetAuctionRequest) slowProtoReflect() protoreflect.Message {
 	mi := &file_cerc_auction_v1_query_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1787,43 +1787,43 @@ func (x *QueryAuctionRequest) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_QueryAuctionRequest_messageType fastReflection_QueryAuctionRequest_messageType
-var _ protoreflect.MessageType = fastReflection_QueryAuctionRequest_messageType{}
+var _fastReflection_QueryGetAuctionRequest_messageType fastReflection_QueryGetAuctionRequest_messageType
+var _ protoreflect.MessageType = fastReflection_QueryGetAuctionRequest_messageType{}
 
-type fastReflection_QueryAuctionRequest_messageType struct{}
+type fastReflection_QueryGetAuctionRequest_messageType struct{}
 
-func (x fastReflection_QueryAuctionRequest_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_QueryAuctionRequest)(nil)
+func (x fastReflection_QueryGetAuctionRequest_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_QueryGetAuctionRequest)(nil)
 }
-func (x fastReflection_QueryAuctionRequest_messageType) New() protoreflect.Message {
-	return new(fastReflection_QueryAuctionRequest)
+func (x fastReflection_QueryGetAuctionRequest_messageType) New() protoreflect.Message {
+	return new(fastReflection_QueryGetAuctionRequest)
 }
-func (x fastReflection_QueryAuctionRequest_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryAuctionRequest
+func (x fastReflection_QueryGetAuctionRequest_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetAuctionRequest
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_QueryAuctionRequest) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryAuctionRequest
+func (x *fastReflection_QueryGetAuctionRequest) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetAuctionRequest
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_QueryAuctionRequest) Type() protoreflect.MessageType {
-	return _fastReflection_QueryAuctionRequest_messageType
+func (x *fastReflection_QueryGetAuctionRequest) Type() protoreflect.MessageType {
+	return _fastReflection_QueryGetAuctionRequest_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_QueryAuctionRequest) New() protoreflect.Message {
-	return new(fastReflection_QueryAuctionRequest)
+func (x *fastReflection_QueryGetAuctionRequest) New() protoreflect.Message {
+	return new(fastReflection_QueryGetAuctionRequest)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_QueryAuctionRequest) Interface() protoreflect.ProtoMessage {
-	return (*QueryAuctionRequest)(x)
+func (x *fastReflection_QueryGetAuctionRequest) Interface() protoreflect.ProtoMessage {
+	return (*QueryGetAuctionRequest)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -1831,10 +1831,10 @@ func (x *fastReflection_QueryAuctionRequest) Interface() protoreflect.ProtoMessa
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_QueryAuctionRequest) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_QueryGetAuctionRequest) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
 	if x.Id != "" {
 		value := protoreflect.ValueOfString(x.Id)
-		if !f(fd_QueryAuctionRequest_id, value) {
+		if !f(fd_QueryGetAuctionRequest_id, value) {
 			return
 		}
 	}
@@ -1851,15 +1851,15 @@ func (x *fastReflection_QueryAuctionRequest) Range(f func(protoreflect.FieldDesc
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_QueryAuctionRequest) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_QueryGetAuctionRequest) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryAuctionRequest.id":
+	case "cerc.auction.v1.QueryGetAuctionRequest.id":
 		return x.Id != ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryAuctionRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetAuctionRequest"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryAuctionRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetAuctionRequest does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -1869,15 +1869,15 @@ func (x *fastReflection_QueryAuctionRequest) Has(fd protoreflect.FieldDescriptor
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryAuctionRequest) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_QueryGetAuctionRequest) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryAuctionRequest.id":
+	case "cerc.auction.v1.QueryGetAuctionRequest.id":
 		x.Id = ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryAuctionRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetAuctionRequest"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryAuctionRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetAuctionRequest does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -1887,16 +1887,16 @@ func (x *fastReflection_QueryAuctionRequest) Clear(fd protoreflect.FieldDescript
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_QueryAuctionRequest) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetAuctionRequest) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "cerc.auction.v1.QueryAuctionRequest.id":
+	case "cerc.auction.v1.QueryGetAuctionRequest.id":
 		value := x.Id
 		return protoreflect.ValueOfString(value)
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryAuctionRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetAuctionRequest"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryAuctionRequest does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetAuctionRequest does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -1910,15 +1910,15 @@ func (x *fastReflection_QueryAuctionRequest) Get(descriptor protoreflect.FieldDe
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryAuctionRequest) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_QueryGetAuctionRequest) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryAuctionRequest.id":
+	case "cerc.auction.v1.QueryGetAuctionRequest.id":
 		x.Id = value.Interface().(string)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryAuctionRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetAuctionRequest"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryAuctionRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetAuctionRequest does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -1932,40 +1932,40 @@ func (x *fastReflection_QueryAuctionRequest) Set(fd protoreflect.FieldDescriptor
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryAuctionRequest) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetAuctionRequest) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryAuctionRequest.id":
-		panic(fmt.Errorf("field id of message cerc.auction.v1.QueryAuctionRequest is not mutable"))
+	case "cerc.auction.v1.QueryGetAuctionRequest.id":
+		panic(fmt.Errorf("field id of message cerc.auction.v1.QueryGetAuctionRequest is not mutable"))
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryAuctionRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetAuctionRequest"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryAuctionRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetAuctionRequest does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_QueryAuctionRequest) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetAuctionRequest) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryAuctionRequest.id":
+	case "cerc.auction.v1.QueryGetAuctionRequest.id":
 		return protoreflect.ValueOfString("")
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryAuctionRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetAuctionRequest"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryAuctionRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetAuctionRequest does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_QueryAuctionRequest) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_QueryGetAuctionRequest) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in cerc.auction.v1.QueryAuctionRequest", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in cerc.auction.v1.QueryGetAuctionRequest", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -1973,7 +1973,7 @@ func (x *fastReflection_QueryAuctionRequest) WhichOneof(d protoreflect.OneofDesc
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_QueryAuctionRequest) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_QueryGetAuctionRequest) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -1984,7 +1984,7 @@ func (x *fastReflection_QueryAuctionRequest) GetUnknown() protoreflect.RawFields
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryAuctionRequest) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_QueryGetAuctionRequest) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -1996,7 +1996,7 @@ func (x *fastReflection_QueryAuctionRequest) SetUnknown(fields protoreflect.RawF
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_QueryAuctionRequest) IsValid() bool {
+func (x *fastReflection_QueryGetAuctionRequest) IsValid() bool {
 	return x != nil
 }
 
@@ -2006,9 +2006,9 @@ func (x *fastReflection_QueryAuctionRequest) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_QueryAuctionRequest) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_QueryGetAuctionRequest) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*QueryAuctionRequest)
+		x := input.Message.Interface().(*QueryGetAuctionRequest)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -2034,7 +2034,7 @@ func (x *fastReflection_QueryAuctionRequest) ProtoMethods() *protoiface.Methods 
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*QueryAuctionRequest)
+		x := input.Message.Interface().(*QueryGetAuctionRequest)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -2071,7 +2071,7 @@ func (x *fastReflection_QueryAuctionRequest) ProtoMethods() *protoiface.Methods 
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*QueryAuctionRequest)
+		x := input.Message.Interface().(*QueryGetAuctionRequest)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -2103,10 +2103,10 @@ func (x *fastReflection_QueryAuctionRequest) ProtoMethods() *protoiface.Methods 
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryAuctionRequest: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetAuctionRequest: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryAuctionRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetAuctionRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
@@ -2177,25 +2177,25 @@ func (x *fastReflection_QueryAuctionRequest) ProtoMethods() *protoiface.Methods 
 }
 
 var (
-	md_QueryAuctionResponse         protoreflect.MessageDescriptor
-	fd_QueryAuctionResponse_auction protoreflect.FieldDescriptor
+	md_QueryGetAuctionResponse         protoreflect.MessageDescriptor
+	fd_QueryGetAuctionResponse_auction protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_cerc_auction_v1_query_proto_init()
-	md_QueryAuctionResponse = File_cerc_auction_v1_query_proto.Messages().ByName("QueryAuctionResponse")
-	fd_QueryAuctionResponse_auction = md_QueryAuctionResponse.Fields().ByName("auction")
+	md_QueryGetAuctionResponse = File_cerc_auction_v1_query_proto.Messages().ByName("QueryGetAuctionResponse")
+	fd_QueryGetAuctionResponse_auction = md_QueryGetAuctionResponse.Fields().ByName("auction")
 }
 
-var _ protoreflect.Message = (*fastReflection_QueryAuctionResponse)(nil)
+var _ protoreflect.Message = (*fastReflection_QueryGetAuctionResponse)(nil)
 
-type fastReflection_QueryAuctionResponse QueryAuctionResponse
+type fastReflection_QueryGetAuctionResponse QueryGetAuctionResponse
 
-func (x *QueryAuctionResponse) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_QueryAuctionResponse)(x)
+func (x *QueryGetAuctionResponse) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_QueryGetAuctionResponse)(x)
 }
 
-func (x *QueryAuctionResponse) slowProtoReflect() protoreflect.Message {
+func (x *QueryGetAuctionResponse) slowProtoReflect() protoreflect.Message {
 	mi := &file_cerc_auction_v1_query_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2207,43 +2207,43 @@ func (x *QueryAuctionResponse) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_QueryAuctionResponse_messageType fastReflection_QueryAuctionResponse_messageType
-var _ protoreflect.MessageType = fastReflection_QueryAuctionResponse_messageType{}
+var _fastReflection_QueryGetAuctionResponse_messageType fastReflection_QueryGetAuctionResponse_messageType
+var _ protoreflect.MessageType = fastReflection_QueryGetAuctionResponse_messageType{}
 
-type fastReflection_QueryAuctionResponse_messageType struct{}
+type fastReflection_QueryGetAuctionResponse_messageType struct{}
 
-func (x fastReflection_QueryAuctionResponse_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_QueryAuctionResponse)(nil)
+func (x fastReflection_QueryGetAuctionResponse_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_QueryGetAuctionResponse)(nil)
 }
-func (x fastReflection_QueryAuctionResponse_messageType) New() protoreflect.Message {
-	return new(fastReflection_QueryAuctionResponse)
+func (x fastReflection_QueryGetAuctionResponse_messageType) New() protoreflect.Message {
+	return new(fastReflection_QueryGetAuctionResponse)
 }
-func (x fastReflection_QueryAuctionResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryAuctionResponse
+func (x fastReflection_QueryGetAuctionResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetAuctionResponse
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_QueryAuctionResponse) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryAuctionResponse
+func (x *fastReflection_QueryGetAuctionResponse) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetAuctionResponse
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_QueryAuctionResponse) Type() protoreflect.MessageType {
-	return _fastReflection_QueryAuctionResponse_messageType
+func (x *fastReflection_QueryGetAuctionResponse) Type() protoreflect.MessageType {
+	return _fastReflection_QueryGetAuctionResponse_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_QueryAuctionResponse) New() protoreflect.Message {
-	return new(fastReflection_QueryAuctionResponse)
+func (x *fastReflection_QueryGetAuctionResponse) New() protoreflect.Message {
+	return new(fastReflection_QueryGetAuctionResponse)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_QueryAuctionResponse) Interface() protoreflect.ProtoMessage {
-	return (*QueryAuctionResponse)(x)
+func (x *fastReflection_QueryGetAuctionResponse) Interface() protoreflect.ProtoMessage {
+	return (*QueryGetAuctionResponse)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -2251,10 +2251,10 @@ func (x *fastReflection_QueryAuctionResponse) Interface() protoreflect.ProtoMess
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_QueryAuctionResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_QueryGetAuctionResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
 	if x.Auction != nil {
 		value := protoreflect.ValueOfMessage(x.Auction.ProtoReflect())
-		if !f(fd_QueryAuctionResponse_auction, value) {
+		if !f(fd_QueryGetAuctionResponse_auction, value) {
 			return
 		}
 	}
@@ -2271,15 +2271,15 @@ func (x *fastReflection_QueryAuctionResponse) Range(f func(protoreflect.FieldDes
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_QueryAuctionResponse) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_QueryGetAuctionResponse) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryAuctionResponse.auction":
+	case "cerc.auction.v1.QueryGetAuctionResponse.auction":
 		return x.Auction != nil
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryAuctionResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetAuctionResponse"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryAuctionResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetAuctionResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -2289,15 +2289,15 @@ func (x *fastReflection_QueryAuctionResponse) Has(fd protoreflect.FieldDescripto
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryAuctionResponse) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_QueryGetAuctionResponse) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryAuctionResponse.auction":
+	case "cerc.auction.v1.QueryGetAuctionResponse.auction":
 		x.Auction = nil
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryAuctionResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetAuctionResponse"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryAuctionResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetAuctionResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -2307,16 +2307,16 @@ func (x *fastReflection_QueryAuctionResponse) Clear(fd protoreflect.FieldDescrip
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_QueryAuctionResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetAuctionResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "cerc.auction.v1.QueryAuctionResponse.auction":
+	case "cerc.auction.v1.QueryGetAuctionResponse.auction":
 		value := x.Auction
 		return protoreflect.ValueOfMessage(value.ProtoReflect())
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryAuctionResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetAuctionResponse"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryAuctionResponse does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetAuctionResponse does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -2330,15 +2330,15 @@ func (x *fastReflection_QueryAuctionResponse) Get(descriptor protoreflect.FieldD
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryAuctionResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_QueryGetAuctionResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryAuctionResponse.auction":
+	case "cerc.auction.v1.QueryGetAuctionResponse.auction":
 		x.Auction = value.Message().Interface().(*Auction)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryAuctionResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetAuctionResponse"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryAuctionResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetAuctionResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -2352,44 +2352,44 @@ func (x *fastReflection_QueryAuctionResponse) Set(fd protoreflect.FieldDescripto
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryAuctionResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetAuctionResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryAuctionResponse.auction":
+	case "cerc.auction.v1.QueryGetAuctionResponse.auction":
 		if x.Auction == nil {
 			x.Auction = new(Auction)
 		}
 		return protoreflect.ValueOfMessage(x.Auction.ProtoReflect())
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryAuctionResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetAuctionResponse"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryAuctionResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetAuctionResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_QueryAuctionResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetAuctionResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryAuctionResponse.auction":
+	case "cerc.auction.v1.QueryGetAuctionResponse.auction":
 		m := new(Auction)
 		return protoreflect.ValueOfMessage(m.ProtoReflect())
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryAuctionResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetAuctionResponse"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryAuctionResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetAuctionResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_QueryAuctionResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_QueryGetAuctionResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in cerc.auction.v1.QueryAuctionResponse", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in cerc.auction.v1.QueryGetAuctionResponse", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -2397,7 +2397,7 @@ func (x *fastReflection_QueryAuctionResponse) WhichOneof(d protoreflect.OneofDes
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_QueryAuctionResponse) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_QueryGetAuctionResponse) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -2408,7 +2408,7 @@ func (x *fastReflection_QueryAuctionResponse) GetUnknown() protoreflect.RawField
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryAuctionResponse) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_QueryGetAuctionResponse) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -2420,7 +2420,7 @@ func (x *fastReflection_QueryAuctionResponse) SetUnknown(fields protoreflect.Raw
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_QueryAuctionResponse) IsValid() bool {
+func (x *fastReflection_QueryGetAuctionResponse) IsValid() bool {
 	return x != nil
 }
 
@@ -2430,9 +2430,9 @@ func (x *fastReflection_QueryAuctionResponse) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_QueryAuctionResponse) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_QueryGetAuctionResponse) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*QueryAuctionResponse)
+		x := input.Message.Interface().(*QueryGetAuctionResponse)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -2458,7 +2458,7 @@ func (x *fastReflection_QueryAuctionResponse) ProtoMethods() *protoiface.Methods
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*QueryAuctionResponse)
+		x := input.Message.Interface().(*QueryGetAuctionResponse)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -2502,7 +2502,7 @@ func (x *fastReflection_QueryAuctionResponse) ProtoMethods() *protoiface.Methods
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*QueryAuctionResponse)
+		x := input.Message.Interface().(*QueryGetAuctionResponse)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -2534,10 +2534,10 @@ func (x *fastReflection_QueryAuctionResponse) ProtoMethods() *protoiface.Methods
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryAuctionResponse: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetAuctionResponse: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryAuctionResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetAuctionResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
@@ -2612,27 +2612,27 @@ func (x *fastReflection_QueryAuctionResponse) ProtoMethods() *protoiface.Methods
 }
 
 var (
-	md_QueryBidRequest            protoreflect.MessageDescriptor
-	fd_QueryBidRequest_auction_id protoreflect.FieldDescriptor
-	fd_QueryBidRequest_bidder     protoreflect.FieldDescriptor
+	md_QueryGetBidRequest            protoreflect.MessageDescriptor
+	fd_QueryGetBidRequest_auction_id protoreflect.FieldDescriptor
+	fd_QueryGetBidRequest_bidder     protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_cerc_auction_v1_query_proto_init()
-	md_QueryBidRequest = File_cerc_auction_v1_query_proto.Messages().ByName("QueryBidRequest")
-	fd_QueryBidRequest_auction_id = md_QueryBidRequest.Fields().ByName("auction_id")
-	fd_QueryBidRequest_bidder = md_QueryBidRequest.Fields().ByName("bidder")
+	md_QueryGetBidRequest = File_cerc_auction_v1_query_proto.Messages().ByName("QueryGetBidRequest")
+	fd_QueryGetBidRequest_auction_id = md_QueryGetBidRequest.Fields().ByName("auction_id")
+	fd_QueryGetBidRequest_bidder = md_QueryGetBidRequest.Fields().ByName("bidder")
 }
 
-var _ protoreflect.Message = (*fastReflection_QueryBidRequest)(nil)
+var _ protoreflect.Message = (*fastReflection_QueryGetBidRequest)(nil)
 
-type fastReflection_QueryBidRequest QueryBidRequest
+type fastReflection_QueryGetBidRequest QueryGetBidRequest
 
-func (x *QueryBidRequest) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_QueryBidRequest)(x)
+func (x *QueryGetBidRequest) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_QueryGetBidRequest)(x)
 }
 
-func (x *QueryBidRequest) slowProtoReflect() protoreflect.Message {
+func (x *QueryGetBidRequest) slowProtoReflect() protoreflect.Message {
 	mi := &file_cerc_auction_v1_query_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2644,43 +2644,43 @@ func (x *QueryBidRequest) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_QueryBidRequest_messageType fastReflection_QueryBidRequest_messageType
-var _ protoreflect.MessageType = fastReflection_QueryBidRequest_messageType{}
+var _fastReflection_QueryGetBidRequest_messageType fastReflection_QueryGetBidRequest_messageType
+var _ protoreflect.MessageType = fastReflection_QueryGetBidRequest_messageType{}
 
-type fastReflection_QueryBidRequest_messageType struct{}
+type fastReflection_QueryGetBidRequest_messageType struct{}
 
-func (x fastReflection_QueryBidRequest_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_QueryBidRequest)(nil)
+func (x fastReflection_QueryGetBidRequest_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_QueryGetBidRequest)(nil)
 }
-func (x fastReflection_QueryBidRequest_messageType) New() protoreflect.Message {
-	return new(fastReflection_QueryBidRequest)
+func (x fastReflection_QueryGetBidRequest_messageType) New() protoreflect.Message {
+	return new(fastReflection_QueryGetBidRequest)
 }
-func (x fastReflection_QueryBidRequest_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryBidRequest
+func (x fastReflection_QueryGetBidRequest_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetBidRequest
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_QueryBidRequest) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryBidRequest
+func (x *fastReflection_QueryGetBidRequest) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetBidRequest
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_QueryBidRequest) Type() protoreflect.MessageType {
-	return _fastReflection_QueryBidRequest_messageType
+func (x *fastReflection_QueryGetBidRequest) Type() protoreflect.MessageType {
+	return _fastReflection_QueryGetBidRequest_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_QueryBidRequest) New() protoreflect.Message {
-	return new(fastReflection_QueryBidRequest)
+func (x *fastReflection_QueryGetBidRequest) New() protoreflect.Message {
+	return new(fastReflection_QueryGetBidRequest)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_QueryBidRequest) Interface() protoreflect.ProtoMessage {
-	return (*QueryBidRequest)(x)
+func (x *fastReflection_QueryGetBidRequest) Interface() protoreflect.ProtoMessage {
+	return (*QueryGetBidRequest)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -2688,16 +2688,16 @@ func (x *fastReflection_QueryBidRequest) Interface() protoreflect.ProtoMessage {
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_QueryBidRequest) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_QueryGetBidRequest) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
 	if x.AuctionId != "" {
 		value := protoreflect.ValueOfString(x.AuctionId)
-		if !f(fd_QueryBidRequest_auction_id, value) {
+		if !f(fd_QueryGetBidRequest_auction_id, value) {
 			return
 		}
 	}
 	if x.Bidder != "" {
 		value := protoreflect.ValueOfString(x.Bidder)
-		if !f(fd_QueryBidRequest_bidder, value) {
+		if !f(fd_QueryGetBidRequest_bidder, value) {
 			return
 		}
 	}
@@ -2714,17 +2714,17 @@ func (x *fastReflection_QueryBidRequest) Range(f func(protoreflect.FieldDescript
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_QueryBidRequest) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_QueryGetBidRequest) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidRequest.auction_id":
+	case "cerc.auction.v1.QueryGetBidRequest.auction_id":
 		return x.AuctionId != ""
-	case "cerc.auction.v1.QueryBidRequest.bidder":
+	case "cerc.auction.v1.QueryGetBidRequest.bidder":
 		return x.Bidder != ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidRequest"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidRequest does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -2734,17 +2734,17 @@ func (x *fastReflection_QueryBidRequest) Has(fd protoreflect.FieldDescriptor) bo
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryBidRequest) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_QueryGetBidRequest) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidRequest.auction_id":
+	case "cerc.auction.v1.QueryGetBidRequest.auction_id":
 		x.AuctionId = ""
-	case "cerc.auction.v1.QueryBidRequest.bidder":
+	case "cerc.auction.v1.QueryGetBidRequest.bidder":
 		x.Bidder = ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidRequest"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidRequest does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -2754,19 +2754,19 @@ func (x *fastReflection_QueryBidRequest) Clear(fd protoreflect.FieldDescriptor) 
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_QueryBidRequest) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetBidRequest) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "cerc.auction.v1.QueryBidRequest.auction_id":
+	case "cerc.auction.v1.QueryGetBidRequest.auction_id":
 		value := x.AuctionId
 		return protoreflect.ValueOfString(value)
-	case "cerc.auction.v1.QueryBidRequest.bidder":
+	case "cerc.auction.v1.QueryGetBidRequest.bidder":
 		value := x.Bidder
 		return protoreflect.ValueOfString(value)
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidRequest"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidRequest does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidRequest does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -2780,17 +2780,17 @@ func (x *fastReflection_QueryBidRequest) Get(descriptor protoreflect.FieldDescri
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryBidRequest) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_QueryGetBidRequest) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidRequest.auction_id":
+	case "cerc.auction.v1.QueryGetBidRequest.auction_id":
 		x.AuctionId = value.Interface().(string)
-	case "cerc.auction.v1.QueryBidRequest.bidder":
+	case "cerc.auction.v1.QueryGetBidRequest.bidder":
 		x.Bidder = value.Interface().(string)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidRequest"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidRequest does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -2804,44 +2804,44 @@ func (x *fastReflection_QueryBidRequest) Set(fd protoreflect.FieldDescriptor, va
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryBidRequest) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetBidRequest) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidRequest.auction_id":
-		panic(fmt.Errorf("field auction_id of message cerc.auction.v1.QueryBidRequest is not mutable"))
-	case "cerc.auction.v1.QueryBidRequest.bidder":
-		panic(fmt.Errorf("field bidder of message cerc.auction.v1.QueryBidRequest is not mutable"))
+	case "cerc.auction.v1.QueryGetBidRequest.auction_id":
+		panic(fmt.Errorf("field auction_id of message cerc.auction.v1.QueryGetBidRequest is not mutable"))
+	case "cerc.auction.v1.QueryGetBidRequest.bidder":
+		panic(fmt.Errorf("field bidder of message cerc.auction.v1.QueryGetBidRequest is not mutable"))
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidRequest"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidRequest does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_QueryBidRequest) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetBidRequest) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidRequest.auction_id":
+	case "cerc.auction.v1.QueryGetBidRequest.auction_id":
 		return protoreflect.ValueOfString("")
-	case "cerc.auction.v1.QueryBidRequest.bidder":
+	case "cerc.auction.v1.QueryGetBidRequest.bidder":
 		return protoreflect.ValueOfString("")
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidRequest"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidRequest does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_QueryBidRequest) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_QueryGetBidRequest) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in cerc.auction.v1.QueryBidRequest", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in cerc.auction.v1.QueryGetBidRequest", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -2849,7 +2849,7 @@ func (x *fastReflection_QueryBidRequest) WhichOneof(d protoreflect.OneofDescript
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_QueryBidRequest) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_QueryGetBidRequest) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -2860,7 +2860,7 @@ func (x *fastReflection_QueryBidRequest) GetUnknown() protoreflect.RawFields {
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryBidRequest) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_QueryGetBidRequest) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -2872,7 +2872,7 @@ func (x *fastReflection_QueryBidRequest) SetUnknown(fields protoreflect.RawField
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_QueryBidRequest) IsValid() bool {
+func (x *fastReflection_QueryGetBidRequest) IsValid() bool {
 	return x != nil
 }
 
@@ -2882,9 +2882,9 @@ func (x *fastReflection_QueryBidRequest) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_QueryBidRequest) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_QueryGetBidRequest) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*QueryBidRequest)
+		x := input.Message.Interface().(*QueryGetBidRequest)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -2914,7 +2914,7 @@ func (x *fastReflection_QueryBidRequest) ProtoMethods() *protoiface.Methods {
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*QueryBidRequest)
+		x := input.Message.Interface().(*QueryGetBidRequest)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -2958,7 +2958,7 @@ func (x *fastReflection_QueryBidRequest) ProtoMethods() *protoiface.Methods {
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*QueryBidRequest)
+		x := input.Message.Interface().(*QueryGetBidRequest)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -2990,10 +2990,10 @@ func (x *fastReflection_QueryBidRequest) ProtoMethods() *protoiface.Methods {
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryBidRequest: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetBidRequest: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryBidRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetBidRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
@@ -3096,25 +3096,25 @@ func (x *fastReflection_QueryBidRequest) ProtoMethods() *protoiface.Methods {
 }
 
 var (
-	md_QueryBidResponse     protoreflect.MessageDescriptor
-	fd_QueryBidResponse_bid protoreflect.FieldDescriptor
+	md_QueryGetBidResponse     protoreflect.MessageDescriptor
+	fd_QueryGetBidResponse_bid protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_cerc_auction_v1_query_proto_init()
-	md_QueryBidResponse = File_cerc_auction_v1_query_proto.Messages().ByName("QueryBidResponse")
-	fd_QueryBidResponse_bid = md_QueryBidResponse.Fields().ByName("bid")
+	md_QueryGetBidResponse = File_cerc_auction_v1_query_proto.Messages().ByName("QueryGetBidResponse")
+	fd_QueryGetBidResponse_bid = md_QueryGetBidResponse.Fields().ByName("bid")
 }
 
-var _ protoreflect.Message = (*fastReflection_QueryBidResponse)(nil)
+var _ protoreflect.Message = (*fastReflection_QueryGetBidResponse)(nil)
 
-type fastReflection_QueryBidResponse QueryBidResponse
+type fastReflection_QueryGetBidResponse QueryGetBidResponse
 
-func (x *QueryBidResponse) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_QueryBidResponse)(x)
+func (x *QueryGetBidResponse) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_QueryGetBidResponse)(x)
 }
 
-func (x *QueryBidResponse) slowProtoReflect() protoreflect.Message {
+func (x *QueryGetBidResponse) slowProtoReflect() protoreflect.Message {
 	mi := &file_cerc_auction_v1_query_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -3126,43 +3126,43 @@ func (x *QueryBidResponse) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_QueryBidResponse_messageType fastReflection_QueryBidResponse_messageType
-var _ protoreflect.MessageType = fastReflection_QueryBidResponse_messageType{}
+var _fastReflection_QueryGetBidResponse_messageType fastReflection_QueryGetBidResponse_messageType
+var _ protoreflect.MessageType = fastReflection_QueryGetBidResponse_messageType{}
 
-type fastReflection_QueryBidResponse_messageType struct{}
+type fastReflection_QueryGetBidResponse_messageType struct{}
 
-func (x fastReflection_QueryBidResponse_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_QueryBidResponse)(nil)
+func (x fastReflection_QueryGetBidResponse_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_QueryGetBidResponse)(nil)
 }
-func (x fastReflection_QueryBidResponse_messageType) New() protoreflect.Message {
-	return new(fastReflection_QueryBidResponse)
+func (x fastReflection_QueryGetBidResponse_messageType) New() protoreflect.Message {
+	return new(fastReflection_QueryGetBidResponse)
 }
-func (x fastReflection_QueryBidResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryBidResponse
+func (x fastReflection_QueryGetBidResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetBidResponse
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_QueryBidResponse) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryBidResponse
+func (x *fastReflection_QueryGetBidResponse) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetBidResponse
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_QueryBidResponse) Type() protoreflect.MessageType {
-	return _fastReflection_QueryBidResponse_messageType
+func (x *fastReflection_QueryGetBidResponse) Type() protoreflect.MessageType {
+	return _fastReflection_QueryGetBidResponse_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_QueryBidResponse) New() protoreflect.Message {
-	return new(fastReflection_QueryBidResponse)
+func (x *fastReflection_QueryGetBidResponse) New() protoreflect.Message {
+	return new(fastReflection_QueryGetBidResponse)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_QueryBidResponse) Interface() protoreflect.ProtoMessage {
-	return (*QueryBidResponse)(x)
+func (x *fastReflection_QueryGetBidResponse) Interface() protoreflect.ProtoMessage {
+	return (*QueryGetBidResponse)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -3170,10 +3170,10 @@ func (x *fastReflection_QueryBidResponse) Interface() protoreflect.ProtoMessage 
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_QueryBidResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_QueryGetBidResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
 	if x.Bid != nil {
 		value := protoreflect.ValueOfMessage(x.Bid.ProtoReflect())
-		if !f(fd_QueryBidResponse_bid, value) {
+		if !f(fd_QueryGetBidResponse_bid, value) {
 			return
 		}
 	}
@@ -3190,15 +3190,15 @@ func (x *fastReflection_QueryBidResponse) Range(f func(protoreflect.FieldDescrip
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_QueryBidResponse) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_QueryGetBidResponse) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidResponse.bid":
+	case "cerc.auction.v1.QueryGetBidResponse.bid":
 		return x.Bid != nil
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidResponse"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -3208,15 +3208,15 @@ func (x *fastReflection_QueryBidResponse) Has(fd protoreflect.FieldDescriptor) b
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryBidResponse) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_QueryGetBidResponse) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidResponse.bid":
+	case "cerc.auction.v1.QueryGetBidResponse.bid":
 		x.Bid = nil
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidResponse"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -3226,16 +3226,16 @@ func (x *fastReflection_QueryBidResponse) Clear(fd protoreflect.FieldDescriptor)
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_QueryBidResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetBidResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "cerc.auction.v1.QueryBidResponse.bid":
+	case "cerc.auction.v1.QueryGetBidResponse.bid":
 		value := x.Bid
 		return protoreflect.ValueOfMessage(value.ProtoReflect())
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidResponse"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidResponse does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidResponse does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -3249,15 +3249,15 @@ func (x *fastReflection_QueryBidResponse) Get(descriptor protoreflect.FieldDescr
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryBidResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_QueryGetBidResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidResponse.bid":
+	case "cerc.auction.v1.QueryGetBidResponse.bid":
 		x.Bid = value.Message().Interface().(*Bid)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidResponse"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -3271,44 +3271,44 @@ func (x *fastReflection_QueryBidResponse) Set(fd protoreflect.FieldDescriptor, v
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryBidResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetBidResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidResponse.bid":
+	case "cerc.auction.v1.QueryGetBidResponse.bid":
 		if x.Bid == nil {
 			x.Bid = new(Bid)
 		}
 		return protoreflect.ValueOfMessage(x.Bid.ProtoReflect())
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidResponse"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_QueryBidResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetBidResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidResponse.bid":
+	case "cerc.auction.v1.QueryGetBidResponse.bid":
 		m := new(Bid)
 		return protoreflect.ValueOfMessage(m.ProtoReflect())
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidResponse"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_QueryBidResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_QueryGetBidResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in cerc.auction.v1.QueryBidResponse", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in cerc.auction.v1.QueryGetBidResponse", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -3316,7 +3316,7 @@ func (x *fastReflection_QueryBidResponse) WhichOneof(d protoreflect.OneofDescrip
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_QueryBidResponse) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_QueryGetBidResponse) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -3327,7 +3327,7 @@ func (x *fastReflection_QueryBidResponse) GetUnknown() protoreflect.RawFields {
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryBidResponse) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_QueryGetBidResponse) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -3339,7 +3339,7 @@ func (x *fastReflection_QueryBidResponse) SetUnknown(fields protoreflect.RawFiel
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_QueryBidResponse) IsValid() bool {
+func (x *fastReflection_QueryGetBidResponse) IsValid() bool {
 	return x != nil
 }
 
@@ -3349,9 +3349,9 @@ func (x *fastReflection_QueryBidResponse) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_QueryBidResponse) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_QueryGetBidResponse) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*QueryBidResponse)
+		x := input.Message.Interface().(*QueryGetBidResponse)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -3377,7 +3377,7 @@ func (x *fastReflection_QueryBidResponse) ProtoMethods() *protoiface.Methods {
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*QueryBidResponse)
+		x := input.Message.Interface().(*QueryGetBidResponse)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -3421,7 +3421,7 @@ func (x *fastReflection_QueryBidResponse) ProtoMethods() *protoiface.Methods {
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*QueryBidResponse)
+		x := input.Message.Interface().(*QueryGetBidResponse)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -3453,10 +3453,10 @@ func (x *fastReflection_QueryBidResponse) ProtoMethods() *protoiface.Methods {
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryBidResponse: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetBidResponse: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryBidResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetBidResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
@@ -3531,25 +3531,25 @@ func (x *fastReflection_QueryBidResponse) ProtoMethods() *protoiface.Methods {
 }
 
 var (
-	md_QueryBidsRequest            protoreflect.MessageDescriptor
-	fd_QueryBidsRequest_auction_id protoreflect.FieldDescriptor
+	md_QueryGetBidsRequest            protoreflect.MessageDescriptor
+	fd_QueryGetBidsRequest_auction_id protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_cerc_auction_v1_query_proto_init()
-	md_QueryBidsRequest = File_cerc_auction_v1_query_proto.Messages().ByName("QueryBidsRequest")
-	fd_QueryBidsRequest_auction_id = md_QueryBidsRequest.Fields().ByName("auction_id")
+	md_QueryGetBidsRequest = File_cerc_auction_v1_query_proto.Messages().ByName("QueryGetBidsRequest")
+	fd_QueryGetBidsRequest_auction_id = md_QueryGetBidsRequest.Fields().ByName("auction_id")
 }
 
-var _ protoreflect.Message = (*fastReflection_QueryBidsRequest)(nil)
+var _ protoreflect.Message = (*fastReflection_QueryGetBidsRequest)(nil)
 
-type fastReflection_QueryBidsRequest QueryBidsRequest
+type fastReflection_QueryGetBidsRequest QueryGetBidsRequest
 
-func (x *QueryBidsRequest) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_QueryBidsRequest)(x)
+func (x *QueryGetBidsRequest) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_QueryGetBidsRequest)(x)
 }
 
-func (x *QueryBidsRequest) slowProtoReflect() protoreflect.Message {
+func (x *QueryGetBidsRequest) slowProtoReflect() protoreflect.Message {
 	mi := &file_cerc_auction_v1_query_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -3561,43 +3561,43 @@ func (x *QueryBidsRequest) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_QueryBidsRequest_messageType fastReflection_QueryBidsRequest_messageType
-var _ protoreflect.MessageType = fastReflection_QueryBidsRequest_messageType{}
+var _fastReflection_QueryGetBidsRequest_messageType fastReflection_QueryGetBidsRequest_messageType
+var _ protoreflect.MessageType = fastReflection_QueryGetBidsRequest_messageType{}
 
-type fastReflection_QueryBidsRequest_messageType struct{}
+type fastReflection_QueryGetBidsRequest_messageType struct{}
 
-func (x fastReflection_QueryBidsRequest_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_QueryBidsRequest)(nil)
+func (x fastReflection_QueryGetBidsRequest_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_QueryGetBidsRequest)(nil)
 }
-func (x fastReflection_QueryBidsRequest_messageType) New() protoreflect.Message {
-	return new(fastReflection_QueryBidsRequest)
+func (x fastReflection_QueryGetBidsRequest_messageType) New() protoreflect.Message {
+	return new(fastReflection_QueryGetBidsRequest)
 }
-func (x fastReflection_QueryBidsRequest_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryBidsRequest
+func (x fastReflection_QueryGetBidsRequest_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetBidsRequest
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_QueryBidsRequest) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryBidsRequest
+func (x *fastReflection_QueryGetBidsRequest) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetBidsRequest
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_QueryBidsRequest) Type() protoreflect.MessageType {
-	return _fastReflection_QueryBidsRequest_messageType
+func (x *fastReflection_QueryGetBidsRequest) Type() protoreflect.MessageType {
+	return _fastReflection_QueryGetBidsRequest_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_QueryBidsRequest) New() protoreflect.Message {
-	return new(fastReflection_QueryBidsRequest)
+func (x *fastReflection_QueryGetBidsRequest) New() protoreflect.Message {
+	return new(fastReflection_QueryGetBidsRequest)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_QueryBidsRequest) Interface() protoreflect.ProtoMessage {
-	return (*QueryBidsRequest)(x)
+func (x *fastReflection_QueryGetBidsRequest) Interface() protoreflect.ProtoMessage {
+	return (*QueryGetBidsRequest)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -3605,10 +3605,10 @@ func (x *fastReflection_QueryBidsRequest) Interface() protoreflect.ProtoMessage 
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_QueryBidsRequest) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_QueryGetBidsRequest) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
 	if x.AuctionId != "" {
 		value := protoreflect.ValueOfString(x.AuctionId)
-		if !f(fd_QueryBidsRequest_auction_id, value) {
+		if !f(fd_QueryGetBidsRequest_auction_id, value) {
 			return
 		}
 	}
@@ -3625,15 +3625,15 @@ func (x *fastReflection_QueryBidsRequest) Range(f func(protoreflect.FieldDescrip
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_QueryBidsRequest) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_QueryGetBidsRequest) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidsRequest.auction_id":
+	case "cerc.auction.v1.QueryGetBidsRequest.auction_id":
 		return x.AuctionId != ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidsRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidsRequest"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidsRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidsRequest does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -3643,15 +3643,15 @@ func (x *fastReflection_QueryBidsRequest) Has(fd protoreflect.FieldDescriptor) b
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryBidsRequest) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_QueryGetBidsRequest) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidsRequest.auction_id":
+	case "cerc.auction.v1.QueryGetBidsRequest.auction_id":
 		x.AuctionId = ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidsRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidsRequest"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidsRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidsRequest does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -3661,16 +3661,16 @@ func (x *fastReflection_QueryBidsRequest) Clear(fd protoreflect.FieldDescriptor)
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_QueryBidsRequest) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetBidsRequest) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "cerc.auction.v1.QueryBidsRequest.auction_id":
+	case "cerc.auction.v1.QueryGetBidsRequest.auction_id":
 		value := x.AuctionId
 		return protoreflect.ValueOfString(value)
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidsRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidsRequest"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidsRequest does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidsRequest does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -3684,15 +3684,15 @@ func (x *fastReflection_QueryBidsRequest) Get(descriptor protoreflect.FieldDescr
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryBidsRequest) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_QueryGetBidsRequest) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidsRequest.auction_id":
+	case "cerc.auction.v1.QueryGetBidsRequest.auction_id":
 		x.AuctionId = value.Interface().(string)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidsRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidsRequest"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidsRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidsRequest does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -3706,40 +3706,40 @@ func (x *fastReflection_QueryBidsRequest) Set(fd protoreflect.FieldDescriptor, v
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryBidsRequest) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetBidsRequest) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidsRequest.auction_id":
-		panic(fmt.Errorf("field auction_id of message cerc.auction.v1.QueryBidsRequest is not mutable"))
+	case "cerc.auction.v1.QueryGetBidsRequest.auction_id":
+		panic(fmt.Errorf("field auction_id of message cerc.auction.v1.QueryGetBidsRequest is not mutable"))
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidsRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidsRequest"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidsRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidsRequest does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_QueryBidsRequest) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetBidsRequest) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidsRequest.auction_id":
+	case "cerc.auction.v1.QueryGetBidsRequest.auction_id":
 		return protoreflect.ValueOfString("")
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidsRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidsRequest"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidsRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidsRequest does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_QueryBidsRequest) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_QueryGetBidsRequest) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in cerc.auction.v1.QueryBidsRequest", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in cerc.auction.v1.QueryGetBidsRequest", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -3747,7 +3747,7 @@ func (x *fastReflection_QueryBidsRequest) WhichOneof(d protoreflect.OneofDescrip
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_QueryBidsRequest) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_QueryGetBidsRequest) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -3758,7 +3758,7 @@ func (x *fastReflection_QueryBidsRequest) GetUnknown() protoreflect.RawFields {
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryBidsRequest) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_QueryGetBidsRequest) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -3770,7 +3770,7 @@ func (x *fastReflection_QueryBidsRequest) SetUnknown(fields protoreflect.RawFiel
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_QueryBidsRequest) IsValid() bool {
+func (x *fastReflection_QueryGetBidsRequest) IsValid() bool {
 	return x != nil
 }
 
@@ -3780,9 +3780,9 @@ func (x *fastReflection_QueryBidsRequest) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_QueryBidsRequest) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_QueryGetBidsRequest) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*QueryBidsRequest)
+		x := input.Message.Interface().(*QueryGetBidsRequest)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -3808,7 +3808,7 @@ func (x *fastReflection_QueryBidsRequest) ProtoMethods() *protoiface.Methods {
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*QueryBidsRequest)
+		x := input.Message.Interface().(*QueryGetBidsRequest)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -3845,7 +3845,7 @@ func (x *fastReflection_QueryBidsRequest) ProtoMethods() *protoiface.Methods {
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*QueryBidsRequest)
+		x := input.Message.Interface().(*QueryGetBidsRequest)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -3877,10 +3877,10 @@ func (x *fastReflection_QueryBidsRequest) ProtoMethods() *protoiface.Methods {
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryBidsRequest: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetBidsRequest: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryBidsRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetBidsRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
@@ -3950,77 +3950,77 @@ func (x *fastReflection_QueryBidsRequest) ProtoMethods() *protoiface.Methods {
 	}
 }
 
-var _ protoreflect.List = (*_QueryBidsResponse_1_list)(nil)
+var _ protoreflect.List = (*_QueryGetBidsResponse_1_list)(nil)
 
-type _QueryBidsResponse_1_list struct {
+type _QueryGetBidsResponse_1_list struct {
 	list *[]*Bid
 }
 
-func (x *_QueryBidsResponse_1_list) Len() int {
+func (x *_QueryGetBidsResponse_1_list) Len() int {
 	if x.list == nil {
 		return 0
 	}
 	return len(*x.list)
 }
 
-func (x *_QueryBidsResponse_1_list) Get(i int) protoreflect.Value {
+func (x *_QueryGetBidsResponse_1_list) Get(i int) protoreflect.Value {
 	return protoreflect.ValueOfMessage((*x.list)[i].ProtoReflect())
 }
 
-func (x *_QueryBidsResponse_1_list) Set(i int, value protoreflect.Value) {
+func (x *_QueryGetBidsResponse_1_list) Set(i int, value protoreflect.Value) {
 	valueUnwrapped := value.Message()
 	concreteValue := valueUnwrapped.Interface().(*Bid)
 	(*x.list)[i] = concreteValue
 }
 
-func (x *_QueryBidsResponse_1_list) Append(value protoreflect.Value) {
+func (x *_QueryGetBidsResponse_1_list) Append(value protoreflect.Value) {
 	valueUnwrapped := value.Message()
 	concreteValue := valueUnwrapped.Interface().(*Bid)
 	*x.list = append(*x.list, concreteValue)
 }
 
-func (x *_QueryBidsResponse_1_list) AppendMutable() protoreflect.Value {
+func (x *_QueryGetBidsResponse_1_list) AppendMutable() protoreflect.Value {
 	v := new(Bid)
 	*x.list = append(*x.list, v)
 	return protoreflect.ValueOfMessage(v.ProtoReflect())
 }
 
-func (x *_QueryBidsResponse_1_list) Truncate(n int) {
+func (x *_QueryGetBidsResponse_1_list) Truncate(n int) {
 	for i := n; i < len(*x.list); i++ {
 		(*x.list)[i] = nil
 	}
 	*x.list = (*x.list)[:n]
 }
 
-func (x *_QueryBidsResponse_1_list) NewElement() protoreflect.Value {
+func (x *_QueryGetBidsResponse_1_list) NewElement() protoreflect.Value {
 	v := new(Bid)
 	return protoreflect.ValueOfMessage(v.ProtoReflect())
 }
 
-func (x *_QueryBidsResponse_1_list) IsValid() bool {
+func (x *_QueryGetBidsResponse_1_list) IsValid() bool {
 	return x.list != nil
 }
 
 var (
-	md_QueryBidsResponse      protoreflect.MessageDescriptor
-	fd_QueryBidsResponse_bids protoreflect.FieldDescriptor
+	md_QueryGetBidsResponse      protoreflect.MessageDescriptor
+	fd_QueryGetBidsResponse_bids protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_cerc_auction_v1_query_proto_init()
-	md_QueryBidsResponse = File_cerc_auction_v1_query_proto.Messages().ByName("QueryBidsResponse")
-	fd_QueryBidsResponse_bids = md_QueryBidsResponse.Fields().ByName("bids")
+	md_QueryGetBidsResponse = File_cerc_auction_v1_query_proto.Messages().ByName("QueryGetBidsResponse")
+	fd_QueryGetBidsResponse_bids = md_QueryGetBidsResponse.Fields().ByName("bids")
 }
 
-var _ protoreflect.Message = (*fastReflection_QueryBidsResponse)(nil)
+var _ protoreflect.Message = (*fastReflection_QueryGetBidsResponse)(nil)
 
-type fastReflection_QueryBidsResponse QueryBidsResponse
+type fastReflection_QueryGetBidsResponse QueryGetBidsResponse
 
-func (x *QueryBidsResponse) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_QueryBidsResponse)(x)
+func (x *QueryGetBidsResponse) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_QueryGetBidsResponse)(x)
 }
 
-func (x *QueryBidsResponse) slowProtoReflect() protoreflect.Message {
+func (x *QueryGetBidsResponse) slowProtoReflect() protoreflect.Message {
 	mi := &file_cerc_auction_v1_query_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -4032,43 +4032,43 @@ func (x *QueryBidsResponse) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_QueryBidsResponse_messageType fastReflection_QueryBidsResponse_messageType
-var _ protoreflect.MessageType = fastReflection_QueryBidsResponse_messageType{}
+var _fastReflection_QueryGetBidsResponse_messageType fastReflection_QueryGetBidsResponse_messageType
+var _ protoreflect.MessageType = fastReflection_QueryGetBidsResponse_messageType{}
 
-type fastReflection_QueryBidsResponse_messageType struct{}
+type fastReflection_QueryGetBidsResponse_messageType struct{}
 
-func (x fastReflection_QueryBidsResponse_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_QueryBidsResponse)(nil)
+func (x fastReflection_QueryGetBidsResponse_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_QueryGetBidsResponse)(nil)
 }
-func (x fastReflection_QueryBidsResponse_messageType) New() protoreflect.Message {
-	return new(fastReflection_QueryBidsResponse)
+func (x fastReflection_QueryGetBidsResponse_messageType) New() protoreflect.Message {
+	return new(fastReflection_QueryGetBidsResponse)
 }
-func (x fastReflection_QueryBidsResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryBidsResponse
+func (x fastReflection_QueryGetBidsResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetBidsResponse
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_QueryBidsResponse) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryBidsResponse
+func (x *fastReflection_QueryGetBidsResponse) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryGetBidsResponse
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_QueryBidsResponse) Type() protoreflect.MessageType {
-	return _fastReflection_QueryBidsResponse_messageType
+func (x *fastReflection_QueryGetBidsResponse) Type() protoreflect.MessageType {
+	return _fastReflection_QueryGetBidsResponse_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_QueryBidsResponse) New() protoreflect.Message {
-	return new(fastReflection_QueryBidsResponse)
+func (x *fastReflection_QueryGetBidsResponse) New() protoreflect.Message {
+	return new(fastReflection_QueryGetBidsResponse)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_QueryBidsResponse) Interface() protoreflect.ProtoMessage {
-	return (*QueryBidsResponse)(x)
+func (x *fastReflection_QueryGetBidsResponse) Interface() protoreflect.ProtoMessage {
+	return (*QueryGetBidsResponse)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -4076,10 +4076,10 @@ func (x *fastReflection_QueryBidsResponse) Interface() protoreflect.ProtoMessage
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_QueryBidsResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_QueryGetBidsResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
 	if len(x.Bids) != 0 {
-		value := protoreflect.ValueOfList(&_QueryBidsResponse_1_list{list: &x.Bids})
-		if !f(fd_QueryBidsResponse_bids, value) {
+		value := protoreflect.ValueOfList(&_QueryGetBidsResponse_1_list{list: &x.Bids})
+		if !f(fd_QueryGetBidsResponse_bids, value) {
 			return
 		}
 	}
@@ -4096,15 +4096,15 @@ func (x *fastReflection_QueryBidsResponse) Range(f func(protoreflect.FieldDescri
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_QueryBidsResponse) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_QueryGetBidsResponse) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidsResponse.bids":
+	case "cerc.auction.v1.QueryGetBidsResponse.bids":
 		return len(x.Bids) != 0
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidsResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidsResponse"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidsResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidsResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -4114,15 +4114,15 @@ func (x *fastReflection_QueryBidsResponse) Has(fd protoreflect.FieldDescriptor) 
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryBidsResponse) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_QueryGetBidsResponse) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidsResponse.bids":
+	case "cerc.auction.v1.QueryGetBidsResponse.bids":
 		x.Bids = nil
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidsResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidsResponse"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidsResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidsResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -4132,19 +4132,19 @@ func (x *fastReflection_QueryBidsResponse) Clear(fd protoreflect.FieldDescriptor
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_QueryBidsResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetBidsResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "cerc.auction.v1.QueryBidsResponse.bids":
+	case "cerc.auction.v1.QueryGetBidsResponse.bids":
 		if len(x.Bids) == 0 {
-			return protoreflect.ValueOfList(&_QueryBidsResponse_1_list{})
+			return protoreflect.ValueOfList(&_QueryGetBidsResponse_1_list{})
 		}
-		listValue := &_QueryBidsResponse_1_list{list: &x.Bids}
+		listValue := &_QueryGetBidsResponse_1_list{list: &x.Bids}
 		return protoreflect.ValueOfList(listValue)
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidsResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidsResponse"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidsResponse does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidsResponse does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -4158,17 +4158,17 @@ func (x *fastReflection_QueryBidsResponse) Get(descriptor protoreflect.FieldDesc
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryBidsResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_QueryGetBidsResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidsResponse.bids":
+	case "cerc.auction.v1.QueryGetBidsResponse.bids":
 		lv := value.List()
-		clv := lv.(*_QueryBidsResponse_1_list)
+		clv := lv.(*_QueryGetBidsResponse_1_list)
 		x.Bids = *clv.list
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidsResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidsResponse"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidsResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidsResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -4182,45 +4182,45 @@ func (x *fastReflection_QueryBidsResponse) Set(fd protoreflect.FieldDescriptor, 
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryBidsResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetBidsResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidsResponse.bids":
+	case "cerc.auction.v1.QueryGetBidsResponse.bids":
 		if x.Bids == nil {
 			x.Bids = []*Bid{}
 		}
-		value := &_QueryBidsResponse_1_list{list: &x.Bids}
+		value := &_QueryGetBidsResponse_1_list{list: &x.Bids}
 		return protoreflect.ValueOfList(value)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidsResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidsResponse"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidsResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidsResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_QueryBidsResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryGetBidsResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "cerc.auction.v1.QueryBidsResponse.bids":
+	case "cerc.auction.v1.QueryGetBidsResponse.bids":
 		list := []*Bid{}
-		return protoreflect.ValueOfList(&_QueryBidsResponse_1_list{list: &list})
+		return protoreflect.ValueOfList(&_QueryGetBidsResponse_1_list{list: &list})
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryBidsResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cerc.auction.v1.QueryGetBidsResponse"))
 		}
-		panic(fmt.Errorf("message cerc.auction.v1.QueryBidsResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message cerc.auction.v1.QueryGetBidsResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_QueryBidsResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_QueryGetBidsResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in cerc.auction.v1.QueryBidsResponse", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in cerc.auction.v1.QueryGetBidsResponse", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -4228,7 +4228,7 @@ func (x *fastReflection_QueryBidsResponse) WhichOneof(d protoreflect.OneofDescri
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_QueryBidsResponse) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_QueryGetBidsResponse) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -4239,7 +4239,7 @@ func (x *fastReflection_QueryBidsResponse) GetUnknown() protoreflect.RawFields {
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryBidsResponse) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_QueryGetBidsResponse) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -4251,7 +4251,7 @@ func (x *fastReflection_QueryBidsResponse) SetUnknown(fields protoreflect.RawFie
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_QueryBidsResponse) IsValid() bool {
+func (x *fastReflection_QueryGetBidsResponse) IsValid() bool {
 	return x != nil
 }
 
@@ -4261,9 +4261,9 @@ func (x *fastReflection_QueryBidsResponse) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_QueryBidsResponse) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_QueryGetBidsResponse) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*QueryBidsResponse)
+		x := input.Message.Interface().(*QueryGetBidsResponse)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -4291,7 +4291,7 @@ func (x *fastReflection_QueryBidsResponse) ProtoMethods() *protoiface.Methods {
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*QueryBidsResponse)
+		x := input.Message.Interface().(*QueryGetBidsResponse)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -4337,7 +4337,7 @@ func (x *fastReflection_QueryBidsResponse) ProtoMethods() *protoiface.Methods {
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*QueryBidsResponse)
+		x := input.Message.Interface().(*QueryGetBidsResponse)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -4369,10 +4369,10 @@ func (x *fastReflection_QueryBidsResponse) ProtoMethods() *protoiface.Methods {
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryBidsResponse: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetBidsResponse: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryBidsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryGetBidsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
@@ -7017,7 +7017,8 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// QueryParamsRequest is the format to query the parameters of the auction module
+// QueryParamsRequest is the format to query the parameters of the auction
+// module
 type QueryParamsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -7164,7 +7165,7 @@ func (x *QueryAuctionsResponse) GetPagination() *v1beta1.PageRequest {
 }
 
 // AuctionRequest is the format for querying a specific auction
-type QueryAuctionRequest struct {
+type QueryGetAuctionRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -7173,8 +7174,8 @@ type QueryAuctionRequest struct {
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
-func (x *QueryAuctionRequest) Reset() {
-	*x = QueryAuctionRequest{}
+func (x *QueryGetAuctionRequest) Reset() {
+	*x = QueryGetAuctionRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_cerc_auction_v1_query_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -7182,18 +7183,18 @@ func (x *QueryAuctionRequest) Reset() {
 	}
 }
 
-func (x *QueryAuctionRequest) String() string {
+func (x *QueryGetAuctionRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*QueryAuctionRequest) ProtoMessage() {}
+func (*QueryGetAuctionRequest) ProtoMessage() {}
 
-// Deprecated: Use QueryAuctionRequest.ProtoReflect.Descriptor instead.
-func (*QueryAuctionRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use QueryGetAuctionRequest.ProtoReflect.Descriptor instead.
+func (*QueryGetAuctionRequest) Descriptor() ([]byte, []int) {
 	return file_cerc_auction_v1_query_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *QueryAuctionRequest) GetId() string {
+func (x *QueryGetAuctionRequest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
@@ -7201,7 +7202,7 @@ func (x *QueryAuctionRequest) GetId() string {
 }
 
 // AuctionResponse returns the details of the queried auction
-type QueryAuctionResponse struct {
+type QueryGetAuctionResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -7210,8 +7211,8 @@ type QueryAuctionResponse struct {
 	Auction *Auction `protobuf:"bytes,1,opt,name=auction,proto3" json:"auction,omitempty"`
 }
 
-func (x *QueryAuctionResponse) Reset() {
-	*x = QueryAuctionResponse{}
+func (x *QueryGetAuctionResponse) Reset() {
+	*x = QueryGetAuctionResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_cerc_auction_v1_query_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -7219,18 +7220,18 @@ func (x *QueryAuctionResponse) Reset() {
 	}
 }
 
-func (x *QueryAuctionResponse) String() string {
+func (x *QueryGetAuctionResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*QueryAuctionResponse) ProtoMessage() {}
+func (*QueryGetAuctionResponse) ProtoMessage() {}
 
-// Deprecated: Use QueryAuctionResponse.ProtoReflect.Descriptor instead.
-func (*QueryAuctionResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use QueryGetAuctionResponse.ProtoReflect.Descriptor instead.
+func (*QueryGetAuctionResponse) Descriptor() ([]byte, []int) {
 	return file_cerc_auction_v1_query_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *QueryAuctionResponse) GetAuction() *Auction {
+func (x *QueryGetAuctionResponse) GetAuction() *Auction {
 	if x != nil {
 		return x.Auction
 	}
@@ -7238,7 +7239,7 @@ func (x *QueryAuctionResponse) GetAuction() *Auction {
 }
 
 // BidRequest is the format for querying a specific bid in an auction
-type QueryBidRequest struct {
+type QueryGetBidRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -7249,8 +7250,8 @@ type QueryBidRequest struct {
 	Bidder string `protobuf:"bytes,2,opt,name=bidder,proto3" json:"bidder,omitempty"`
 }
 
-func (x *QueryBidRequest) Reset() {
-	*x = QueryBidRequest{}
+func (x *QueryGetBidRequest) Reset() {
+	*x = QueryGetBidRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_cerc_auction_v1_query_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -7258,25 +7259,25 @@ func (x *QueryBidRequest) Reset() {
 	}
 }
 
-func (x *QueryBidRequest) String() string {
+func (x *QueryGetBidRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*QueryBidRequest) ProtoMessage() {}
+func (*QueryGetBidRequest) ProtoMessage() {}
 
-// Deprecated: Use QueryBidRequest.ProtoReflect.Descriptor instead.
-func (*QueryBidRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use QueryGetBidRequest.ProtoReflect.Descriptor instead.
+func (*QueryGetBidRequest) Descriptor() ([]byte, []int) {
 	return file_cerc_auction_v1_query_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *QueryBidRequest) GetAuctionId() string {
+func (x *QueryGetBidRequest) GetAuctionId() string {
 	if x != nil {
 		return x.AuctionId
 	}
 	return ""
 }
 
-func (x *QueryBidRequest) GetBidder() string {
+func (x *QueryGetBidRequest) GetBidder() string {
 	if x != nil {
 		return x.Bidder
 	}
@@ -7284,7 +7285,7 @@ func (x *QueryBidRequest) GetBidder() string {
 }
 
 // BidResponse returns the details of the queried bid
-type QueryBidResponse struct {
+type QueryGetBidResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -7293,8 +7294,8 @@ type QueryBidResponse struct {
 	Bid *Bid `protobuf:"bytes,1,opt,name=bid,proto3" json:"bid,omitempty"`
 }
 
-func (x *QueryBidResponse) Reset() {
-	*x = QueryBidResponse{}
+func (x *QueryGetBidResponse) Reset() {
+	*x = QueryGetBidResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_cerc_auction_v1_query_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -7302,18 +7303,18 @@ func (x *QueryBidResponse) Reset() {
 	}
 }
 
-func (x *QueryBidResponse) String() string {
+func (x *QueryGetBidResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*QueryBidResponse) ProtoMessage() {}
+func (*QueryGetBidResponse) ProtoMessage() {}
 
-// Deprecated: Use QueryBidResponse.ProtoReflect.Descriptor instead.
-func (*QueryBidResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use QueryGetBidResponse.ProtoReflect.Descriptor instead.
+func (*QueryGetBidResponse) Descriptor() ([]byte, []int) {
 	return file_cerc_auction_v1_query_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *QueryBidResponse) GetBid() *Bid {
+func (x *QueryGetBidResponse) GetBid() *Bid {
 	if x != nil {
 		return x.Bid
 	}
@@ -7321,7 +7322,7 @@ func (x *QueryBidResponse) GetBid() *Bid {
 }
 
 // BidsRequest is the format for querying all bids in an auction
-type QueryBidsRequest struct {
+type QueryGetBidsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -7330,8 +7331,8 @@ type QueryBidsRequest struct {
 	AuctionId string `protobuf:"bytes,1,opt,name=auction_id,json=auctionId,proto3" json:"auction_id,omitempty"`
 }
 
-func (x *QueryBidsRequest) Reset() {
-	*x = QueryBidsRequest{}
+func (x *QueryGetBidsRequest) Reset() {
+	*x = QueryGetBidsRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_cerc_auction_v1_query_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -7339,18 +7340,18 @@ func (x *QueryBidsRequest) Reset() {
 	}
 }
 
-func (x *QueryBidsRequest) String() string {
+func (x *QueryGetBidsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*QueryBidsRequest) ProtoMessage() {}
+func (*QueryGetBidsRequest) ProtoMessage() {}
 
-// Deprecated: Use QueryBidsRequest.ProtoReflect.Descriptor instead.
-func (*QueryBidsRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use QueryGetBidsRequest.ProtoReflect.Descriptor instead.
+func (*QueryGetBidsRequest) Descriptor() ([]byte, []int) {
 	return file_cerc_auction_v1_query_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *QueryBidsRequest) GetAuctionId() string {
+func (x *QueryGetBidsRequest) GetAuctionId() string {
 	if x != nil {
 		return x.AuctionId
 	}
@@ -7358,7 +7359,7 @@ func (x *QueryBidsRequest) GetAuctionId() string {
 }
 
 // BidsResponse returns details of all bids in an auction
-type QueryBidsResponse struct {
+type QueryGetBidsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -7367,8 +7368,8 @@ type QueryBidsResponse struct {
 	Bids []*Bid `protobuf:"bytes,1,rep,name=bids,proto3" json:"bids,omitempty"`
 }
 
-func (x *QueryBidsResponse) Reset() {
-	*x = QueryBidsResponse{}
+func (x *QueryGetBidsResponse) Reset() {
+	*x = QueryGetBidsResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_cerc_auction_v1_query_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -7376,25 +7377,26 @@ func (x *QueryBidsResponse) Reset() {
 	}
 }
 
-func (x *QueryBidsResponse) String() string {
+func (x *QueryGetBidsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*QueryBidsResponse) ProtoMessage() {}
+func (*QueryGetBidsResponse) ProtoMessage() {}
 
-// Deprecated: Use QueryBidsResponse.ProtoReflect.Descriptor instead.
-func (*QueryBidsResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use QueryGetBidsResponse.ProtoReflect.Descriptor instead.
+func (*QueryGetBidsResponse) Descriptor() ([]byte, []int) {
 	return file_cerc_auction_v1_query_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *QueryBidsResponse) GetBids() []*Bid {
+func (x *QueryGetBidsResponse) GetBids() []*Bid {
 	if x != nil {
 		return x.Bids
 	}
 	return nil
 }
 
-// AuctionsByBidderRequest is the format for querying all auctions containing a bidder address
+// AuctionsByBidderRequest is the format for querying all auctions containing a
+// bidder address
 type QueryAuctionsByBidderRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -7468,7 +7470,8 @@ func (x *QueryAuctionsByBidderResponse) GetAuctions() *Auctions {
 	return nil
 }
 
-// AuctionsByOwnerRequest is the format for querying all auctions created by an owner
+// AuctionsByOwnerRequest is the format for querying all auctions created by an
+// owner
 type QueryAuctionsByOwnerRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -7569,6 +7572,8 @@ func (*QueryGetAuctionModuleBalanceRequest) Descriptor() ([]byte, []int) {
 	return file_cerc_auction_v1_query_proto_rawDescGZIP(), []int{14}
 }
 
+// QueryGetAuctionModuleBalanceResponse is the response type for auction module
+// balance rpc method
 type QueryGetAuctionModuleBalanceResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -7642,147 +7647,149 @@ var file_cerc_auction_v1_query_proto_rawDesc = []byte{
 	0x32, 0x26, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x61, 0x73, 0x65, 0x2e, 0x71,
 	0x75, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x50, 0x61, 0x67,
 	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x52, 0x0a, 0x70, 0x61, 0x67, 0x69, 0x6e, 0x61,
-	0x74, 0x69, 0x6f, 0x6e, 0x22, 0x25, 0x0a, 0x13, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x75, 0x63,
-	0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69,
-	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0x4a, 0x0a, 0x14, 0x51,
-	0x75, 0x65, 0x72, 0x79, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x12, 0x32, 0x0a, 0x07, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74,
-	0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x07,
-	0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x48, 0x0a, 0x0f, 0x51, 0x75, 0x65, 0x72, 0x79,
-	0x42, 0x69, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x61, 0x75,
-	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09,
-	0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x62, 0x69, 0x64,
-	0x64, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x62, 0x69, 0x64, 0x64, 0x65,
-	0x72, 0x22, 0x3a, 0x0a, 0x10, 0x51, 0x75, 0x65, 0x72, 0x79, 0x42, 0x69, 0x64, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x26, 0x0a, 0x03, 0x62, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x0b, 0x32, 0x14, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f,
-	0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x42, 0x69, 0x64, 0x52, 0x03, 0x62, 0x69, 0x64, 0x22, 0x31, 0x0a,
-	0x10, 0x51, 0x75, 0x65, 0x72, 0x79, 0x42, 0x69, 0x64, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64,
-	0x22, 0x3d, 0x0a, 0x11, 0x51, 0x75, 0x65, 0x72, 0x79, 0x42, 0x69, 0x64, 0x73, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x28, 0x0a, 0x04, 0x62, 0x69, 0x64, 0x73, 0x18, 0x01, 0x20,
-	0x03, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69,
-	0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x42, 0x69, 0x64, 0x52, 0x04, 0x62, 0x69, 0x64, 0x73, 0x22,
-	0x45, 0x0a, 0x1c, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73,
-	0x42, 0x79, 0x42, 0x69, 0x64, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
-	0x25, 0x0a, 0x0e, 0x62, 0x69, 0x64, 0x64, 0x65, 0x72, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73,
-	0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x62, 0x69, 0x64, 0x64, 0x65, 0x72, 0x41,
-	0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x22, 0x56, 0x0a, 0x1d, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41,
-	0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x42, 0x79, 0x42, 0x69, 0x64, 0x64, 0x65, 0x72, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x35, 0x0a, 0x08, 0x61, 0x75, 0x63, 0x74, 0x69,
-	0x6f, 0x6e, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x63, 0x65, 0x72, 0x63,
-	0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x75, 0x63, 0x74,
-	0x69, 0x6f, 0x6e, 0x73, 0x52, 0x08, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x22, 0x42,
-	0x0a, 0x1b, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x42,
-	0x79, 0x4f, 0x77, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x23, 0x0a,
-	0x0d, 0x6f, 0x77, 0x6e, 0x65, 0x72, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6f, 0x77, 0x6e, 0x65, 0x72, 0x41, 0x64, 0x64, 0x72, 0x65,
-	0x73, 0x73, 0x22, 0x55, 0x0a, 0x1c, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x75, 0x63, 0x74, 0x69,
-	0x6f, 0x6e, 0x73, 0x42, 0x79, 0x4f, 0x77, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x12, 0x35, 0x0a, 0x08, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74,
-	0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x52,
-	0x08, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x22, 0x25, 0x0a, 0x23, 0x51, 0x75, 0x65,
-	0x72, 0x79, 0x47, 0x65, 0x74, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x6f, 0x64, 0x75,
-	0x6c, 0x65, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x22, 0xab, 0x01, 0x0a, 0x24, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x41, 0x75, 0x63,
-	0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x6f, 0x64, 0x75, 0x6c, 0x65, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63,
-	0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x82, 0x01, 0x0a, 0x07, 0x62, 0x61,
-	0x6c, 0x61, 0x6e, 0x63, 0x65, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x63, 0x6f,
-	0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x61, 0x73, 0x65, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61,
-	0x31, 0x2e, 0x43, 0x6f, 0x69, 0x6e, 0x42, 0x4d, 0xc8, 0xde, 0x1f, 0x00, 0xf2, 0xde, 0x1f, 0x19,
-	0x6a, 0x73, 0x6f, 0x6e, 0x3a, 0x22, 0x63, 0x6f, 0x69, 0x6e, 0x73, 0x22, 0x20, 0x79, 0x61, 0x6d,
-	0x6c, 0x3a, 0x22, 0x63, 0x6f, 0x69, 0x6e, 0x73, 0x22, 0xaa, 0xdf, 0x1f, 0x28, 0x67, 0x69, 0x74,
-	0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2f, 0x63,
-	0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2d, 0x73, 0x64, 0x6b, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e,
-	0x43, 0x6f, 0x69, 0x6e, 0x73, 0x52, 0x07, 0x62, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x32, 0xfa,
-	0x08, 0x0a, 0x05, 0x51, 0x75, 0x65, 0x72, 0x79, 0x12, 0x74, 0x0a, 0x06, 0x50, 0x61, 0x72, 0x61,
-	0x6d, 0x73, 0x12, 0x23, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f,
-	0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x24, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61,
-	0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50,
-	0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1f, 0x82,
-	0xd3, 0xe4, 0x93, 0x02, 0x19, 0x12, 0x17, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x61, 0x75, 0x63,
-	0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x76, 0x31, 0x2f, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x7c,
-	0x0a, 0x08, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x12, 0x25, 0x2e, 0x63, 0x65, 0x72,
-	0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65,
-	0x72, 0x79, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x1a, 0x26, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e,
-	0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e,
-	0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x21, 0x82, 0xd3, 0xe4, 0x93, 0x02,
-	0x1b, 0x12, 0x19, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e,
-	0x2f, 0x76, 0x31, 0x2f, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x12, 0x81, 0x01, 0x0a,
-	0x0a, 0x47, 0x65, 0x74, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x24, 0x2e, 0x63, 0x65,
-	0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75,
-	0x65, 0x72, 0x79, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x1a, 0x25, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e,
-	0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x26, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x20,
-	0x12, 0x1e, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2f,
-	0x76, 0x31, 0x2f, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x7b, 0x69, 0x64, 0x7d,
-	0x12, 0x82, 0x01, 0x0a, 0x06, 0x47, 0x65, 0x74, 0x42, 0x69, 0x64, 0x12, 0x20, 0x2e, 0x63, 0x65,
-	0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75,
-	0x65, 0x72, 0x79, 0x42, 0x69, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e,
-	0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e,
-	0x51, 0x75, 0x65, 0x72, 0x79, 0x42, 0x69, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x22, 0x33, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x2d, 0x12, 0x2b, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f,
-	0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x76, 0x31, 0x2f, 0x62, 0x69, 0x64, 0x73, 0x2f,
-	0x7b, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x7d, 0x2f, 0x7b, 0x62, 0x69,
-	0x64, 0x64, 0x65, 0x72, 0x7d, 0x12, 0x7c, 0x0a, 0x07, 0x47, 0x65, 0x74, 0x42, 0x69, 0x64, 0x73,
-	0x12, 0x21, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e,
-	0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x42, 0x69, 0x64, 0x73, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x1a, 0x22, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69,
-	0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x42, 0x69, 0x64, 0x73, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x2a, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x24, 0x12,
-	0x22, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x76,
-	0x31, 0x2f, 0x62, 0x69, 0x64, 0x73, 0x2f, 0x7b, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5f,
-	0x69, 0x64, 0x7d, 0x12, 0xa6, 0x01, 0x0a, 0x10, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73,
-	0x42, 0x79, 0x42, 0x69, 0x64, 0x64, 0x65, 0x72, 0x12, 0x2d, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e,
-	0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79,
-	0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x42, 0x79, 0x42, 0x69, 0x64, 0x64, 0x65, 0x72,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2e, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61,
-	0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41,
-	0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x42, 0x79, 0x42, 0x69, 0x64, 0x64, 0x65, 0x72, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x33, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x2d, 0x12,
-	0x2b, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x76,
-	0x31, 0x2f, 0x62, 0x79, 0x2d, 0x62, 0x69, 0x64, 0x64, 0x65, 0x72, 0x2f, 0x7b, 0x62, 0x69, 0x64,
-	0x64, 0x65, 0x72, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x7d, 0x12, 0xa1, 0x01, 0x0a,
-	0x0f, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x42, 0x79, 0x4f, 0x77, 0x6e, 0x65, 0x72,
-	0x12, 0x2c, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e,
-	0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73,
-	0x42, 0x79, 0x4f, 0x77, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2d,
+	0x74, 0x69, 0x6f, 0x6e, 0x22, 0x28, 0x0a, 0x16, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74,
+	0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e,
+	0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0x4d,
+	0x0a, 0x17, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f,
+	0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x32, 0x0a, 0x07, 0x61, 0x75, 0x63,
+	0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x63, 0x65, 0x72,
+	0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x75, 0x63,
+	0x74, 0x69, 0x6f, 0x6e, 0x52, 0x07, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x4b, 0x0a,
+	0x12, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x42, 0x69, 0x64, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e,
+	0x49, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x62, 0x69, 0x64, 0x64, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x06, 0x62, 0x69, 0x64, 0x64, 0x65, 0x72, 0x22, 0x3d, 0x0a, 0x13, 0x51, 0x75,
+	0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x42, 0x69, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x12, 0x26, 0x0a, 0x03, 0x62, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x14,
 	0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31,
-	0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x42, 0x79,
-	0x4f, 0x77, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x31, 0x82,
-	0xd3, 0xe4, 0x93, 0x02, 0x2b, 0x12, 0x29, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x61, 0x75, 0x63,
-	0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x76, 0x31, 0x2f, 0x62, 0x79, 0x2d, 0x6f, 0x77, 0x6e, 0x65, 0x72,
-	0x2f, 0x7b, 0x6f, 0x77, 0x6e, 0x65, 0x72, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x7d,
-	0x12, 0xa8, 0x01, 0x0a, 0x17, 0x47, 0x65, 0x74, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4d,
-	0x6f, 0x64, 0x75, 0x6c, 0x65, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x12, 0x34, 0x2e, 0x63,
-	0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51,
+	0x2e, 0x42, 0x69, 0x64, 0x52, 0x03, 0x62, 0x69, 0x64, 0x22, 0x34, 0x0a, 0x13, 0x51, 0x75, 0x65,
+	0x72, 0x79, 0x47, 0x65, 0x74, 0x42, 0x69, 0x64, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x12, 0x1d, 0x0a, 0x0a, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x22,
+	0x40, 0x0a, 0x14, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x42, 0x69, 0x64, 0x73, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x28, 0x0a, 0x04, 0x62, 0x69, 0x64, 0x73, 0x18,
+	0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63,
+	0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x42, 0x69, 0x64, 0x52, 0x04, 0x62, 0x69, 0x64,
+	0x73, 0x22, 0x45, 0x0a, 0x1c, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f,
+	0x6e, 0x73, 0x42, 0x79, 0x42, 0x69, 0x64, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x12, 0x25, 0x0a, 0x0e, 0x62, 0x69, 0x64, 0x64, 0x65, 0x72, 0x5f, 0x61, 0x64, 0x64, 0x72,
+	0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x62, 0x69, 0x64, 0x64, 0x65,
+	0x72, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x22, 0x56, 0x0a, 0x1d, 0x51, 0x75, 0x65, 0x72,
+	0x79, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x42, 0x79, 0x42, 0x69, 0x64, 0x64, 0x65,
+	0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x35, 0x0a, 0x08, 0x61, 0x75, 0x63,
+	0x74, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x63, 0x65,
+	0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x75,
+	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x52, 0x08, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73,
+	0x22, 0x42, 0x0a, 0x1b, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e,
+	0x73, 0x42, 0x79, 0x4f, 0x77, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
+	0x23, 0x0a, 0x0d, 0x6f, 0x77, 0x6e, 0x65, 0x72, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6f, 0x77, 0x6e, 0x65, 0x72, 0x41, 0x64, 0x64,
+	0x72, 0x65, 0x73, 0x73, 0x22, 0x55, 0x0a, 0x1c, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x75, 0x63,
+	0x74, 0x69, 0x6f, 0x6e, 0x73, 0x42, 0x79, 0x4f, 0x77, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x35, 0x0a, 0x08, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75,
+	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e,
+	0x73, 0x52, 0x08, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x22, 0x25, 0x0a, 0x23, 0x51,
 	0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x6f,
 	0x64, 0x75, 0x6c, 0x65, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x1a, 0x35, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f,
-	0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x41, 0x75, 0x63,
+	0x73, 0x74, 0x22, 0xab, 0x01, 0x0a, 0x24, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x41,
+	0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x6f, 0x64, 0x75, 0x6c, 0x65, 0x42, 0x61, 0x6c, 0x61,
+	0x6e, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x82, 0x01, 0x0a, 0x07,
+	0x62, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x19, 0x2e,
+	0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x61, 0x73, 0x65, 0x2e, 0x76, 0x31, 0x62, 0x65,
+	0x74, 0x61, 0x31, 0x2e, 0x43, 0x6f, 0x69, 0x6e, 0x42, 0x4d, 0xc8, 0xde, 0x1f, 0x00, 0xf2, 0xde,
+	0x1f, 0x19, 0x6a, 0x73, 0x6f, 0x6e, 0x3a, 0x22, 0x63, 0x6f, 0x69, 0x6e, 0x73, 0x22, 0x20, 0x79,
+	0x61, 0x6d, 0x6c, 0x3a, 0x22, 0x63, 0x6f, 0x69, 0x6e, 0x73, 0x22, 0xaa, 0xdf, 0x1f, 0x28, 0x67,
+	0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73,
+	0x2f, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2d, 0x73, 0x64, 0x6b, 0x2f, 0x74, 0x79, 0x70, 0x65,
+	0x73, 0x2e, 0x43, 0x6f, 0x69, 0x6e, 0x73, 0x52, 0x07, 0x62, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65,
+	0x32, 0x8d, 0x09, 0x0a, 0x05, 0x51, 0x75, 0x65, 0x72, 0x79, 0x12, 0x74, 0x0a, 0x06, 0x50, 0x61,
+	0x72, 0x61, 0x6d, 0x73, 0x12, 0x23, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74,
+	0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x61, 0x72, 0x61,
+	0x6d, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x24, 0x2e, 0x63, 0x65, 0x72, 0x63,
+	0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72,
+	0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x1f, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x19, 0x12, 0x17, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x61,
+	0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x76, 0x31, 0x2f, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73,
+	0x12, 0x7c, 0x0a, 0x08, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x12, 0x25, 0x2e, 0x63,
+	0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51,
+	0x75, 0x65, 0x72, 0x79, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x26, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69,
+	0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x75, 0x63, 0x74, 0x69,
+	0x6f, 0x6e, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x21, 0x82, 0xd3, 0xe4,
+	0x93, 0x02, 0x1b, 0x12, 0x19, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x61, 0x75, 0x63, 0x74, 0x69,
+	0x6f, 0x6e, 0x2f, 0x76, 0x31, 0x2f, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x12, 0x87,
+	0x01, 0x0a, 0x0a, 0x47, 0x65, 0x74, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x27, 0x2e,
+	0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e,
+	0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x28, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75,
+	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65,
+	0x74, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x22, 0x26, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x20, 0x12, 0x1e, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f,
+	0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x76, 0x31, 0x2f, 0x61, 0x75, 0x63, 0x74, 0x69,
+	0x6f, 0x6e, 0x73, 0x2f, 0x7b, 0x69, 0x64, 0x7d, 0x12, 0x88, 0x01, 0x0a, 0x06, 0x47, 0x65, 0x74,
+	0x42, 0x69, 0x64, 0x12, 0x23, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69,
+	0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x42, 0x69,
+	0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x24, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e,
+	0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79,
+	0x47, 0x65, 0x74, 0x42, 0x69, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x33,
+	0x82, 0xd3, 0xe4, 0x93, 0x02, 0x2d, 0x12, 0x2b, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x61, 0x75,
+	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x76, 0x31, 0x2f, 0x62, 0x69, 0x64, 0x73, 0x2f, 0x7b, 0x61,
+	0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x7d, 0x2f, 0x7b, 0x62, 0x69, 0x64, 0x64,
+	0x65, 0x72, 0x7d, 0x12, 0x82, 0x01, 0x0a, 0x07, 0x47, 0x65, 0x74, 0x42, 0x69, 0x64, 0x73, 0x12,
+	0x24, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76,
+	0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x42, 0x69, 0x64, 0x73, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x25, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63,
+	0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74,
+	0x42, 0x69, 0x64, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x2a, 0x82, 0xd3,
+	0xe4, 0x93, 0x02, 0x24, 0x12, 0x22, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x61, 0x75, 0x63, 0x74,
+	0x69, 0x6f, 0x6e, 0x2f, 0x76, 0x31, 0x2f, 0x62, 0x69, 0x64, 0x73, 0x2f, 0x7b, 0x61, 0x75, 0x63,
+	0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x7d, 0x12, 0xa6, 0x01, 0x0a, 0x10, 0x41, 0x75, 0x63,
+	0x74, 0x69, 0x6f, 0x6e, 0x73, 0x42, 0x79, 0x42, 0x69, 0x64, 0x64, 0x65, 0x72, 0x12, 0x2d, 0x2e,
+	0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e,
+	0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x42, 0x79, 0x42,
+	0x69, 0x64, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2e, 0x2e, 0x63,
+	0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51,
+	0x75, 0x65, 0x72, 0x79, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x42, 0x79, 0x42, 0x69,
+	0x64, 0x64, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x33, 0x82, 0xd3,
+	0xe4, 0x93, 0x02, 0x2d, 0x12, 0x2b, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x61, 0x75, 0x63, 0x74,
+	0x69, 0x6f, 0x6e, 0x2f, 0x76, 0x31, 0x2f, 0x62, 0x79, 0x2d, 0x62, 0x69, 0x64, 0x64, 0x65, 0x72,
+	0x2f, 0x7b, 0x62, 0x69, 0x64, 0x64, 0x65, 0x72, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73,
+	0x7d, 0x12, 0xa1, 0x01, 0x0a, 0x0f, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x42, 0x79,
+	0x4f, 0x77, 0x6e, 0x65, 0x72, 0x12, 0x2c, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63,
+	0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x75, 0x63,
+	0x74, 0x69, 0x6f, 0x6e, 0x73, 0x42, 0x79, 0x4f, 0x77, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x2d, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69,
+	0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x41, 0x75, 0x63, 0x74, 0x69,
+	0x6f, 0x6e, 0x73, 0x42, 0x79, 0x4f, 0x77, 0x6e, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x22, 0x31, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x2b, 0x12, 0x29, 0x2f, 0x63, 0x65, 0x72,
+	0x63, 0x2f, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x76, 0x31, 0x2f, 0x62, 0x79, 0x2d,
+	0x6f, 0x77, 0x6e, 0x65, 0x72, 0x2f, 0x7b, 0x6f, 0x77, 0x6e, 0x65, 0x72, 0x5f, 0x61, 0x64, 0x64,
+	0x72, 0x65, 0x73, 0x73, 0x7d, 0x12, 0xa8, 0x01, 0x0a, 0x17, 0x47, 0x65, 0x74, 0x41, 0x75, 0x63,
 	0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x6f, 0x64, 0x75, 0x6c, 0x65, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63,
-	0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x20, 0x82, 0xd3, 0xe4, 0x93, 0x02,
-	0x1a, 0x12, 0x18, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e,
-	0x2f, 0x76, 0x31, 0x2f, 0x62, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x42, 0xbb, 0x01, 0x0a, 0x13,
-	0x63, 0x6f, 0x6d, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e,
-	0x2e, 0x76, 0x31, 0x42, 0x0a, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50,
-	0x01, 0x5a, 0x3a, 0x67, 0x69, 0x74, 0x2e, 0x76, 0x64, 0x62, 0x2e, 0x74, 0x6f, 0x2f, 0x63, 0x65,
-	0x72, 0x63, 0x2d, 0x69, 0x6f, 0x2f, 0x6c, 0x61, 0x63, 0x6f, 0x6e, 0x69, 0x63, 0x32, 0x64, 0x2f,
-	0x61, 0x70, 0x69, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e,
-	0x2f, 0x76, 0x31, 0x3b, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x76, 0x31, 0xa2, 0x02, 0x03,
-	0x43, 0x41, 0x58, 0xaa, 0x02, 0x0f, 0x43, 0x65, 0x72, 0x63, 0x2e, 0x41, 0x75, 0x63, 0x74, 0x69,
-	0x6f, 0x6e, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x0f, 0x43, 0x65, 0x72, 0x63, 0x5c, 0x41, 0x75, 0x63,
-	0x74, 0x69, 0x6f, 0x6e, 0x5c, 0x56, 0x31, 0xe2, 0x02, 0x1b, 0x43, 0x65, 0x72, 0x63, 0x5c, 0x41,
-	0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74,
-	0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x11, 0x43, 0x65, 0x72, 0x63, 0x3a, 0x3a, 0x41, 0x75,
-	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x33,
+	0x65, 0x12, 0x34, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e,
+	0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47, 0x65, 0x74, 0x41, 0x75, 0x63, 0x74,
+	0x69, 0x6f, 0x6e, 0x4d, 0x6f, 0x64, 0x75, 0x6c, 0x65, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x35, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61,
+	0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x47,
+	0x65, 0x74, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x6f, 0x64, 0x75, 0x6c, 0x65, 0x42,
+	0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x20,
+	0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1a, 0x12, 0x18, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x61, 0x75,
+	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x76, 0x31, 0x2f, 0x62, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65,
+	0x42, 0xbb, 0x01, 0x0a, 0x13, 0x63, 0x6f, 0x6d, 0x2e, 0x63, 0x65, 0x72, 0x63, 0x2e, 0x61, 0x75,
+	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x42, 0x0a, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50,
+	0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x3a, 0x67, 0x69, 0x74, 0x2e, 0x76, 0x64, 0x62, 0x2e,
+	0x74, 0x6f, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2d, 0x69, 0x6f, 0x2f, 0x6c, 0x61, 0x63, 0x6f, 0x6e,
+	0x69, 0x63, 0x32, 0x64, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x63, 0x65, 0x72, 0x63, 0x2f, 0x61, 0x75,
+	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x76, 0x31, 0x3b, 0x61, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e,
+	0x76, 0x31, 0xa2, 0x02, 0x03, 0x43, 0x41, 0x58, 0xaa, 0x02, 0x0f, 0x43, 0x65, 0x72, 0x63, 0x2e,
+	0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x0f, 0x43, 0x65, 0x72,
+	0x63, 0x5c, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5c, 0x56, 0x31, 0xe2, 0x02, 0x1b, 0x43,
+	0x65, 0x72, 0x63, 0x5c, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5c, 0x56, 0x31, 0x5c, 0x47,
+	0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x11, 0x43, 0x65, 0x72,
+	0x63, 0x3a, 0x3a, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -7803,12 +7810,12 @@ var file_cerc_auction_v1_query_proto_goTypes = []interface{}{
 	(*QueryParamsResponse)(nil),                  // 1: cerc.auction.v1.QueryParamsResponse
 	(*QueryAuctionsRequest)(nil),                 // 2: cerc.auction.v1.QueryAuctionsRequest
 	(*QueryAuctionsResponse)(nil),                // 3: cerc.auction.v1.QueryAuctionsResponse
-	(*QueryAuctionRequest)(nil),                  // 4: cerc.auction.v1.QueryAuctionRequest
-	(*QueryAuctionResponse)(nil),                 // 5: cerc.auction.v1.QueryAuctionResponse
-	(*QueryBidRequest)(nil),                      // 6: cerc.auction.v1.QueryBidRequest
-	(*QueryBidResponse)(nil),                     // 7: cerc.auction.v1.QueryBidResponse
-	(*QueryBidsRequest)(nil),                     // 8: cerc.auction.v1.QueryBidsRequest
-	(*QueryBidsResponse)(nil),                    // 9: cerc.auction.v1.QueryBidsResponse
+	(*QueryGetAuctionRequest)(nil),               // 4: cerc.auction.v1.QueryGetAuctionRequest
+	(*QueryGetAuctionResponse)(nil),              // 5: cerc.auction.v1.QueryGetAuctionResponse
+	(*QueryGetBidRequest)(nil),                   // 6: cerc.auction.v1.QueryGetBidRequest
+	(*QueryGetBidResponse)(nil),                  // 7: cerc.auction.v1.QueryGetBidResponse
+	(*QueryGetBidsRequest)(nil),                  // 8: cerc.auction.v1.QueryGetBidsRequest
+	(*QueryGetBidsResponse)(nil),                 // 9: cerc.auction.v1.QueryGetBidsResponse
 	(*QueryAuctionsByBidderRequest)(nil),         // 10: cerc.auction.v1.QueryAuctionsByBidderRequest
 	(*QueryAuctionsByBidderResponse)(nil),        // 11: cerc.auction.v1.QueryAuctionsByBidderResponse
 	(*QueryAuctionsByOwnerRequest)(nil),          // 12: cerc.auction.v1.QueryAuctionsByOwnerRequest
@@ -7827,25 +7834,25 @@ var file_cerc_auction_v1_query_proto_depIdxs = []int32{
 	17, // 1: cerc.auction.v1.QueryAuctionsRequest.pagination:type_name -> cosmos.base.query.v1beta1.PageRequest
 	18, // 2: cerc.auction.v1.QueryAuctionsResponse.auctions:type_name -> cerc.auction.v1.Auctions
 	17, // 3: cerc.auction.v1.QueryAuctionsResponse.pagination:type_name -> cosmos.base.query.v1beta1.PageRequest
-	19, // 4: cerc.auction.v1.QueryAuctionResponse.auction:type_name -> cerc.auction.v1.Auction
-	20, // 5: cerc.auction.v1.QueryBidResponse.bid:type_name -> cerc.auction.v1.Bid
-	20, // 6: cerc.auction.v1.QueryBidsResponse.bids:type_name -> cerc.auction.v1.Bid
+	19, // 4: cerc.auction.v1.QueryGetAuctionResponse.auction:type_name -> cerc.auction.v1.Auction
+	20, // 5: cerc.auction.v1.QueryGetBidResponse.bid:type_name -> cerc.auction.v1.Bid
+	20, // 6: cerc.auction.v1.QueryGetBidsResponse.bids:type_name -> cerc.auction.v1.Bid
 	18, // 7: cerc.auction.v1.QueryAuctionsByBidderResponse.auctions:type_name -> cerc.auction.v1.Auctions
 	18, // 8: cerc.auction.v1.QueryAuctionsByOwnerResponse.auctions:type_name -> cerc.auction.v1.Auctions
 	21, // 9: cerc.auction.v1.QueryGetAuctionModuleBalanceResponse.balance:type_name -> cosmos.base.v1beta1.Coin
 	0,  // 10: cerc.auction.v1.Query.Params:input_type -> cerc.auction.v1.QueryParamsRequest
 	2,  // 11: cerc.auction.v1.Query.Auctions:input_type -> cerc.auction.v1.QueryAuctionsRequest
-	4,  // 12: cerc.auction.v1.Query.GetAuction:input_type -> cerc.auction.v1.QueryAuctionRequest
-	6,  // 13: cerc.auction.v1.Query.GetBid:input_type -> cerc.auction.v1.QueryBidRequest
-	8,  // 14: cerc.auction.v1.Query.GetBids:input_type -> cerc.auction.v1.QueryBidsRequest
+	4,  // 12: cerc.auction.v1.Query.GetAuction:input_type -> cerc.auction.v1.QueryGetAuctionRequest
+	6,  // 13: cerc.auction.v1.Query.GetBid:input_type -> cerc.auction.v1.QueryGetBidRequest
+	8,  // 14: cerc.auction.v1.Query.GetBids:input_type -> cerc.auction.v1.QueryGetBidsRequest
 	10, // 15: cerc.auction.v1.Query.AuctionsByBidder:input_type -> cerc.auction.v1.QueryAuctionsByBidderRequest
 	12, // 16: cerc.auction.v1.Query.AuctionsByOwner:input_type -> cerc.auction.v1.QueryAuctionsByOwnerRequest
 	14, // 17: cerc.auction.v1.Query.GetAuctionModuleBalance:input_type -> cerc.auction.v1.QueryGetAuctionModuleBalanceRequest
 	1,  // 18: cerc.auction.v1.Query.Params:output_type -> cerc.auction.v1.QueryParamsResponse
 	3,  // 19: cerc.auction.v1.Query.Auctions:output_type -> cerc.auction.v1.QueryAuctionsResponse
-	5,  // 20: cerc.auction.v1.Query.GetAuction:output_type -> cerc.auction.v1.QueryAuctionResponse
-	7,  // 21: cerc.auction.v1.Query.GetBid:output_type -> cerc.auction.v1.QueryBidResponse
-	9,  // 22: cerc.auction.v1.Query.GetBids:output_type -> cerc.auction.v1.QueryBidsResponse
+	5,  // 20: cerc.auction.v1.Query.GetAuction:output_type -> cerc.auction.v1.QueryGetAuctionResponse
+	7,  // 21: cerc.auction.v1.Query.GetBid:output_type -> cerc.auction.v1.QueryGetBidResponse
+	9,  // 22: cerc.auction.v1.Query.GetBids:output_type -> cerc.auction.v1.QueryGetBidsResponse
 	11, // 23: cerc.auction.v1.Query.AuctionsByBidder:output_type -> cerc.auction.v1.QueryAuctionsByBidderResponse
 	13, // 24: cerc.auction.v1.Query.AuctionsByOwner:output_type -> cerc.auction.v1.QueryAuctionsByOwnerResponse
 	15, // 25: cerc.auction.v1.Query.GetAuctionModuleBalance:output_type -> cerc.auction.v1.QueryGetAuctionModuleBalanceResponse
@@ -7912,7 +7919,7 @@ func file_cerc_auction_v1_query_proto_init() {
 			}
 		}
 		file_cerc_auction_v1_query_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QueryAuctionRequest); i {
+			switch v := v.(*QueryGetAuctionRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -7924,7 +7931,7 @@ func file_cerc_auction_v1_query_proto_init() {
 			}
 		}
 		file_cerc_auction_v1_query_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QueryAuctionResponse); i {
+			switch v := v.(*QueryGetAuctionResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -7936,7 +7943,7 @@ func file_cerc_auction_v1_query_proto_init() {
 			}
 		}
 		file_cerc_auction_v1_query_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QueryBidRequest); i {
+			switch v := v.(*QueryGetBidRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -7948,7 +7955,7 @@ func file_cerc_auction_v1_query_proto_init() {
 			}
 		}
 		file_cerc_auction_v1_query_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QueryBidResponse); i {
+			switch v := v.(*QueryGetBidResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -7960,7 +7967,7 @@ func file_cerc_auction_v1_query_proto_init() {
 			}
 		}
 		file_cerc_auction_v1_query_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QueryBidsRequest); i {
+			switch v := v.(*QueryGetBidsRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -7972,7 +7979,7 @@ func file_cerc_auction_v1_query_proto_init() {
 			}
 		}
 		file_cerc_auction_v1_query_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QueryBidsResponse); i {
+			switch v := v.(*QueryGetBidsResponse); i {
 			case 0:
 				return &v.state
 			case 1:
