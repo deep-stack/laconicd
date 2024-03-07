@@ -24,25 +24,37 @@ ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=laconic \
 
 BUILD_FLAGS := -ldflags '$(ldflags)'
 
+BUILDDIR ?= $(CURDIR)/build
+
 ###########
 # Install #
 ###########
 
+go.sum: go.mod
+	echo "Ensure dependencies have not been modified ..." >&2
+	go mod verify
+	go mod tidy
+
+BUILD_TARGETS := build install
+
+build: BUILD_ARGS=-o $(BUILDDIR)/
+build-linux:
+	GOOS=linux GOARCH=amd64 LEDGER_ENABLED=false $(MAKE) build
+
+$(BUILD_TARGETS): go.sum $(BUILDDIR)/
+	@echo "--> installing laconic2d"
+	go $@ $(BUILD_FLAGS) $(BUILD_ARGS) ./...
+
+$(BUILDDIR)/:
+	mkdir -p $(BUILDDIR)/
+
 all: install
 
-install:
-	@echo "--> ensure dependencies have not been modified"
-	@go mod verify
-	@echo "--> installing laconic2d"
-	@go install $(BUILD_FLAGS) -mod=readonly ./cmd/laconic2d
-
-init:
-	./scripts/init.sh
+.PHONY: build build-linux install
 
 ##################
 ###  Protobuf  ###
 ##################
-
 
 protoVer=0.14.0
 protoImageName=ghcr.io/cosmos/proto-builder:$(protoVer)

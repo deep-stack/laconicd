@@ -1,16 +1,20 @@
 # laconic2d
 
-Install and run `laconic2d`:
+Install `laconic2d`:
 
   ```bash
   # install the laconic2d binary
   make install
+  ```
 
-  # initialize the chain
-  make init
+Run with a single node fixture:
 
+  ```bash
   # start the chain
-  laconic2d start --gql-playground --gql-server
+  ./scripts/init.sh
+
+  # start the chain with data dir reset
+  ./scripts/init.sh clean
   ```
 
 Run tests:
