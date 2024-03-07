@@ -13,9 +13,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/crypto/hd"
 	"github.com/cosmos/cosmos-sdk/crypto/keyring"
 	clitestutil "github.com/cosmos/cosmos-sdk/testutil/cli"
-	"github.com/cosmos/cosmos-sdk/testutil/network"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
+	"git.vdb.to/cerc-io/laconic2d/testutil/network"
 	bondtypes "git.vdb.to/cerc-io/laconic2d/x/bond"
 	bondcli "git.vdb.to/cerc-io/laconic2d/x/bond/client/cli"
 	registrytypes "git.vdb.to/cerc-io/laconic2d/x/registry"

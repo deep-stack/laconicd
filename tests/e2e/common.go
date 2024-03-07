@@ -11,7 +11,6 @@ import (
 	bam "github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	servertypes "github.com/cosmos/cosmos-sdk/server/types"
-	"github.com/cosmos/cosmos-sdk/testutil/network"
 	simtestutil "github.com/cosmos/cosmos-sdk/testutil/sims"
 	"github.com/cosmos/cosmos-sdk/types/module/testutil"
 	"github.com/cosmos/cosmos-sdk/x/auth"
@@ -23,6 +22,7 @@ import (
 	registrymodule "git.vdb.to/cerc-io/laconic2d/x/registry/module"
 
 	_ "git.vdb.to/cerc-io/laconic2d/app/params" // import for side-effects (see init)
+	"git.vdb.to/cerc-io/laconic2d/testutil/network"
 )
 
 // NewTestNetworkFixture returns a new LaconicApp AppConstructor for network simulation tests

@@ -3,10 +3,10 @@ package registry
 import (
 	"testing"
 
-	"github.com/cosmos/cosmos-sdk/testutil/network"
 	"github.com/stretchr/testify/suite"
 
 	"git.vdb.to/cerc-io/laconic2d/tests/e2e"
+	"git.vdb.to/cerc-io/laconic2d/testutil/network"
 )
 
 func TestRegistryE2ETestSuite(t *testing.T) {
