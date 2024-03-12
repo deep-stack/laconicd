@@ -676,8 +676,6 @@ func (n *Network) LatestHeight() (int64, error) {
 
 	for {
 		select {
-		case <-timeout.C:
-			return latestHeight, errors.New("timeout exceeded waiting for block")
 		case <-ticker.C:
 			done := make(chan struct{})
 			go func() {
@@ -695,25 +693,16 @@ func (n *Network) LatestHeight() (int64, error) {
 					return latestHeight, nil
 				}
 			}
+		default: //nolint: all
 		}
 	}
 }
 
 // WaitForHeight performs a blocking check where it waits for a block to be
-// committed after a given block. If that height is not reached within a timeout,
-// an error is returned. Regardless, the latest height queried is returned.
+// committed after a given block.
 func (n *Network) WaitForHeight(h int64) (int64, error) {
-	return n.WaitForHeightWithTimeout(h, 10*time.Second)
-}
-
-// WaitForHeightWithTimeout is the same as WaitForHeight except the caller can
-// provide a custom timeout.
-func (n *Network) WaitForHeightWithTimeout(h int64, t time.Duration) (int64, error) {
 	ticker := time.NewTicker(time.Second)
 	defer ticker.Stop()
-
-	timeout := time.NewTimer(t)
-	defer timeout.Stop()
 
 	if len(n.Validators) == 0 {
 		return 0, errors.New("no validators available")
@@ -725,8 +714,6 @@ func (n *Network) WaitForHeightWithTimeout(h int64, t time.Duration) (int64, err
 
 	for {
 		select {
-		case <-timeout.C:
-			return latestHeight, errors.New("timeout exceeded waiting for block")
 		case <-ticker.C:
 
 			res, err := queryClient.GetLatestBlock(context.Background(), &cmtservice.GetLatestBlockRequest{})
@@ -736,6 +723,7 @@ func (n *Network) WaitForHeightWithTimeout(h int64, t time.Duration) (int64, err
 					return latestHeight, nil
 				}
 			}
+		default: //nolint: all
 		}
 	}
 }

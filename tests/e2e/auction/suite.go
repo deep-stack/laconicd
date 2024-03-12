@@ -110,6 +110,9 @@ func (ets *E2ETestSuite) createAuctionAndBid(createAuction, createBid bool) stri
 		resp, err := ets.executeTx(cli.GetCmdCreateAuction(), auctionArgs, ownerAccount)
 		sr.NoError(err)
 		sr.Zero(resp.Code)
+		err = ets.network.WaitForNextBlock()
+		sr.NoError(err)
+
 		out, err := clitestutil.ExecTestCLICmd(val.ClientCtx, cli.GetCmdList(), queryJSONFlag)
 		sr.NoError(err)
 		var queryResponse types.QueryAuctionsResponse

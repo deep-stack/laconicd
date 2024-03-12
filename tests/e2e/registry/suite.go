@@ -149,7 +149,7 @@ func (ets *E2ETestSuite) reserveName(authorityName string) {
 	cmd := cli.GetCmdReserveAuthority()
 	args := []string{
 		authorityName,
-		fmt.Sprintf("--owner=%s", ets.accountAddress),
+		ets.accountAddress,
 		fmt.Sprintf("--%s=%s", flags.FlagFrom, ets.accountName),
 		fmt.Sprintf("--%s=true", flags.FlagSkipConfirmation),
 		fmt.Sprintf("--%s=json", flags.FlagOutput),
@@ -177,7 +177,7 @@ func (ets *E2ETestSuite) createNameRecord(authorityName string) {
 	cmd := cli.GetCmdReserveAuthority()
 	args := []string{
 		authorityName,
-		fmt.Sprintf("--owner=%s", ets.accountAddress),
+		ets.accountAddress,
 		fmt.Sprintf("--%s=%s", flags.FlagFrom, ets.accountName),
 		fmt.Sprintf("--%s=true", flags.FlagSkipConfirmation),
 		fmt.Sprintf("--%s=json", flags.FlagOutput),

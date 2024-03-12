@@ -88,27 +88,16 @@ func GetPayloadFromFile(filePath string) (*registrytypes.ReadablePayload, error)
 // GetCmdReserveAuthority is the CLI command for reserving a name.
 func GetCmdReserveAuthority() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "reserve-name [name]",
-		Short: "Reserve name.",
-		Long: strings.TrimSpace(
-			fmt.Sprintf(`Reserver name with owner address .
-Example:
-$ %s tx %s reserve-name [name] --owner [ownerAddress]
-`,
-				version.AppName, registrytypes.ModuleName,
-			),
-		),
-		Args: cobra.ExactArgs(1),
+		Use:   "reserve-authority [name]",
+		Short: "Reserve authority name",
+		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
 				return err
 			}
-			owner, err := cmd.Flags().GetString("owner")
-			if err != nil {
-				return err
-			}
-			ownerAddress, err := sdk.AccAddressFromBech32(owner)
+
+			ownerAddress, err := sdk.AccAddressFromBech32(args[1])
 			if err != nil {
 				return err
 			}
