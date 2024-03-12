@@ -87,4 +87,5 @@ laconic2d start \
   --log_level $LOGLEVEL \
   --minimum-gas-prices=0.0001photon \
   --api.enable \
+  --rpc.laddr="tcp://0.0.0.0:26657" \
   --gql-server --gql-playground
