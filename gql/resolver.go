@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/base64"
 	"strconv"
+	"strings"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	types "github.com/cosmos/cosmos-sdk/types"
@@ -41,6 +42,11 @@ func (q queryResolver) LookupAuthorities(ctx context.Context, names []string) ([
 	for _, name := range names {
 		res, err := nsQueryClient.Whois(context.Background(), &registrytypes.QueryWhoisRequest{Name: name})
 		if err != nil {
+			if strings.Contains(err.Error(), "Name authority not found") {
+				gqlResponse = append(gqlResponse, nil)
+				continue
+			}
+
 			return nil, err
 		}
 
@@ -263,6 +269,10 @@ func (q *queryResolver) GetBond(ctx context.Context, id string) (*Bond, error) {
 	bondQueryClient := bondtypes.NewQueryClient(q.ctx)
 	bondResp, err := bondQueryClient.GetBondById(context.Background(), &bondtypes.QueryGetBondByIdRequest{Id: id})
 	if err != nil {
+		if strings.Contains(err.Error(), "Bond not found") {
+			return nil, nil
+		}
+
 		return nil, err
 	}
 
