@@ -13,6 +13,7 @@ import (
 	clitestutil "github.com/cosmos/cosmos-sdk/testutil/cli"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
+	laconictestcli "git.vdb.to/cerc-io/laconic2d/testutil/cli"
 	"git.vdb.to/cerc-io/laconic2d/testutil/network"
 	bondtypes "git.vdb.to/cerc-io/laconic2d/x/bond"
 	"git.vdb.to/cerc-io/laconic2d/x/bond/client/cli"
@@ -62,7 +63,7 @@ func (ets *E2ETestSuite) createAccountWithBalance(accountName string, accountAdd
 	sr.NoError(err)
 
 	newAddr, _ := info.GetAddress()
-	_, err = clitestutil.MsgSendExec(
+	out, err := clitestutil.MsgSendExec(
 		val.ClientCtx,
 		val.Address,
 		newAddr,
@@ -75,11 +76,12 @@ func (ets *E2ETestSuite) createAccountWithBalance(accountName string, accountAdd
 		fmt.Sprintf("--%s=%s", flags.FlagFees, sdk.NewCoins(sdk.NewCoin(ets.cfg.BondDenom, math.NewInt(10))).String()),
 	)
 	sr.NoError(err)
-	*accountAddress = newAddr.String()
 
-	// wait for tx to take effect
-	err = ets.network.WaitForNextBlock()
-	sr.NoError(err)
+	var response sdk.TxResponse
+	sr.NoError(val.ClientCtx.Codec.UnmarshalJSON(out.Bytes(), &response), out.String())
+	sr.NoError(laconictestcli.CheckTxCode(ets.network, val.ClientCtx, response.TxHash, 0))
+
+	*accountAddress = newAddr.String()
 }
 
 func (ets *E2ETestSuite) createBond() string {
@@ -96,14 +98,12 @@ func (ets *E2ETestSuite) createBond() string {
 	}
 	out, err := clitestutil.ExecTestCLICmd(val.ClientCtx, createBondCmd, args)
 	sr.NoError(err)
+
 	var d sdk.TxResponse
 	err = val.ClientCtx.Codec.UnmarshalJSON(out.Bytes(), &d)
 	sr.NoError(err)
 	sr.Zero(d.Code)
-
-	// wait for tx to take effect
-	err = ets.network.WaitForNextBlock()
-	sr.NoError(err)
+	sr.NoError(laconictestcli.CheckTxCode(ets.network, val.ClientCtx, d.TxHash, 0))
 
 	// getting the bonds list and returning the bond-id
 	clientCtx := val.ClientCtx

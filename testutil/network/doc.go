@@ -68,5 +68,7 @@ package network
 /*
 NOTE:
 	Copied over from https://github.com/cosmos/cosmos-sdk/tree/v0.50.3/testutil/network
-	Patch: Skipped network.LatestHeight() call at the end of New()
+	Patch:
+		- Skipped network.LatestHeight() call at the end of New()
+		- Removed block timeouts
 */

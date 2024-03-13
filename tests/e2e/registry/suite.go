@@ -15,6 +15,7 @@ import (
 	clitestutil "github.com/cosmos/cosmos-sdk/testutil/cli"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
+	laconictestcli "git.vdb.to/cerc-io/laconic2d/testutil/cli"
 	"git.vdb.to/cerc-io/laconic2d/testutil/network"
 	bondtypes "git.vdb.to/cerc-io/laconic2d/x/bond"
 	bondcli "git.vdb.to/cerc-io/laconic2d/x/bond/client/cli"
@@ -81,7 +82,7 @@ func (ets *E2ETestSuite) createAccountWithBalance(accountName string, accountAdd
 	sr.NoError(err)
 
 	newAddr, _ := info.GetAddress()
-	_, err = clitestutil.MsgSendExec(
+	out, err := clitestutil.MsgSendExec(
 		val.ClientCtx,
 		val.Address,
 		newAddr,
@@ -94,11 +95,12 @@ func (ets *E2ETestSuite) createAccountWithBalance(accountName string, accountAdd
 		fmt.Sprintf("--%s=%s", flags.FlagFees, sdk.NewCoins(sdk.NewCoin(ets.cfg.BondDenom, math.NewInt(10))).String()),
 	)
 	sr.NoError(err)
-	*accountAddress = newAddr.String()
 
-	// wait for tx to take effect
-	err = ets.network.WaitForNextBlock()
-	sr.NoError(err)
+	var response sdk.TxResponse
+	sr.NoError(val.ClientCtx.Codec.UnmarshalJSON(out.Bytes(), &response), out.String())
+	sr.NoError(laconictestcli.CheckTxCode(ets.network, val.ClientCtx, response.TxHash, 0))
+
+	*accountAddress = newAddr.String()
 }
 
 func (ets *E2ETestSuite) createBond() string {
@@ -118,11 +120,7 @@ func (ets *E2ETestSuite) createBond() string {
 	var d sdk.TxResponse
 	err = val.ClientCtx.Codec.UnmarshalJSON(out.Bytes(), &d)
 	sr.NoError(err)
-	sr.Zero(d.Code)
-
-	// wait for tx to take effect
-	err = ets.network.WaitForNextBlock()
-	sr.NoError(err)
+	sr.NoError(laconictestcli.CheckTxCode(ets.network, val.ClientCtx, d.TxHash, 0))
 
 	// getting the bonds list and returning the bond-id
 	clientCtx := val.ClientCtx
@@ -162,10 +160,7 @@ func (ets *E2ETestSuite) reserveName(authorityName string) {
 	var d sdk.TxResponse
 	err = val.ClientCtx.Codec.UnmarshalJSON(out.Bytes(), &d)
 	sr.NoError(err)
-	sr.Zero(d.Code)
-
-	err = ets.network.WaitForNextBlock()
-	sr.NoError(err)
+	sr.NoError(laconictestcli.CheckTxCode(ets.network, val.ClientCtx, d.TxHash, 0))
 }
 
 func (ets *E2ETestSuite) createNameRecord(authorityName string) {
@@ -189,10 +184,7 @@ func (ets *E2ETestSuite) createNameRecord(authorityName string) {
 	var d sdk.TxResponse
 	err = val.ClientCtx.Codec.UnmarshalJSON(out.Bytes(), &d)
 	sr.NoError(err)
-	sr.Zero(d.Code)
-
-	err = ets.network.WaitForNextBlock()
-	sr.NoError(err)
+	sr.NoError(laconictestcli.CheckTxCode(ets.network, val.ClientCtx, d.TxHash, 0))
 
 	// Get the bond-id
 	bondId := ets.bondId
@@ -212,10 +204,7 @@ func (ets *E2ETestSuite) createNameRecord(authorityName string) {
 	sr.NoError(err)
 	err = val.ClientCtx.Codec.UnmarshalJSON(out.Bytes(), &d)
 	sr.NoError(err)
-	sr.Zero(d.Code)
-
-	err = ets.network.WaitForNextBlock()
-	sr.NoError(err)
+	sr.NoError(laconictestcli.CheckTxCode(ets.network, val.ClientCtx, d.TxHash, 0))
 
 	args = []string{
 		fmt.Sprintf("lrn://%s/", authorityName),
@@ -233,10 +222,7 @@ func (ets *E2ETestSuite) createNameRecord(authorityName string) {
 	sr.NoError(err)
 	err = val.ClientCtx.Codec.UnmarshalJSON(out.Bytes(), &d)
 	sr.NoError(err)
-	sr.Zero(d.Code)
-
-	err = ets.network.WaitForNextBlock()
-	sr.NoError(err)
+	sr.NoError(laconictestcli.CheckTxCode(ets.network, val.ClientCtx, d.TxHash, 0))
 }
 
 func (ets *E2ETestSuite) createRecord(bondId string) {
@@ -263,10 +249,7 @@ func (ets *E2ETestSuite) createRecord(bondId string) {
 	var d sdk.TxResponse
 	err = val.ClientCtx.Codec.UnmarshalJSON(out.Bytes(), &d)
 	sr.NoError(err)
-	sr.Zero(d.Code, d.RawLog)
-
-	err = ets.network.WaitForNextBlock()
-	sr.NoError(err)
+	sr.NoError(laconictestcli.CheckTxCode(ets.network, val.ClientCtx, d.TxHash, 0))
 }
 
 func (ets *E2ETestSuite) updateParams(params *registrytypes.Params) {

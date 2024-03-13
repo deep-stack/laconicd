@@ -15,6 +15,7 @@ import (
 	clitestutil "github.com/cosmos/cosmos-sdk/testutil/cli"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
+	laconictestcli "git.vdb.to/cerc-io/laconic2d/testutil/cli"
 	"git.vdb.to/cerc-io/laconic2d/testutil/network"
 	types "git.vdb.to/cerc-io/laconic2d/x/auction"
 	"git.vdb.to/cerc-io/laconic2d/x/auction/client/cli"
@@ -74,7 +75,7 @@ func (ets *E2ETestSuite) createAccountWithBalance(accountName string, accountAdd
 	sr.NoError(err)
 
 	newAddr, _ := info.GetAddress()
-	_, err = clitestutil.MsgSendExec(
+	out, err := clitestutil.MsgSendExec(
 		val.ClientCtx,
 		val.Address,
 		newAddr,
@@ -87,11 +88,12 @@ func (ets *E2ETestSuite) createAccountWithBalance(accountName string, accountAdd
 		fmt.Sprintf("--%s=%s", flags.FlagFees, sdk.NewCoins(sdk.NewCoin(ets.cfg.BondDenom, math.NewInt(10))).String()),
 	)
 	sr.NoError(err)
-	*accountAddress = newAddr.String()
 
-	// wait for tx to take effect
-	err = ets.network.WaitForNextBlock()
-	sr.NoError(err)
+	var response sdk.TxResponse
+	sr.NoError(val.ClientCtx.Codec.UnmarshalJSON(out.Bytes(), &response), out.String())
+	sr.NoError(laconictestcli.CheckTxCode(ets.network, val.ClientCtx, response.TxHash, 0))
+
+	*accountAddress = newAddr.String()
 }
 
 func (ets *E2ETestSuite) createAuctionAndBid(createAuction, createBid bool) string {
@@ -109,9 +111,7 @@ func (ets *E2ETestSuite) createAuctionAndBid(createAuction, createBid bool) stri
 
 		resp, err := ets.executeTx(cli.GetCmdCreateAuction(), auctionArgs, ownerAccount)
 		sr.NoError(err)
-		sr.Zero(resp.Code)
-		err = ets.network.WaitForNextBlock()
-		sr.NoError(err)
+		sr.NoError(laconictestcli.CheckTxCode(ets.network, val.ClientCtx, resp.TxHash, 0))
 
 		out, err := clitestutil.ExecTestCLICmd(val.ClientCtx, cli.GetCmdList(), queryJSONFlag)
 		sr.NoError(err)
@@ -127,7 +127,7 @@ func (ets *E2ETestSuite) createAuctionAndBid(createAuction, createBid bool) stri
 		bidArgs := []string{auctionId, fmt.Sprintf("200%s", ets.cfg.BondDenom)}
 		resp, err := ets.executeTx(cli.GetCmdCommitBid(), bidArgs, bidderAccount)
 		sr.NoError(err)
-		sr.Zero(resp.Code)
+		sr.NoError(laconictestcli.CheckTxCode(ets.network, val.ClientCtx, resp.TxHash, 0))
 	}
 
 	return auctionId

@@ -14,6 +14,7 @@ import (
 	simtestutil "github.com/cosmos/cosmos-sdk/testutil/sims"
 	"github.com/cosmos/cosmos-sdk/types/module/testutil"
 	"github.com/cosmos/cosmos-sdk/x/auth"
+	"github.com/cosmos/cosmos-sdk/x/bank"
 	"github.com/cosmos/cosmos-sdk/x/staking"
 
 	laconicApp "git.vdb.to/cerc-io/laconic2d/app"
@@ -58,6 +59,7 @@ func NewTestNetworkFixture() network.TestFixture {
 		GenesisState:   app.DefaultGenesis(),
 		EncodingConfig: testutil.MakeTestEncodingConfig(
 			auth.AppModuleBasic{},
+			bank.AppModuleBasic{},
 			staking.AppModuleBasic{},
 			auctionmodule.AppModule{},
 			bondmodule.AppModule{},

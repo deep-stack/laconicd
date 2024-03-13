@@ -8,6 +8,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/spf13/cobra"
 
+	laconictestcli "git.vdb.to/cerc-io/laconic2d/testutil/cli"
 	auctiontypes "git.vdb.to/cerc-io/laconic2d/x/auction"
 	"git.vdb.to/cerc-io/laconic2d/x/auction/client/cli"
 )
@@ -51,8 +52,9 @@ func (ets *E2ETestSuite) TestTxCommitBid() {
 					fmt.Sprintf("100%s", ets.cfg.BondDenom),
 				}
 
-				_, err := ets.executeTx(cli.GetCmdCreateAuction(), auctionArgs, ownerAccount)
+				resp, err := ets.executeTx(cli.GetCmdCreateAuction(), auctionArgs, ownerAccount)
 				sr.NoError(err)
+				sr.NoError(laconictestcli.CheckTxCode(ets.network, val.ClientCtx, resp.TxHash, 0))
 
 				out, err := clitestutil.ExecTestCLICmd(val.ClientCtx, cli.GetCmdList(),
 					[]string{fmt.Sprintf("--%s=json", flags.FlagOutput)})
@@ -67,7 +69,7 @@ func (ets *E2ETestSuite) TestTxCommitBid() {
 			resp, err := ets.executeTx(cli.GetCmdCommitBid(), test.args, bidderAccount)
 			if test.createAuction {
 				sr.NoError(err)
-				sr.Zero(resp.Code)
+				sr.NoError(laconictestcli.CheckTxCode(ets.network, val.ClientCtx, resp.TxHash, 0))
 			} else {
 				sr.Error(err)
 			}
@@ -92,11 +94,6 @@ func (ets *E2ETestSuite) executeTx(cmd *cobra.Command, args []string, caller str
 
 	var resp sdk.TxResponse
 	err = val.ClientCtx.Codec.UnmarshalJSON(out.Bytes(), &resp)
-	if err != nil {
-		return sdk.TxResponse{}, err
-	}
-
-	err = ets.network.WaitForNextBlock()
 	if err != nil {
 		return sdk.TxResponse{}, err
 	}
