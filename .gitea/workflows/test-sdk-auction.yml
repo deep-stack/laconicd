@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: "./registry-sdk/"
-          repository: deep-stack/registry-sdk # Use cerc-io/registry-sdk
+          repository: cerc-io/registry-sdk
           fetch-depth: 0
           ref: main
       - name: Environment
