@@ -1,7 +1,7 @@
 package keeper
 
 import (
-	registrytypes "git.vdb.to/cerc-io/laconic2d/x/registry"
+	registrytypes "git.vdb.to/cerc-io/laconicd/x/registry"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 

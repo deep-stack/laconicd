@@ -9,9 +9,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 
-	integrationTest "git.vdb.to/cerc-io/laconic2d/tests/integration"
-	bondTypes "git.vdb.to/cerc-io/laconic2d/x/bond"
-	types "git.vdb.to/cerc-io/laconic2d/x/registry"
+	integrationTest "git.vdb.to/cerc-io/laconicd/tests/integration"
+	bondTypes "git.vdb.to/cerc-io/laconicd/x/bond"
+	types "git.vdb.to/cerc-io/laconicd/x/registry"
 )
 
 type KeeperTestSuite struct {

@@ -3,7 +3,7 @@ package keeper
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"git.vdb.to/cerc-io/laconic2d/x/auction"
+	"git.vdb.to/cerc-io/laconicd/x/auction"
 )
 
 // InitGenesis initializes the module state from a genesis state.

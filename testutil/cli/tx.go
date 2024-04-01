@@ -9,7 +9,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authcli "github.com/cosmos/cosmos-sdk/x/auth/client/cli"
 
-	"git.vdb.to/cerc-io/laconic2d/testutil/network"
+	"git.vdb.to/cerc-io/laconicd/testutil/network"
 )
 
 // Reference: https://github.com/cosmos/cosmos-sdk/blob/v0.50.3/testutil/cli/tx.go#L15

@@ -6,7 +6,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	types "git.vdb.to/cerc-io/laconic2d/x/registry"
+	types "git.vdb.to/cerc-io/laconicd/x/registry"
 )
 
 // RegisterInvariants registers all registry invariants

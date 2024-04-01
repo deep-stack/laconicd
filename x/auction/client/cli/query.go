@@ -5,7 +5,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/spf13/cobra"
 
-	types "git.vdb.to/cerc-io/laconic2d/x/auction"
+	types "git.vdb.to/cerc-io/laconicd/x/auction"
 )
 
 // GetCmdList queries all auctions.

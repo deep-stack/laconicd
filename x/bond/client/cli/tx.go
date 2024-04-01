@@ -7,7 +7,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/spf13/cobra"
 
-	bondtypes "git.vdb.to/cerc-io/laconic2d/x/bond"
+	bondtypes "git.vdb.to/cerc-io/laconicd/x/bond"
 )
 
 // NewCreateBondCmd is the CLI command for creating a bond.

@@ -9,7 +9,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/version"
 	"github.com/spf13/cobra"
 
-	bondtypes "git.vdb.to/cerc-io/laconic2d/x/bond"
+	bondtypes "git.vdb.to/cerc-io/laconicd/x/bond"
 )
 
 // GetQueryBondList implements the bond lists query command.

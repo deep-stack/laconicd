@@ -7,8 +7,8 @@ import (
 	"cosmossdk.io/math"
 	simtestutil "github.com/cosmos/cosmos-sdk/testutil/sims"
 
-	integrationTest "git.vdb.to/cerc-io/laconic2d/tests/integration"
-	types "git.vdb.to/cerc-io/laconic2d/x/auction"
+	integrationTest "git.vdb.to/cerc-io/laconicd/tests/integration"
+	types "git.vdb.to/cerc-io/laconicd/x/auction"
 )
 
 const testCommitHash = "71D8CF34026E32A3A34C2C2D4ADF25ABC8D7943A4619761BE27F196603D91B9D"

@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"git.vdb.to/cerc-io/laconic2d/x/bond"
+	"git.vdb.to/cerc-io/laconicd/x/bond"
 )
 
 var _ bond.MsgServer = msgServer{}

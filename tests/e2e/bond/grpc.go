@@ -5,7 +5,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/testutil"
 
-	bondtypes "git.vdb.to/cerc-io/laconic2d/x/bond"
+	bondtypes "git.vdb.to/cerc-io/laconicd/x/bond"
 )
 
 func (ets *E2ETestSuite) TestGRPCGetParams() {

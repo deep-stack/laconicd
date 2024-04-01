@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"git.vdb.to/cerc-io/laconic2d/x/registry"
+	"git.vdb.to/cerc-io/laconicd/x/registry"
 )
 
 // InitGenesis initializes the module state from a genesis state.

@@ -5,7 +5,7 @@ package cerc.registry.v1;
 import "gogoproto/gogo.proto";
 import "cerc/registry/v1/registry.proto";
 
-option go_package = "git.vdb.to/cerc-io/laconic2d/x/registry";
+option go_package = "git.vdb.to/cerc-io/laconicd/x/registry";
 
 // GenesisState defines the registry module's genesis state.
 message GenesisState {

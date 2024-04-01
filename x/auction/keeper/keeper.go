@@ -19,8 +19,8 @@ import (
 	auth "github.com/cosmos/cosmos-sdk/x/auth/keeper"
 	bank "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 
-	wnsUtils "git.vdb.to/cerc-io/laconic2d/utils"
-	auctiontypes "git.vdb.to/cerc-io/laconic2d/x/auction"
+	wnsUtils "git.vdb.to/cerc-io/laconicd/utils"
+	auctiontypes "git.vdb.to/cerc-io/laconicd/x/auction"
 )
 
 // CompletedAuctionDeleteTimeout => Completed auctions are deleted after this timeout (after reveals end time).

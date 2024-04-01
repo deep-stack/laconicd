@@ -5,7 +5,7 @@
 ## Start server
 
 ```shell
-laconic2d start --gql-playground --gql-server
+laconicd start --gql-playground --gql-server
 ```
 
 Basic node status:

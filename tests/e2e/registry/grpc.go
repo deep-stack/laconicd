@@ -8,8 +8,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/testutil"
 	clitestutil "github.com/cosmos/cosmos-sdk/testutil/cli"
 
-	registrytypes "git.vdb.to/cerc-io/laconic2d/x/registry"
-	"git.vdb.to/cerc-io/laconic2d/x/registry/client/cli"
+	registrytypes "git.vdb.to/cerc-io/laconicd/x/registry"
+	"git.vdb.to/cerc-io/laconicd/x/registry/client/cli"
 )
 
 const badPath = "/asdasd"

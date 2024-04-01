@@ -5,7 +5,7 @@ package cerc.auction.v1;
 import "gogoproto/gogo.proto";
 import "cerc/auction/v1/auction.proto";
 
-option go_package = "git.vdb.to/cerc-io/laconic2d/x/auction";
+option go_package = "git.vdb.to/cerc-io/laconicd/x/auction";
 
 // GenesisState defines the genesis state of the auction module
 message GenesisState {

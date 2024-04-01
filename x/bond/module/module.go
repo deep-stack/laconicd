@@ -14,8 +14,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 
-	"git.vdb.to/cerc-io/laconic2d/x/bond"
-	"git.vdb.to/cerc-io/laconic2d/x/bond/keeper"
+	"git.vdb.to/cerc-io/laconicd/x/bond"
+	"git.vdb.to/cerc-io/laconicd/x/bond/keeper"
 )
 
 var (

@@ -2,7 +2,7 @@
 
 DOCKER := $(shell which docker)
 
-LACONIC_BINARY = laconic2d
+LACONIC_BINARY = laconicd
 
 BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
 COMMIT := $(shell git log -1 --format='%H')
@@ -42,7 +42,7 @@ build-linux:
 	GOOS=linux GOARCH=amd64 LEDGER_ENABLED=false $(MAKE) build
 
 $(BUILD_TARGETS): go.sum $(BUILDDIR)/
-	@echo "--> installing laconic2d"
+	@echo "--> installing laconicd"
 	go $@ $(BUILD_FLAGS) $(BUILD_ARGS) ./...
 
 $(BUILDDIR)/:

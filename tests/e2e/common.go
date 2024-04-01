@@ -17,13 +17,13 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/bank"
 	"github.com/cosmos/cosmos-sdk/x/staking"
 
-	laconicApp "git.vdb.to/cerc-io/laconic2d/app"
-	auctionmodule "git.vdb.to/cerc-io/laconic2d/x/auction/module"
-	bondmodule "git.vdb.to/cerc-io/laconic2d/x/bond/module"
-	registrymodule "git.vdb.to/cerc-io/laconic2d/x/registry/module"
+	laconicApp "git.vdb.to/cerc-io/laconicd/app"
+	auctionmodule "git.vdb.to/cerc-io/laconicd/x/auction/module"
+	bondmodule "git.vdb.to/cerc-io/laconicd/x/bond/module"
+	registrymodule "git.vdb.to/cerc-io/laconicd/x/registry/module"
 
-	_ "git.vdb.to/cerc-io/laconic2d/app/params" // import for side-effects (see init)
-	"git.vdb.to/cerc-io/laconic2d/testutil/network"
+	_ "git.vdb.to/cerc-io/laconicd/app/params" // import for side-effects (see init)
+	"git.vdb.to/cerc-io/laconicd/testutil/network"
 )
 
 // NewTestNetworkFixture returns a new LaconicApp AppConstructor for network simulation tests

@@ -2,7 +2,7 @@
 # for detailed .gqlgen.yml documentation.
 
 schema:
-  - cerc-io/laconic2d/*.graphql
+  - cerc-io/laconicd/*.graphql
 exec:
   filename: generated.go
 model:
@@ -14,4 +14,4 @@ resolver:
 models:
   Link:
     model:
-      - git.vdb.to/cerc-io/laconic2d/gql.Link
+      - git.vdb.to/cerc-io/laconicd/gql.Link

@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	registrytypes "git.vdb.to/cerc-io/laconic2d/x/registry"
+	registrytypes "git.vdb.to/cerc-io/laconicd/x/registry"
 )
 
 var _ registrytypes.MsgServer = msgServer{}

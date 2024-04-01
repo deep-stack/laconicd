@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	types "git.vdb.to/cerc-io/laconic2d/x/auction"
+	types "git.vdb.to/cerc-io/laconicd/x/auction"
 )
 
 // RegisterInvariants registers all auction invariants

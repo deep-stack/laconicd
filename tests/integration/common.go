@@ -23,15 +23,15 @@ import (
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	minttypes "github.com/cosmos/cosmos-sdk/x/mint/types"
 
-	auctionTypes "git.vdb.to/cerc-io/laconic2d/x/auction"
-	auctionkeeper "git.vdb.to/cerc-io/laconic2d/x/auction/keeper"
-	auctionmodule "git.vdb.to/cerc-io/laconic2d/x/auction/module"
-	bondTypes "git.vdb.to/cerc-io/laconic2d/x/bond"
-	bondkeeper "git.vdb.to/cerc-io/laconic2d/x/bond/keeper"
-	bondmodule "git.vdb.to/cerc-io/laconic2d/x/bond/module"
-	registryTypes "git.vdb.to/cerc-io/laconic2d/x/registry"
-	registrykeeper "git.vdb.to/cerc-io/laconic2d/x/registry/keeper"
-	registrymodule "git.vdb.to/cerc-io/laconic2d/x/registry/module"
+	auctionTypes "git.vdb.to/cerc-io/laconicd/x/auction"
+	auctionkeeper "git.vdb.to/cerc-io/laconicd/x/auction/keeper"
+	auctionmodule "git.vdb.to/cerc-io/laconicd/x/auction/module"
+	bondTypes "git.vdb.to/cerc-io/laconicd/x/bond"
+	bondkeeper "git.vdb.to/cerc-io/laconicd/x/bond/keeper"
+	bondmodule "git.vdb.to/cerc-io/laconicd/x/bond/module"
+	registryTypes "git.vdb.to/cerc-io/laconicd/x/registry"
+	registrykeeper "git.vdb.to/cerc-io/laconicd/x/registry/keeper"
+	registrymodule "git.vdb.to/cerc-io/laconicd/x/registry/module"
 )
 
 type TestFixture struct {

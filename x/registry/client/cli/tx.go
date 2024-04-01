@@ -14,7 +14,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	registrytypes "git.vdb.to/cerc-io/laconic2d/x/registry"
+	registrytypes "git.vdb.to/cerc-io/laconicd/x/registry"
 )
 
 // GetTxCmd returns transaction commands for this module.

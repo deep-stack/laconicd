@@ -9,7 +9,7 @@ import "google/protobuf/duration.proto";
 import "cosmos/base/v1beta1/coin.proto";
 import "cerc/auction/v1/auction.proto";
 
-option go_package = "git.vdb.to/cerc-io/laconic2d/x/auction";
+option go_package = "git.vdb.to/cerc-io/laconicd/x/auction";
 
 // Tx defines the gRPC tx interface
 service Msg {

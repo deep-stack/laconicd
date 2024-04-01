@@ -15,10 +15,10 @@ import (
 	clitestutil "github.com/cosmos/cosmos-sdk/testutil/cli"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	laconictestcli "git.vdb.to/cerc-io/laconic2d/testutil/cli"
-	"git.vdb.to/cerc-io/laconic2d/testutil/network"
-	types "git.vdb.to/cerc-io/laconic2d/x/auction"
-	"git.vdb.to/cerc-io/laconic2d/x/auction/client/cli"
+	laconictestcli "git.vdb.to/cerc-io/laconicd/testutil/cli"
+	"git.vdb.to/cerc-io/laconicd/testutil/network"
+	types "git.vdb.to/cerc-io/laconicd/x/auction"
+	"git.vdb.to/cerc-io/laconicd/x/auction/client/cli"
 )
 
 var (

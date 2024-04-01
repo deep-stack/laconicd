@@ -11,9 +11,9 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	auctiontypes "git.vdb.to/cerc-io/laconic2d/x/auction"
-	bondtypes "git.vdb.to/cerc-io/laconic2d/x/bond"
-	registrytypes "git.vdb.to/cerc-io/laconic2d/x/registry"
+	auctiontypes "git.vdb.to/cerc-io/laconicd/x/auction"
+	bondtypes "git.vdb.to/cerc-io/laconicd/x/bond"
+	registrytypes "git.vdb.to/cerc-io/laconicd/x/registry"
 )
 
 // DefaultLogNumLines is the number of log lines to tail by default.

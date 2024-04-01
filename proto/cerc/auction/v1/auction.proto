@@ -7,7 +7,7 @@ import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "cosmos/base/v1beta1/coin.proto";
 
-option go_package = "git.vdb.to/cerc-io/laconic2d/x/auction";
+option go_package = "git.vdb.to/cerc-io/laconicd/x/auction";
 
 // Params defines the auction module parameters
 message Params {

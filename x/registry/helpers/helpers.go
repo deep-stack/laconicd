@@ -9,7 +9,7 @@ import (
 	"encoding/json"
 	"sort"
 
-	wnsUtils "git.vdb.to/cerc-io/laconic2d/utils"
+	wnsUtils "git.vdb.to/cerc-io/laconicd/utils"
 	set "github.com/deckarep/golang-set"
 )
 

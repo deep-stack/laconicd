@@ -1,7 +1,7 @@
 package keeper
 
 import (
-	"git.vdb.to/cerc-io/laconic2d/x/bond"
+	"git.vdb.to/cerc-io/laconicd/x/bond"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 

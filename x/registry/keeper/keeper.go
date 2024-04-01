@@ -25,10 +25,10 @@ import (
 	cidlink "github.com/ipld/go-ipld-prime/linking/cid"
 	"github.com/ipld/go-ipld-prime/node/basicnode"
 
-	auctionkeeper "git.vdb.to/cerc-io/laconic2d/x/auction/keeper"
-	bondkeeper "git.vdb.to/cerc-io/laconic2d/x/bond/keeper"
-	registrytypes "git.vdb.to/cerc-io/laconic2d/x/registry"
-	"git.vdb.to/cerc-io/laconic2d/x/registry/helpers"
+	auctionkeeper "git.vdb.to/cerc-io/laconicd/x/auction/keeper"
+	bondkeeper "git.vdb.to/cerc-io/laconicd/x/bond/keeper"
+	registrytypes "git.vdb.to/cerc-io/laconicd/x/registry"
+	"git.vdb.to/cerc-io/laconicd/x/registry/helpers"
 )
 
 type RecordsIndexes struct {

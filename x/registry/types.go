@@ -5,7 +5,7 @@ import (
 
 	"github.com/gibson042/canonicaljson-go"
 
-	"git.vdb.to/cerc-io/laconic2d/x/registry/helpers"
+	"git.vdb.to/cerc-io/laconicd/x/registry/helpers"
 )
 
 const (

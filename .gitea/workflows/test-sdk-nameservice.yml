@@ -21,9 +21,9 @@ jobs:
       - name: Environment
         run: ls -tlh && env
 
-      - name: Build laconic2d container
+      - name: Build laconicd container
         working-directory: tests/sdk_tests
-        run: ./build-laconic2d-container.sh
+        run: ./build-laconicd-container.sh
 
       - name: Build sdk container
         working-directory: registry-sdk

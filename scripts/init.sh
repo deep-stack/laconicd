@@ -6,7 +6,7 @@ MONIKER="localtestnet"
 KEYRING="test"
 LOGLEVEL="${LOGLEVEL:-info}"
 
-if [ "$1" == "clean" ] || [ ! -d "$HOME/.laconic2d/data/blockstore.db" ]; then
+if [ "$1" == "clean" ] || [ ! -d "$HOME/.laconicd/data/blockstore.db" ]; then
   # validate dependencies are installed
   command -v jq > /dev/null 2>&1 || {
     echo >&2 "jq not installed. More info: https://stedolan.github.io/jq/download/"
@@ -14,25 +14,25 @@ if [ "$1" == "clean" ] || [ ! -d "$HOME/.laconic2d/data/blockstore.db" ]; then
   }
 
   # remove existing daemon and client
-  rm -rf $HOME/.laconic2d/*
+  rm -rf $HOME/.laconicd/*
   rm -rf $HOME/.laconic/*
 
   if [ -n "`which make`" ]; then
     make install
   fi
 
-  laconic2d config set client keyring-backend $KEYRING
-  laconic2d config set client chain-id $CHAINID
+  laconicd config set client keyring-backend $KEYRING
+  laconicd config set client chain-id $CHAINID
 
   # if $KEY exists it should be deleted
-  laconic2d keys add $KEY --keyring-backend $KEYRING
+  laconicd keys add $KEY --keyring-backend $KEYRING
 
   # Set moniker and chain-id for Ethermint (Moniker can be anything, chain-id must be an integer)
-  laconic2d init $MONIKER --chain-id $CHAINID --default-denom photon
+  laconicd init $MONIKER --chain-id $CHAINID --default-denom photon
 
   update_genesis() {
-    jq "$1" $HOME/.laconic2d/config/genesis.json > $HOME/.laconic2d/config/tmp_genesis.json &&
-      mv $HOME/.laconic2d/config/tmp_genesis.json $HOME/.laconic2d/config/genesis.json
+    jq "$1" $HOME/.laconicd/config/genesis.json > $HOME/.laconicd/config/tmp_genesis.json &&
+      mv $HOME/.laconicd/config/tmp_genesis.json $HOME/.laconicd/config/genesis.json
   }
 
   if [[ "$TEST_REGISTRY_EXPIRY" == "true" ]]; then
@@ -61,28 +61,28 @@ if [ "$1" == "clean" ] || [ ! -d "$HOME/.laconic2d/data/blockstore.db" ]; then
 
   # disable produce empty block
   if [[ "$OSTYPE" == "darwin"* ]]; then
-      sed -i '' 's/create_empty_blocks = true/create_empty_blocks = false/g' $HOME/.laconic2d/config/config.toml
+      sed -i '' 's/create_empty_blocks = true/create_empty_blocks = false/g' $HOME/.laconicd/config/config.toml
     else
-      sed -i 's/create_empty_blocks = true/create_empty_blocks = false/g' $HOME/.laconic2d/config/config.toml
+      sed -i 's/create_empty_blocks = true/create_empty_blocks = false/g' $HOME/.laconicd/config/config.toml
   fi
 
   # Allocate genesis accounts (cosmos formatted addresses)
-  laconic2d genesis add-genesis-account $KEY 100000000000000000000000000photon --keyring-backend $KEYRING
+  laconicd genesis add-genesis-account $KEY 100000000000000000000000000photon --keyring-backend $KEYRING
 
   # Sign genesis transaction
-  laconic2d genesis gentx $KEY 1000000000000000000000photon --keyring-backend $KEYRING --chain-id $CHAINID
+  laconicd genesis gentx $KEY 1000000000000000000000photon --keyring-backend $KEYRING --chain-id $CHAINID
 
   # Collect genesis tx
-  laconic2d genesis collect-gentxs
+  laconicd genesis collect-gentxs
 
   # Run this to ensure everything worked and that the genesis file is setup correctly
-  laconic2d genesis validate
+  laconicd genesis validate
 else
-  echo "Using existing database at $HOME/.laconic2d.  To replace, run '`basename $0` clean'"
+  echo "Using existing database at $HOME/.laconicd.  To replace, run '`basename $0` clean'"
 fi
 
 # Start the node (remove the --pruning=nothing flag if historical queries are not needed)
-laconic2d start \
+laconicd start \
   --pruning=nothing \
   --log_level $LOGLEVEL \
   --minimum-gas-prices=0.0001photon \

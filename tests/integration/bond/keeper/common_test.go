@@ -6,8 +6,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 
-	integrationTest "git.vdb.to/cerc-io/laconic2d/tests/integration"
-	types "git.vdb.to/cerc-io/laconic2d/x/bond"
+	integrationTest "git.vdb.to/cerc-io/laconicd/tests/integration"
+	types "git.vdb.to/cerc-io/laconicd/x/bond"
 )
 
 type KeeperTestSuite struct {

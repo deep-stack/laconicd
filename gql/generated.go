@@ -1004,7 +1004,7 @@ func (ec *executionContext) introspectType(name string) (*introspection.Type, er
 	return introspection.WrapTypeFromDef(parsedSchema, parsedSchema.Types[name]), nil
 }
 
-//go:embed "cerc-io/laconic2d/schema.graphql"
+//go:embed "cerc-io/laconicd/schema.graphql"
 var sourcesFS embed.FS
 
 func sourceData(filename string) string {
@@ -1016,7 +1016,7 @@ func sourceData(filename string) string {
 }
 
 var sources = []*ast.Source{
-	{Name: "cerc-io/laconic2d/schema.graphql", Input: sourceData("cerc-io/laconic2d/schema.graphql"), BuiltIn: false},
+	{Name: "cerc-io/laconicd/schema.graphql", Input: sourceData("cerc-io/laconicd/schema.graphql"), BuiltIn: false},
 }
 var parsedSchema = gqlparser.MustLoadSchema(sources...)
 
@@ -1150,7 +1150,7 @@ func (ec *executionContext) field_Query_queryBonds_args(ctx context.Context, raw
 	var arg0 []*KeyValueInput
 	if tmp, ok := rawArgs["attributes"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("attributes"))
-		arg0, err = ec.unmarshalOKeyValueInput2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐKeyValueInputᚄ(ctx, tmp)
+		arg0, err = ec.unmarshalOKeyValueInput2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐKeyValueInputᚄ(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -1165,7 +1165,7 @@ func (ec *executionContext) field_Query_queryRecords_args(ctx context.Context, r
 	var arg0 []*KeyValueInput
 	if tmp, ok := rawArgs["attributes"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("attributes"))
-		arg0, err = ec.unmarshalOKeyValueInput2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐKeyValueInputᚄ(ctx, tmp)
+		arg0, err = ec.unmarshalOKeyValueInput2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐKeyValueInputᚄ(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -1434,7 +1434,7 @@ func (ec *executionContext) _Account_balance(ctx context.Context, field graphql.
 	}
 	res := resTmp.([]*Coin)
 	fc.Result = res
-	return ec.marshalOCoin2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐCoinᚄ(ctx, field.Selections, res)
+	return ec.marshalOCoin2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐCoinᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Account_balance(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1484,7 +1484,7 @@ func (ec *executionContext) _ArrayValue_value(ctx context.Context, field graphql
 	}
 	res := resTmp.([]Value)
 	fc.Result = res
-	return ec.marshalNValue2ᚕgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐValue(ctx, field.Selections, res)
+	return ec.marshalNValue2ᚕgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐValue(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_ArrayValue_value(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1569,7 +1569,7 @@ func (ec *executionContext) _Attribute_value(ctx context.Context, field graphql.
 	}
 	res := resTmp.(Value)
 	fc.Result = res
-	return ec.marshalOValue2gitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐValue(ctx, field.Selections, res)
+	return ec.marshalOValue2gitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐValue(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Attribute_value(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1877,7 +1877,7 @@ func (ec *executionContext) _Auction_commitFee(ctx context.Context, field graphq
 	}
 	res := resTmp.(*Coin)
 	fc.Result = res
-	return ec.marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐCoin(ctx, field.Selections, res)
+	return ec.marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐCoin(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Auction_commitFee(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1927,7 +1927,7 @@ func (ec *executionContext) _Auction_revealFee(ctx context.Context, field graphq
 	}
 	res := resTmp.(*Coin)
 	fc.Result = res
-	return ec.marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐCoin(ctx, field.Selections, res)
+	return ec.marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐCoin(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Auction_revealFee(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1977,7 +1977,7 @@ func (ec *executionContext) _Auction_minimumBid(ctx context.Context, field graph
 	}
 	res := resTmp.(*Coin)
 	fc.Result = res
-	return ec.marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐCoin(ctx, field.Selections, res)
+	return ec.marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐCoin(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Auction_minimumBid(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2071,7 +2071,7 @@ func (ec *executionContext) _Auction_winnerBid(ctx context.Context, field graphq
 	}
 	res := resTmp.(*Coin)
 	fc.Result = res
-	return ec.marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐCoin(ctx, field.Selections, res)
+	return ec.marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐCoin(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Auction_winnerBid(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2121,7 +2121,7 @@ func (ec *executionContext) _Auction_winnerPrice(ctx context.Context, field grap
 	}
 	res := resTmp.(*Coin)
 	fc.Result = res
-	return ec.marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐCoin(ctx, field.Selections, res)
+	return ec.marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐCoin(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Auction_winnerPrice(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2168,7 +2168,7 @@ func (ec *executionContext) _Auction_bids(ctx context.Context, field graphql.Col
 	}
 	res := resTmp.([]*AuctionBid)
 	fc.Result = res
-	return ec.marshalOAuctionBid2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAuctionBid(ctx, field.Selections, res)
+	return ec.marshalOAuctionBid2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAuctionBid(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Auction_bids(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2406,7 +2406,7 @@ func (ec *executionContext) _AuctionBid_commitFee(ctx context.Context, field gra
 	}
 	res := resTmp.(*Coin)
 	fc.Result = res
-	return ec.marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐCoin(ctx, field.Selections, res)
+	return ec.marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐCoin(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_AuctionBid_commitFee(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2500,7 +2500,7 @@ func (ec *executionContext) _AuctionBid_revealFee(ctx context.Context, field gra
 	}
 	res := resTmp.(*Coin)
 	fc.Result = res
-	return ec.marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐCoin(ctx, field.Selections, res)
+	return ec.marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐCoin(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_AuctionBid_revealFee(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2550,7 +2550,7 @@ func (ec *executionContext) _AuctionBid_bidAmount(ctx context.Context, field gra
 	}
 	res := resTmp.(*Coin)
 	fc.Result = res
-	return ec.marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐCoin(ctx, field.Selections, res)
+	return ec.marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐCoin(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_AuctionBid_bidAmount(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2861,7 +2861,7 @@ func (ec *executionContext) _AuthorityRecord_auction(ctx context.Context, field 
 	}
 	res := resTmp.(*Auction)
 	fc.Result = res
-	return ec.marshalOAuction2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAuction(ctx, field.Selections, res)
+	return ec.marshalOAuction2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAuction(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_AuthorityRecord_auction(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -3018,7 +3018,7 @@ func (ec *executionContext) _Bond_balance(ctx context.Context, field graphql.Col
 	}
 	res := resTmp.([]*Coin)
 	fc.Result = res
-	return ec.marshalOCoin2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐCoinᚄ(ctx, field.Selections, res)
+	return ec.marshalOCoin2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐCoinᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Bond_balance(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -3332,7 +3332,7 @@ func (ec *executionContext) _LinkValue_value(ctx context.Context, field graphql.
 	}
 	res := resTmp.(Link)
 	fc.Result = res
-	return ec.marshalNLink2gitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐLink(ctx, field.Selections, res)
+	return ec.marshalNLink2gitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐLink(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_LinkValue_value(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -3376,7 +3376,7 @@ func (ec *executionContext) _MapValue_value(ctx context.Context, field graphql.C
 	}
 	res := resTmp.([]*Attribute)
 	fc.Result = res
-	return ec.marshalNAttribute2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAttributeᚄ(ctx, field.Selections, res)
+	return ec.marshalNAttribute2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAttributeᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_MapValue_value(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -3426,7 +3426,7 @@ func (ec *executionContext) _NameRecord_latest(ctx context.Context, field graphq
 	}
 	res := resTmp.(*NameRecordEntry)
 	fc.Result = res
-	return ec.marshalNNameRecordEntry2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐNameRecordEntry(ctx, field.Selections, res)
+	return ec.marshalNNameRecordEntry2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐNameRecordEntry(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_NameRecord_latest(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -3473,7 +3473,7 @@ func (ec *executionContext) _NameRecord_history(ctx context.Context, field graph
 	}
 	res := resTmp.([]*NameRecordEntry)
 	fc.Result = res
-	return ec.marshalONameRecordEntry2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐNameRecordEntry(ctx, field.Selections, res)
+	return ec.marshalONameRecordEntry2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐNameRecordEntry(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_NameRecord_history(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -3784,7 +3784,7 @@ func (ec *executionContext) _OwnerBonds_bonds(ctx context.Context, field graphql
 	}
 	res := resTmp.([]*Bond)
 	fc.Result = res
-	return ec.marshalOBond2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐBondᚄ(ctx, field.Selections, res)
+	return ec.marshalOBond2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐBondᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_OwnerBonds_bonds(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -3836,7 +3836,7 @@ func (ec *executionContext) _PeerInfo_node(ctx context.Context, field graphql.Co
 	}
 	res := resTmp.(*NodeInfo)
 	fc.Result = res
-	return ec.marshalNNodeInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐNodeInfo(ctx, field.Selections, res)
+	return ec.marshalNNodeInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐNodeInfo(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_PeerInfo_node(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -3976,7 +3976,7 @@ func (ec *executionContext) _Query_getStatus(ctx context.Context, field graphql.
 	}
 	res := resTmp.(*Status)
 	fc.Result = res
-	return ec.marshalNStatus2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐStatus(ctx, field.Selections, res)
+	return ec.marshalNStatus2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐStatus(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_getStatus(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4035,7 +4035,7 @@ func (ec *executionContext) _Query_getAccounts(ctx context.Context, field graphq
 	}
 	res := resTmp.([]*Account)
 	fc.Result = res
-	return ec.marshalOAccount2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAccount(ctx, field.Selections, res)
+	return ec.marshalOAccount2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAccount(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_getAccounts(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4099,7 +4099,7 @@ func (ec *executionContext) _Query_getBondsByIds(ctx context.Context, field grap
 	}
 	res := resTmp.([]*Bond)
 	fc.Result = res
-	return ec.marshalOBond2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐBond(ctx, field.Selections, res)
+	return ec.marshalOBond2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐBond(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_getBondsByIds(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4159,7 +4159,7 @@ func (ec *executionContext) _Query_queryBonds(ctx context.Context, field graphql
 	}
 	res := resTmp.([]*Bond)
 	fc.Result = res
-	return ec.marshalOBond2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐBond(ctx, field.Selections, res)
+	return ec.marshalOBond2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐBond(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_queryBonds(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4219,7 +4219,7 @@ func (ec *executionContext) _Query_queryBondsByOwner(ctx context.Context, field 
 	}
 	res := resTmp.([]*OwnerBonds)
 	fc.Result = res
-	return ec.marshalOOwnerBonds2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐOwnerBonds(ctx, field.Selections, res)
+	return ec.marshalOOwnerBonds2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐOwnerBonds(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_queryBondsByOwner(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4277,7 +4277,7 @@ func (ec *executionContext) _Query_getRecordsByIds(ctx context.Context, field gr
 	}
 	res := resTmp.([]*Record)
 	fc.Result = res
-	return ec.marshalORecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐRecord(ctx, field.Selections, res)
+	return ec.marshalORecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐRecord(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_getRecordsByIds(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4347,7 +4347,7 @@ func (ec *executionContext) _Query_queryRecords(ctx context.Context, field graph
 	}
 	res := resTmp.([]*Record)
 	fc.Result = res
-	return ec.marshalORecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐRecord(ctx, field.Selections, res)
+	return ec.marshalORecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐRecord(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_queryRecords(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4420,7 +4420,7 @@ func (ec *executionContext) _Query_lookupAuthorities(ctx context.Context, field 
 	}
 	res := resTmp.([]*AuthorityRecord)
 	fc.Result = res
-	return ec.marshalNAuthorityRecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAuthorityRecord(ctx, field.Selections, res)
+	return ec.marshalNAuthorityRecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAuthorityRecord(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_lookupAuthorities(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4491,7 +4491,7 @@ func (ec *executionContext) _Query_lookupNames(ctx context.Context, field graphq
 	}
 	res := resTmp.([]*NameRecord)
 	fc.Result = res
-	return ec.marshalNNameRecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐNameRecord(ctx, field.Selections, res)
+	return ec.marshalNNameRecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐNameRecord(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_lookupNames(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4552,7 +4552,7 @@ func (ec *executionContext) _Query_resolveNames(ctx context.Context, field graph
 	}
 	res := resTmp.([]*Record)
 	fc.Result = res
-	return ec.marshalNRecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐRecord(ctx, field.Selections, res)
+	return ec.marshalNRecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐRecord(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_resolveNames(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4622,7 +4622,7 @@ func (ec *executionContext) _Query_getAuctionsByIds(ctx context.Context, field g
 	}
 	res := resTmp.([]*Auction)
 	fc.Result = res
-	return ec.marshalOAuction2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAuction(ctx, field.Selections, res)
+	return ec.marshalOAuction2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAuction(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_getAuctionsByIds(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5089,7 +5089,7 @@ func (ec *executionContext) _Record_attributes(ctx context.Context, field graphq
 	}
 	res := resTmp.([]*Attribute)
 	fc.Result = res
-	return ec.marshalOAttribute2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAttributeᚄ(ctx, field.Selections, res)
+	return ec.marshalOAttribute2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAttributeᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Record_attributes(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5136,7 +5136,7 @@ func (ec *executionContext) _Record_references(ctx context.Context, field graphq
 	}
 	res := resTmp.([]*Record)
 	fc.Result = res
-	return ec.marshalORecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐRecord(ctx, field.Selections, res)
+	return ec.marshalORecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐRecord(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Record_references(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5242,7 +5242,7 @@ func (ec *executionContext) _Status_node(ctx context.Context, field graphql.Coll
 	}
 	res := resTmp.(*NodeInfo)
 	fc.Result = res
-	return ec.marshalNNodeInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐNodeInfo(ctx, field.Selections, res)
+	return ec.marshalNNodeInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐNodeInfo(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Status_node(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5294,7 +5294,7 @@ func (ec *executionContext) _Status_sync(ctx context.Context, field graphql.Coll
 	}
 	res := resTmp.(*SyncInfo)
 	fc.Result = res
-	return ec.marshalNSyncInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐSyncInfo(ctx, field.Selections, res)
+	return ec.marshalNSyncInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐSyncInfo(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Status_sync(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5345,7 +5345,7 @@ func (ec *executionContext) _Status_validator(ctx context.Context, field graphql
 	}
 	res := resTmp.(*ValidatorInfo)
 	fc.Result = res
-	return ec.marshalOValidatorInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐValidatorInfo(ctx, field.Selections, res)
+	return ec.marshalOValidatorInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐValidatorInfo(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Status_validator(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5397,7 +5397,7 @@ func (ec *executionContext) _Status_validators(ctx context.Context, field graphq
 	}
 	res := resTmp.([]*ValidatorInfo)
 	fc.Result = res
-	return ec.marshalNValidatorInfo2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐValidatorInfo(ctx, field.Selections, res)
+	return ec.marshalNValidatorInfo2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐValidatorInfo(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Status_validators(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5490,7 +5490,7 @@ func (ec *executionContext) _Status_peers(ctx context.Context, field graphql.Col
 	}
 	res := resTmp.([]*PeerInfo)
 	fc.Result = res
-	return ec.marshalOPeerInfo2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐPeerInfo(ctx, field.Selections, res)
+	return ec.marshalOPeerInfo2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐPeerInfo(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Status_peers(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7706,7 +7706,7 @@ func (ec *executionContext) unmarshalInputKeyValueInput(ctx context.Context, obj
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("value"))
-			it.Value, err = ec.unmarshalOValueInput2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐValueInput(ctx, v)
+			it.Value, err = ec.unmarshalOValueInput2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐValueInput(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -7766,7 +7766,7 @@ func (ec *executionContext) unmarshalInputValueInput(ctx context.Context, obj in
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("link"))
-			it.Link, err = ec.unmarshalOLink2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐLink(ctx, v)
+			it.Link, err = ec.unmarshalOLink2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐLink(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -7774,7 +7774,7 @@ func (ec *executionContext) unmarshalInputValueInput(ctx context.Context, obj in
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("array"))
-			it.Array, err = ec.unmarshalOValueInput2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐValueInput(ctx, v)
+			it.Array, err = ec.unmarshalOValueInput2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐValueInput(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -7782,7 +7782,7 @@ func (ec *executionContext) unmarshalInputValueInput(ctx context.Context, obj in
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("map"))
-			it.Map, err = ec.unmarshalOKeyValueInput2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐKeyValueInputᚄ(ctx, v)
+			it.Map, err = ec.unmarshalOKeyValueInput2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐKeyValueInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -9497,7 +9497,7 @@ func (ec *executionContext) ___Type(ctx context.Context, sel ast.SelectionSet, o
 
 // region    ***************************** type.gotpl *****************************
 
-func (ec *executionContext) marshalNAttribute2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAttributeᚄ(ctx context.Context, sel ast.SelectionSet, v []*Attribute) graphql.Marshaler {
+func (ec *executionContext) marshalNAttribute2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAttributeᚄ(ctx context.Context, sel ast.SelectionSet, v []*Attribute) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -9521,7 +9521,7 @@ func (ec *executionContext) marshalNAttribute2ᚕᚖgitᚗvdbᚗtoᚋcercᚑio�
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNAttribute2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAttribute(ctx, sel, v[i])
+			ret[i] = ec.marshalNAttribute2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAttribute(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -9541,7 +9541,7 @@ func (ec *executionContext) marshalNAttribute2ᚕᚖgitᚗvdbᚗtoᚋcercᚑio�
 	return ret
 }
 
-func (ec *executionContext) marshalNAttribute2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAttribute(ctx context.Context, sel ast.SelectionSet, v *Attribute) graphql.Marshaler {
+func (ec *executionContext) marshalNAttribute2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAttribute(ctx context.Context, sel ast.SelectionSet, v *Attribute) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -9551,7 +9551,7 @@ func (ec *executionContext) marshalNAttribute2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋla
 	return ec._Attribute(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalNAuthorityRecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAuthorityRecord(ctx context.Context, sel ast.SelectionSet, v []*AuthorityRecord) graphql.Marshaler {
+func (ec *executionContext) marshalNAuthorityRecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAuthorityRecord(ctx context.Context, sel ast.SelectionSet, v []*AuthorityRecord) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -9575,7 +9575,7 @@ func (ec *executionContext) marshalNAuthorityRecord2ᚕᚖgitᚗvdbᚗtoᚋcerc�
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOAuthorityRecord2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAuthorityRecord(ctx, sel, v[i])
+			ret[i] = ec.marshalOAuthorityRecord2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAuthorityRecord(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -9589,7 +9589,7 @@ func (ec *executionContext) marshalNAuthorityRecord2ᚕᚖgitᚗvdbᚗtoᚋcerc�
 	return ret
 }
 
-func (ec *executionContext) marshalNBond2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐBond(ctx context.Context, sel ast.SelectionSet, v *Bond) graphql.Marshaler {
+func (ec *executionContext) marshalNBond2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐBond(ctx context.Context, sel ast.SelectionSet, v *Bond) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -9614,7 +9614,7 @@ func (ec *executionContext) marshalNBoolean2bool(ctx context.Context, sel ast.Se
 	return res
 }
 
-func (ec *executionContext) marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐCoin(ctx context.Context, sel ast.SelectionSet, v *Coin) graphql.Marshaler {
+func (ec *executionContext) marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐCoin(ctx context.Context, sel ast.SelectionSet, v *Coin) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -9654,22 +9654,22 @@ func (ec *executionContext) marshalNInt2int(ctx context.Context, sel ast.Selecti
 	return res
 }
 
-func (ec *executionContext) unmarshalNKeyValueInput2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐKeyValueInput(ctx context.Context, v interface{}) (*KeyValueInput, error) {
+func (ec *executionContext) unmarshalNKeyValueInput2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐKeyValueInput(ctx context.Context, v interface{}) (*KeyValueInput, error) {
 	res, err := ec.unmarshalInputKeyValueInput(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNLink2gitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐLink(ctx context.Context, v interface{}) (Link, error) {
+func (ec *executionContext) unmarshalNLink2gitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐLink(ctx context.Context, v interface{}) (Link, error) {
 	var res Link
 	err := res.UnmarshalGQLContext(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNLink2gitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐLink(ctx context.Context, sel ast.SelectionSet, v Link) graphql.Marshaler {
+func (ec *executionContext) marshalNLink2gitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐLink(ctx context.Context, sel ast.SelectionSet, v Link) graphql.Marshaler {
 	return graphql.WrapContextMarshaler(ctx, v)
 }
 
-func (ec *executionContext) marshalNNameRecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐNameRecord(ctx context.Context, sel ast.SelectionSet, v []*NameRecord) graphql.Marshaler {
+func (ec *executionContext) marshalNNameRecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐNameRecord(ctx context.Context, sel ast.SelectionSet, v []*NameRecord) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -9693,7 +9693,7 @@ func (ec *executionContext) marshalNNameRecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑio�
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalONameRecord2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐNameRecord(ctx, sel, v[i])
+			ret[i] = ec.marshalONameRecord2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐNameRecord(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -9707,7 +9707,7 @@ func (ec *executionContext) marshalNNameRecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑio�
 	return ret
 }
 
-func (ec *executionContext) marshalNNameRecordEntry2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐNameRecordEntry(ctx context.Context, sel ast.SelectionSet, v *NameRecordEntry) graphql.Marshaler {
+func (ec *executionContext) marshalNNameRecordEntry2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐNameRecordEntry(ctx context.Context, sel ast.SelectionSet, v *NameRecordEntry) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -9717,7 +9717,7 @@ func (ec *executionContext) marshalNNameRecordEntry2ᚖgitᚗvdbᚗtoᚋcercᚑi
 	return ec._NameRecordEntry(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalNNodeInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐNodeInfo(ctx context.Context, sel ast.SelectionSet, v *NodeInfo) graphql.Marshaler {
+func (ec *executionContext) marshalNNodeInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐNodeInfo(ctx context.Context, sel ast.SelectionSet, v *NodeInfo) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -9727,7 +9727,7 @@ func (ec *executionContext) marshalNNodeInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlac
 	return ec._NodeInfo(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalNRecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐRecord(ctx context.Context, sel ast.SelectionSet, v []*Record) graphql.Marshaler {
+func (ec *executionContext) marshalNRecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐRecord(ctx context.Context, sel ast.SelectionSet, v []*Record) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -9751,7 +9751,7 @@ func (ec *executionContext) marshalNRecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋla
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalORecord2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐRecord(ctx, sel, v[i])
+			ret[i] = ec.marshalORecord2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐRecord(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -9765,11 +9765,11 @@ func (ec *executionContext) marshalNRecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋla
 	return ret
 }
 
-func (ec *executionContext) marshalNStatus2gitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐStatus(ctx context.Context, sel ast.SelectionSet, v Status) graphql.Marshaler {
+func (ec *executionContext) marshalNStatus2gitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐStatus(ctx context.Context, sel ast.SelectionSet, v Status) graphql.Marshaler {
 	return ec._Status(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNStatus2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐStatus(ctx context.Context, sel ast.SelectionSet, v *Status) graphql.Marshaler {
+func (ec *executionContext) marshalNStatus2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐStatus(ctx context.Context, sel ast.SelectionSet, v *Status) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -9794,7 +9794,7 @@ func (ec *executionContext) marshalNString2string(ctx context.Context, sel ast.S
 	return res
 }
 
-func (ec *executionContext) marshalNSyncInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐSyncInfo(ctx context.Context, sel ast.SelectionSet, v *SyncInfo) graphql.Marshaler {
+func (ec *executionContext) marshalNSyncInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐSyncInfo(ctx context.Context, sel ast.SelectionSet, v *SyncInfo) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -9804,7 +9804,7 @@ func (ec *executionContext) marshalNSyncInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlac
 	return ec._SyncInfo(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalNValidatorInfo2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐValidatorInfo(ctx context.Context, sel ast.SelectionSet, v []*ValidatorInfo) graphql.Marshaler {
+func (ec *executionContext) marshalNValidatorInfo2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐValidatorInfo(ctx context.Context, sel ast.SelectionSet, v []*ValidatorInfo) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -9828,7 +9828,7 @@ func (ec *executionContext) marshalNValidatorInfo2ᚕᚖgitᚗvdbᚗtoᚋcercᚑ
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOValidatorInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐValidatorInfo(ctx, sel, v[i])
+			ret[i] = ec.marshalOValidatorInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐValidatorInfo(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -9842,7 +9842,7 @@ func (ec *executionContext) marshalNValidatorInfo2ᚕᚖgitᚗvdbᚗtoᚋcercᚑ
 	return ret
 }
 
-func (ec *executionContext) marshalNValue2ᚕgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐValue(ctx context.Context, sel ast.SelectionSet, v []Value) graphql.Marshaler {
+func (ec *executionContext) marshalNValue2ᚕgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐValue(ctx context.Context, sel ast.SelectionSet, v []Value) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -9866,7 +9866,7 @@ func (ec *executionContext) marshalNValue2ᚕgitᚗvdbᚗtoᚋcercᚑioᚋlaconi
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOValue2gitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐValue(ctx, sel, v[i])
+			ret[i] = ec.marshalOValue2gitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐValue(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -10133,7 +10133,7 @@ func (ec *executionContext) marshalN__TypeKind2string(ctx context.Context, sel a
 	return res
 }
 
-func (ec *executionContext) marshalOAccount2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAccount(ctx context.Context, sel ast.SelectionSet, v []*Account) graphql.Marshaler {
+func (ec *executionContext) marshalOAccount2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAccount(ctx context.Context, sel ast.SelectionSet, v []*Account) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -10160,7 +10160,7 @@ func (ec *executionContext) marshalOAccount2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋl
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOAccount2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAccount(ctx, sel, v[i])
+			ret[i] = ec.marshalOAccount2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAccount(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -10174,14 +10174,14 @@ func (ec *executionContext) marshalOAccount2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋl
 	return ret
 }
 
-func (ec *executionContext) marshalOAccount2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAccount(ctx context.Context, sel ast.SelectionSet, v *Account) graphql.Marshaler {
+func (ec *executionContext) marshalOAccount2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAccount(ctx context.Context, sel ast.SelectionSet, v *Account) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Account(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOAttribute2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAttributeᚄ(ctx context.Context, sel ast.SelectionSet, v []*Attribute) graphql.Marshaler {
+func (ec *executionContext) marshalOAttribute2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAttributeᚄ(ctx context.Context, sel ast.SelectionSet, v []*Attribute) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -10208,7 +10208,7 @@ func (ec *executionContext) marshalOAttribute2ᚕᚖgitᚗvdbᚗtoᚋcercᚑio�
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNAttribute2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAttribute(ctx, sel, v[i])
+			ret[i] = ec.marshalNAttribute2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAttribute(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -10228,7 +10228,7 @@ func (ec *executionContext) marshalOAttribute2ᚕᚖgitᚗvdbᚗtoᚋcercᚑio�
 	return ret
 }
 
-func (ec *executionContext) marshalOAuction2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAuction(ctx context.Context, sel ast.SelectionSet, v []*Auction) graphql.Marshaler {
+func (ec *executionContext) marshalOAuction2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAuction(ctx context.Context, sel ast.SelectionSet, v []*Auction) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -10255,7 +10255,7 @@ func (ec *executionContext) marshalOAuction2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋl
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOAuction2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAuction(ctx, sel, v[i])
+			ret[i] = ec.marshalOAuction2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAuction(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -10269,14 +10269,14 @@ func (ec *executionContext) marshalOAuction2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋl
 	return ret
 }
 
-func (ec *executionContext) marshalOAuction2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAuction(ctx context.Context, sel ast.SelectionSet, v *Auction) graphql.Marshaler {
+func (ec *executionContext) marshalOAuction2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAuction(ctx context.Context, sel ast.SelectionSet, v *Auction) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Auction(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOAuctionBid2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAuctionBid(ctx context.Context, sel ast.SelectionSet, v []*AuctionBid) graphql.Marshaler {
+func (ec *executionContext) marshalOAuctionBid2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAuctionBid(ctx context.Context, sel ast.SelectionSet, v []*AuctionBid) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -10303,7 +10303,7 @@ func (ec *executionContext) marshalOAuctionBid2ᚕᚖgitᚗvdbᚗtoᚋcercᚑio�
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOAuctionBid2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAuctionBid(ctx, sel, v[i])
+			ret[i] = ec.marshalOAuctionBid2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAuctionBid(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -10317,21 +10317,21 @@ func (ec *executionContext) marshalOAuctionBid2ᚕᚖgitᚗvdbᚗtoᚋcercᚑio�
 	return ret
 }
 
-func (ec *executionContext) marshalOAuctionBid2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAuctionBid(ctx context.Context, sel ast.SelectionSet, v *AuctionBid) graphql.Marshaler {
+func (ec *executionContext) marshalOAuctionBid2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAuctionBid(ctx context.Context, sel ast.SelectionSet, v *AuctionBid) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._AuctionBid(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOAuthorityRecord2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐAuthorityRecord(ctx context.Context, sel ast.SelectionSet, v *AuthorityRecord) graphql.Marshaler {
+func (ec *executionContext) marshalOAuthorityRecord2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐAuthorityRecord(ctx context.Context, sel ast.SelectionSet, v *AuthorityRecord) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._AuthorityRecord(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOBond2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐBond(ctx context.Context, sel ast.SelectionSet, v []*Bond) graphql.Marshaler {
+func (ec *executionContext) marshalOBond2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐBond(ctx context.Context, sel ast.SelectionSet, v []*Bond) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -10358,7 +10358,7 @@ func (ec *executionContext) marshalOBond2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaco
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOBond2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐBond(ctx, sel, v[i])
+			ret[i] = ec.marshalOBond2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐBond(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -10372,7 +10372,7 @@ func (ec *executionContext) marshalOBond2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaco
 	return ret
 }
 
-func (ec *executionContext) marshalOBond2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐBondᚄ(ctx context.Context, sel ast.SelectionSet, v []*Bond) graphql.Marshaler {
+func (ec *executionContext) marshalOBond2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐBondᚄ(ctx context.Context, sel ast.SelectionSet, v []*Bond) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -10399,7 +10399,7 @@ func (ec *executionContext) marshalOBond2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaco
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNBond2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐBond(ctx, sel, v[i])
+			ret[i] = ec.marshalNBond2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐBond(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -10419,7 +10419,7 @@ func (ec *executionContext) marshalOBond2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaco
 	return ret
 }
 
-func (ec *executionContext) marshalOBond2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐBond(ctx context.Context, sel ast.SelectionSet, v *Bond) graphql.Marshaler {
+func (ec *executionContext) marshalOBond2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐBond(ctx context.Context, sel ast.SelectionSet, v *Bond) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -10452,7 +10452,7 @@ func (ec *executionContext) marshalOBoolean2ᚖbool(ctx context.Context, sel ast
 	return res
 }
 
-func (ec *executionContext) marshalOCoin2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐCoinᚄ(ctx context.Context, sel ast.SelectionSet, v []*Coin) graphql.Marshaler {
+func (ec *executionContext) marshalOCoin2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐCoinᚄ(ctx context.Context, sel ast.SelectionSet, v []*Coin) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -10479,7 +10479,7 @@ func (ec *executionContext) marshalOCoin2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaco
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐCoin(ctx, sel, v[i])
+			ret[i] = ec.marshalNCoin2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐCoin(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -10531,7 +10531,7 @@ func (ec *executionContext) marshalOInt2ᚖint(ctx context.Context, sel ast.Sele
 	return res
 }
 
-func (ec *executionContext) unmarshalOKeyValueInput2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐKeyValueInputᚄ(ctx context.Context, v interface{}) ([]*KeyValueInput, error) {
+func (ec *executionContext) unmarshalOKeyValueInput2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐKeyValueInputᚄ(ctx context.Context, v interface{}) ([]*KeyValueInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -10543,7 +10543,7 @@ func (ec *executionContext) unmarshalOKeyValueInput2ᚕᚖgitᚗvdbᚗtoᚋcerc�
 	res := make([]*KeyValueInput, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNKeyValueInput2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐKeyValueInput(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNKeyValueInput2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐKeyValueInput(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -10551,7 +10551,7 @@ func (ec *executionContext) unmarshalOKeyValueInput2ᚕᚖgitᚗvdbᚗtoᚋcerc�
 	return res, nil
 }
 
-func (ec *executionContext) unmarshalOLink2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐLink(ctx context.Context, v interface{}) (*Link, error) {
+func (ec *executionContext) unmarshalOLink2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐLink(ctx context.Context, v interface{}) (*Link, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -10560,21 +10560,21 @@ func (ec *executionContext) unmarshalOLink2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlacon
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalOLink2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐLink(ctx context.Context, sel ast.SelectionSet, v *Link) graphql.Marshaler {
+func (ec *executionContext) marshalOLink2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐLink(ctx context.Context, sel ast.SelectionSet, v *Link) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return graphql.WrapContextMarshaler(ctx, v)
 }
 
-func (ec *executionContext) marshalONameRecord2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐNameRecord(ctx context.Context, sel ast.SelectionSet, v *NameRecord) graphql.Marshaler {
+func (ec *executionContext) marshalONameRecord2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐNameRecord(ctx context.Context, sel ast.SelectionSet, v *NameRecord) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._NameRecord(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalONameRecordEntry2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐNameRecordEntry(ctx context.Context, sel ast.SelectionSet, v []*NameRecordEntry) graphql.Marshaler {
+func (ec *executionContext) marshalONameRecordEntry2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐNameRecordEntry(ctx context.Context, sel ast.SelectionSet, v []*NameRecordEntry) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -10601,7 +10601,7 @@ func (ec *executionContext) marshalONameRecordEntry2ᚕᚖgitᚗvdbᚗtoᚋcerc�
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalONameRecordEntry2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐNameRecordEntry(ctx, sel, v[i])
+			ret[i] = ec.marshalONameRecordEntry2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐNameRecordEntry(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -10615,14 +10615,14 @@ func (ec *executionContext) marshalONameRecordEntry2ᚕᚖgitᚗvdbᚗtoᚋcerc�
 	return ret
 }
 
-func (ec *executionContext) marshalONameRecordEntry2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐNameRecordEntry(ctx context.Context, sel ast.SelectionSet, v *NameRecordEntry) graphql.Marshaler {
+func (ec *executionContext) marshalONameRecordEntry2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐNameRecordEntry(ctx context.Context, sel ast.SelectionSet, v *NameRecordEntry) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._NameRecordEntry(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOOwnerBonds2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐOwnerBonds(ctx context.Context, sel ast.SelectionSet, v []*OwnerBonds) graphql.Marshaler {
+func (ec *executionContext) marshalOOwnerBonds2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐOwnerBonds(ctx context.Context, sel ast.SelectionSet, v []*OwnerBonds) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -10649,7 +10649,7 @@ func (ec *executionContext) marshalOOwnerBonds2ᚕᚖgitᚗvdbᚗtoᚋcercᚑio�
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOOwnerBonds2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐOwnerBonds(ctx, sel, v[i])
+			ret[i] = ec.marshalOOwnerBonds2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐOwnerBonds(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -10663,14 +10663,14 @@ func (ec *executionContext) marshalOOwnerBonds2ᚕᚖgitᚗvdbᚗtoᚋcercᚑio�
 	return ret
 }
 
-func (ec *executionContext) marshalOOwnerBonds2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐOwnerBonds(ctx context.Context, sel ast.SelectionSet, v *OwnerBonds) graphql.Marshaler {
+func (ec *executionContext) marshalOOwnerBonds2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐOwnerBonds(ctx context.Context, sel ast.SelectionSet, v *OwnerBonds) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._OwnerBonds(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOPeerInfo2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐPeerInfo(ctx context.Context, sel ast.SelectionSet, v []*PeerInfo) graphql.Marshaler {
+func (ec *executionContext) marshalOPeerInfo2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐPeerInfo(ctx context.Context, sel ast.SelectionSet, v []*PeerInfo) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -10697,7 +10697,7 @@ func (ec *executionContext) marshalOPeerInfo2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋ
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOPeerInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐPeerInfo(ctx, sel, v[i])
+			ret[i] = ec.marshalOPeerInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐPeerInfo(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -10711,14 +10711,14 @@ func (ec *executionContext) marshalOPeerInfo2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋ
 	return ret
 }
 
-func (ec *executionContext) marshalOPeerInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐPeerInfo(ctx context.Context, sel ast.SelectionSet, v *PeerInfo) graphql.Marshaler {
+func (ec *executionContext) marshalOPeerInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐPeerInfo(ctx context.Context, sel ast.SelectionSet, v *PeerInfo) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._PeerInfo(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalORecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐRecord(ctx context.Context, sel ast.SelectionSet, v []*Record) graphql.Marshaler {
+func (ec *executionContext) marshalORecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐRecord(ctx context.Context, sel ast.SelectionSet, v []*Record) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -10745,7 +10745,7 @@ func (ec *executionContext) marshalORecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋla
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalORecord2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐRecord(ctx, sel, v[i])
+			ret[i] = ec.marshalORecord2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐRecord(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -10759,7 +10759,7 @@ func (ec *executionContext) marshalORecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋla
 	return ret
 }
 
-func (ec *executionContext) marshalORecord2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐRecord(ctx context.Context, sel ast.SelectionSet, v *Record) graphql.Marshaler {
+func (ec *executionContext) marshalORecord2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐRecord(ctx context.Context, sel ast.SelectionSet, v *Record) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -10820,21 +10820,21 @@ func (ec *executionContext) marshalOString2ᚖstring(ctx context.Context, sel as
 	return res
 }
 
-func (ec *executionContext) marshalOValidatorInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐValidatorInfo(ctx context.Context, sel ast.SelectionSet, v *ValidatorInfo) graphql.Marshaler {
+func (ec *executionContext) marshalOValidatorInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐValidatorInfo(ctx context.Context, sel ast.SelectionSet, v *ValidatorInfo) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._ValidatorInfo(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOValue2gitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐValue(ctx context.Context, sel ast.SelectionSet, v Value) graphql.Marshaler {
+func (ec *executionContext) marshalOValue2gitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐValue(ctx context.Context, sel ast.SelectionSet, v Value) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Value(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalOValueInput2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐValueInput(ctx context.Context, v interface{}) ([]*ValueInput, error) {
+func (ec *executionContext) unmarshalOValueInput2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐValueInput(ctx context.Context, v interface{}) ([]*ValueInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -10846,7 +10846,7 @@ func (ec *executionContext) unmarshalOValueInput2ᚕᚖgitᚗvdbᚗtoᚋcercᚑi
 	res := make([]*ValueInput, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalOValueInput2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐValueInput(ctx, vSlice[i])
+		res[i], err = ec.unmarshalOValueInput2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐValueInput(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -10854,7 +10854,7 @@ func (ec *executionContext) unmarshalOValueInput2ᚕᚖgitᚗvdbᚗtoᚋcercᚑi
 	return res, nil
 }
 
-func (ec *executionContext) unmarshalOValueInput2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconic2dᚋgqlᚐValueInput(ctx context.Context, v interface{}) (*ValueInput, error) {
+func (ec *executionContext) unmarshalOValueInput2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐValueInput(ctx context.Context, v interface{}) (*ValueInput, error) {
 	if v == nil {
 		return nil, nil
 	}

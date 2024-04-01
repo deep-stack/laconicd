@@ -6,8 +6,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	clitestutil "github.com/cosmos/cosmos-sdk/testutil/cli"
 
-	types "git.vdb.to/cerc-io/laconic2d/x/auction"
-	"git.vdb.to/cerc-io/laconic2d/x/auction/client/cli"
+	types "git.vdb.to/cerc-io/laconicd/x/auction"
+	"git.vdb.to/cerc-io/laconicd/x/auction/client/cli"
 )
 
 var queryJSONFlag = []string{fmt.Sprintf("--%s=json", flags.FlagOutput)}

@@ -4,7 +4,7 @@ import (
 	autocliv1 "cosmossdk.io/api/cosmos/autocli/v1"
 	"cosmossdk.io/client/v2/autocli"
 
-	bondv1 "git.vdb.to/cerc-io/laconic2d/api/cerc/bond/v1"
+	bondv1 "git.vdb.to/cerc-io/laconicd/api/cerc/bond/v1"
 )
 
 var _ autocli.HasAutoCLIConfig = AppModule{}

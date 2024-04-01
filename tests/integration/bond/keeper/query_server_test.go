@@ -8,8 +8,8 @@ import (
 	simtestutil "github.com/cosmos/cosmos-sdk/testutil/sims"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	integrationTest "git.vdb.to/cerc-io/laconic2d/tests/integration"
-	types "git.vdb.to/cerc-io/laconic2d/x/bond"
+	integrationTest "git.vdb.to/cerc-io/laconicd/tests/integration"
+	types "git.vdb.to/cerc-io/laconicd/x/bond"
 )
 
 func (kts *KeeperTestSuite) TestGrpcQueryParams() {

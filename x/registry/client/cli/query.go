@@ -10,7 +10,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/version"
 	"github.com/spf13/cobra"
 
-	registrytypes "git.vdb.to/cerc-io/laconic2d/x/registry"
+	registrytypes "git.vdb.to/cerc-io/laconicd/x/registry"
 )
 
 // GetCmdList queries all records.

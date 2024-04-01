@@ -14,8 +14,8 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	wnsUtils "git.vdb.to/cerc-io/laconic2d/utils"
-	auctiontypes "git.vdb.to/cerc-io/laconic2d/x/auction"
+	wnsUtils "git.vdb.to/cerc-io/laconicd/utils"
+	auctiontypes "git.vdb.to/cerc-io/laconicd/x/auction"
 )
 
 // GetTxCmd returns transaction commands for this module.

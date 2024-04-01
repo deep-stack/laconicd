@@ -13,9 +13,9 @@ import (
 	"cosmossdk.io/log"
 	storetypes "cosmossdk.io/store/types"
 
-	auctionkeeper "git.vdb.to/cerc-io/laconic2d/x/auction/keeper"
-	bondkeeper "git.vdb.to/cerc-io/laconic2d/x/bond/keeper"
-	registrykeeper "git.vdb.to/cerc-io/laconic2d/x/registry/keeper"
+	auctionkeeper "git.vdb.to/cerc-io/laconicd/x/auction/keeper"
+	bondkeeper "git.vdb.to/cerc-io/laconicd/x/bond/keeper"
+	registrykeeper "git.vdb.to/cerc-io/laconicd/x/registry/keeper"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -35,18 +35,18 @@ import (
 	genutiltypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
 	stakingkeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
 
-	_ "cosmossdk.io/api/cosmos/tx/config/v1"           // import for side-effects
-	_ "git.vdb.to/cerc-io/laconic2d/x/auction/module"  // import for side-effects
-	_ "git.vdb.to/cerc-io/laconic2d/x/bond/module"     // import for side-effects
-	_ "git.vdb.to/cerc-io/laconic2d/x/registry/module" // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/auth"            // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/auth/tx/config"  // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/bank"            // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/consensus"       // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/crisis"          // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/distribution"    // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/mint"            // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/staking"         // import for side-effects
+	_ "cosmossdk.io/api/cosmos/tx/config/v1"          // import for side-effects
+	_ "git.vdb.to/cerc-io/laconicd/x/auction/module"  // import for side-effects
+	_ "git.vdb.to/cerc-io/laconicd/x/bond/module"     // import for side-effects
+	_ "git.vdb.to/cerc-io/laconicd/x/registry/module" // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/auth"           // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/auth/tx/config" // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/bank"           // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/consensus"      // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/crisis"         // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/distribution"   // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/mint"           // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/staking"        // import for side-effects
 )
 
 // DefaultNodeHome default home directories for the application daemon
@@ -93,7 +93,7 @@ func init() {
 		panic(err)
 	}
 
-	DefaultNodeHome = filepath.Join(userHomeDir, ".laconic2d")
+	DefaultNodeHome = filepath.Join(userHomeDir, ".laconicd")
 }
 
 // AppConfig returns the default app config.

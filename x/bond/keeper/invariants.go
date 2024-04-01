@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	types "git.vdb.to/cerc-io/laconic2d/x/bond"
+	types "git.vdb.to/cerc-io/laconicd/x/bond"
 )
 
 // RegisterInvariants registers all bond invariants

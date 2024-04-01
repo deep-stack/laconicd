@@ -26,13 +26,13 @@ import (
 	txmodule "github.com/cosmos/cosmos-sdk/x/auth/tx/config"
 	"github.com/cosmos/cosmos-sdk/x/auth/types"
 
-	"git.vdb.to/cerc-io/laconic2d/app"
-	"git.vdb.to/cerc-io/laconic2d/gql"
+	"git.vdb.to/cerc-io/laconicd/app"
+	"git.vdb.to/cerc-io/laconicd/gql"
 )
 
 const EnvPrefix = "LACONIC"
 
-// NewRootCmd creates a new root command for laconic2d. It is called once in the
+// NewRootCmd creates a new root command for laconicd. It is called once in the
 // main function.
 func NewRootCmd() *cobra.Command {
 	var (
@@ -61,7 +61,7 @@ func NewRootCmd() *cobra.Command {
 	}
 
 	rootCmd := &cobra.Command{
-		Use:   "laconic2d",
+		Use:   "laconicd",
 		Short: "Laconic Daemon",
 		PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
 			// set the default command outputs

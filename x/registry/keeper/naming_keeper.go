@@ -13,9 +13,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	auctiontypes "git.vdb.to/cerc-io/laconic2d/x/auction"
-	registrytypes "git.vdb.to/cerc-io/laconic2d/x/registry"
-	"git.vdb.to/cerc-io/laconic2d/x/registry/helpers"
+	auctiontypes "git.vdb.to/cerc-io/laconicd/x/auction"
+	registrytypes "git.vdb.to/cerc-io/laconicd/x/registry"
+	"git.vdb.to/cerc-io/laconicd/x/registry/helpers"
 )
 
 // HasNameAuthority - checks if a name/authority exists.

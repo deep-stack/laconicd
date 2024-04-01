@@ -7,7 +7,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	bondtypes "git.vdb.to/cerc-io/laconic2d/x/bond"
+	bondtypes "git.vdb.to/cerc-io/laconicd/x/bond"
 )
 
 var _ bondtypes.QueryServer = queryServer{}

@@ -8,7 +8,7 @@ import (
 	clitestutil "github.com/cosmos/cosmos-sdk/testutil/cli"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"git.vdb.to/cerc-io/laconic2d/x/registry/client/cli"
+	"git.vdb.to/cerc-io/laconicd/x/registry/client/cli"
 )
 
 func (ets *E2ETestSuite) TestGetCmdSetRecord() {

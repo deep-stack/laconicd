@@ -13,10 +13,10 @@ import (
 	clitestutil "github.com/cosmos/cosmos-sdk/testutil/cli"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	laconictestcli "git.vdb.to/cerc-io/laconic2d/testutil/cli"
-	"git.vdb.to/cerc-io/laconic2d/testutil/network"
-	bondtypes "git.vdb.to/cerc-io/laconic2d/x/bond"
-	"git.vdb.to/cerc-io/laconic2d/x/bond/client/cli"
+	laconictestcli "git.vdb.to/cerc-io/laconicd/testutil/cli"
+	"git.vdb.to/cerc-io/laconicd/testutil/network"
+	bondtypes "git.vdb.to/cerc-io/laconicd/x/bond"
+	"git.vdb.to/cerc-io/laconicd/x/bond/client/cli"
 )
 
 type E2ETestSuite struct {

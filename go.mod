@@ -1,4 +1,4 @@
-module git.vdb.to/cerc-io/laconic2d
+module git.vdb.to/cerc-io/laconicd
 
 go 1.21
 

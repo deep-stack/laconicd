@@ -5,7 +5,7 @@ package cerc.bond.v1;
 import "gogoproto/gogo.proto";
 import "cerc/bond/v1/bond.proto";
 
-option go_package = "git.vdb.to/cerc-io/laconic2d/x/bond";
+option go_package = "git.vdb.to/cerc-io/laconicd/x/bond";
 
 // GenesisState defines the bond module's genesis state.
 message GenesisState {

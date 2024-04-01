@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"git.vdb.to/cerc-io/laconic2d/x/registry/keeper"
+	"git.vdb.to/cerc-io/laconicd/x/registry/keeper"
 )
 
 // EndBlocker is called every block

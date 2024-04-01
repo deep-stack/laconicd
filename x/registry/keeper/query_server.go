@@ -7,7 +7,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	registrytypes "git.vdb.to/cerc-io/laconic2d/x/registry"
+	registrytypes "git.vdb.to/cerc-io/laconicd/x/registry"
 )
 
 var _ registrytypes.QueryServer = queryServer{}

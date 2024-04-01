@@ -11,10 +11,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	auctiontypes "git.vdb.to/cerc-io/laconic2d/x/auction"
-	auctionkeeper "git.vdb.to/cerc-io/laconic2d/x/auction/keeper"
-	bondtypes "git.vdb.to/cerc-io/laconic2d/x/bond"
-	registrytypes "git.vdb.to/cerc-io/laconic2d/x/registry"
+	auctiontypes "git.vdb.to/cerc-io/laconicd/x/auction"
+	auctionkeeper "git.vdb.to/cerc-io/laconicd/x/auction/keeper"
+	bondtypes "git.vdb.to/cerc-io/laconicd/x/bond"
+	registrytypes "git.vdb.to/cerc-io/laconicd/x/registry"
 )
 
 // Record keeper implements the bond usage keeper interface.

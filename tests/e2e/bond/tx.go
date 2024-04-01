@@ -7,7 +7,7 @@ import (
 	clitestutil "github.com/cosmos/cosmos-sdk/testutil/cli"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"git.vdb.to/cerc-io/laconic2d/x/bond/client/cli"
+	"git.vdb.to/cerc-io/laconicd/x/bond/client/cli"
 )
 
 func (ets *E2ETestSuite) TestTxCreateBond() {

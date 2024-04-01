@@ -6,10 +6,10 @@ import (
 	"path/filepath"
 	"reflect"
 
-	types "git.vdb.to/cerc-io/laconic2d/x/registry"
-	"git.vdb.to/cerc-io/laconic2d/x/registry/client/cli"
-	"git.vdb.to/cerc-io/laconic2d/x/registry/helpers"
-	registryKeeper "git.vdb.to/cerc-io/laconic2d/x/registry/keeper"
+	types "git.vdb.to/cerc-io/laconicd/x/registry"
+	"git.vdb.to/cerc-io/laconicd/x/registry/client/cli"
+	"git.vdb.to/cerc-io/laconicd/x/registry/helpers"
+	registryKeeper "git.vdb.to/cerc-io/laconicd/x/registry/keeper"
 )
 
 func (kts *KeeperTestSuite) TestGrpcQueryParams() {

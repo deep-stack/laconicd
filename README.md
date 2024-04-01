@@ -8,10 +8,10 @@ The Source of Proof. Laconic is a next generation data availability & verifiabil
 
 ## Installation
 
-Install `laconic2d`:
+Install `laconicd`:
 
   ```bash
-  # install the laconic2d binary
+  # install the laconicd binary
   make install
   ```
 
@@ -38,3 +38,10 @@ Run tests:
   # e2e tests
   make test-e2e
   ```
+
+## Community
+
+The following chat channels and forums are a great spot to ask questions about Laconic:
+
+- [Laconic Twitter](https://twitter.com/laconicnetwork)
+- [Website](https://laconic.com)

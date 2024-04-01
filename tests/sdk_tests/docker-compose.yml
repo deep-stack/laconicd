@@ -1,7 +1,7 @@
 services:
-  laconic2d:
+  laconicd:
     restart: unless-stopped
-    image: cerc/laconic2d:local
+    image: cerc/laconicd:local
     entrypoint: ["sh", "/docker-entrypoint-scripts.d/create-fixturenet.sh"]
     environment:
       - TEST_AUCTION_ENABLED
@@ -28,6 +28,6 @@ services:
   sdk-test-runner:
     image: cerc/registry-sdk-tester:local
     depends_on:
-      laconic2d:
+      laconicd:
         condition: service_healthy
     command: tail -F /dev/null

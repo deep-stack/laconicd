@@ -9,9 +9,9 @@ import (
 	"github.com/ipld/go-ipld-prime"
 	"github.com/ipld/go-ipld-prime/codec/dagjson"
 
-	auctiontypes "git.vdb.to/cerc-io/laconic2d/x/auction"
-	bondtypes "git.vdb.to/cerc-io/laconic2d/x/bond"
-	registrytypes "git.vdb.to/cerc-io/laconic2d/x/registry"
+	auctiontypes "git.vdb.to/cerc-io/laconicd/x/auction"
+	bondtypes "git.vdb.to/cerc-io/laconicd/x/bond"
+	registrytypes "git.vdb.to/cerc-io/laconicd/x/registry"
 )
 
 // OwnerAttributeName denotes the owner attribute name for a bond.

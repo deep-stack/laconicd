@@ -15,9 +15,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 
-	registrytypes "git.vdb.to/cerc-io/laconic2d/x/registry"
-	"git.vdb.to/cerc-io/laconic2d/x/registry/client/cli"
-	"git.vdb.to/cerc-io/laconic2d/x/registry/keeper"
+	registrytypes "git.vdb.to/cerc-io/laconicd/x/registry"
+	"git.vdb.to/cerc-io/laconicd/x/registry/client/cli"
+	"git.vdb.to/cerc-io/laconicd/x/registry/keeper"
 )
 
 var (

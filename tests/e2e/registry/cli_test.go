@@ -5,8 +5,8 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
-	"git.vdb.to/cerc-io/laconic2d/tests/e2e"
-	"git.vdb.to/cerc-io/laconic2d/testutil/network"
+	"git.vdb.to/cerc-io/laconicd/tests/e2e"
+	"git.vdb.to/cerc-io/laconicd/testutil/network"
 )
 
 func TestRegistryE2ETestSuite(t *testing.T) {

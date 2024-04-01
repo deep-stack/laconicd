@@ -6,8 +6,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	clitestutil "github.com/cosmos/cosmos-sdk/testutil/cli"
 
-	bondtypes "git.vdb.to/cerc-io/laconic2d/x/bond"
-	"git.vdb.to/cerc-io/laconic2d/x/bond/client/cli"
+	bondtypes "git.vdb.to/cerc-io/laconicd/x/bond"
+	"git.vdb.to/cerc-io/laconicd/x/bond/client/cli"
 )
 
 func (ets *E2ETestSuite) TestGetQueryBondList() {

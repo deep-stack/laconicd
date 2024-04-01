@@ -8,7 +8,7 @@ import "gogoproto/gogo.proto";
 import "cosmos/base/v1beta1/coin.proto";
 import "cerc/registry/v1/registry.proto";
 
-option go_package = "git.vdb.to/cerc-io/laconic2d/x/registry";
+option go_package = "git.vdb.to/cerc-io/laconicd/x/registry";
 
 // Query defines the gRPC querier service for registry module
 service Query {

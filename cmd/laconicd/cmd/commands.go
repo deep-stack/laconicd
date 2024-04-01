@@ -27,8 +27,8 @@ import (
 	authcmd "github.com/cosmos/cosmos-sdk/x/auth/client/cli"
 	genutilcli "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
 
-	"git.vdb.to/cerc-io/laconic2d/app"
-	"git.vdb.to/cerc-io/laconic2d/gql"
+	"git.vdb.to/cerc-io/laconicd/app"
+	"git.vdb.to/cerc-io/laconicd/gql"
 )
 
 func initRootCmd(rootCmd *cobra.Command, txConfig client.TxConfig, basicManager module.BasicManager) {

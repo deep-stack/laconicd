@@ -17,7 +17,7 @@ import (
 	auth "github.com/cosmos/cosmos-sdk/x/auth/keeper"
 	bank "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 
-	bondtypes "git.vdb.to/cerc-io/laconic2d/x/bond"
+	bondtypes "git.vdb.to/cerc-io/laconicd/x/bond"
 )
 
 type BondsIndexes struct {

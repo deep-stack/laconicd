@@ -10,9 +10,9 @@ import (
 	auth "github.com/cosmos/cosmos-sdk/x/auth/keeper"
 	bank "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 
-	modulev1 "git.vdb.to/cerc-io/laconic2d/api/cerc/bond/module/v1"
-	"git.vdb.to/cerc-io/laconic2d/x/bond"
-	"git.vdb.to/cerc-io/laconic2d/x/bond/keeper"
+	modulev1 "git.vdb.to/cerc-io/laconicd/api/cerc/bond/module/v1"
+	"git.vdb.to/cerc-io/laconicd/x/bond"
+	"git.vdb.to/cerc-io/laconicd/x/bond/keeper"
 )
 
 var _ appmodule.AppModule = AppModule{}

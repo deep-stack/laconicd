@@ -7,7 +7,7 @@ import "gogoproto/gogo.proto";
 import "cosmos/msg/v1/msg.proto";
 import "cerc/registry/v1/registry.proto";
 
-option go_package = "git.vdb.to/cerc-io/laconic2d/x/registry";
+option go_package = "git.vdb.to/cerc-io/laconicd/x/registry";
 
 // Msg is a service which exposes the registry functionality
 service Msg {

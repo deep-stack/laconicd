@@ -15,9 +15,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 
-	"git.vdb.to/cerc-io/laconic2d/x/auction"
-	"git.vdb.to/cerc-io/laconic2d/x/auction/client/cli"
-	"git.vdb.to/cerc-io/laconic2d/x/auction/keeper"
+	"git.vdb.to/cerc-io/laconicd/x/auction"
+	"git.vdb.to/cerc-io/laconicd/x/auction/client/cli"
+	"git.vdb.to/cerc-io/laconicd/x/auction/keeper"
 )
 
 var (

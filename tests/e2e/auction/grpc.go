@@ -5,7 +5,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/testutil"
 
-	auctiontypes "git.vdb.to/cerc-io/laconic2d/x/auction"
+	auctiontypes "git.vdb.to/cerc-io/laconicd/x/auction"
 )
 
 const (

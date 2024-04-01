@@ -8,9 +8,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/spf13/cobra"
 
-	laconictestcli "git.vdb.to/cerc-io/laconic2d/testutil/cli"
-	auctiontypes "git.vdb.to/cerc-io/laconic2d/x/auction"
-	"git.vdb.to/cerc-io/laconic2d/x/auction/client/cli"
+	laconictestcli "git.vdb.to/cerc-io/laconicd/testutil/cli"
+	auctiontypes "git.vdb.to/cerc-io/laconicd/x/auction"
+	"git.vdb.to/cerc-io/laconicd/x/auction/client/cli"
 )
 
 const (
