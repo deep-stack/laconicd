@@ -22,7 +22,7 @@ docker compose exec laconicd sh -c "curl --retry 10 --retry-delay 3 --retry-conn
 # Run tests
 docker compose exec \
   -e COSMOS_CHAIN_ID="$cosmos_chain_id" \
-  -e LACONICD_REST_ENDPOINT="$laconicd_rpc_endpoint" \
+  -e LACONICD_RPC_ENDPOINT="$laconicd_rpc_endpoint" \
   -e LACONICD_GQL_ENDPOINT="$laconicd_gql_endpoint" \
   -e PRIVATE_KEY="$laconicd_key" \
   sdk-test-runner yarn run "${yarn_args[@]}"
