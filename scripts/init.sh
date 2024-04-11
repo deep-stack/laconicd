@@ -66,6 +66,17 @@ if [ "$1" == "clean" ] || [ ! -d "$HOME/.laconicd/data/blockstore.db" ]; then
       sed -i 's/create_empty_blocks = true/create_empty_blocks = false/g' $HOME/.laconicd/config/config.toml
   fi
 
+  # Enable telemetry (prometheus metrics: http://localhost:1317/metrics?format=prometheus)
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    sed -i '' 's/enabled = false/enabled = true/g' $HOME/.laconicd/config/app.toml
+    sed -i '' 's/prometheus-retention-time = 0/prometheus-retention-time = 60/g' $HOME/.laconicd/config/app.toml
+    sed -i '' 's/prometheus = false/prometheus = true/g' $HOME/.laconicd/config/config.toml
+  else
+    sed -i 's/enabled = false/enabled = true/g' $HOME/.laconicd/config/app.toml
+    sed -i 's/prometheus-retention-time = 0/prometheus-retention-time = 60/g' $HOME/.laconicd/config/app.toml
+    sed -i 's/prometheus = false/prometheus = true/g' $HOME/.laconicd/config/config.toml
+  fi
+
   # Allocate genesis accounts (cosmos formatted addresses)
   laconicd genesis add-genesis-account $KEY 100000000000000000000000000photon --keyring-backend $KEYRING
 
