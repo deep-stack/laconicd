@@ -20,7 +20,7 @@ RUN make build
 FROM alpine:3.17.0
 
 # Install ca-certificates
-RUN apk add --update ca-certificates jq curl
+RUN apk add --update ca-certificates jq curl bash
 
 # Copy over binaries from the build-env
 COPY --from=build-env /go/src/git.vdb.to/cerc-io/laconicd/build/laconicd /usr/bin/laconicd
