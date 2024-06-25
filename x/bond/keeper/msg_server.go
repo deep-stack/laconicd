@@ -5,6 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
+	"git.vdb.to/cerc-io/laconicd/utils"
 	"git.vdb.to/cerc-io/laconicd/x/bond"
 )
 
@@ -25,6 +26,7 @@ func (ms msgServer) CreateBond(c context.Context, msg *bond.MsgCreateBond) (*bon
 	}
 
 	ctx := sdk.UnwrapSDKContext(c)
+	ctx = *utils.CtxWithCustomKVGasConfig(&ctx)
 
 	signerAddress, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
@@ -49,6 +51,8 @@ func (ms msgServer) CreateBond(c context.Context, msg *bond.MsgCreateBond) (*bon
 		),
 	})
 
+	utils.LogTxGasConsumed(ctx, ms.k.Logger(ctx), "CreateBond")
+
 	return &bond.MsgCreateBondResponse{Id: resp.Id}, nil
 }
 
@@ -59,6 +63,7 @@ func (ms msgServer) RefillBond(c context.Context, msg *bond.MsgRefillBond) (*bon
 	}
 
 	ctx := sdk.UnwrapSDKContext(c)
+	ctx = *utils.CtxWithCustomKVGasConfig(&ctx)
 
 	signerAddress, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
@@ -84,6 +89,8 @@ func (ms msgServer) RefillBond(c context.Context, msg *bond.MsgRefillBond) (*bon
 		),
 	})
 
+	utils.LogTxGasConsumed(ctx, ms.k.Logger(ctx), "RefillBond")
+
 	return &bond.MsgRefillBondResponse{}, nil
 }
 
@@ -94,6 +101,7 @@ func (ms msgServer) WithdrawBond(c context.Context, msg *bond.MsgWithdrawBond) (
 	}
 
 	ctx := sdk.UnwrapSDKContext(c)
+	ctx = *utils.CtxWithCustomKVGasConfig(&ctx)
 
 	signerAddress, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
@@ -119,6 +127,8 @@ func (ms msgServer) WithdrawBond(c context.Context, msg *bond.MsgWithdrawBond) (
 		),
 	})
 
+	utils.LogTxGasConsumed(ctx, ms.k.Logger(ctx), "WithdrawBond")
+
 	return &bond.MsgWithdrawBondResponse{}, nil
 }
 
@@ -129,6 +139,7 @@ func (ms msgServer) CancelBond(c context.Context, msg *bond.MsgCancelBond) (*bon
 	}
 
 	ctx := sdk.UnwrapSDKContext(c)
+	ctx = *utils.CtxWithCustomKVGasConfig(&ctx)
 
 	signerAddress, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
@@ -152,6 +163,8 @@ func (ms msgServer) CancelBond(c context.Context, msg *bond.MsgCancelBond) (*bon
 			sdk.NewAttribute(bond.AttributeKeySigner, msg.Signer),
 		),
 	})
+
+	utils.LogTxGasConsumed(ctx, ms.k.Logger(ctx), "CancelBond")
 
 	return &bond.MsgCancelBondResponse{}, nil
 }

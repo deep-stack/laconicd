@@ -5,6 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
+	"git.vdb.to/cerc-io/laconicd/utils"
 	registrytypes "git.vdb.to/cerc-io/laconicd/x/registry"
 )
 
@@ -25,6 +26,7 @@ func (ms msgServer) SetRecord(c context.Context, msg *registrytypes.MsgSetRecord
 	}
 
 	ctx := sdk.UnwrapSDKContext(c)
+	ctx = *utils.CtxWithCustomKVGasConfig(&ctx)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
@@ -50,6 +52,8 @@ func (ms msgServer) SetRecord(c context.Context, msg *registrytypes.MsgSetRecord
 		),
 	})
 
+	utils.LogTxGasConsumed(ctx, ms.k.Logger(ctx), "SetRecord")
+
 	return &registrytypes.MsgSetRecordResponse{Id: record.Id}, nil
 }
 
@@ -60,6 +64,7 @@ func (ms msgServer) SetName(c context.Context, msg *registrytypes.MsgSetName) (*
 	}
 
 	ctx := sdk.UnwrapSDKContext(c)
+	ctx = *utils.CtxWithCustomKVGasConfig(&ctx)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
@@ -84,6 +89,9 @@ func (ms msgServer) SetName(c context.Context, msg *registrytypes.MsgSetName) (*
 			sdk.NewAttribute(registrytypes.AttributeKeySigner, msg.Signer),
 		),
 	})
+
+	utils.LogTxGasConsumed(ctx, ms.k.Logger(ctx), "SetName")
+
 	return &registrytypes.MsgSetNameResponse{}, nil
 }
 
@@ -93,6 +101,7 @@ func (ms msgServer) ReserveAuthority(c context.Context, msg *registrytypes.MsgRe
 	}
 
 	ctx := sdk.UnwrapSDKContext(c)
+	ctx = *utils.CtxWithCustomKVGasConfig(&ctx)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
@@ -121,6 +130,9 @@ func (ms msgServer) ReserveAuthority(c context.Context, msg *registrytypes.MsgRe
 			sdk.NewAttribute(registrytypes.AttributeKeySigner, msg.Signer),
 		),
 	})
+
+	utils.LogTxGasConsumed(ctx, ms.k.Logger(ctx), "ReserveAuthority")
+
 	return &registrytypes.MsgReserveAuthorityResponse{}, nil
 }
 
@@ -131,6 +143,7 @@ func (ms msgServer) SetAuthorityBond(c context.Context, msg *registrytypes.MsgSe
 	}
 
 	ctx := sdk.UnwrapSDKContext(c)
+	ctx = *utils.CtxWithCustomKVGasConfig(&ctx)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
@@ -156,6 +169,8 @@ func (ms msgServer) SetAuthorityBond(c context.Context, msg *registrytypes.MsgSe
 		),
 	})
 
+	utils.LogTxGasConsumed(ctx, ms.k.Logger(ctx), "SetAuthorityBond")
+
 	return &registrytypes.MsgSetAuthorityBondResponse{}, nil
 }
 
@@ -165,6 +180,7 @@ func (ms msgServer) DeleteName(c context.Context, msg *registrytypes.MsgDeleteNa
 	}
 
 	ctx := sdk.UnwrapSDKContext(c)
+	ctx = *utils.CtxWithCustomKVGasConfig(&ctx)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
@@ -188,6 +204,9 @@ func (ms msgServer) DeleteName(c context.Context, msg *registrytypes.MsgDeleteNa
 			sdk.NewAttribute(registrytypes.AttributeKeySigner, msg.Signer),
 		),
 	})
+
+	utils.LogTxGasConsumed(ctx, ms.k.Logger(ctx), "DeleteName")
+
 	return &registrytypes.MsgDeleteNameResponse{}, nil
 }
 
@@ -197,6 +216,7 @@ func (ms msgServer) RenewRecord(c context.Context, msg *registrytypes.MsgRenewRe
 	}
 
 	ctx := sdk.UnwrapSDKContext(c)
+	ctx = *utils.CtxWithCustomKVGasConfig(&ctx)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
@@ -220,6 +240,9 @@ func (ms msgServer) RenewRecord(c context.Context, msg *registrytypes.MsgRenewRe
 			sdk.NewAttribute(registrytypes.AttributeKeySigner, msg.Signer),
 		),
 	})
+
+	utils.LogTxGasConsumed(ctx, ms.k.Logger(ctx), "RenewRecord")
+
 	return &registrytypes.MsgRenewRecordResponse{}, nil
 }
 
@@ -230,6 +253,7 @@ func (ms msgServer) AssociateBond(c context.Context, msg *registrytypes.MsgAssoc
 	}
 
 	ctx := sdk.UnwrapSDKContext(c)
+	ctx = *utils.CtxWithCustomKVGasConfig(&ctx)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
@@ -255,6 +279,8 @@ func (ms msgServer) AssociateBond(c context.Context, msg *registrytypes.MsgAssoc
 		),
 	})
 
+	utils.LogTxGasConsumed(ctx, ms.k.Logger(ctx), "AssociateBond")
+
 	return &registrytypes.MsgAssociateBondResponse{}, nil
 }
 
@@ -264,6 +290,7 @@ func (ms msgServer) DissociateBond(c context.Context, msg *registrytypes.MsgDiss
 	}
 
 	ctx := sdk.UnwrapSDKContext(c)
+	ctx = *utils.CtxWithCustomKVGasConfig(&ctx)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
@@ -288,6 +315,8 @@ func (ms msgServer) DissociateBond(c context.Context, msg *registrytypes.MsgDiss
 		),
 	})
 
+	utils.LogTxGasConsumed(ctx, ms.k.Logger(ctx), "DissociateBond")
+
 	return &registrytypes.MsgDissociateBondResponse{}, nil
 }
 
@@ -297,6 +326,7 @@ func (ms msgServer) DissociateRecords(c context.Context, msg *registrytypes.MsgD
 	}
 
 	ctx := sdk.UnwrapSDKContext(c)
+	ctx = *utils.CtxWithCustomKVGasConfig(&ctx)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
@@ -321,6 +351,8 @@ func (ms msgServer) DissociateRecords(c context.Context, msg *registrytypes.MsgD
 		),
 	})
 
+	utils.LogTxGasConsumed(ctx, ms.k.Logger(ctx), "DissociateRecords")
+
 	return &registrytypes.MsgDissociateRecordsResponse{}, nil
 }
 
@@ -330,6 +362,7 @@ func (ms msgServer) ReassociateRecords(c context.Context, msg *registrytypes.Msg
 	}
 
 	ctx := sdk.UnwrapSDKContext(c)
+	ctx = *utils.CtxWithCustomKVGasConfig(&ctx)
 
 	_, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
@@ -354,6 +387,8 @@ func (ms msgServer) ReassociateRecords(c context.Context, msg *registrytypes.Msg
 			sdk.NewAttribute(registrytypes.AttributeKeySigner, msg.Signer),
 		),
 	})
+
+	utils.LogTxGasConsumed(ctx, ms.k.Logger(ctx), "ReassociateRecords")
 
 	return &registrytypes.MsgReassociateRecordsResponse{}, nil
 }

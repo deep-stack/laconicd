@@ -10,6 +10,7 @@ import (
 	"cosmossdk.io/collections/indexes"
 	"cosmossdk.io/core/store"
 	errorsmod "cosmossdk.io/errors"
+	"cosmossdk.io/log"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -82,6 +83,11 @@ func NewKeeper(
 	k.Schema = schema
 
 	return &k
+}
+
+// Logger returns a module-specific logger.
+func (k Keeper) Logger(ctx sdk.Context) log.Logger {
+	return ctx.Logger().With("module", bondtypes.ModuleName)
 }
 
 func (k *Keeper) SetUsageKeepers(usageKeepers []bondtypes.BondUsageKeeper) {

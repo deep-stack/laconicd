@@ -3,6 +3,7 @@ package keeper
 import (
 	"context"
 
+	"git.vdb.to/cerc-io/laconicd/utils"
 	auctiontypes "git.vdb.to/cerc-io/laconicd/x/auction"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
@@ -20,6 +21,7 @@ func NewMsgServerImpl(keeper *Keeper) auctiontypes.MsgServer {
 
 func (ms msgServer) CreateAuction(c context.Context, msg *auctiontypes.MsgCreateAuction) (*auctiontypes.MsgCreateAuctionResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
+	ctx = *utils.CtxWithCustomKVGasConfig(&ctx)
 
 	signerAddress, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
@@ -46,6 +48,8 @@ func (ms msgServer) CreateAuction(c context.Context, msg *auctiontypes.MsgCreate
 		),
 	})
 
+	utils.LogTxGasConsumed(ctx, ms.k.Logger(ctx), "CreateAuction")
+
 	return &auctiontypes.MsgCreateAuctionResponse{Auction: resp}, nil
 }
 
@@ -57,6 +61,7 @@ func (ms msgServer) CommitBid(c context.Context, msg *auctiontypes.MsgCommitBid)
 	}
 
 	ctx := sdk.UnwrapSDKContext(c)
+	ctx = *utils.CtxWithCustomKVGasConfig(&ctx)
 
 	signerAddress, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
@@ -81,6 +86,8 @@ func (ms msgServer) CommitBid(c context.Context, msg *auctiontypes.MsgCommitBid)
 		),
 	})
 
+	utils.LogTxGasConsumed(ctx, ms.k.Logger(ctx), "CommitBid")
+
 	return &auctiontypes.MsgCommitBidResponse{Bid: resp}, nil
 }
 
@@ -92,6 +99,7 @@ func (ms msgServer) RevealBid(c context.Context, msg *auctiontypes.MsgRevealBid)
 	}
 
 	ctx := sdk.UnwrapSDKContext(c)
+	ctx = *utils.CtxWithCustomKVGasConfig(&ctx)
 
 	signerAddress, err := sdk.AccAddressFromBech32(msg.Signer)
 	if err != nil {
@@ -115,6 +123,8 @@ func (ms msgServer) RevealBid(c context.Context, msg *auctiontypes.MsgRevealBid)
 			sdk.NewAttribute(auctiontypes.AttributeKeySigner, signerAddress.String()),
 		),
 	})
+
+	utils.LogTxGasConsumed(ctx, ms.k.Logger(ctx), "RevealBid")
 
 	return &auctiontypes.MsgRevealBidResponse{Auction: resp}, nil
 }
