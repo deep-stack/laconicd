@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package cerc.onboarding.v1;
+
+import "gogoproto/gogo.proto";
+
+option go_package = "git.vdb.to/cerc-io/laconicd/x/onboarding";
+
+// Params defines the parameters of the onboarding module.
+message Params {}

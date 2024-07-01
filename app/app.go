@@ -15,6 +15,7 @@ import (
 
 	auctionkeeper "git.vdb.to/cerc-io/laconicd/x/auction/keeper"
 	bondkeeper "git.vdb.to/cerc-io/laconicd/x/bond/keeper"
+	onboardingkeeper "git.vdb.to/cerc-io/laconicd/x/onboarding/keeper"
 	registrykeeper "git.vdb.to/cerc-io/laconicd/x/registry/keeper"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
@@ -35,18 +36,19 @@ import (
 	genutiltypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
 	stakingkeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
 
-	_ "cosmossdk.io/api/cosmos/tx/config/v1"          // import for side-effects
-	_ "git.vdb.to/cerc-io/laconicd/x/auction/module"  // import for side-effects
-	_ "git.vdb.to/cerc-io/laconicd/x/bond/module"     // import for side-effects
-	_ "git.vdb.to/cerc-io/laconicd/x/registry/module" // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/auth"           // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/auth/tx/config" // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/bank"           // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/consensus"      // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/crisis"         // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/distribution"   // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/mint"           // import for side-effects
-	_ "github.com/cosmos/cosmos-sdk/x/staking"        // import for side-effects
+	_ "cosmossdk.io/api/cosmos/tx/config/v1"            // import for side-effects
+	_ "git.vdb.to/cerc-io/laconicd/x/auction/module"    // import for side-effects
+	_ "git.vdb.to/cerc-io/laconicd/x/bond/module"       // import for side-effects
+	_ "git.vdb.to/cerc-io/laconicd/x/onboarding/module" // import for side-effects
+	_ "git.vdb.to/cerc-io/laconicd/x/registry/module"   // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/auth"             // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/auth/tx/config"   // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/bank"             // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/consensus"        // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/crisis"           // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/distribution"     // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/mint"             // import for side-effects
+	_ "github.com/cosmos/cosmos-sdk/x/staking"          // import for side-effects
 )
 
 // DefaultNodeHome default home directories for the application daemon
@@ -79,9 +81,10 @@ type LaconicApp struct {
 	ConsensusParamsKeeper consensuskeeper.Keeper
 
 	// laconic keepers
-	AuctionKeeper  *auctionkeeper.Keeper // (Use * as per ProvideModule implementation)
-	BondKeeper     *bondkeeper.Keeper
-	RegistryKeeper registrykeeper.Keeper
+	AuctionKeeper    *auctionkeeper.Keeper // (Use * as per ProvideModule implementation)
+	BondKeeper       *bondkeeper.Keeper
+	RegistryKeeper   registrykeeper.Keeper
+	OnboardingKeeper *onboardingkeeper.Keeper
 
 	// simulation manager
 	sm *module.SimulationManager
@@ -145,6 +148,7 @@ func NewLaconicApp(
 		&app.AuctionKeeper,
 		&app.BondKeeper,
 		&app.RegistryKeeper,
+		&app.OnboardingKeeper,
 	); err != nil {
 		return nil, err
 	}

@@ -10,7 +10,7 @@ modules:
       end_blockers: [crisis, staking, auction, registry]
       # NOTE: The genutils module must occur after staking so that pools are properly initialized with tokens from genesis accounts.
       # NOTE: The genutils module must also occur after auth so that it can access the params from auth.
-      init_genesis: [auth, bank, distribution, staking, crisis, genutil, auction, bond, registry]
+      init_genesis: [auth, bank, distribution, staking, crisis, genutil, auction, bond, registry, onboarding]
       override_store_keys:
         - module_name: auth
           kv_store_key: acc
@@ -63,3 +63,6 @@ modules:
   - name: registry
     config:
       "@type": cerc.registry.module.v1.Module
+  - name: onboarding
+    config:
+      "@type": cerc.onboarding.module.v1.Module
