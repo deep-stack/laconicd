@@ -8,3 +8,24 @@ option go_package = "git.vdb.to/cerc-io/laconicd/x/onboarding";
 
 // Params defines the parameters of the onboarding module.
 message Params {}
+
+// Participant defines the data that will be stored for each enrolled participant
+message Participant {
+  string cosmos_address = 1 [
+    (gogoproto.moretags) = "json:\"cosmos_address\" yaml:\"cosmos_address\""
+  ];
+
+  string ethereum_address = 2 [
+    (gogoproto.moretags) = "json:\"ethereum_address\" yaml:\"ethereum_address\""
+  ];
+}
+// EthPayload defines the payload that is signed by the ethereum private key
+message EthPayload {
+  string address = 1 [
+    (gogoproto.moretags) = "json:\"address\" yaml:\"address\""
+  ];
+
+  string msg = 2 [
+    (gogoproto.moretags) = "json:\"msg\" yaml:\"msg\""
+  ];
+}

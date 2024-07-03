@@ -1,9 +1,16 @@
 package onboarding
 
-// NewGenesisState creates a new genesis state with default values.
-func NewGenesisState() *GenesisState {
+func DefaultGenesisState() *GenesisState {
 	return &GenesisState{
-		Params: DefaultParams(),
+		Params:       DefaultParams(),
+		Participants: []Participant{},
+	}
+}
+
+func NewGenesisState(params Params, participants []Participant) *GenesisState {
+	return &GenesisState{
+		Params:       params,
+		Participants: participants,
 	}
 }
 

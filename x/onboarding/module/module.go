@@ -70,7 +70,7 @@ func (AppModule) ConsensusVersion() uint64 { return ConsensusVersion }
 func (am AppModule) RegisterServices(cfg module.Configurator) {
 	// TODO: Implement
 	// Register servers
-	// onboarding.RegisterMsgServer(cfg.MsgServer(), keeper.NewMsgServerImpl(am.keeper))
+	onboarding.RegisterMsgServer(cfg.MsgServer(), keeper.NewMsgServerImpl(am.keeper))
 	// onboarding.RegisterQueryServer(cfg.QueryServer(), keeper.NewQueryServerImpl(am.keeper))
 
 	// Register in place module state migration migrations
@@ -82,7 +82,7 @@ func (am AppModule) RegisterServices(cfg module.Configurator) {
 
 // DefaultGenesis returns default genesis state as raw bytes for the module.
 func (AppModule) DefaultGenesis(cdc codec.JSONCodec) json.RawMessage {
-	return cdc.MustMarshalJSON(onboarding.NewGenesisState())
+	return cdc.MustMarshalJSON(onboarding.DefaultGenesisState())
 }
 
 // ValidateGenesis performs genesis state validation for the circuit module.

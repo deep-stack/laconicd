@@ -12,6 +12,12 @@ func (k *Keeper) InitGenesis(ctx context.Context, data *onboarding.GenesisState)
 		return err
 	}
 
+	for _, participant := range data.Participants {
+		if err := k.Participants.Set(ctx, participant.CosmosAddress, participant); err != nil {
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -22,7 +28,16 @@ func (k *Keeper) ExportGenesis(ctx context.Context) (*onboarding.GenesisState, e
 		return nil, err
 	}
 
+	var participants []onboarding.Participant
+	if err := k.Participants.Walk(ctx, nil, func(cosmosAddress string, participant onboarding.Participant) (bool, error) {
+		participants = append(participants, participant)
+		return false, nil
+	}); err != nil {
+		return nil, err
+	}
+
 	return &onboarding.GenesisState{
-		Params: params,
+		Params:       params,
+		Participants: participants,
 	}, nil
 }

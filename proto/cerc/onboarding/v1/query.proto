@@ -1,3 +1,5 @@
 syntax = "proto3";
 
 package cerc.onboarding.v1;
+
+option go_package = "git.vdb.to/cerc-io/laconicd/x/onboarding";

@@ -3,7 +3,7 @@ package bond
 // bond module event types
 
 const (
-	EventTypeCreateBond   = "crate_bond"
+	EventTypeCreateBond   = "create_bond"
 	EventTypeRefillBond   = "refill_bond"
 	EventTypeCancelBond   = "cancel_bond"
 	EventTypeWithdrawBond = "withdraw_bond"

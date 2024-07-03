@@ -91,7 +91,7 @@ func (AppModule) ValidateGenesis(cdc codec.JSONCodec, config client.TxEncodingCo
 	return data.Validate()
 }
 
-// InitGenesis performs genesis initialization for the checkers module.
+// InitGenesis performs genesis initialization for the auction module.
 // It returns no validator updates.
 func (am AppModule) InitGenesis(ctx sdk.Context, cdc codec.JSONCodec, data json.RawMessage) {
 	var genesisState auction.GenesisState

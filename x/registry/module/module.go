@@ -52,21 +52,21 @@ func NewAppModuleBasic(m AppModule) module.AppModuleBasic {
 
 // module.AppModuleBasic
 
-// Name returns the checkers module's name.
+// Name returns the registry module's name.
 func (AppModule) Name() string { return registrytypes.ModuleName }
 
-// RegisterLegacyAminoCodec registers the checkers module's types on the LegacyAmino codec.
+// RegisterLegacyAminoCodec registers the registry module's types on the LegacyAmino codec.
 // New modules do not need to support Amino.
 func (AppModule) RegisterLegacyAminoCodec(cdc *codec.LegacyAmino) {}
 
-// RegisterGRPCGatewayRoutes registers the gRPC Gateway routes for the checkers module.
+// RegisterGRPCGatewayRoutes registers the gRPC Gateway routes for the registry module.
 func (AppModule) RegisterGRPCGatewayRoutes(clientCtx client.Context, mux *gwruntime.ServeMux) {
 	if err := registrytypes.RegisterQueryHandlerClient(context.Background(), mux, registrytypes.NewQueryClient(clientCtx)); err != nil {
 		panic(err)
 	}
 }
 
-// RegisterInterfaces registers interfaces and implementations of the checkers module.
+// RegisterInterfaces registers interfaces and implementations of the registry module.
 func (AppModule) RegisterInterfaces(registry codectypes.InterfaceRegistry) {
 	registrytypes.RegisterInterfaces(registry)
 }
@@ -91,7 +91,7 @@ func (AppModule) ValidateGenesis(cdc codec.JSONCodec, _ client.TxEncodingConfig,
 	return data.Validate()
 }
 
-// InitGenesis performs genesis initialization for the checkers module.
+// InitGenesis performs genesis initialization for the registry module.
 // It returns no validator updates.
 func (am AppModule) InitGenesis(ctx sdk.Context, cdc codec.JSONCodec, data json.RawMessage) {
 	var genesisState registrytypes.GenesisState
