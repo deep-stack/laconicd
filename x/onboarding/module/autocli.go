@@ -9,7 +9,17 @@ import (
 // AutoCLIOptions implements the autocli.HasAutoCLIConfig interface.
 func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 	return &autocliv1.ModuleOptions{
-		Query: nil,
+		Query: &autocliv1.ServiceCommandDescriptor{
+			Service: onboardingv1.Query_ServiceDesc.ServiceName,
+			RpcCommandOptions: []*autocliv1.RpcCommandOptions{
+				{
+					RpcMethod:      "Participants",
+					Use:            "list",
+					Short:          "List participants",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{},
+				},
+			},
+		},
 		// TODO: Use JSON file for input
 		Tx: &autocliv1.ServiceCommandDescriptor{
 			Service: onboardingv1.Msg_ServiceDesc.ServiceName,
@@ -19,8 +29,8 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					Use:       "enroll",
 					Short:     "Enroll a testnet validator",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
-						{ProtoField: "ethPayload"},
-						{ProtoField: "ethSignature"},
+						{ProtoField: "eth_payload"},
+						{ProtoField: "eth_signature"},
 						{ProtoField: "message"},
 					},
 				},

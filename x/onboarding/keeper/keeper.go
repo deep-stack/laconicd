@@ -15,7 +15,7 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
 	"git.vdb.to/cerc-io/laconicd/utils"
-	"git.vdb.to/cerc-io/laconicd/x/onboarding"
+	onboardingTypes "git.vdb.to/cerc-io/laconicd/x/onboarding"
 )
 
 type Keeper struct {
@@ -28,8 +28,8 @@ type Keeper struct {
 
 	// state management
 	Schema       collections.Schema
-	Params       collections.Item[onboarding.Params]
-	Participants collections.Map[string, onboarding.Participant]
+	Params       collections.Item[onboardingTypes.Params]
+	Participants collections.Map[string, onboardingTypes.Participant]
 }
 
 // NewKeeper creates a new Keeper instance
@@ -43,8 +43,8 @@ func NewKeeper(cdc codec.BinaryCodec, addressCodec address.Codec, storeService s
 		cdc:          cdc,
 		addressCodec: addressCodec,
 		authority:    authority,
-		Params:       collections.NewItem(sb, onboarding.ParamsPrefix, "params", codec.CollValue[onboarding.Params](cdc)),
-		Participants: collections.NewMap(sb, onboarding.ParticipantsPrefix, "participants", collections.StringKey, codec.CollValue[onboarding.Participant](cdc)),
+		Params:       collections.NewItem(sb, onboardingTypes.ParamsPrefix, "params", codec.CollValue[onboardingTypes.Params](cdc)),
+		Participants: collections.NewMap(sb, onboardingTypes.ParticipantsPrefix, "participants", collections.StringKey, codec.CollValue[onboardingTypes.Participant](cdc)),
 	}
 
 	schema, err := sb.Build()
@@ -63,10 +63,10 @@ func (k Keeper) GetAuthority() string {
 }
 
 func (k Keeper) Logger(ctx sdk.Context) log.Logger {
-	return ctx.Logger().With("module", onboarding.ModuleName)
+	return ctx.Logger().With("module", onboardingTypes.ModuleName)
 }
 
-func (k Keeper) OnboardParticipant(ctx sdk.Context, msg *onboarding.MsgOnboardParticipant, signerAddress sdk.AccAddress) (*onboarding.MsgOnboardParticipantResponse, error) {
+func (k Keeper) OnboardParticipant(ctx sdk.Context, msg *onboardingTypes.MsgOnboardParticipant, signerAddress sdk.AccAddress) (*onboardingTypes.MsgOnboardParticipantResponse, error) {
 	message, err := json.Marshal(msg.EthPayload)
 	if err != nil {
 		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Invalid format for payload")
@@ -77,7 +77,7 @@ func (k Keeper) OnboardParticipant(ctx sdk.Context, msg *onboarding.MsgOnboardPa
 		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Recovered ethereum address does not match the address set in payload")
 	}
 
-	participant := &onboarding.Participant{
+	participant := &onboardingTypes.Participant{
 		CosmosAddress:   signerAddress.String(),
 		EthereumAddress: ethereumAddress,
 	}
@@ -89,9 +89,30 @@ func (k Keeper) OnboardParticipant(ctx sdk.Context, msg *onboarding.MsgOnboardPa
 	return nil, err
 }
 
-func (k Keeper) StoreParticipant(ctx sdk.Context, participant *onboarding.Participant) error {
+func (k Keeper) StoreParticipant(ctx sdk.Context, participant *onboardingTypes.Participant) error {
 	key := participant.CosmosAddress
 	k.Participants.Set(ctx, key, *participant)
 
 	return nil
+}
+
+// ListParticipants - get all participants.
+func (k Keeper) ListParticipants(ctx sdk.Context) ([]*onboardingTypes.Participant, error) {
+	var participants []*onboardingTypes.Participant
+
+	iter, err := k.Participants.Iterate(ctx, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	for ; iter.Valid(); iter.Next() {
+		participant, err := iter.Value()
+		if err != nil {
+			return nil, err
+		}
+
+		participants = append(participants, &participant)
+	}
+
+	return participants, nil
 }

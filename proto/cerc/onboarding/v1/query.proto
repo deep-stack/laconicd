@@ -2,4 +2,32 @@ syntax = "proto3";
 
 package cerc.onboarding.v1;
 
+import "gogoproto/gogo.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "cerc/onboarding/v1/onboarding.proto";
+import "google/api/annotations.proto";
+
 option go_package = "git.vdb.to/cerc-io/laconicd/x/onboarding";
+
+// Query defines the gRPC querier service for onboarding module
+service Query {
+  // Participants queries Participants list
+  rpc Participants(QueryParticipantsRequest) returns (QueryParticipantsResponse) {
+    option (google.api.http).get = "/cerc/onboarding/v1/participants";
+  }
+}
+
+// QueryParticipantsRequest queries participants
+message QueryParticipantsRequest {
+  // pagination defines an optional pagination for the request.
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+// QueryParticipantsResponse is response type for get the participants
+message QueryParticipantsResponse {
+  repeated Participant participants = 1
+      [ (gogoproto.moretags) = "json:\"participants\" yaml:\"participants\"" ];
+
+  // pagination defines the pagination in the response.
+  cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
