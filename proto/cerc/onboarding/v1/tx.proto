@@ -28,7 +28,6 @@ message MsgOnboardParticipant {
   string participant = 1;
   EthPayload eth_payload = 2 [ (gogoproto.nullable) = false ];
   string eth_signature = 3;
-  string message = 4;
 }
 
 // MsgOnboardParticipantResponse defines the Msg/OnboardParticipant response type.

@@ -30,6 +30,11 @@ type Account {
   balance: [Coin!] # Current balance for each coin type.
 }
 
+type Participant {
+  cosmos_address: String! # Cosmos address of the participant who will be registered.
+  ethereum_address: String! # Ethereum addresss of the participant who will be registered.
+}
+
 # Value describes a DAG-JSON compatible value.
 union Value =
    BooleanValue
@@ -255,4 +260,7 @@ type Query {
 
   # Get auctions by IDs.
   getAuctionsByIds(ids: [String!]): [Auction]
+
+  # Query participants.
+  getParticipants: [Participant]!
 }

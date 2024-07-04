@@ -2,6 +2,29 @@
 
 > Browser : http://localhost:9473 for gql
 
+## Run gqlgen
+
+On having some change in the GQL schema (for example: adding a new query) update the [schema.graphql](./cerc-io/laconicd/schema.graphql) file as required and run the following:
+
+- Generate GQL bindings:
+
+  ```bash
+  # Install gqlgen if not present
+  go get github.com/99designs/gqlgen@v0.17.22
+
+  # Generate bindings
+  go run github.com/99designs/gqlgen generate
+  ```
+
+- Implement the required resolver method(s)
+
+- Regenerate GQL bindings:
+
+  ```bash
+  # Generate bindings
+  go run github.com/99designs/gqlgen generate
+  ```
+
 ## Start server
 
 ```shell
@@ -348,6 +371,17 @@ Resolve Names
         string
       }
     }
+  }
+}
+```
+
+Query participants:
+
+```graphql
+{
+  getParticipants {
+    cosmos_address
+    ethereum_address
   }
 }
 ```

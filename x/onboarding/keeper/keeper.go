@@ -67,6 +67,15 @@ func (k Keeper) Logger(ctx sdk.Context) log.Logger {
 }
 
 func (k Keeper) OnboardParticipant(ctx sdk.Context, msg *onboardingTypes.MsgOnboardParticipant, signerAddress sdk.AccAddress) (*onboardingTypes.MsgOnboardParticipantResponse, error) {
+	params, err := k.Params.Get(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	if !params.OnboardingEnabled {
+		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Validator onboarding is disabled")
+	}
+
 	message, err := json.Marshal(msg.EthPayload)
 	if err != nil {
 		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Invalid format for payload")
@@ -86,7 +95,7 @@ func (k Keeper) OnboardParticipant(ctx sdk.Context, msg *onboardingTypes.MsgOnbo
 		return nil, err
 	}
 
-	return nil, err
+	return &onboardingTypes.MsgOnboardParticipantResponse{}, nil
 }
 
 func (k Keeper) StoreParticipant(ctx sdk.Context, participant *onboardingTypes.Participant) error {

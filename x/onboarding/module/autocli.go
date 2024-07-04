@@ -31,7 +31,6 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
 						{ProtoField: "eth_payload"},
 						{ProtoField: "eth_signature"},
-						{ProtoField: "message"},
 					},
 				},
 			},

@@ -153,6 +153,11 @@ type ComplexityRoot struct {
 		Owner func(childComplexity int) int
 	}
 
+	Participant struct {
+		CosmosAddress   func(childComplexity int) int
+		EthereumAddress func(childComplexity int) int
+	}
+
 	PeerInfo struct {
 		IsOutbound func(childComplexity int) int
 		Node       func(childComplexity int) int
@@ -163,6 +168,7 @@ type ComplexityRoot struct {
 		GetAccounts       func(childComplexity int, addresses []string) int
 		GetAuctionsByIds  func(childComplexity int, ids []string) int
 		GetBondsByIds     func(childComplexity int, ids []string) int
+		GetParticipants   func(childComplexity int) int
 		GetRecordsByIds   func(childComplexity int, ids []string) int
 		GetStatus         func(childComplexity int) int
 		LookupAuthorities func(childComplexity int, names []string) int
@@ -225,6 +231,7 @@ type QueryResolver interface {
 	LookupNames(ctx context.Context, names []string) ([]*NameRecord, error)
 	ResolveNames(ctx context.Context, names []string) ([]*Record, error)
 	GetAuctionsByIds(ctx context.Context, ids []string) ([]*Auction, error)
+	GetParticipants(ctx context.Context) ([]*Participant, error)
 }
 
 type executableSchema struct {
@@ -634,6 +641,20 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 
 		return e.complexity.OwnerBonds.Owner(childComplexity), true
 
+	case "Participant.cosmos_address":
+		if e.complexity.Participant.CosmosAddress == nil {
+			break
+		}
+
+		return e.complexity.Participant.CosmosAddress(childComplexity), true
+
+	case "Participant.ethereum_address":
+		if e.complexity.Participant.EthereumAddress == nil {
+			break
+		}
+
+		return e.complexity.Participant.EthereumAddress(childComplexity), true
+
 	case "PeerInfo.is_outbound":
 		if e.complexity.PeerInfo.IsOutbound == nil {
 			break
@@ -690,6 +711,13 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 		}
 
 		return e.complexity.Query.GetBondsByIds(childComplexity, args["ids"].([]string)), true
+
+	case "Query.getParticipants":
+		if e.complexity.Query.GetParticipants == nil {
+			break
+		}
+
+		return e.complexity.Query.GetParticipants(childComplexity), true
 
 	case "Query.getRecordsByIds":
 		if e.complexity.Query.GetRecordsByIds == nil {
@@ -3808,6 +3836,94 @@ func (ec *executionContext) fieldContext_OwnerBonds_bonds(ctx context.Context, f
 	return fc, nil
 }
 
+func (ec *executionContext) _Participant_cosmos_address(ctx context.Context, field graphql.CollectedField, obj *Participant) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_Participant_cosmos_address(ctx, field)
+	if err != nil {
+		return graphql.Null
+	}
+	ctx = graphql.WithFieldContext(ctx, fc)
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.CosmosAddress, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNString2string(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) fieldContext_Participant_cosmos_address(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+	fc = &graphql.FieldContext{
+		Object:     "Participant",
+		Field:      field,
+		IsMethod:   false,
+		IsResolver: false,
+		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
+			return nil, errors.New("field of type String does not have child fields")
+		},
+	}
+	return fc, nil
+}
+
+func (ec *executionContext) _Participant_ethereum_address(ctx context.Context, field graphql.CollectedField, obj *Participant) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_Participant_ethereum_address(ctx, field)
+	if err != nil {
+		return graphql.Null
+	}
+	ctx = graphql.WithFieldContext(ctx, fc)
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.EthereumAddress, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNString2string(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) fieldContext_Participant_ethereum_address(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+	fc = &graphql.FieldContext{
+		Object:     "Participant",
+		Field:      field,
+		IsMethod:   false,
+		IsResolver: false,
+		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
+			return nil, errors.New("field of type String does not have child fields")
+		},
+	}
+	return fc, nil
+}
+
 func (ec *executionContext) _PeerInfo_node(ctx context.Context, field graphql.CollectedField, obj *PeerInfo) (ret graphql.Marshaler) {
 	fc, err := ec.fieldContext_PeerInfo_node(ctx, field)
 	if err != nil {
@@ -4673,6 +4789,56 @@ func (ec *executionContext) fieldContext_Query_getAuctionsByIds(ctx context.Cont
 	if fc.Args, err = ec.field_Query_getAuctionsByIds_args(ctx, field.ArgumentMap(ec.Variables)); err != nil {
 		ec.Error(ctx, err)
 		return
+	}
+	return fc, nil
+}
+
+func (ec *executionContext) _Query_getParticipants(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_Query_getParticipants(ctx, field)
+	if err != nil {
+		return graphql.Null
+	}
+	ctx = graphql.WithFieldContext(ctx, fc)
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return ec.resolvers.Query().GetParticipants(rctx)
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.([]*Participant)
+	fc.Result = res
+	return ec.marshalNParticipant2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐParticipant(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) fieldContext_Query_getParticipants(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+	fc = &graphql.FieldContext{
+		Object:     "Query",
+		Field:      field,
+		IsMethod:   true,
+		IsResolver: true,
+		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
+			switch field.Name {
+			case "cosmos_address":
+				return ec.fieldContext_Participant_cosmos_address(ctx, field)
+			case "ethereum_address":
+				return ec.fieldContext_Participant_ethereum_address(ctx, field)
+			}
+			return nil, fmt.Errorf("no field named %q was found under type Participant", field.Name)
+		},
 	}
 	return fc, nil
 }
@@ -8611,6 +8777,41 @@ func (ec *executionContext) _OwnerBonds(ctx context.Context, sel ast.SelectionSe
 	return out
 }
 
+var participantImplementors = []string{"Participant"}
+
+func (ec *executionContext) _Participant(ctx context.Context, sel ast.SelectionSet, obj *Participant) graphql.Marshaler {
+	fields := graphql.CollectFields(ec.OperationContext, sel, participantImplementors)
+	out := graphql.NewFieldSet(fields)
+	var invalids uint32
+	for i, field := range fields {
+		switch field.Name {
+		case "__typename":
+			out.Values[i] = graphql.MarshalString("Participant")
+		case "cosmos_address":
+
+			out.Values[i] = ec._Participant_cosmos_address(ctx, field, obj)
+
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		case "ethereum_address":
+
+			out.Values[i] = ec._Participant_ethereum_address(ctx, field, obj)
+
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		default:
+			panic("unknown field " + strconv.Quote(field.Name))
+		}
+	}
+	out.Dispatch()
+	if invalids > 0 {
+		return graphql.Null
+	}
+	return out
+}
+
 var peerInfoImplementors = []string{"PeerInfo"}
 
 func (ec *executionContext) _PeerInfo(ctx context.Context, sel ast.SelectionSet, obj *PeerInfo) graphql.Marshaler {
@@ -8894,6 +9095,29 @@ func (ec *executionContext) _Query(ctx context.Context, sel ast.SelectionSet) gr
 					}
 				}()
 				res = ec._Query_getAuctionsByIds(ctx, field)
+				return res
+			}
+
+			rrm := func(ctx context.Context) graphql.Marshaler {
+				return ec.OperationContext.RootResolverMiddleware(ctx, innerFunc)
+			}
+
+			out.Concurrently(i, func() graphql.Marshaler {
+				return rrm(innerCtx)
+			})
+		case "getParticipants":
+			field := field
+
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				defer func() {
+					if r := recover(); r != nil {
+						ec.Error(ctx, ec.Recover(ctx, r))
+					}
+				}()
+				res = ec._Query_getParticipants(ctx, field)
+				if res == graphql.Null {
+					atomic.AddUint32(&invalids, 1)
+				}
 				return res
 			}
 
@@ -9725,6 +9949,44 @@ func (ec *executionContext) marshalNNodeInfo2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlac
 		return graphql.Null
 	}
 	return ec._NodeInfo(ctx, sel, v)
+}
+
+func (ec *executionContext) marshalNParticipant2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐParticipant(ctx context.Context, sel ast.SelectionSet, v []*Participant) graphql.Marshaler {
+	ret := make(graphql.Array, len(v))
+	var wg sync.WaitGroup
+	isLen1 := len(v) == 1
+	if !isLen1 {
+		wg.Add(len(v))
+	}
+	for i := range v {
+		i := i
+		fc := &graphql.FieldContext{
+			Index:  &i,
+			Result: &v[i],
+		}
+		ctx := graphql.WithFieldContext(ctx, fc)
+		f := func(i int) {
+			defer func() {
+				if r := recover(); r != nil {
+					ec.Error(ctx, ec.Recover(ctx, r))
+					ret = nil
+				}
+			}()
+			if !isLen1 {
+				defer wg.Done()
+			}
+			ret[i] = ec.marshalOParticipant2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐParticipant(ctx, sel, v[i])
+		}
+		if isLen1 {
+			f(i)
+		} else {
+			go f(i)
+		}
+
+	}
+	wg.Wait()
+
+	return ret
 }
 
 func (ec *executionContext) marshalNRecord2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐRecord(ctx context.Context, sel ast.SelectionSet, v []*Record) graphql.Marshaler {
@@ -10668,6 +10930,13 @@ func (ec *executionContext) marshalOOwnerBonds2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋl
 		return graphql.Null
 	}
 	return ec._OwnerBonds(ctx, sel, v)
+}
+
+func (ec *executionContext) marshalOParticipant2ᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐParticipant(ctx context.Context, sel ast.SelectionSet, v *Participant) graphql.Marshaler {
+	if v == nil {
+		return graphql.Null
+	}
+	return ec._Participant(ctx, sel, v)
 }
 
 func (ec *executionContext) marshalOPeerInfo2ᚕᚖgitᚗvdbᚗtoᚋcercᚑioᚋlaconicdᚋgqlᚐPeerInfo(ctx context.Context, sel ast.SelectionSet, v []*PeerInfo) graphql.Marshaler {

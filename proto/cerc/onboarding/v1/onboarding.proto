@@ -7,7 +7,11 @@ import "gogoproto/gogo.proto";
 option go_package = "git.vdb.to/cerc-io/laconicd/x/onboarding";
 
 // Params defines the parameters of the onboarding module.
-message Params {}
+message Params {
+  bool onboarding_enabled = 1 [
+    (gogoproto.moretags) = "json:\"onboarding_enabled\" yaml:\"onboarding_enabled\""
+  ];
+}
 
 // Participant defines the data that will be stored for each enrolled participant
 message Participant {

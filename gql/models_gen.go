@@ -135,6 +135,11 @@ type OwnerBonds struct {
 	Bonds []*Bond `json:"bonds"`
 }
 
+type Participant struct {
+	CosmosAddress   string `json:"cosmos_address"`
+	EthereumAddress string `json:"ethereum_address"`
+}
+
 type PeerInfo struct {
 	Node       *NodeInfo `json:"node"`
 	IsOutbound bool      `json:"is_outbound"`

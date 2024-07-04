@@ -13,6 +13,7 @@ import (
 
 	auctiontypes "git.vdb.to/cerc-io/laconicd/x/auction"
 	bondtypes "git.vdb.to/cerc-io/laconicd/x/bond"
+	onboardingTypes "git.vdb.to/cerc-io/laconicd/x/onboarding"
 	registrytypes "git.vdb.to/cerc-io/laconicd/x/registry"
 )
 
@@ -358,4 +359,22 @@ func (q queryResolver) GetAuctionsByIds(ctx context.Context, ids []string) ([]*A
 	}
 
 	return gqlAuctionResponse, nil
+}
+
+func (q queryResolver) GetParticipants(ctx context.Context) ([]*Participant, error) {
+	onboardingQueryClient := onboardingTypes.NewQueryClient(q.ctx)
+	participantResp, err := onboardingQueryClient.Participants(context.Background(), &onboardingTypes.QueryParticipantsRequest{})
+	if err != nil {
+		return nil, err
+	}
+
+	participants := make([]*Participant, len(participantResp.GetParticipants()))
+	for i, p := range participantResp.Participants {
+		participants[i] = &Participant{
+			CosmosAddress:   p.CosmosAddress,
+			EthereumAddress: p.EthereumAddress,
+		}
+	}
+
+	return participants, nil
 }

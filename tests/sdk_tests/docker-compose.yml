@@ -6,6 +6,7 @@ services:
     environment:
       - TEST_AUCTION_ENABLED
       - TEST_REGISTRY_EXPIRY
+      - ONBOARDING_ENABLED
       - LOGLEVEL
     volumes:
       - ../../scripts/init.sh:/docker-entrypoint-scripts.d/create-fixturenet.sh

@@ -52,6 +52,12 @@ if [ "$1" == "clean" ] || [ ! -d "$HOME/.laconicd/data/blockstore.db" ]; then
     update_genesis '.app_state["registry"]["params"]["authority_auction_reveals_duration"]="60s"'
   fi
 
+  if [[ "$ONBOARDING_ENABLED" == "true" ]]; then
+    echo "Enabling validator onboarding."
+
+    update_genesis '.app_state["onboarding"]["params"]["onboarding_enabled"]=true'
+  fi
+
   # increase block time (?)
   update_genesis '.consensus["params"]["block"]["time_iota_ms"]="1000"'
 
