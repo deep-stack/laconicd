@@ -1,7 +1,4 @@
-FROM golang:alpine AS build-env
-
-# Install dependencies
-RUN apk add --update git build-base linux-headers
+FROM golang:1.21-bullseye AS builder
 
 # Set working directory for the build
 WORKDIR /go/src/git.vdb.to/cerc-io/laconicd
@@ -17,13 +14,16 @@ COPY . .
 RUN make build
 
 # Final image
-FROM alpine:3.17.0
+FROM ubuntu:22.04
 
-# Install ca-certificates
-RUN apk add --update ca-certificates jq curl bash
+# Install ca-certificates, jq, curl, bash, and other necessary packages
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    jq curl netcat bash \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copy over binaries from the build-env
-COPY --from=build-env /go/src/git.vdb.to/cerc-io/laconicd/build/laconicd /usr/bin/laconicd
+# Copy over binary from the builder
+COPY --from=builder /go/src/git.vdb.to/cerc-io/laconicd/build/laconicd /usr/bin/laconicd
 
 WORKDIR /
 

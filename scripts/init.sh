@@ -15,7 +15,6 @@ if [ "$1" == "clean" ] || [ ! -d "$HOME/.laconicd/data/blockstore.db" ]; then
 
   # remove existing daemon and client
   rm -rf $HOME/.laconicd/*
-  rm -rf $HOME/.laconic/*
 
   if [ -n "`which make`" ]; then
     make install

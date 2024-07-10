@@ -2,7 +2,7 @@ services:
   laconicd:
     restart: unless-stopped
     image: cerc/laconicd:local
-    entrypoint: ["sh", "/docker-entrypoint-scripts.d/create-fixturenet.sh"]
+    entrypoint: ["bash", "/docker-entrypoint-scripts.d/create-fixturenet.sh"]
     environment:
       - TEST_AUCTION_ENABLED
       - TEST_REGISTRY_EXPIRY
