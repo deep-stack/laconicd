@@ -68,7 +68,7 @@ func NewRootCmd() *cobra.Command {
 			cmd.SetOut(cmd.OutOrStdout())
 			cmd.SetErr(cmd.ErrOrStderr())
 
-			clientCtx = clientCtx.WithCmdContext(cmd.Context())
+			clientCtx = clientCtx.WithCmdContext(cmd.Context()).WithViper(EnvPrefix)
 			clientCtx, err := client.ReadPersistentCommandFlags(clientCtx, cmd.Flags())
 			if err != nil {
 				return err
@@ -90,10 +90,6 @@ func NewRootCmd() *cobra.Command {
 				}
 
 				clientCtx = clientCtx.WithTxConfig(txConfigWithTextual)
-			}
-
-			if err := client.SetCmdClientContextHandler(clientCtx, cmd); err != nil {
-				return err
 			}
 
 			if err := client.SetCmdClientContextHandler(clientCtx, cmd); err != nil {
@@ -138,7 +134,9 @@ func ProvideClientContext(
 		WithLegacyAmino(legacyAmino).
 		WithInput(os.Stdin).
 		WithAccountRetriever(types.AccountRetriever{}).
-		WithHomeDir(app.DefaultNodeHome).
+		// Workaround: Avoid providing DefaultNodeHome to depinject as it is given precedence over the one passed using --home flag in some CLI commands
+		// TODO: Implement proper fix
+		// WithHomeDir(app.DefaultNodeHome).
 		WithViper(EnvPrefix) // env variable prefix
 
 	// Read the config again to overwrite the default values with the values from the config file
