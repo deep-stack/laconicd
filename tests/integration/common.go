@@ -103,7 +103,14 @@ func (tf *TestFixture) Setup() error {
 
 	bondKeeper := bondkeeper.NewKeeper(cdc, runtime.NewKVStoreService(keys[bondTypes.StoreKey]), accountKeeper, bankKeeper)
 
-	registryKeeper := registrykeeper.NewKeeper(cdc, runtime.NewKVStoreService(keys[registryTypes.StoreKey]), accountKeeper, bankKeeper, bondKeeper, auctionKeeper)
+	registryKeeper := registrykeeper.NewKeeper(
+		cdc,
+		runtime.NewKVStoreService(keys[registryTypes.StoreKey]),
+		accountKeeper,
+		bankKeeper,
+		bondKeeper,
+		auctionKeeper,
+	)
 
 	authModule := auth.NewAppModule(cdc, accountKeeper, authsims.RandomGenesisAccounts, nil)
 	bankModule := bank.NewAppModule(cdc, bankKeeper, accountKeeper, nil)

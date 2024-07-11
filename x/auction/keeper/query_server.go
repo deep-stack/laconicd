@@ -98,7 +98,10 @@ func (qs queryServer) GetBids(c context.Context, req *auctiontypes.QueryGetBidsR
 }
 
 // AuctionsByBidder queries auctions by bidder
-func (qs queryServer) AuctionsByBidder(c context.Context, req *auctiontypes.QueryAuctionsByBidderRequest) (*auctiontypes.QueryAuctionsByBidderResponse, error) {
+func (qs queryServer) AuctionsByBidder(
+	c context.Context,
+	req *auctiontypes.QueryAuctionsByBidderRequest,
+) (*auctiontypes.QueryAuctionsByBidderResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 
 	if req.BidderAddress == "" {
@@ -110,11 +113,18 @@ func (qs queryServer) AuctionsByBidder(c context.Context, req *auctiontypes.Quer
 		return nil, err
 	}
 
-	return &auctiontypes.QueryAuctionsByBidderResponse{Auctions: &auctiontypes.Auctions{Auctions: auctions}}, nil
+	return &auctiontypes.QueryAuctionsByBidderResponse{
+		Auctions: &auctiontypes.Auctions{
+			Auctions: auctions,
+		},
+	}, nil
 }
 
 // AuctionsByOwner queries auctions by owner
-func (qs queryServer) AuctionsByOwner(c context.Context, req *auctiontypes.QueryAuctionsByOwnerRequest) (*auctiontypes.QueryAuctionsByOwnerResponse, error) {
+func (qs queryServer) AuctionsByOwner(
+	c context.Context,
+	req *auctiontypes.QueryAuctionsByOwnerRequest,
+) (*auctiontypes.QueryAuctionsByOwnerResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 
 	if req.OwnerAddress == "" {
@@ -130,7 +140,10 @@ func (qs queryServer) AuctionsByOwner(c context.Context, req *auctiontypes.Query
 }
 
 // GetAuctionModuleBalance queries the auction module account balance
-func (qs queryServer) GetAuctionModuleBalance(c context.Context, req *auctiontypes.QueryGetAuctionModuleBalanceRequest) (*auctiontypes.QueryGetAuctionModuleBalanceResponse, error) {
+func (qs queryServer) GetAuctionModuleBalance(
+	c context.Context,
+	req *auctiontypes.QueryGetAuctionModuleBalanceRequest,
+) (*auctiontypes.QueryGetAuctionModuleBalanceResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 	balances := qs.k.GetAuctionModuleBalances(ctx)
 

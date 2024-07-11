@@ -4,7 +4,6 @@ import (
 	"cosmossdk.io/core/appmodule"
 	"cosmossdk.io/core/store"
 	"cosmossdk.io/depinject"
-	"golang.org/x/exp/maps"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	auth "github.com/cosmos/cosmos-sdk/x/auth/keeper"
@@ -64,15 +63,14 @@ func InvokeSetAuctionHooks(
 	keeper *keeper.Keeper,
 	auctionHooks map[string]auction.AuctionHooksWrapper,
 ) error {
-	// all arguments to invokers are optional
+	// All arguments to invokers are optional
 	if keeper == nil || config == nil {
 		return nil
 	}
 
-	var usageKeepers []auction.AuctionUsageKeeper
+	usageKeepers := make([]auction.AuctionUsageKeeper, 0, len(auctionHooks))
 
-	for _, modName := range maps.Keys(auctionHooks) {
-		hook := auctionHooks[modName]
+	for _, hook := range auctionHooks {
 		usageKeepers = append(usageKeepers, hook)
 	}
 

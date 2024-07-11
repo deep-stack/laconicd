@@ -20,7 +20,10 @@ func NewQueryServerImpl(k *Keeper) onboardingtypes.QueryServer {
 }
 
 // Participants implements Participants.QueryServer.
-func (qs queryServer) Participants(c context.Context, _ *onboardingtypes.QueryParticipantsRequest) (*onboardingtypes.QueryParticipantsResponse, error) {
+func (qs queryServer) Participants(
+	c context.Context,
+	_ *onboardingtypes.QueryParticipantsRequest,
+) (*onboardingtypes.QueryParticipantsResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 
 	resp, err := qs.k.ListParticipants(ctx)

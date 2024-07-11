@@ -77,8 +77,12 @@ type Keeper struct {
 	// state management
 	Schema   collections.Schema
 	Params   collections.Item[auctiontypes.Params]
-	Auctions *collections.IndexedMap[string, auctiontypes.Auction, AuctionsIndexes]                   // map: auctionId -> Auction, index: owner -> Auctions
-	Bids     *collections.IndexedMap[collections.Pair[string, string], auctiontypes.Bid, BidsIndexes] // map: (auctionId, bidder) -> Bid, index: bidder -> auctionId
+	Auctions *collections.IndexedMap[
+		string, auctiontypes.Auction, AuctionsIndexes,
+	] // map: auctionId -> Auction, index: owner -> Auctions
+	Bids *collections.IndexedMap[
+		collections.Pair[string, string], auctiontypes.Bid, BidsIndexes,
+	] // map: (auctionId, bidder) -> Bid, index: bidder -> auctionId
 }
 
 // NewKeeper creates a new Keeper instance
@@ -94,9 +98,16 @@ func NewKeeper(
 		accountKeeper: accountKeeper,
 		bankKeeper:    bankKeeper,
 		Params:        collections.NewItem(sb, auctiontypes.ParamsPrefix, "params", codec.CollValue[auctiontypes.Params](cdc)),
-		Auctions:      collections.NewIndexedMap(sb, auctiontypes.AuctionsPrefix, "auctions", collections.StringKey, codec.CollValue[auctiontypes.Auction](cdc), newAuctionIndexes(sb)),
-		Bids:          collections.NewIndexedMap(sb, auctiontypes.BidsPrefix, "bids", collections.PairKeyCodec(collections.StringKey, collections.StringKey), codec.CollValue[auctiontypes.Bid](cdc), newBidsIndexes(sb)),
-		usageKeepers:  nil,
+		Auctions: collections.NewIndexedMap(
+			sb, auctiontypes.AuctionsPrefix, "auctions", collections.StringKey, codec.CollValue[auctiontypes.Auction](cdc), newAuctionIndexes(sb),
+		),
+		Bids: collections.NewIndexedMap(
+			sb, auctiontypes.BidsPrefix, "bids",
+			collections.PairKeyCodec(collections.StringKey, collections.StringKey),
+			codec.CollValue[auctiontypes.Bid](cdc),
+			newBidsIndexes(sb),
+		),
+		usageKeepers: nil,
 	}
 
 	schema, err := sb.Build()
@@ -191,10 +202,16 @@ func (k Keeper) GetBid(ctx sdk.Context, id string, bidder string) (auctiontypes.
 func (k Keeper) GetBids(ctx sdk.Context, id string) ([]*auctiontypes.Bid, error) {
 	var bids []*auctiontypes.Bid
 
-	err := k.Bids.Walk(ctx, collections.NewPrefixedPairRange[string, string](id), func(key collections.Pair[string, string], value auctiontypes.Bid) (stop bool, err error) {
-		bids = append(bids, &value)
-		return false, nil
-	})
+	err := k.Bids.Walk(ctx,
+		collections.NewPrefixedPairRange[string, string](id),
+		func(
+			key collections.Pair[string, string],
+			value auctiontypes.Bid) (stop bool, err error,
+		) {
+			bids = append(bids, &value)
+			return false, nil
+		},
+	)
 	if err != nil {
 		return nil, err
 	}
@@ -716,7 +733,12 @@ func (k Keeper) pickAuctionWinner(ctx sdk.Context, auction *auctiontypes.Auction
 		}
 
 		// Use auction burn module account instead of actually burning coins to better keep track of supply.
-		sdkErr = k.bankKeeper.SendCoinsFromModuleToModule(ctx, auctiontypes.ModuleName, auctiontypes.AuctionBurnModuleAccountName, sdk.NewCoins(amountToBurn))
+		sdkErr = k.bankKeeper.SendCoinsFromModuleToModule(
+			ctx,
+			auctiontypes.ModuleName,
+			auctiontypes.AuctionBurnModuleAccountName,
+			sdk.NewCoins(amountToBurn),
+		)
 		if sdkErr != nil {
 			k.Logger(ctx).Error(fmt.Sprintf("Auction error burning coins: %v", sdkErr))
 			panic(sdkErr)

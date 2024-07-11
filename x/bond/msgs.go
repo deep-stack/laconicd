@@ -6,9 +6,7 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 )
 
-var (
-	_ sdk.Msg = &MsgCreateBond{}
-)
+var _ sdk.Msg = &MsgCreateBond{}
 
 // NewMsgCreateBond is the constructor function for MsgCreateBond.
 func NewMsgCreateBond(coins sdk.Coins, signer sdk.AccAddress) MsgCreateBond {

@@ -4,7 +4,6 @@ import (
 	"cosmossdk.io/core/appmodule"
 	"cosmossdk.io/core/store"
 	"cosmossdk.io/depinject"
-	"golang.org/x/exp/maps"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	auth "github.com/cosmos/cosmos-sdk/x/auth/keeper"
@@ -60,15 +59,14 @@ func InvokeSetBondHooks(
 	keeper *keeper.Keeper,
 	bondHooks map[string]bond.BondHooksWrapper,
 ) error {
-	// all arguments to invokers are optional
+	// All arguments to invokers are optional
 	if keeper == nil || config == nil {
 		return nil
 	}
 
-	var usageKeepers []bond.BondUsageKeeper
+	usageKeepers := make([]bond.BondUsageKeeper, 0, len(bondHooks))
 
-	for _, modName := range maps.Keys(bondHooks) {
-		hook := bondHooks[modName]
+	for _, hook := range bondHooks {
 		usageKeepers = append(usageKeepers, hook)
 	}
 

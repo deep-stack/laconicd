@@ -63,12 +63,17 @@ func (qs queryServer) GetBondById(c context.Context, req *bondtypes.QueryGetBond
 }
 
 // GetBondsByOwner implements bond.QueryServer.
-func (qs queryServer) GetBondsByOwner(c context.Context, req *bondtypes.QueryGetBondsByOwnerRequest) (*bondtypes.QueryGetBondsByOwnerResponse, error) {
+func (qs queryServer) GetBondsByOwner(
+	c context.Context,
+	req *bondtypes.QueryGetBondsByOwnerRequest,
+) (*bondtypes.QueryGetBondsByOwnerResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 
 	owner := req.GetOwner()
 	if len(owner) == 0 {
-		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "owner required")
+		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest,
+			"owner required",
+		)
 	}
 
 	bonds, err := qs.k.GetBondsByOwner(ctx, owner)
@@ -80,9 +85,14 @@ func (qs queryServer) GetBondsByOwner(c context.Context, req *bondtypes.QueryGet
 }
 
 // GetBondModuleBalance implements bond.QueryServer.
-func (qs queryServer) GetBondModuleBalance(c context.Context, _ *bondtypes.QueryGetBondModuleBalanceRequest) (*bondtypes.QueryGetBondModuleBalanceResponse, error) {
+func (qs queryServer) GetBondModuleBalance(
+	c context.Context,
+	_ *bondtypes.QueryGetBondModuleBalanceRequest,
+) (*bondtypes.QueryGetBondModuleBalanceResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 	balances := qs.k.GetBondModuleBalances(ctx)
 
-	return &bondtypes.QueryGetBondModuleBalanceResponse{Balance: balances}, nil
+	return &bondtypes.QueryGetBondModuleBalanceResponse{
+		Balance: balances,
+	}, nil
 }

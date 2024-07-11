@@ -44,7 +44,9 @@ func NewKeeper(cdc codec.BinaryCodec, addressCodec address.Codec, storeService s
 		addressCodec: addressCodec,
 		authority:    authority,
 		Params:       collections.NewItem(sb, onboardingTypes.ParamsPrefix, "params", codec.CollValue[onboardingTypes.Params](cdc)),
-		Participants: collections.NewMap(sb, onboardingTypes.ParticipantsPrefix, "participants", collections.StringKey, codec.CollValue[onboardingTypes.Participant](cdc)),
+		Participants: collections.NewMap(
+			sb, onboardingTypes.ParticipantsPrefix, "participants", collections.StringKey, codec.CollValue[onboardingTypes.Participant](cdc),
+		),
 	}
 
 	schema, err := sb.Build()
@@ -66,7 +68,11 @@ func (k Keeper) Logger(ctx sdk.Context) log.Logger {
 	return ctx.Logger().With("module", onboardingTypes.ModuleName)
 }
 
-func (k Keeper) OnboardParticipant(ctx sdk.Context, msg *onboardingTypes.MsgOnboardParticipant, signerAddress sdk.AccAddress) (*onboardingTypes.MsgOnboardParticipantResponse, error) {
+func (k Keeper) OnboardParticipant(
+	ctx sdk.Context,
+	msg *onboardingTypes.MsgOnboardParticipant,
+	signerAddress sdk.AccAddress,
+) (*onboardingTypes.MsgOnboardParticipantResponse, error) {
 	params, err := k.Params.Get(ctx)
 	if err != nil {
 		return nil, err
@@ -82,6 +88,10 @@ func (k Keeper) OnboardParticipant(ctx sdk.Context, msg *onboardingTypes.MsgOnbo
 	}
 
 	ethereumAddress, err := utils.DecodeEthereumAddress(message, msg.EthSignature)
+	if err != nil {
+		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Failed to decode Ethereum address")
+	}
+
 	if ethereumAddress != msg.EthPayload.Address {
 		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Recovered ethereum address does not match the address set in payload")
 	}
@@ -100,9 +110,7 @@ func (k Keeper) OnboardParticipant(ctx sdk.Context, msg *onboardingTypes.MsgOnbo
 
 func (k Keeper) StoreParticipant(ctx sdk.Context, participant *onboardingTypes.Participant) error {
 	key := participant.CosmosAddress
-	k.Participants.Set(ctx, key, *participant)
-
-	return nil
+	return k.Participants.Set(ctx, key, *participant)
 }
 
 // ListParticipants - get all participants.

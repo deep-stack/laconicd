@@ -8,7 +8,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
-// Default parameter values.
+// DefaultMaxBondAmountTokens are the default parameter values.
 var DefaultMaxBondAmountTokens = sdkmath.NewInt(100000000000)
 
 func NewParams(maxBondAmount sdk.Coin) Params {

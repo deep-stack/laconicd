@@ -6,9 +6,7 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 )
 
-var (
-	_ sdk.Msg = &MsgOnboardParticipant{}
-)
+var _ sdk.Msg = &MsgOnboardParticipant{}
 
 func (msg MsgOnboardParticipant) ValidateBasic() error {
 	if len(msg.Participant) == 0 {

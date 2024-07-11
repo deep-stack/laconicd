@@ -61,7 +61,6 @@ func RecordBondInvariant(k *Keeper) sdk.Invariant {
 
 			return false, nil
 		})
-
 		if err != nil {
 			return sdk.FormatInvariant(
 				types.ModuleName,

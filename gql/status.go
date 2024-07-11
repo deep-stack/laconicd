@@ -39,7 +39,8 @@ func getStatusInfo(client client.Context) (*NodeInfo, *SyncInfo, *ValidatorInfo,
 		}, nil
 }
 
-func getNetInfo(client client.Context) (string, []*PeerInfo, error) {
+// nolint: all
+func getNetInfo(_ client.Context) (string, []*PeerInfo, error) {
 	// TODO: Implement
 
 	// nodeClient, err := client.GetNode()

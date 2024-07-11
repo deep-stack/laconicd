@@ -243,7 +243,11 @@ func (k Keeper) GetRecordsByBondId(ctx sdk.Context, bondId string) ([]registryty
 }
 
 // RecordsFromAttributes gets a list of records whose attributes match all provided values
-func (k Keeper) RecordsFromAttributes(ctx sdk.Context, attributes []*registrytypes.QueryRecordsRequest_KeyValueInput, all bool) ([]registrytypes.Record, error) {
+func (k Keeper) RecordsFromAttributes(
+	ctx sdk.Context,
+	attributes []*registrytypes.QueryRecordsRequest_KeyValueInput,
+	all bool,
+) ([]registrytypes.Record, error) {
 	resultRecordIds := []string{}
 	for i, attr := range attributes {
 		suffix, err := QueryValueToJSON(attr.Value)

@@ -71,8 +71,10 @@ func NewKeeper(
 		accountKeeper: accountKeeper,
 		bankKeeper:    bankKeeper,
 		Params:        collections.NewItem(sb, bondtypes.ParamsPrefix, "params", codec.CollValue[bondtypes.Params](cdc)),
-		Bonds:         collections.NewIndexedMap(sb, bondtypes.BondsPrefix, "bonds", collections.StringKey, codec.CollValue[bondtypes.Bond](cdc), newBondIndexes(sb)),
-		usageKeepers:  nil,
+		Bonds: collections.NewIndexedMap(
+			sb, bondtypes.BondsPrefix, "bonds", collections.StringKey, codec.CollValue[bondtypes.Bond](cdc), newBondIndexes(sb),
+		),
+		usageKeepers: nil,
 	}
 
 	schema, err := sb.Build()

@@ -320,7 +320,10 @@ func (ms msgServer) DissociateBond(c context.Context, msg *registrytypes.MsgDiss
 	return &registrytypes.MsgDissociateBondResponse{}, nil
 }
 
-func (ms msgServer) DissociateRecords(c context.Context, msg *registrytypes.MsgDissociateRecords) (*registrytypes.MsgDissociateRecordsResponse, error) {
+func (ms msgServer) DissociateRecords(
+	c context.Context,
+	msg *registrytypes.MsgDissociateRecords,
+) (*registrytypes.MsgDissociateRecordsResponse, error) {
 	if err := msg.ValidateBasic(); err != nil {
 		return nil, err
 	}

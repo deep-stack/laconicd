@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"time"
 
 	"cosmossdk.io/log"
 	"github.com/99designs/gqlgen/graphql/handler"
@@ -54,7 +55,12 @@ func Server(ctx context.Context, clientCtx client.Context, logger log.Logger) er
 
 	go func() {
 		logger.Info(fmt.Sprintf("Connect to GraphQL playground url: http://localhost:%s", port))
-		errCh <- http.ListenAndServe(":"+port, router)
+		server := &http.Server{
+			Addr:              ":" + port,
+			Handler:           router,
+			ReadHeaderTimeout: 3 * time.Second,
+		}
+		errCh <- server.ListenAndServe()
 	}()
 
 	select {
