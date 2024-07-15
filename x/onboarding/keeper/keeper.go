@@ -87,18 +87,19 @@ func (k Keeper) OnboardParticipant(
 		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Invalid format for payload")
 	}
 
-	ethereumAddress, err := utils.DecodeEthereumAddress(message, msg.EthSignature)
+	// Decode eth address from signature which should be the nitro address of the participant
+	nitroAddress, err := utils.DecodeEthereumAddress(message, msg.EthSignature)
 	if err != nil {
 		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Failed to decode Ethereum address")
 	}
 
-	if ethereumAddress != msg.EthPayload.Address {
+	if nitroAddress != msg.EthPayload.Address {
 		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "Recovered ethereum address does not match the address set in payload")
 	}
 
 	participant := &onboardingTypes.Participant{
-		CosmosAddress:   signerAddress.String(),
-		EthereumAddress: ethereumAddress,
+		CosmosAddress: signerAddress.String(),
+		NitroAddress:  nitroAddress,
 	}
 
 	if err := k.StoreParticipant(ctx, participant); err != nil {

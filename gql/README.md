@@ -13,6 +13,7 @@ On having some change in the GQL schema (for example: adding a new query) update
   go get github.com/99designs/gqlgen@v0.17.22
 
   # Generate bindings
+  # In gql
   go run github.com/99designs/gqlgen generate
   ```
 
@@ -43,15 +44,15 @@ Basic node status:
       moniker
     }
     sync {
-      latest_block_height
-      catching_up
+      latestBlockHeight
+      catchingUp
     }
-    num_peers
+    numPeers
     peers {
-      is_outbound
-      remote_ip
+      isOutbound
+      remoteIp
     }
-    disk_usage
+    diskUsage
   }
 }
 ```
@@ -68,32 +69,32 @@ Full node status:
       moniker
     }
     sync {
-      latest_block_hash
-      latest_block_time
-      latest_block_height
-      catching_up
+      latestBlockHash
+      latestBlockTime
+      latestBlockHeight
+      catchingUp
     }
     validator {
       address
-      voting_power
-      proposer_priority
+      votingPower
+      proposerPriority
     }
     validators {
       address
-      voting_power
-      proposer_priority
+      votingPower
+      proposerPriority
     }
-    num_peers
+    numPeers
     peers {
       node {
         id
         network
         moniker
       }
-      is_outbound
-      remote_ip
+      isOutbound
+      remoteIp
     }
-    disk_usage
+    diskUsage
   }
 }
 ```
@@ -380,8 +381,8 @@ Query participants:
 ```graphql
 {
   getParticipants {
-    cosmos_address
-    ethereum_address
+    cosmosAddress
+    nitroAddress
   }
 }
 ```

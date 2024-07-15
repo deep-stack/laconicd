@@ -92,7 +92,8 @@ func (m *MsgOnboardParticipant) GetEthSignature() string {
 	return ""
 }
 
-// MsgOnboardParticipantResponse defines the Msg/OnboardParticipant response type.
+// MsgOnboardParticipantResponse defines the Msg/OnboardParticipant response
+// type.
 type MsgOnboardParticipantResponse struct {
 }
 

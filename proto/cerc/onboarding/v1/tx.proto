@@ -15,9 +15,9 @@ service Msg {
 
   // OnboardParticipant defines a method for enrolling a new validator.
   rpc OnboardParticipant(MsgOnboardParticipant)
-    returns (MsgOnboardParticipantResponse) {
-      option (google.api.http).post = "/cerc/onboarding/v1/onboard_participant";
-    };
+      returns (MsgOnboardParticipantResponse) {
+    option (google.api.http).post = "/cerc/onboarding/v1/onboard_participant";
+  };
 }
 
 // MsgOnboardParticipant defines a SDK message for enrolling a new validator.
@@ -30,5 +30,6 @@ message MsgOnboardParticipant {
   string eth_signature = 3;
 }
 
-// MsgOnboardParticipantResponse defines the Msg/OnboardParticipant response type.
+// MsgOnboardParticipantResponse defines the Msg/OnboardParticipant response
+// type.
 message MsgOnboardParticipantResponse {}

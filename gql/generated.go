@@ -154,8 +154,8 @@ type ComplexityRoot struct {
 	}
 
 	Participant struct {
-		CosmosAddress   func(childComplexity int) int
-		EthereumAddress func(childComplexity int) int
+		CosmosAddress func(childComplexity int) int
+		NitroAddress  func(childComplexity int) int
 	}
 
 	PeerInfo struct {
@@ -641,21 +641,21 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 
 		return e.complexity.OwnerBonds.Owner(childComplexity), true
 
-	case "Participant.cosmos_address":
+	case "Participant.cosmosAddress":
 		if e.complexity.Participant.CosmosAddress == nil {
 			break
 		}
 
 		return e.complexity.Participant.CosmosAddress(childComplexity), true
 
-	case "Participant.ethereum_address":
-		if e.complexity.Participant.EthereumAddress == nil {
+	case "Participant.nitroAddress":
+		if e.complexity.Participant.NitroAddress == nil {
 			break
 		}
 
-		return e.complexity.Participant.EthereumAddress(childComplexity), true
+		return e.complexity.Participant.NitroAddress(childComplexity), true
 
-	case "PeerInfo.is_outbound":
+	case "PeerInfo.isOutbound":
 		if e.complexity.PeerInfo.IsOutbound == nil {
 			break
 		}
@@ -669,7 +669,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 
 		return e.complexity.PeerInfo.Node(childComplexity), true
 
-	case "PeerInfo.remote_ip":
+	case "PeerInfo.remoteIp":
 		if e.complexity.PeerInfo.RemoteIP == nil {
 			break
 		}
@@ -866,7 +866,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 
 		return e.complexity.Record.References(childComplexity), true
 
-	case "Status.disk_usage":
+	case "Status.diskUsage":
 		if e.complexity.Status.DiskUsage == nil {
 			break
 		}
@@ -880,7 +880,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 
 		return e.complexity.Status.Node(childComplexity), true
 
-	case "Status.num_peers":
+	case "Status.numPeers":
 		if e.complexity.Status.NumPeers == nil {
 			break
 		}
@@ -929,28 +929,28 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 
 		return e.complexity.StringValue.Value(childComplexity), true
 
-	case "SyncInfo.catching_up":
+	case "SyncInfo.catchingUp":
 		if e.complexity.SyncInfo.CatchingUp == nil {
 			break
 		}
 
 		return e.complexity.SyncInfo.CatchingUp(childComplexity), true
 
-	case "SyncInfo.latest_block_hash":
+	case "SyncInfo.latestBlockHash":
 		if e.complexity.SyncInfo.LatestBlockHash == nil {
 			break
 		}
 
 		return e.complexity.SyncInfo.LatestBlockHash(childComplexity), true
 
-	case "SyncInfo.latest_block_height":
+	case "SyncInfo.latestBlockHeight":
 		if e.complexity.SyncInfo.LatestBlockHeight == nil {
 			break
 		}
 
 		return e.complexity.SyncInfo.LatestBlockHeight(childComplexity), true
 
-	case "SyncInfo.latest_block_time":
+	case "SyncInfo.latestBlockTime":
 		if e.complexity.SyncInfo.LatestBlockTime == nil {
 			break
 		}
@@ -964,14 +964,14 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 
 		return e.complexity.ValidatorInfo.Address(childComplexity), true
 
-	case "ValidatorInfo.proposer_priority":
+	case "ValidatorInfo.proposerPriority":
 		if e.complexity.ValidatorInfo.ProposerPriority == nil {
 			break
 		}
 
 		return e.complexity.ValidatorInfo.ProposerPriority(childComplexity), true
 
-	case "ValidatorInfo.voting_power":
+	case "ValidatorInfo.votingPower":
 		if e.complexity.ValidatorInfo.VotingPower == nil {
 			break
 		}
@@ -3836,8 +3836,8 @@ func (ec *executionContext) fieldContext_OwnerBonds_bonds(ctx context.Context, f
 	return fc, nil
 }
 
-func (ec *executionContext) _Participant_cosmos_address(ctx context.Context, field graphql.CollectedField, obj *Participant) (ret graphql.Marshaler) {
-	fc, err := ec.fieldContext_Participant_cosmos_address(ctx, field)
+func (ec *executionContext) _Participant_cosmosAddress(ctx context.Context, field graphql.CollectedField, obj *Participant) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_Participant_cosmosAddress(ctx, field)
 	if err != nil {
 		return graphql.Null
 	}
@@ -3867,7 +3867,7 @@ func (ec *executionContext) _Participant_cosmos_address(ctx context.Context, fie
 	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
-func (ec *executionContext) fieldContext_Participant_cosmos_address(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+func (ec *executionContext) fieldContext_Participant_cosmosAddress(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
 	fc = &graphql.FieldContext{
 		Object:     "Participant",
 		Field:      field,
@@ -3880,8 +3880,8 @@ func (ec *executionContext) fieldContext_Participant_cosmos_address(ctx context.
 	return fc, nil
 }
 
-func (ec *executionContext) _Participant_ethereum_address(ctx context.Context, field graphql.CollectedField, obj *Participant) (ret graphql.Marshaler) {
-	fc, err := ec.fieldContext_Participant_ethereum_address(ctx, field)
+func (ec *executionContext) _Participant_nitroAddress(ctx context.Context, field graphql.CollectedField, obj *Participant) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_Participant_nitroAddress(ctx, field)
 	if err != nil {
 		return graphql.Null
 	}
@@ -3894,7 +3894,7 @@ func (ec *executionContext) _Participant_ethereum_address(ctx context.Context, f
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return obj.EthereumAddress, nil
+		return obj.NitroAddress, nil
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -3911,7 +3911,7 @@ func (ec *executionContext) _Participant_ethereum_address(ctx context.Context, f
 	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
-func (ec *executionContext) fieldContext_Participant_ethereum_address(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+func (ec *executionContext) fieldContext_Participant_nitroAddress(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
 	fc = &graphql.FieldContext{
 		Object:     "Participant",
 		Field:      field,
@@ -3976,8 +3976,8 @@ func (ec *executionContext) fieldContext_PeerInfo_node(ctx context.Context, fiel
 	return fc, nil
 }
 
-func (ec *executionContext) _PeerInfo_is_outbound(ctx context.Context, field graphql.CollectedField, obj *PeerInfo) (ret graphql.Marshaler) {
-	fc, err := ec.fieldContext_PeerInfo_is_outbound(ctx, field)
+func (ec *executionContext) _PeerInfo_isOutbound(ctx context.Context, field graphql.CollectedField, obj *PeerInfo) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_PeerInfo_isOutbound(ctx, field)
 	if err != nil {
 		return graphql.Null
 	}
@@ -4007,7 +4007,7 @@ func (ec *executionContext) _PeerInfo_is_outbound(ctx context.Context, field gra
 	return ec.marshalNBoolean2bool(ctx, field.Selections, res)
 }
 
-func (ec *executionContext) fieldContext_PeerInfo_is_outbound(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+func (ec *executionContext) fieldContext_PeerInfo_isOutbound(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
 	fc = &graphql.FieldContext{
 		Object:     "PeerInfo",
 		Field:      field,
@@ -4020,8 +4020,8 @@ func (ec *executionContext) fieldContext_PeerInfo_is_outbound(ctx context.Contex
 	return fc, nil
 }
 
-func (ec *executionContext) _PeerInfo_remote_ip(ctx context.Context, field graphql.CollectedField, obj *PeerInfo) (ret graphql.Marshaler) {
-	fc, err := ec.fieldContext_PeerInfo_remote_ip(ctx, field)
+func (ec *executionContext) _PeerInfo_remoteIp(ctx context.Context, field graphql.CollectedField, obj *PeerInfo) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_PeerInfo_remoteIp(ctx, field)
 	if err != nil {
 		return graphql.Null
 	}
@@ -4051,7 +4051,7 @@ func (ec *executionContext) _PeerInfo_remote_ip(ctx context.Context, field graph
 	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
-func (ec *executionContext) fieldContext_PeerInfo_remote_ip(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+func (ec *executionContext) fieldContext_PeerInfo_remoteIp(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
 	fc = &graphql.FieldContext{
 		Object:     "PeerInfo",
 		Field:      field,
@@ -4113,12 +4113,12 @@ func (ec *executionContext) fieldContext_Query_getStatus(ctx context.Context, fi
 				return ec.fieldContext_Status_validator(ctx, field)
 			case "validators":
 				return ec.fieldContext_Status_validators(ctx, field)
-			case "num_peers":
-				return ec.fieldContext_Status_num_peers(ctx, field)
+			case "numPeers":
+				return ec.fieldContext_Status_numPeers(ctx, field)
 			case "peers":
 				return ec.fieldContext_Status_peers(ctx, field)
-			case "disk_usage":
-				return ec.fieldContext_Status_disk_usage(ctx, field)
+			case "diskUsage":
+				return ec.fieldContext_Status_diskUsage(ctx, field)
 			}
 			return nil, fmt.Errorf("no field named %q was found under type Status", field.Name)
 		},
@@ -4832,10 +4832,10 @@ func (ec *executionContext) fieldContext_Query_getParticipants(ctx context.Conte
 		IsResolver: true,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
 			switch field.Name {
-			case "cosmos_address":
-				return ec.fieldContext_Participant_cosmos_address(ctx, field)
-			case "ethereum_address":
-				return ec.fieldContext_Participant_ethereum_address(ctx, field)
+			case "cosmosAddress":
+				return ec.fieldContext_Participant_cosmosAddress(ctx, field)
+			case "nitroAddress":
+				return ec.fieldContext_Participant_nitroAddress(ctx, field)
 			}
 			return nil, fmt.Errorf("no field named %q was found under type Participant", field.Name)
 		},
@@ -5471,14 +5471,14 @@ func (ec *executionContext) fieldContext_Status_sync(ctx context.Context, field 
 		IsResolver: false,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
 			switch field.Name {
-			case "latest_block_hash":
-				return ec.fieldContext_SyncInfo_latest_block_hash(ctx, field)
-			case "latest_block_height":
-				return ec.fieldContext_SyncInfo_latest_block_height(ctx, field)
-			case "latest_block_time":
-				return ec.fieldContext_SyncInfo_latest_block_time(ctx, field)
-			case "catching_up":
-				return ec.fieldContext_SyncInfo_catching_up(ctx, field)
+			case "latestBlockHash":
+				return ec.fieldContext_SyncInfo_latestBlockHash(ctx, field)
+			case "latestBlockHeight":
+				return ec.fieldContext_SyncInfo_latestBlockHeight(ctx, field)
+			case "latestBlockTime":
+				return ec.fieldContext_SyncInfo_latestBlockTime(ctx, field)
+			case "catchingUp":
+				return ec.fieldContext_SyncInfo_catchingUp(ctx, field)
 			}
 			return nil, fmt.Errorf("no field named %q was found under type SyncInfo", field.Name)
 		},
@@ -5524,10 +5524,10 @@ func (ec *executionContext) fieldContext_Status_validator(ctx context.Context, f
 			switch field.Name {
 			case "address":
 				return ec.fieldContext_ValidatorInfo_address(ctx, field)
-			case "voting_power":
-				return ec.fieldContext_ValidatorInfo_voting_power(ctx, field)
-			case "proposer_priority":
-				return ec.fieldContext_ValidatorInfo_proposer_priority(ctx, field)
+			case "votingPower":
+				return ec.fieldContext_ValidatorInfo_votingPower(ctx, field)
+			case "proposerPriority":
+				return ec.fieldContext_ValidatorInfo_proposerPriority(ctx, field)
 			}
 			return nil, fmt.Errorf("no field named %q was found under type ValidatorInfo", field.Name)
 		},
@@ -5576,10 +5576,10 @@ func (ec *executionContext) fieldContext_Status_validators(ctx context.Context, 
 			switch field.Name {
 			case "address":
 				return ec.fieldContext_ValidatorInfo_address(ctx, field)
-			case "voting_power":
-				return ec.fieldContext_ValidatorInfo_voting_power(ctx, field)
-			case "proposer_priority":
-				return ec.fieldContext_ValidatorInfo_proposer_priority(ctx, field)
+			case "votingPower":
+				return ec.fieldContext_ValidatorInfo_votingPower(ctx, field)
+			case "proposerPriority":
+				return ec.fieldContext_ValidatorInfo_proposerPriority(ctx, field)
 			}
 			return nil, fmt.Errorf("no field named %q was found under type ValidatorInfo", field.Name)
 		},
@@ -5587,8 +5587,8 @@ func (ec *executionContext) fieldContext_Status_validators(ctx context.Context, 
 	return fc, nil
 }
 
-func (ec *executionContext) _Status_num_peers(ctx context.Context, field graphql.CollectedField, obj *Status) (ret graphql.Marshaler) {
-	fc, err := ec.fieldContext_Status_num_peers(ctx, field)
+func (ec *executionContext) _Status_numPeers(ctx context.Context, field graphql.CollectedField, obj *Status) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_Status_numPeers(ctx, field)
 	if err != nil {
 		return graphql.Null
 	}
@@ -5618,7 +5618,7 @@ func (ec *executionContext) _Status_num_peers(ctx context.Context, field graphql
 	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
-func (ec *executionContext) fieldContext_Status_num_peers(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+func (ec *executionContext) fieldContext_Status_numPeers(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
 	fc = &graphql.FieldContext{
 		Object:     "Status",
 		Field:      field,
@@ -5669,10 +5669,10 @@ func (ec *executionContext) fieldContext_Status_peers(ctx context.Context, field
 			switch field.Name {
 			case "node":
 				return ec.fieldContext_PeerInfo_node(ctx, field)
-			case "is_outbound":
-				return ec.fieldContext_PeerInfo_is_outbound(ctx, field)
-			case "remote_ip":
-				return ec.fieldContext_PeerInfo_remote_ip(ctx, field)
+			case "isOutbound":
+				return ec.fieldContext_PeerInfo_isOutbound(ctx, field)
+			case "remoteIp":
+				return ec.fieldContext_PeerInfo_remoteIp(ctx, field)
 			}
 			return nil, fmt.Errorf("no field named %q was found under type PeerInfo", field.Name)
 		},
@@ -5680,8 +5680,8 @@ func (ec *executionContext) fieldContext_Status_peers(ctx context.Context, field
 	return fc, nil
 }
 
-func (ec *executionContext) _Status_disk_usage(ctx context.Context, field graphql.CollectedField, obj *Status) (ret graphql.Marshaler) {
-	fc, err := ec.fieldContext_Status_disk_usage(ctx, field)
+func (ec *executionContext) _Status_diskUsage(ctx context.Context, field graphql.CollectedField, obj *Status) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_Status_diskUsage(ctx, field)
 	if err != nil {
 		return graphql.Null
 	}
@@ -5711,7 +5711,7 @@ func (ec *executionContext) _Status_disk_usage(ctx context.Context, field graphq
 	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
-func (ec *executionContext) fieldContext_Status_disk_usage(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+func (ec *executionContext) fieldContext_Status_diskUsage(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
 	fc = &graphql.FieldContext{
 		Object:     "Status",
 		Field:      field,
@@ -5768,8 +5768,8 @@ func (ec *executionContext) fieldContext_StringValue_value(ctx context.Context, 
 	return fc, nil
 }
 
-func (ec *executionContext) _SyncInfo_latest_block_hash(ctx context.Context, field graphql.CollectedField, obj *SyncInfo) (ret graphql.Marshaler) {
-	fc, err := ec.fieldContext_SyncInfo_latest_block_hash(ctx, field)
+func (ec *executionContext) _SyncInfo_latestBlockHash(ctx context.Context, field graphql.CollectedField, obj *SyncInfo) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_SyncInfo_latestBlockHash(ctx, field)
 	if err != nil {
 		return graphql.Null
 	}
@@ -5799,7 +5799,7 @@ func (ec *executionContext) _SyncInfo_latest_block_hash(ctx context.Context, fie
 	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
-func (ec *executionContext) fieldContext_SyncInfo_latest_block_hash(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+func (ec *executionContext) fieldContext_SyncInfo_latestBlockHash(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
 	fc = &graphql.FieldContext{
 		Object:     "SyncInfo",
 		Field:      field,
@@ -5812,8 +5812,8 @@ func (ec *executionContext) fieldContext_SyncInfo_latest_block_hash(ctx context.
 	return fc, nil
 }
 
-func (ec *executionContext) _SyncInfo_latest_block_height(ctx context.Context, field graphql.CollectedField, obj *SyncInfo) (ret graphql.Marshaler) {
-	fc, err := ec.fieldContext_SyncInfo_latest_block_height(ctx, field)
+func (ec *executionContext) _SyncInfo_latestBlockHeight(ctx context.Context, field graphql.CollectedField, obj *SyncInfo) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_SyncInfo_latestBlockHeight(ctx, field)
 	if err != nil {
 		return graphql.Null
 	}
@@ -5843,7 +5843,7 @@ func (ec *executionContext) _SyncInfo_latest_block_height(ctx context.Context, f
 	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
-func (ec *executionContext) fieldContext_SyncInfo_latest_block_height(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+func (ec *executionContext) fieldContext_SyncInfo_latestBlockHeight(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
 	fc = &graphql.FieldContext{
 		Object:     "SyncInfo",
 		Field:      field,
@@ -5856,8 +5856,8 @@ func (ec *executionContext) fieldContext_SyncInfo_latest_block_height(ctx contex
 	return fc, nil
 }
 
-func (ec *executionContext) _SyncInfo_latest_block_time(ctx context.Context, field graphql.CollectedField, obj *SyncInfo) (ret graphql.Marshaler) {
-	fc, err := ec.fieldContext_SyncInfo_latest_block_time(ctx, field)
+func (ec *executionContext) _SyncInfo_latestBlockTime(ctx context.Context, field graphql.CollectedField, obj *SyncInfo) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_SyncInfo_latestBlockTime(ctx, field)
 	if err != nil {
 		return graphql.Null
 	}
@@ -5887,7 +5887,7 @@ func (ec *executionContext) _SyncInfo_latest_block_time(ctx context.Context, fie
 	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
-func (ec *executionContext) fieldContext_SyncInfo_latest_block_time(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+func (ec *executionContext) fieldContext_SyncInfo_latestBlockTime(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
 	fc = &graphql.FieldContext{
 		Object:     "SyncInfo",
 		Field:      field,
@@ -5900,8 +5900,8 @@ func (ec *executionContext) fieldContext_SyncInfo_latest_block_time(ctx context.
 	return fc, nil
 }
 
-func (ec *executionContext) _SyncInfo_catching_up(ctx context.Context, field graphql.CollectedField, obj *SyncInfo) (ret graphql.Marshaler) {
-	fc, err := ec.fieldContext_SyncInfo_catching_up(ctx, field)
+func (ec *executionContext) _SyncInfo_catchingUp(ctx context.Context, field graphql.CollectedField, obj *SyncInfo) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_SyncInfo_catchingUp(ctx, field)
 	if err != nil {
 		return graphql.Null
 	}
@@ -5931,7 +5931,7 @@ func (ec *executionContext) _SyncInfo_catching_up(ctx context.Context, field gra
 	return ec.marshalNBoolean2bool(ctx, field.Selections, res)
 }
 
-func (ec *executionContext) fieldContext_SyncInfo_catching_up(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+func (ec *executionContext) fieldContext_SyncInfo_catchingUp(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
 	fc = &graphql.FieldContext{
 		Object:     "SyncInfo",
 		Field:      field,
@@ -5988,8 +5988,8 @@ func (ec *executionContext) fieldContext_ValidatorInfo_address(ctx context.Conte
 	return fc, nil
 }
 
-func (ec *executionContext) _ValidatorInfo_voting_power(ctx context.Context, field graphql.CollectedField, obj *ValidatorInfo) (ret graphql.Marshaler) {
-	fc, err := ec.fieldContext_ValidatorInfo_voting_power(ctx, field)
+func (ec *executionContext) _ValidatorInfo_votingPower(ctx context.Context, field graphql.CollectedField, obj *ValidatorInfo) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_ValidatorInfo_votingPower(ctx, field)
 	if err != nil {
 		return graphql.Null
 	}
@@ -6019,7 +6019,7 @@ func (ec *executionContext) _ValidatorInfo_voting_power(ctx context.Context, fie
 	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
-func (ec *executionContext) fieldContext_ValidatorInfo_voting_power(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+func (ec *executionContext) fieldContext_ValidatorInfo_votingPower(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
 	fc = &graphql.FieldContext{
 		Object:     "ValidatorInfo",
 		Field:      field,
@@ -6032,8 +6032,8 @@ func (ec *executionContext) fieldContext_ValidatorInfo_voting_power(ctx context.
 	return fc, nil
 }
 
-func (ec *executionContext) _ValidatorInfo_proposer_priority(ctx context.Context, field graphql.CollectedField, obj *ValidatorInfo) (ret graphql.Marshaler) {
-	fc, err := ec.fieldContext_ValidatorInfo_proposer_priority(ctx, field)
+func (ec *executionContext) _ValidatorInfo_proposerPriority(ctx context.Context, field graphql.CollectedField, obj *ValidatorInfo) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_ValidatorInfo_proposerPriority(ctx, field)
 	if err != nil {
 		return graphql.Null
 	}
@@ -6060,7 +6060,7 @@ func (ec *executionContext) _ValidatorInfo_proposer_priority(ctx context.Context
 	return ec.marshalOString2ᚖstring(ctx, field.Selections, res)
 }
 
-func (ec *executionContext) fieldContext_ValidatorInfo_proposer_priority(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+func (ec *executionContext) fieldContext_ValidatorInfo_proposerPriority(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
 	fc = &graphql.FieldContext{
 		Object:     "ValidatorInfo",
 		Field:      field,
@@ -8787,16 +8787,16 @@ func (ec *executionContext) _Participant(ctx context.Context, sel ast.SelectionS
 		switch field.Name {
 		case "__typename":
 			out.Values[i] = graphql.MarshalString("Participant")
-		case "cosmos_address":
+		case "cosmosAddress":
 
-			out.Values[i] = ec._Participant_cosmos_address(ctx, field, obj)
+			out.Values[i] = ec._Participant_cosmosAddress(ctx, field, obj)
 
 			if out.Values[i] == graphql.Null {
 				invalids++
 			}
-		case "ethereum_address":
+		case "nitroAddress":
 
-			out.Values[i] = ec._Participant_ethereum_address(ctx, field, obj)
+			out.Values[i] = ec._Participant_nitroAddress(ctx, field, obj)
 
 			if out.Values[i] == graphql.Null {
 				invalids++
@@ -8829,16 +8829,16 @@ func (ec *executionContext) _PeerInfo(ctx context.Context, sel ast.SelectionSet,
 			if out.Values[i] == graphql.Null {
 				invalids++
 			}
-		case "is_outbound":
+		case "isOutbound":
 
-			out.Values[i] = ec._PeerInfo_is_outbound(ctx, field, obj)
+			out.Values[i] = ec._PeerInfo_isOutbound(ctx, field, obj)
 
 			if out.Values[i] == graphql.Null {
 				invalids++
 			}
-		case "remote_ip":
+		case "remoteIp":
 
-			out.Values[i] = ec._PeerInfo_remote_ip(ctx, field, obj)
+			out.Values[i] = ec._PeerInfo_remoteIp(ctx, field, obj)
 
 			if out.Values[i] == graphql.Null {
 				invalids++
@@ -9258,9 +9258,9 @@ func (ec *executionContext) _Status(ctx context.Context, sel ast.SelectionSet, o
 			if out.Values[i] == graphql.Null {
 				invalids++
 			}
-		case "num_peers":
+		case "numPeers":
 
-			out.Values[i] = ec._Status_num_peers(ctx, field, obj)
+			out.Values[i] = ec._Status_numPeers(ctx, field, obj)
 
 			if out.Values[i] == graphql.Null {
 				invalids++
@@ -9269,9 +9269,9 @@ func (ec *executionContext) _Status(ctx context.Context, sel ast.SelectionSet, o
 
 			out.Values[i] = ec._Status_peers(ctx, field, obj)
 
-		case "disk_usage":
+		case "diskUsage":
 
-			out.Values[i] = ec._Status_disk_usage(ctx, field, obj)
+			out.Values[i] = ec._Status_diskUsage(ctx, field, obj)
 
 			if out.Values[i] == graphql.Null {
 				invalids++
@@ -9325,30 +9325,30 @@ func (ec *executionContext) _SyncInfo(ctx context.Context, sel ast.SelectionSet,
 		switch field.Name {
 		case "__typename":
 			out.Values[i] = graphql.MarshalString("SyncInfo")
-		case "latest_block_hash":
+		case "latestBlockHash":
 
-			out.Values[i] = ec._SyncInfo_latest_block_hash(ctx, field, obj)
-
-			if out.Values[i] == graphql.Null {
-				invalids++
-			}
-		case "latest_block_height":
-
-			out.Values[i] = ec._SyncInfo_latest_block_height(ctx, field, obj)
+			out.Values[i] = ec._SyncInfo_latestBlockHash(ctx, field, obj)
 
 			if out.Values[i] == graphql.Null {
 				invalids++
 			}
-		case "latest_block_time":
+		case "latestBlockHeight":
 
-			out.Values[i] = ec._SyncInfo_latest_block_time(ctx, field, obj)
+			out.Values[i] = ec._SyncInfo_latestBlockHeight(ctx, field, obj)
 
 			if out.Values[i] == graphql.Null {
 				invalids++
 			}
-		case "catching_up":
+		case "latestBlockTime":
 
-			out.Values[i] = ec._SyncInfo_catching_up(ctx, field, obj)
+			out.Values[i] = ec._SyncInfo_latestBlockTime(ctx, field, obj)
+
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		case "catchingUp":
+
+			out.Values[i] = ec._SyncInfo_catchingUp(ctx, field, obj)
 
 			if out.Values[i] == graphql.Null {
 				invalids++
@@ -9381,16 +9381,16 @@ func (ec *executionContext) _ValidatorInfo(ctx context.Context, sel ast.Selectio
 			if out.Values[i] == graphql.Null {
 				invalids++
 			}
-		case "voting_power":
+		case "votingPower":
 
-			out.Values[i] = ec._ValidatorInfo_voting_power(ctx, field, obj)
+			out.Values[i] = ec._ValidatorInfo_votingPower(ctx, field, obj)
 
 			if out.Values[i] == graphql.Null {
 				invalids++
 			}
-		case "proposer_priority":
+		case "proposerPriority":
 
-			out.Values[i] = ec._ValidatorInfo_proposer_priority(ctx, field, obj)
+			out.Values[i] = ec._ValidatorInfo_proposerPriority(ctx, field, obj)
 
 		default:
 			panic("unknown field " + strconv.Quote(field.Name))

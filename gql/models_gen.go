@@ -136,14 +136,14 @@ type OwnerBonds struct {
 }
 
 type Participant struct {
-	CosmosAddress   string `json:"cosmos_address"`
-	EthereumAddress string `json:"ethereum_address"`
+	CosmosAddress string `json:"cosmosAddress"`
+	NitroAddress  string `json:"nitroAddress"`
 }
 
 type PeerInfo struct {
 	Node       *NodeInfo `json:"node"`
-	IsOutbound bool      `json:"is_outbound"`
-	RemoteIP   string    `json:"remote_ip"`
+	IsOutbound bool      `json:"isOutbound"`
+	RemoteIP   string    `json:"remoteIp"`
 }
 
 type Record struct {
@@ -163,9 +163,9 @@ type Status struct {
 	Sync       *SyncInfo        `json:"sync"`
 	Validator  *ValidatorInfo   `json:"validator"`
 	Validators []*ValidatorInfo `json:"validators"`
-	NumPeers   string           `json:"num_peers"`
+	NumPeers   string           `json:"numPeers"`
 	Peers      []*PeerInfo      `json:"peers"`
-	DiskUsage  string           `json:"disk_usage"`
+	DiskUsage  string           `json:"diskUsage"`
 }
 
 type StringValue struct {
@@ -175,16 +175,16 @@ type StringValue struct {
 func (StringValue) IsValue() {}
 
 type SyncInfo struct {
-	LatestBlockHash   string `json:"latest_block_hash"`
-	LatestBlockHeight string `json:"latest_block_height"`
-	LatestBlockTime   string `json:"latest_block_time"`
-	CatchingUp        bool   `json:"catching_up"`
+	LatestBlockHash   string `json:"latestBlockHash"`
+	LatestBlockHeight string `json:"latestBlockHeight"`
+	LatestBlockTime   string `json:"latestBlockTime"`
+	CatchingUp        bool   `json:"catchingUp"`
 }
 
 type ValidatorInfo struct {
 	Address          string  `json:"address"`
-	VotingPower      string  `json:"voting_power"`
-	ProposerPriority *string `json:"proposer_priority"`
+	VotingPower      string  `json:"votingPower"`
+	ProposerPriority *string `json:"proposerPriority"`
 }
 
 type ValueInput struct {

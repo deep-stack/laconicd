@@ -12,7 +12,8 @@ option go_package = "git.vdb.to/cerc-io/laconicd/x/onboarding";
 // Query defines the gRPC querier service for onboarding module
 service Query {
   // Participants queries Participants list
-  rpc Participants(QueryParticipantsRequest) returns (QueryParticipantsResponse) {
+  rpc Participants(QueryParticipantsRequest)
+      returns (QueryParticipantsResponse) {
     option (google.api.http).get = "/cerc/onboarding/v1/participants";
   }
 }

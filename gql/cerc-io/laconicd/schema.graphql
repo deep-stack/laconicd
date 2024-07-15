@@ -31,8 +31,8 @@ type Account {
 }
 
 type Participant {
-  cosmos_address: String! # Cosmos address of the participant who will be registered.
-  ethereum_address: String! # Ethereum addresss of the participant who will be registered.
+  cosmosAddress: String! # Cosmos address of the participant who will be registered.
+  nitroAddress: String! # Nitro addresss of the participant who will be registered.
 }
 
 # Value describes a DAG-JSON compatible value.
@@ -111,24 +111,24 @@ type NodeInfo {
 
 # Node sync status.
 type SyncInfo {
-  latest_block_hash: String!
-  latest_block_height: String!
-  latest_block_time: String!
-  catching_up: Boolean!
+  latestBlockHash: String!
+  latestBlockHeight: String!
+  latestBlockTime: String!
+  catchingUp: Boolean!
 }
 
 # Validator set info (https://docs.tendermint.com/master/rpc/#/Info/validators).
 type ValidatorInfo {
   address: String!
-  voting_power: String!
-  proposer_priority: String
+  votingPower: String!
+  proposerPriority: String
 }
 
 # Network/peer info (https://docs.tendermint.com/master/rpc/#/Info/net_info).
 type PeerInfo {
   node: NodeInfo!
-  is_outbound: Boolean!
-  remote_ip: String!
+  isOutbound: Boolean!
+  remoteIp: String!
 }
 
 # Vulcanize laconic status.
@@ -138,9 +138,9 @@ type Status {
   sync: SyncInfo!
   validator: ValidatorInfo
   validators: [ValidatorInfo]!
-  num_peers: String!
+  numPeers: String!
   peers: [PeerInfo]
-  disk_usage: String!
+  diskUsage: String!
 }
 
 # An auction bid.

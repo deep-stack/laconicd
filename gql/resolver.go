@@ -371,8 +371,8 @@ func (q queryResolver) GetParticipants(ctx context.Context) ([]*Participant, err
 	participants := make([]*Participant, len(participantResp.GetParticipants()))
 	for i, p := range participantResp.Participants {
 		participants[i] = &Participant{
-			CosmosAddress:   p.CosmosAddress,
-			EthereumAddress: p.EthereumAddress,
+			CosmosAddress: p.CosmosAddress,
+			NitroAddress:  p.NitroAddress,
 		}
 	}
 
