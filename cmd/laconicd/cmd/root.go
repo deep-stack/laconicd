@@ -140,7 +140,8 @@ func ProvideClientContext(
 	// Read the config again to overwrite the default values with the values from the config file
 	clientCtx, _ = config.ReadFromClientConfig(clientCtx)
 
-	// Workaround: Unset clientCtx.HomeDir and clientCtx.KeyringDir from depinject clientCtx as they are given precedence over the CLI args (--home flag) in some commands
+	// Workaround: Unset clientCtx.HomeDir and clientCtx.KeyringDir from depinject clientCtx as they are given precedence over
+	// the CLI args (--home flag) in some commands
 	// TODO: Implement proper fix
 	clientCtx.HomeDir = ""
 	clientCtx.KeyringDir = ""
