@@ -134,13 +134,16 @@ func ProvideClientContext(
 		WithLegacyAmino(legacyAmino).
 		WithInput(os.Stdin).
 		WithAccountRetriever(types.AccountRetriever{}).
-		// Workaround: Avoid providing DefaultNodeHome to depinject as it is given precedence over the one passed using --home flag in some CLI commands
-		// TODO: Implement proper fix
-		// WithHomeDir(app.DefaultNodeHome).
+		WithHomeDir(app.DefaultNodeHome).
 		WithViper(EnvPrefix) // env variable prefix
 
 	// Read the config again to overwrite the default values with the values from the config file
 	clientCtx, _ = config.ReadFromClientConfig(clientCtx)
+
+	// Workaround: Unset clientCtx.HomeDir and clientCtx.KeyringDir from depinject clientCtx as they are given precedence over the CLI args (--home flag) in some commands
+	// TODO: Implement proper fix
+	clientCtx.HomeDir = ""
+	clientCtx.KeyringDir = ""
 
 	return clientCtx
 }
