@@ -70,6 +70,9 @@ if [ "$1" == "clean" ] || [ ! -d "$HOME/.laconicd/data/blockstore.db" ]; then
     else
       sed -i 's/create_empty_blocks = true/create_empty_blocks = false/g' $HOME/.laconicd/config/config.toml
   fi
+ 
+  # Run this to allow requests from any origin
+  sed -i 's/cors_allowed_origins.*$/cors_allowed_origins = ["*"]/' $HOME/.laconicd/config/config.toml
 
   # Enable telemetry (prometheus metrics: http://localhost:1317/metrics?format=prometheus)
   if [[ "$OSTYPE" == "darwin"* ]]; then
