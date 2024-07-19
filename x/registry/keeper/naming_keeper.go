@@ -568,8 +568,13 @@ func (k Keeper) insertAuthorityExpiryQueue(ctx sdk.Context, name string, expiryT
 // deleteAuthorityExpiryQueue deletes an authority name from the authority expiry queue.
 func (k Keeper) deleteAuthorityExpiryQueue(ctx sdk.Context, name string, authority registrytypes.NameAuthority) error {
 	expiryTime := authority.ExpiryTime
+
 	existingNamesList, err := k.AuthorityExpiryQueue.Get(ctx, expiryTime)
 	if err != nil {
+		if errors.Is(err, collections.ErrNotFound) {
+			return nil
+		}
+
 		return err
 	}
 
