@@ -111,6 +111,11 @@ func (rk RecordKeeper) OnAuctionWinnerSelected(ctx sdk.Context, auctionId string
 			// Mark as expired.
 			authority.Status = registrytypes.AuthorityExpired
 			logger(ctx).Info(fmt.Sprintf("No winner, marking authority as expired: %s", name))
+
+			logger(ctx).Info(fmt.Sprintf("Deleting the expiry queue entry: %s", name))
+			if err = rk.k.deleteAuthorityExpiryQueue(ctx, name, authority); err != nil {
+				logger(ctx).Error("Unable to delete expiry queue entry", err)
+			}
 		}
 
 		// Forget about this auction now, we no longer need it.

@@ -519,7 +519,8 @@ func (k Keeper) ProcessAuthorityExpiryQueue(ctx sdk.Context) error {
 
 			k.Logger(ctx).Info(fmt.Sprintf("Marking authority expired as no bond present: %s", name))
 
-			return nil
+			// Continue with the loop
+			continue
 		}
 
 		// Try to renew the authority by taking rent.
@@ -585,7 +586,7 @@ func (k Keeper) deleteAuthorityExpiryQueue(ctx sdk.Context, name string, authori
 		}
 	}
 
-	if len(existingNamesList.Value) == 0 {
+	if len(newNamesSlice) == 0 {
 		return k.AuthorityExpiryQueue.Remove(ctx, expiryTime)
 	} else {
 		existingNamesList.Value = newNamesSlice
