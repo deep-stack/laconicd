@@ -41,19 +41,30 @@ func (k Keeper) GetNameAuthority(ctx sdk.Context, name string) (registrytypes.Na
 	return authority, nil
 }
 
-// ListNameAuthorityRecords - get all name authority records.
-func (k Keeper) ListNameAuthorityRecords(ctx sdk.Context) (map[string]registrytypes.NameAuthority, error) {
-	nameAuthorityRecords := make(map[string]registrytypes.NameAuthority)
+// ListNameAuthorityRecords - get all name authority records for given owner
+// Returns all authorities if owner set to ""
+func (k Keeper) ListNameAuthorityRecords(ctx sdk.Context, owner string) ([]registrytypes.AuthorityEntry, error) {
+	authorityEntries := []registrytypes.AuthorityEntry{}
 
 	err := k.Authorities.Walk(ctx, nil, func(key string, value registrytypes.NameAuthority) (bool, error) {
-		nameAuthorityRecords[key] = value
+		// If owner is not empty, skip if authority is not owned by owner
+		if owner != "" && owner != value.OwnerAddress {
+			return false, nil
+		}
+
+		authorityEntries = append(authorityEntries, registrytypes.AuthorityEntry{
+			Name:  key,
+			Entry: &value,
+		})
+
+		// Continue the walk
 		return false, nil
 	})
 	if err != nil {
-		return map[string]registrytypes.NameAuthority{}, err
+		return []registrytypes.AuthorityEntry{}, err
 	}
 
-	return nameAuthorityRecords, nil
+	return authorityEntries, nil
 }
 
 // HasNameRecord - checks if a name record exists.

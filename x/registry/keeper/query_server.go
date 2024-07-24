@@ -112,15 +112,26 @@ func (qs queryServer) NameRecords(c context.Context, _ *registrytypes.QueryNameR
 	return &registrytypes.QueryNameRecordsResponse{Names: nameRecords}, nil
 }
 
-func (qs queryServer) Whois(c context.Context, request *registrytypes.QueryWhoisRequest) (*registrytypes.QueryWhoisResponse, error) {
+func (qs queryServer) Whois(c context.Context, req *registrytypes.QueryWhoisRequest) (*registrytypes.QueryWhoisResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
 
-	nameAuthority, err := qs.k.GetNameAuthority(ctx, request.GetName())
+	nameAuthority, err := qs.k.GetNameAuthority(ctx, req.GetName())
 	if err != nil {
 		return nil, err
 	}
 
 	return &registrytypes.QueryWhoisResponse{NameAuthority: nameAuthority}, nil
+}
+
+func (qs queryServer) Authorities(c context.Context, req *registrytypes.QueryAuthoritiesRequest) (*registrytypes.QueryAuthoritiesResponse, error) {
+	ctx := sdk.UnwrapSDKContext(c)
+
+	authorityEntries, err := qs.k.ListNameAuthorityRecords(ctx, req.GetOwner())
+	if err != nil {
+		return nil, err
+	}
+
+	return &registrytypes.QueryAuthoritiesResponse{Authorities: authorityEntries}, nil
 }
 
 func (qs queryServer) LookupLrn(c context.Context, req *registrytypes.QueryLookupLrnRequest) (*registrytypes.QueryLookupLrnResponse, error) {

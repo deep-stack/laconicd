@@ -52,6 +52,18 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					},
 				},
 				{
+					RpcMethod: "Authorities",
+					Use:       "list-authorities",
+					Short:     "List authorities (optionally by owner)",
+					FlagOptions: map[string]*autocliv1.FlagOptions{
+						"owner": {
+							Name:         "owner",
+							Usage:        "Owner to get the authorities for",
+							DefaultValue: "",
+						},
+					},
+				},
+				{
 					RpcMethod:      "NameRecords",
 					Use:            "names",
 					Short:          "List name records",

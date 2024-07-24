@@ -67,18 +67,9 @@ func (k *Keeper) ExportGenesis(ctx sdk.Context) (*registry.GenesisState, error) 
 		return nil, err
 	}
 
-	authorities, err := k.ListNameAuthorityRecords(ctx)
+	authorityEntries, err := k.ListNameAuthorityRecords(ctx, "")
 	if err != nil {
 		return nil, err
-	}
-
-	authorityEntries := []registry.AuthorityEntry{}
-	// #nosec G705
-	for name, record := range authorities {
-		authorityEntries = append(authorityEntries, registry.AuthorityEntry{
-			Name:  name,
-			Entry: &record, //nolint: all
-		}) // #nosec G601
 	}
 
 	names, err := k.ListNameRecords(ctx)

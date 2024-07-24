@@ -28,6 +28,7 @@ const (
 	Query_LookupLrn_FullMethodName                = "/cerc.registry.v1.Query/LookupLrn"
 	Query_ResolveLrn_FullMethodName               = "/cerc.registry.v1.Query/ResolveLrn"
 	Query_GetRegistryModuleBalance_FullMethodName = "/cerc.registry.v1.Query/GetRegistryModuleBalance"
+	Query_Authorities_FullMethodName              = "/cerc.registry.v1.Query/Authorities"
 )
 
 // QueryClient is the client API for Query service.
@@ -52,6 +53,8 @@ type QueryClient interface {
 	ResolveLrn(ctx context.Context, in *QueryResolveLrnRequest, opts ...grpc.CallOption) (*QueryResolveLrnResponse, error)
 	// Get registry module balance
 	GetRegistryModuleBalance(ctx context.Context, in *QueryGetRegistryModuleBalanceRequest, opts ...grpc.CallOption) (*QueryGetRegistryModuleBalanceResponse, error)
+	// Authorities queries all authorities
+	Authorities(ctx context.Context, in *QueryAuthoritiesRequest, opts ...grpc.CallOption) (*QueryAuthoritiesResponse, error)
 }
 
 type queryClient struct {
@@ -143,6 +146,15 @@ func (c *queryClient) GetRegistryModuleBalance(ctx context.Context, in *QueryGet
 	return out, nil
 }
 
+func (c *queryClient) Authorities(ctx context.Context, in *QueryAuthoritiesRequest, opts ...grpc.CallOption) (*QueryAuthoritiesResponse, error) {
+	out := new(QueryAuthoritiesResponse)
+	err := c.cc.Invoke(ctx, Query_Authorities_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 // All implementations must embed UnimplementedQueryServer
 // for forward compatibility
@@ -165,6 +177,8 @@ type QueryServer interface {
 	ResolveLrn(context.Context, *QueryResolveLrnRequest) (*QueryResolveLrnResponse, error)
 	// Get registry module balance
 	GetRegistryModuleBalance(context.Context, *QueryGetRegistryModuleBalanceRequest) (*QueryGetRegistryModuleBalanceResponse, error)
+	// Authorities queries all authorities
+	Authorities(context.Context, *QueryAuthoritiesRequest) (*QueryAuthoritiesResponse, error)
 	mustEmbedUnimplementedQueryServer()
 }
 
@@ -198,6 +212,9 @@ func (UnimplementedQueryServer) ResolveLrn(context.Context, *QueryResolveLrnRequ
 }
 func (UnimplementedQueryServer) GetRegistryModuleBalance(context.Context, *QueryGetRegistryModuleBalanceRequest) (*QueryGetRegistryModuleBalanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRegistryModuleBalance not implemented")
+}
+func (UnimplementedQueryServer) Authorities(context.Context, *QueryAuthoritiesRequest) (*QueryAuthoritiesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Authorities not implemented")
 }
 func (UnimplementedQueryServer) mustEmbedUnimplementedQueryServer() {}
 
@@ -374,6 +391,24 @@ func _Query_GetRegistryModuleBalance_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_Authorities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAuthoritiesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).Authorities(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_Authorities_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).Authorities(ctx, req.(*QueryAuthoritiesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Query_ServiceDesc is the grpc.ServiceDesc for Query service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -416,6 +451,10 @@ var Query_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetRegistryModuleBalance",
 			Handler:    _Query_GetRegistryModuleBalance_Handler,
+		},
+		{
+			MethodName: "Authorities",
+			Handler:    _Query_Authorities_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
