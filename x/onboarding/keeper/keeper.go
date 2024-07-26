@@ -100,6 +100,8 @@ func (k Keeper) OnboardParticipant(
 	participant := &onboardingTypes.Participant{
 		CosmosAddress: signerAddress.String(),
 		NitroAddress:  nitroAddress,
+		Role:          msg.Role,
+		KycId:         msg.KycId,
 	}
 
 	if err := k.StoreParticipant(ctx, participant); err != nil {

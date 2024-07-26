@@ -138,6 +138,8 @@ type OwnerBonds struct {
 type Participant struct {
 	CosmosAddress string `json:"cosmosAddress"`
 	NitroAddress  string `json:"nitroAddress"`
+	Role          string `json:"role"`
+	KycID         string `json:"kycId"`
 }
 
 type PeerInfo struct {

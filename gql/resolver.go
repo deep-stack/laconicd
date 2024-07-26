@@ -373,6 +373,8 @@ func (q queryResolver) GetParticipants(ctx context.Context) ([]*Participant, err
 		participants[i] = &Participant{
 			CosmosAddress: p.CosmosAddress,
 			NitroAddress:  p.NitroAddress,
+			Role:          p.Role,
+			KycID:         p.KycId,
 		}
 	}
 

@@ -33,6 +33,8 @@ type Account {
 type Participant {
   cosmosAddress: String! # Cosmos address of the participant who will be registered.
   nitroAddress: String! # Nitro addresss of the participant who will be registered.
+  role: String! # Participant's role
+  kycId: String! # Participant's KYC receipt ID
 }
 
 # Value describes a DAG-JSON compatible value.

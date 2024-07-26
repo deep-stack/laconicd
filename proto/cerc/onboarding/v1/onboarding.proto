@@ -16,14 +16,24 @@ message Params {
 // Participant defines the data that will be stored for each enrolled
 // participant
 message Participant {
+  // participant's cosmos (laconic) address
   string cosmos_address = 1
       [ (gogoproto.moretags) =
             "json:\"cosmos_address\" yaml:\"cosmos_address\"" ];
 
+  // participant's Nitro address
   string nitro_address = 2
       [ (gogoproto.moretags) =
             "json:\"nitro_address\" yaml:\"nitro_address\"" ];
+
+  // participant's role (participant | validator)
+  string role = 3 [ (gogoproto.moretags) = "json:\"role\" yaml:\"role\"" ];
+
+  // participant's KYC receipt ID
+  string kyc_id = 4
+      [ (gogoproto.moretags) = "json:\"kyc_id\" yaml:\"kyc_id\"" ];
 }
+
 // EthPayload defines the payload that is signed by the ethereum private key
 message EthPayload {
   string address = 1

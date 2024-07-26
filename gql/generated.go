@@ -155,7 +155,9 @@ type ComplexityRoot struct {
 
 	Participant struct {
 		CosmosAddress func(childComplexity int) int
+		KycID         func(childComplexity int) int
 		NitroAddress  func(childComplexity int) int
+		Role          func(childComplexity int) int
 	}
 
 	PeerInfo struct {
@@ -648,12 +650,26 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 
 		return e.complexity.Participant.CosmosAddress(childComplexity), true
 
+	case "Participant.kycId":
+		if e.complexity.Participant.KycID == nil {
+			break
+		}
+
+		return e.complexity.Participant.KycID(childComplexity), true
+
 	case "Participant.nitroAddress":
 		if e.complexity.Participant.NitroAddress == nil {
 			break
 		}
 
 		return e.complexity.Participant.NitroAddress(childComplexity), true
+
+	case "Participant.role":
+		if e.complexity.Participant.Role == nil {
+			break
+		}
+
+		return e.complexity.Participant.Role(childComplexity), true
 
 	case "PeerInfo.isOutbound":
 		if e.complexity.PeerInfo.IsOutbound == nil {
@@ -3924,6 +3940,94 @@ func (ec *executionContext) fieldContext_Participant_nitroAddress(ctx context.Co
 	return fc, nil
 }
 
+func (ec *executionContext) _Participant_role(ctx context.Context, field graphql.CollectedField, obj *Participant) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_Participant_role(ctx, field)
+	if err != nil {
+		return graphql.Null
+	}
+	ctx = graphql.WithFieldContext(ctx, fc)
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.Role, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNString2string(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) fieldContext_Participant_role(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+	fc = &graphql.FieldContext{
+		Object:     "Participant",
+		Field:      field,
+		IsMethod:   false,
+		IsResolver: false,
+		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
+			return nil, errors.New("field of type String does not have child fields")
+		},
+	}
+	return fc, nil
+}
+
+func (ec *executionContext) _Participant_kycId(ctx context.Context, field graphql.CollectedField, obj *Participant) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_Participant_kycId(ctx, field)
+	if err != nil {
+		return graphql.Null
+	}
+	ctx = graphql.WithFieldContext(ctx, fc)
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.KycID, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNString2string(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) fieldContext_Participant_kycId(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+	fc = &graphql.FieldContext{
+		Object:     "Participant",
+		Field:      field,
+		IsMethod:   false,
+		IsResolver: false,
+		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
+			return nil, errors.New("field of type String does not have child fields")
+		},
+	}
+	return fc, nil
+}
+
 func (ec *executionContext) _PeerInfo_node(ctx context.Context, field graphql.CollectedField, obj *PeerInfo) (ret graphql.Marshaler) {
 	fc, err := ec.fieldContext_PeerInfo_node(ctx, field)
 	if err != nil {
@@ -4836,6 +4940,10 @@ func (ec *executionContext) fieldContext_Query_getParticipants(ctx context.Conte
 				return ec.fieldContext_Participant_cosmosAddress(ctx, field)
 			case "nitroAddress":
 				return ec.fieldContext_Participant_nitroAddress(ctx, field)
+			case "role":
+				return ec.fieldContext_Participant_role(ctx, field)
+			case "kycId":
+				return ec.fieldContext_Participant_kycId(ctx, field)
 			}
 			return nil, fmt.Errorf("no field named %q was found under type Participant", field.Name)
 		},
@@ -8797,6 +8905,20 @@ func (ec *executionContext) _Participant(ctx context.Context, sel ast.SelectionS
 		case "nitroAddress":
 
 			out.Values[i] = ec._Participant_nitroAddress(ctx, field, obj)
+
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		case "role":
+
+			out.Values[i] = ec._Participant_role(ctx, field, obj)
+
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		case "kycId":
+
+			out.Values[i] = ec._Participant_kycId(ctx, field, obj)
 
 			if out.Values[i] == graphql.Null {
 				invalids++

@@ -26,11 +26,13 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 			RpcCommandOptions: []*autocliv1.RpcCommandOptions{
 				{
 					RpcMethod: "OnboardParticipant",
-					Use:       "enroll",
+					Use:       "enroll [eth_payload] [eth_signature] [role] [kyc_id]",
 					Short:     "Enroll a testnet validator",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
 						{ProtoField: "eth_payload"},
 						{ProtoField: "eth_signature"},
+						{ProtoField: "role"},
+						{ProtoField: "kyc_id"},
 					},
 				},
 			},
